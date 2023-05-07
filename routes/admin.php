@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Auth\LogoutController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordRestLinkController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Setting\AdminChangePasswordController;
 use App\Http\Controllers\Admin\Setting\AdminProfileController;
 use App\Http\Controllers\Admin\Setting\SettingController;
@@ -21,6 +22,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | be assigned to the "admin" middleware group. Make something great!
 |
 */
+
+define('CUSTOMPAGINATION', 10);
 
 Route::group(
     [
@@ -44,12 +47,17 @@ Route::group(
                 Route::get('/dashboard',                    DashboardController::class)->name('dashboard');
 
 
-                //!_______________________
-                //! Setting
-                //!_______________________
+                //_______________________
+                // Setting
+                //_______________________
                 Route::resource('/setting',                 SettingController::class)->only(['index']);
                 Route::get('/profile',                      AdminProfileController::class)->name('setting.profile');
                 Route::get('/change-password',              AdminChangePasswordController::class)->name('setting.change-password');
+
+                //_______________________
+                // Srction
+                //_______________________
+                Route::resource('sections',                 SectionController::class);
             });
         });
     }
