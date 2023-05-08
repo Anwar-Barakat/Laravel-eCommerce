@@ -9,7 +9,7 @@ class DisplaySection extends Component
 {
     public function updateStatus($section_id)
     {
-        $section            = Section::findOrFail($section_id);
+        $section  = Section::findOrFail($section_id);
         $section->update(['is_active' => !$section->is_active]);
     }
 

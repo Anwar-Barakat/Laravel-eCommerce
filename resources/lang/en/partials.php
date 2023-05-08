@@ -2,13 +2,21 @@
 
 return [
     //? Navbar :
-    'home'          => 'Home',
+    'home'          => 'Dashboard',
+    'main_elements' => 'Main Elements',
     'languages'     => 'Languages',
     'status'        => 'Status',
     'profile'       => 'Profile',
     'settings'      => 'Settings',
     'logout'        => 'Logout',
+    'transactions'  => 'Trnsactions',
+    'accounts'      => 'Accounts',
     'by'            => 'By',
+    'Profile'       => 'Profile',
+
+    //? Group Link
+    'general_setting'   => 'General Setting',
+    'stocks'            => 'Stocks',
 
 
     //? Footer :
