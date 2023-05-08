@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Section;
+namespace App\Http\Controllers\Admin\Category;
 
-use App\Models\Section;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SectionController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.sections.index');
+        return view('admin.categories.index');
     }
 
     /**
@@ -21,7 +21,7 @@ class SectionController extends Controller
      */
     public function create()
     {
-        return view('admin.sections.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -35,7 +35,7 @@ class SectionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Section $section)
+    public function show(Category $category)
     {
         //
     }
@@ -43,15 +43,15 @@ class SectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Section $section)
+    public function edit(Category $category)
     {
-        return view('admin.sections.edit', ['section' => $section]);
+        return view('admin.categories.edit', ['category' => $category]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Section $section)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -59,7 +59,7 @@ class SectionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Section $section)
+    public function destroy(Category $category)
     {
         //
     }

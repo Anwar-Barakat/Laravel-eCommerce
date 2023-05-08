@@ -30,7 +30,6 @@
                                         <span class="badge {{ $section->is_active ? 'bg-green' : 'bg-red' }} badge-notification badge-blink"></span>
                                     </button>
                                 </div>
-
                             </td>
                             <td> {{ $section->created_at }} </td>
                             <td>

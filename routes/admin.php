@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\LogoutController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordRestLinkController;
+use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Setting\AdminChangePasswordController;
@@ -48,16 +49,21 @@ Route::group(
 
 
                 //_______________________
-                // Setting
+                // setting
                 //_______________________
                 Route::resource('/setting',                 SettingController::class)->only(['index']);
                 Route::get('/profile',                      AdminProfileController::class)->name('setting.profile');
                 Route::get('/change-password',              AdminChangePasswordController::class)->name('setting.change-password');
 
                 //_______________________
-                // Srction
+                // sections
                 //_______________________
                 Route::resource('sections',                 SectionController::class);
+
+                //_______________________
+                // categories
+                //_______________________
+                Route::resource('categories',               CategoryController::class);
             });
         });
     }
