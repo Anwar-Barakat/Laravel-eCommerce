@@ -14,12 +14,6 @@ return [
     'accounts'      => 'الحسابات',
     'Profile'       => 'الملف الشخصي',
 
-
-    //? Group Link
-    'general_setting'   => 'الضبط العام',
-    'stocks'            => 'المخازن',
-
-
     //? Footer :
     'copyright'             => 'حقوق النشر',
     'all_rights_reserved'   => 'جميع الحقوق محفوظة',

@@ -1,7 +1,7 @@
 <x-master-layout>
-    @section('pageTitle', __('msgs.edit', ['name' => __('section.section')]))
-    @section('breadcrumbTitle', __('msgs.edit', ['name' => __('section.section')]))
-    @section('breadcrumbSubtitle', __('section.sections'))
+    @section('pageTitle', __('msgs.edit', ['name' => __('category.category')]))
+    @section('breadcrumbTitle', __('msgs.edit', ['name' => __('category.category')]))
+    @section('breadcrumbSubtitle', __('category.categories'))
 
-    @livewire('admin.section.add-edit-section', ['section' => $section])
+    @livewire('admin.category.add-edit-category', ['category' => $category])
 </x-master-layout>

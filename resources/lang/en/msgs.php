@@ -63,6 +63,7 @@ return [
     'attachements'          => 'Attachements',
     'notes'                 => 'Notes',
     'add_new'               => 'Add new',
+    'additional_info'       => 'Additional info',
 
     'are_you_sure_about_deleting'   => 'Are you sure about deleting ?',
     'something_went_wrong'          => 'Something went wrong',

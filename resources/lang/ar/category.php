@@ -12,4 +12,6 @@ return [
     'meta_title'        => 'عنوان الميتا',
     'meta_description'  => 'وصف الميتا',
     'meta_keywords'     => 'الكلمات الدلالية للميتا',
+    'category_level'    => 'مستوى الفئة',
+
 ];

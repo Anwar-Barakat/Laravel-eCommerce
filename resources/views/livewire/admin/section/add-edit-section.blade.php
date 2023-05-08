@@ -3,7 +3,7 @@
         <div class="col d-flex flex-column">
             <form wire:submit.prevent='submit'>
                 <div class="card-body">
-                    <h3 class="mb-4 text-blue">{{ __('msgs.main_info') }}</h3>
+                    <h3 class="mb-3 text-blue">{{ __('msgs.main_info') }}</h3>
                     <div class="row row-cards">
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="mb-3">
@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="mb-3">
-                                <x-input-label class="form-label" :value="__('setting.status')" />
+                                <x-input-label class="form-label" :value="__('partials.status')" />
                                 <select class="form-select" wire:model.defer='section.is_active'>
                                     <option value="">{{ __('btns.select') }}</option>
                                     <option value="1" {{ old('is_active') == '1' ? 'selected' : '' }}>{{ __('msgs.yes') }}</option>

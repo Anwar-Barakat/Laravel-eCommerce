@@ -58,6 +58,8 @@ return [
     'attachements'          => 'المرفقات',
     'notes'                 => 'ملاحظات',
     'add_new'               => 'إضافة جديد',
+    'additional_info'       => 'معلومات إضافية',
+
 
     'are_you_sure_about_deleting'   => 'هل أنت متأكد من عملية الحذف',
     'something_went_wrong'          => 'حدث خطأ ما',

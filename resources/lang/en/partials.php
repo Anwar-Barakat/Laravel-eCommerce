@@ -14,11 +14,6 @@ return [
     'by'            => 'By',
     'Profile'       => 'Profile',
 
-    //? Group Link
-    'general_setting'   => 'General Setting',
-    'stocks'            => 'Stocks',
-
-
     //? Footer :
     'copyright'             => 'Copyright',
     'all_rights_reserved'   => 'All rights reserved',

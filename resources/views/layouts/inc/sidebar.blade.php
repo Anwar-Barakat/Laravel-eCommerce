@@ -190,11 +190,10 @@
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
-                                <path d="M12 12l8 -4.5" />
-                                <path d="M12 12l0 9" />
-                                <path d="M12 12l-8 -4.5" />
-                                <path d="M16 5.25l-8 4.5" />
+                                <path d="M19 3h-4a2 2 0 0 0 -2 2v12a4 4 0 0 0 8 0v-12a2 2 0 0 0 -2 -2" />
+                                <path d="M13 7.35l-2 -2a2 2 0 0 0 -2.828 0l-2.828 2.828a2 2 0 0 0 0 2.828l9 9" />
+                                <path d="M7.3 13h-2.3a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h12" />
+                                <path d="M17 17l0 .01" />
                             </svg>
                         </span>
                         <span class="nav-link-title">
@@ -214,50 +213,29 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./form-elements.html">
+                <li class="nav-item dropdown {{ request()->routeIs('admin.categories.index') ? 'active' : '' }}">
+                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M9 11l3 3l8 -8" />
-                                <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+                                <path d="M3 3m0 1a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v16a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1zm6 -1v18m6 -18v18" />
                             </svg>
                         </span>
                         <span class="nav-link-title">
-                            Forms
+                            {{ __('category.categories') }}
                         </span>
                     </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/lifebuoy -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                                <path d="M15 15l3.35 3.35" />
-                                <path d="M9 15l-3.35 3.35" />
-                                <path d="M5.65 5.65l3.35 3.35" />
-                                <path d="M18.35 5.65l-3.35 3.35" />
-                            </svg>
-                        </span>
-                        <span class="nav-link-title">
-                            {{ __('partials.languages') }}
-                        </span>
-                    </a>
-                    <div class="dropdown-menu">
-                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                            <a rel="alternate" hreflang="{{ $localeCode }}" class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                @if ($properties['native'] == 'العربية')
-                                    <span class="flag flag-country-sy me-1"></span>
-                                @else
-                                    <span class="flag flag-country-um me-1"></span>
-                                @endif
-                                <span> {{ $properties['native'] }}</span>
-                            </a>
-                        @endforeach
+                    <div class="dropdown-menu {{ request()->routeIs('admin.categories.*') ? 'show' : '' }}">
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a href="{{ route('admin.categories.index') }}" class="dropdown-item {{ request()->routeIs('admin.categories.index') ? 'active' : '' }}">
+                                    {{ __('msgs.list', ['name' => __('category.categories')]) }}
+                                </a>
+                                <a href="{{ route('admin.categories.create') }}" class="dropdown-item {{ request()->routeIs('admin.categories.create') ? 'active' : '' }}">
+                                    {{ __('msgs.create', ['name' => __('category.category')]) }}
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </li>
             </ul>

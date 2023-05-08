@@ -49,17 +49,15 @@ class AddEditSection extends Component
     public function rules()
     {
         return [
-            'name_ar'   => [
-                'required',
-                'string',
-                'min:3',
+            'name_ar'               => [
+                'required', 'string', 'min:3',
                 Rule::unique('sections', 'name->ar')->ignore($this->section->id)
             ],
-            'name_en'   => [
+            'name_en'               => [
                 'required', 'string', 'min:3',
                 Rule::unique('sections', 'name->en')->ignore($this->section->id)
             ],
-            'section.is_active' => ['required', 'boolean'],
+            'section.is_active'     => ['required', 'boolean'],
         ];
     }
 }

@@ -181,6 +181,17 @@ return [
         'photo'                 => 'photo',
         'name_ar'               => 'arabic name',
         'name_en'               => 'english name',
+
+        //_______________________
+        // categories
+        //_______________________
+        'parent_id'         => 'Parent category',
+        'url'               => 'URL',
+        'discount'          => 'Discount',
+        'description'       => 'Description',
+        'meta_title'        => 'Meta title',
+        'meta_description'  => 'Meta description',
+        'meta_keywords'     => 'Meta keywords',
     ],
 
 ];

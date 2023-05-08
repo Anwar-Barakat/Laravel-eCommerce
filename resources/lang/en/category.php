@@ -12,4 +12,5 @@ return [
     'meta_title'        => 'Meta title',
     'meta_description'  => 'Meta description',
     'meta_keywords'     => 'Meta keywords',
+    'category_level'    => 'Category level',
 ];
