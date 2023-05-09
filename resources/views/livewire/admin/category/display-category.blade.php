@@ -47,8 +47,8 @@
                              <td> {{ $category->created_at }} </td>
                              <td>
                                  <span class="dropdown">
-                                     <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">{{ __('btns.actions') }}</button>
-                                     <div class="dropdown-menu dropdown-menu-end">
+                                     <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('btns.actions') }}</button>
+                                     <div class="dropdown-menu">
                                          <a href="{{ route('admin.categories.edit', ['category' => $category]) }}" class="dropdown-item d-flex align-items-center gap-1">
                                              <svg xmlns="http://www.w3.org/2000/svg" class="icon text-success" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
