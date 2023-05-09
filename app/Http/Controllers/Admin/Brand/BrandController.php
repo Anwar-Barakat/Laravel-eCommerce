@@ -37,7 +37,6 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        return view('admin.brands.edit', ['brand' => $brand]);
     }
 
     /**
@@ -45,7 +44,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        return view('admin.brands.edit', ['brand' => $brand]);
     }
 
     /**

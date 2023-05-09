@@ -12,6 +12,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>{{ __('msgs.photo') }}</th>
                         <th>{{ __('product.brand') }}</th>
                         <th>{{ __('partials.status') }}</th>
                         <th>{{ __('msgs.created_at') }}</th>
@@ -22,6 +23,13 @@
                     @forelse ($brands as $brand)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
+                            <td>
+                                @if ($brand->getFirstMediaUrl('brands', 'thumb'))
+                                    <img src="{{ $brand->getFirstMediaUrl('brands') }}" class="img img-thumbnail" alt="{{ $brand->name }}" width="80">
+                                @else
+                                    <img src="{{ asset('backend/static/logo-small.svg') }}" class="img img-thumbnail" alt="{{ $brand->name }}" width="80">
+                                @endif
+                            </td>
                             <td> {{ $brand->name }}</td>
                             <td>
                                 <div>
