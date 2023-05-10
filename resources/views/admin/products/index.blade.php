@@ -1,7 +1,7 @@
 <x-master-layout>
-    @section('pageTitle', __('msgs.list', ['name' => __('section.sections')]))
-    @section('breadcrumbTitle', __('msgs.list', ['name' => __('section.sections')]))
-    @section('breadcrumbSubtitle', __('section.sections'))
+    @section('pageTitle', __('msgs.list', ['name' => __('product.products')]))
+    @section('breadcrumbTitle', __('msgs.list', ['name' => __('product.products')]))
+    @section('breadcrumbSubtitle', __('product.products'))
 
     @livewire('admin.product.display-product')
 </x-master-layout>

@@ -12,4 +12,7 @@ return [
     //_______________________
     'products'      => 'Products',
     'product'       => 'Product',
+    'price'         => 'Price',
+    'from'          => 'From',
+    'to'            => 'To',
 ];

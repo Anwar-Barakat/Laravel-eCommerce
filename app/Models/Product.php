@@ -36,6 +36,14 @@ class Product extends Model implements HasMedia
     public $translatable    = ['name'];
     protected $casts        = ['created_at'    => 'date:Y-m-d',];
 
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('name', 'LIKE', $term);
+        });
+    }
+
     public function registerMediaCollections(Media $media = null): void
     {
         $this->addMediaConversion('small')
@@ -54,5 +62,20 @@ class Product extends Model implements HasMedia
     public function scopeActive($query)
     {
         return $query->where(['status' => 1]);
+    }
+
+    public function section()
+    {
+        return $this->belongsTo(Section::class, 'section_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id');
     }
 }
