@@ -60,17 +60,22 @@ Route::group(
                 //_______________________
                 // sections
                 //_______________________
-                Route::resource('sections',                 SectionController::class);
+                Route::resource('sections',                 SectionController::class)->only(['index', 'create', 'edit']);
 
                 //_______________________
                 // categories
                 //_______________________
-                Route::resource('categories',               CategoryController::class);
+                Route::resource('categories',               CategoryController::class)->only(['index', 'create', 'edit']);
 
                 //_______________________
-                // sections
+                // brands
                 //_______________________
-                Route::resource('brands',                   BrandController::class);
+                Route::resource('brands',                   BrandController::class)->only(['index', 'create', 'edit']);
+
+                //_______________________
+                // products
+                //_______________________
+                Route::resource('products',                 ProductController::class);
             });
         });
     }

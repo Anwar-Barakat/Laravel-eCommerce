@@ -4,9 +4,12 @@ namespace App\Http\Livewire\Admin\Section;
 
 use App\Models\Section;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class DisplaySection extends Component
 {
+    use WithPagination;
+
     public function updateStatus($section_id)
     {
         $section  = Section::findOrFail($section_id);
