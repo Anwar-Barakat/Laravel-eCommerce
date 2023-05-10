@@ -240,8 +240,8 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item dropdown {{ request()->routeIs('admin.brands.index') ? 'active' : '' }}">
-                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
+                <li class="nav-item dropdown {{ request()->routeIs('admin.brands.*') ? 'active' : '' }}">
+                    <a class="nav-link dropdown-item {{ request()->routeIs('admin.brands.*') ? 'active' : '' }}" href="{{ route('admin.brands.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-discount-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -255,20 +255,8 @@
                             {{ __('product.brands') }}
                         </span>
                     </a>
-                    <div class="dropdown-menu {{ request()->routeIs('admin.brands.*') ? 'show' : '' }}">
-                        <div class="dropdown-menu-columns">
-                            <div class="dropdown-menu-column">
-                                <a href="{{ route('admin.brands.index') }}" class="dropdown-item {{ request()->routeIs('admin.brands.index') ? 'active' : '' }}">
-                                    {{ __('msgs.list', ['name' => __('product.brands')]) }}
-                                </a>
-                                <a href="{{ route('admin.brands.create') }}" class="dropdown-item {{ request()->routeIs('admin.brands.create') ? 'active' : '' }}">
-                                    {{ __('msgs.create', ['name' => __('product.brand')]) }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </li>
-                {{-- <li class="nav-item dropdown {{ request()->routeIs('admin.products.index') ? 'active' : '' }}">
+                {{-- <li class="nav-item dropdown {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
                     <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tags" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
