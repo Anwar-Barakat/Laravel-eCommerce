@@ -1,6 +1,9 @@
 <div class="row g-4">
     <div class="col-3">
         <div class="card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <h4 class="card-title">{{ __('msgs.all', ['name' => __('product.filters')]) }}</h4>
+            </div>
             <div class="card-body">
                 <div class="mb-4">
                     <div class="subheader mb-2 text-blue-500">{{ __('section.sections') }}</div>
@@ -66,10 +69,20 @@
         <div class="row row-cards">
             @forelse ($products as $product)
                 <div class="col-md-6 col-lg-4">
+
                     <div class="card">
+
                         <div class="card-body p-4 text-center">
-                            <span class="avatar avatar-xl mb-3 rounded" style="background-image: url(./static/avatars/000m.jpg)"></span>
-                            <h3 class="m-0 mb-1"><a href="{{ route('admin.products.edit', ['product' => $product]) }}">{{ $product->name }}</a></h3>
+                            <span class="avatar avatar-xl mb-3 rounded" style="background-image: url(./static/avatars/000m.jpg)">
+                                @if ($product->getFirstMediaUrl('products', 'thumb'))
+                                    <img src="{{ $product->getFirstMediaUrl('products') }}" class="img img-thumbnail" alt="{{ $product->name }}">
+                                @else
+                                    <img src="{{ asset('backend/static/square-default-image.jpeg') }}" class="img img-thumbnail" alt="{{ $product->name }}">
+                                @endif
+                            </span>
+                            <h3 class="m-0 mb-1">
+                                <a href="{{ route('admin.products.edit', ['product' => $product]) }}">{{ $product->name }}</a>
+                            </h3>
                             <div class="text-muted">${{ $product->price }}</div>
                             <div class="mt-3">
                                 <span class="badge bg-purple-lt">{{ $product->brand->name }}</span>

@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('code')->unique();
             $table->float('price', 10, 2);
-            $table->float('discount', 10, 2)->default(0);
+            $table->boolean('discount_type')->default(0);
+            $table->float('discount_value', 10, 2)->default(0);
             $table->float('gst', 10, 2)->default(0);
             $table->float('weight', 10, 2)->default(0);
             $table->longText('description');

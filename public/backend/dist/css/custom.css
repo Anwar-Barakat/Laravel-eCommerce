@@ -3,3 +3,11 @@ ul {
     padding-right: 0;
     list-style: none !important;
 }
+
+textarea {
+    resize: none;
+}
+
+.row-cards {
+    margin-bottom: 0.6rem !important;
+}
