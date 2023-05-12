@@ -138,7 +138,7 @@
                           <div class="col-12 col-md-6 col-lg-3">
                               <div class="mb-3">
                                   <x-input-label class="form-label" :value="__('product.discount_type')" />
-                                  <select class="form-select" wire:model.defer='product.discount_type'>
+                                  <select class="form-select" wire:model='product.discount_type'>
                                       <option value="">{{ __('btns.select') }}</option>
                                       <option value="0">{{ __('product.percentage') }}</option>
                                       <option value="1">{{ __('product.fixed') }}</option>

@@ -12,8 +12,8 @@
                      <tr>
                          <th>#</th>
                          <th> {{ __('category.category') }}</th>
-                         <th>{{ __('section.section') }}</th>
-                         <th>{{ __('category.parent_id') }}</th>
+                         <th> {{ __('section.section') }}</th>
+                         <th> {{ __('category.parent_id') }}</th>
                          <th> {{ __('setting.status') }}</th>
                          <th> {{ __('msgs.created_at') }}</th>
                          <th></th>
@@ -76,8 +76,8 @@
                          </tr>
                      @empty
                          <tr>
-                             <td colspan="0">
-                                 {{-- <x-blank-section :content="__('category.category')" :url="route('admin.categories.create')" /> --}}
+                             <td colspan="7">
+                                 <x-blank-section :url="route('admin.categories.create')" :content="__('msgs.create', ['name' => __('category.category')])" />
                              </td>
                          </tr>
                      @endforelse

@@ -48,8 +48,8 @@
                         <tr>
                             <th>{{ __('product.discount') }}</th>
                             <td>
-                                {{ $product->discount_type == 0 ? '%' : '$' }}
                                 {{ $product->discount_value ?? '0' }}
+                                {{ $product->discount_type == 0 ? '%' : '$' }}
                             </td>
                         </tr>
                         <tr>
@@ -62,12 +62,70 @@
                         </tr>
                         <tr>
                             <th>{{ __('setting.status') }}</th>
-                            <td>{{ $product->is_active ? __('msgs.yes') : __('msgs.no') }}</td>
+                            <td>{{ $product->is_active ? __('msgs.active') : __('msgs.not_active') }}</td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="card-footer border-top-0">
                 </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-8 mb-3 d-flex flex-column">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">{{ __('product.product_attachments') }}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8 text-center m-auto">
+                            <div id="carousel-indicators-thumb" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                <div class="carousel-indicators carousel-indicators-thumb">
+                                    @foreach ($product->getMedia('product_attachments') as $key => $attachment)
+                                        <button type="button" data-bs-target="#carousel-indicators-thumb" data-bs-slide-to="{{ $key }}" class=" ratio ratio-4x3 active">
+                                            <img src="{{ $attachment->getUrl('small') }}" alt="{{ $attachment->getUrl('small') }}" class="img img-thumbnail" style="height: unset;">
+                                        </button>
+                                    @endforeach
+                                </div>
+                                <div class="carousel-inner">
+                                    @forelse ($product->getMedia('product_attachments') as $key => $attachment)
+                                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                            <img class="d-block w-100 img" alt="{{ $attachment->getUrl('large') }}" src="{{ $attachment->getUrl('large') }}">
+                                        </div>
+                                    @empty
+                                        <x-blank-section :url="'javascript:;'" :content="__('msgs.add', ['name' => __('product.attachment')])" />
+                                    @endforelse
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form method="POST" action="{{ route('admin.products.attachments.store', ['product' => $product]) }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="card-body">
+                        @include('layouts.inc.errors-message')
+                        <hr class="mt-4 mb-3 w-50">
+                        <h3 class="mb-4 text-blue">{{ __('msgs.add', ['name' => __('product.attachments')]) }}</h3>
+                        <div class="row row-cards">
+                            <div class="col-12 col-md-6">
+                                <x-input-label class="form-label" :value="__('msgs.photo')" />
+                                <input type="file" class="form-control"name='image[]' multiple>
+                                <x-input-error :messages="$errors->get('image')" class="mt-2" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-end">
+                        <button type="submit" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checklist" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8"></path>
+                                <path d="M14 19l2 2l4 -4"></path>
+                                <path d="M9 8h4"></path>
+                                <path d="M9 12h2"></path>
+                            </svg>
+                            {{ __('btns.submit') }}
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -87,7 +145,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($product->getMedia('product_attachments') as $key => $attachment)
+                        @forelse ($product->getMedia('product_attachments') as $key => $attachment)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
@@ -119,7 +177,8 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                        @endforelse
                     </tbody>
                 </table>
                 <div class="card-footer border-top-0">

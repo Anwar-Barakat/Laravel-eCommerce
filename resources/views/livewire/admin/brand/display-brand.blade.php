@@ -55,15 +55,13 @@
                                         </a>
                                     </div>
                                 </span>
-
                                 {{-- <x-modal-delete :id="$brand->id" :action="route('admin.brands.destroy', ['brand' => $brand])" /> --}}
-
                             </td>
                         </tr>
                     @empty
                         <tr>
                             <td colspan="8">
-                                {{-- <x-blank-brand :content="__('stock.brand')" :url="route('admin.brands.create')" /> --}}
+                                <x-blank-section :url="route('admin.brands.create')" :content="__('msgs.create', ['name' => __('product.brand')])" />
                             </td>
                         </tr>
                     @endforelse
