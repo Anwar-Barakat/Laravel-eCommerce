@@ -25,7 +25,10 @@ return [
     'prices_and_taxes'          => 'الاسعار والضرائب',
     'product_is_featured'       => 'المنتج مميز',
     'product_is_best_seller'    => 'المنتج هو الأكثر مبيعا',
-
+    'attachments'               => 'مرفقات',
+    'attachment'                => 'المرفق',
+    'attribites'                => 'خصائص',
+    'product_attachments'       => 'مرفقات المنتج',
 
     'must_be_less_than_value'  => ':name يجب أن يكون أقل من :value',
 ];

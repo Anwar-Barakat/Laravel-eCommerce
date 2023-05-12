@@ -6,6 +6,7 @@ return [
     'list'                  => ':name List',
     'create'                => 'Create new :name',
     'edit'                  => 'Edit :name',
+    'add'                   => 'Add :name',
     'update'                => 'Update :name',
     'delete'                => 'Delete :name',
     'details'               => ':name details',

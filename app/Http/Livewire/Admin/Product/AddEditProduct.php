@@ -60,9 +60,8 @@ class AddEditProduct extends Component
         try {
             $this->product->name = [
                 'ar' => $this->name_ar,
-                'en' => $this->name_ar,
+                'en' => $this->name_en,
             ];
-            $this->product->code = uniqid();
             $this->product->save();
 
             if ($this->image) {

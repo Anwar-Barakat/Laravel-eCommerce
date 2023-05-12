@@ -5,6 +5,7 @@ return [
     'list'                  => 'قائمة :name',
     'create'                => 'إضافة :name جديد',
     'edit'                  => 'تعديل :name',
+    'add'                   => 'إضافة :name',
     'update'                => 'تحديث :name',
     'delete'                => 'حذف :name',
     'details'               => 'تفاصيل :name',

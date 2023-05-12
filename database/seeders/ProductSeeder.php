@@ -33,7 +33,6 @@ class ProductSeeder extends Seeder
                     'ar'    => 'قميص اسود كاجول',
                     'en'    => 'Black casual t-shirt',
                 ],
-                'code'              => uniqid(),
                 'price'             => rand(10, 100),
                 'discount_type'     => 0,
                 'weight'            => rand(10, 1000),
@@ -53,7 +52,6 @@ class ProductSeeder extends Seeder
                     'ar'    => 'قميص أبيض كاجول',
                     'en'    => 'White casual t-shirt',
                 ],
-                'code'              => uniqid(),
                 'price'             => rand(10, 100),
                 'discount_type'     => 0,
                 'weight'            => rand(10, 1000),
@@ -73,7 +71,6 @@ class ProductSeeder extends Seeder
                     'ar'    => 'قميص اسود ',
                     'en'    => 'Black t-shirt',
                 ],
-                'code'              => uniqid(),
                 'price'             => rand(10, 100),
                 'discount_type'     => 0,
                 'weight'            => rand(10, 1000),
@@ -93,7 +90,6 @@ class ProductSeeder extends Seeder
                     'ar'    => 'قميص رمادي ',
                     'en'    => 'Gray t-shirt',
                 ],
-                'code'              => uniqid(),
                 'price'             => rand(10, 100),
                 'discount_type'     => 0,
                 'weight'            => rand(10, 1000),
@@ -106,7 +102,7 @@ class ProductSeeder extends Seeder
             ],
         ];
         foreach ($products as $product) {
-            if (is_null(Product::where(['code' => $product['code']])->first()))
+            if (is_null(Product::where('name->ar', $product['name']['ar'])->orWhere('name->en', $product['name']['en'])->first()))
                 Product::create($product);
         }
     }

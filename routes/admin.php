@@ -7,6 +7,10 @@ use App\Http\Controllers\Admin\Auth\PasswordRestLinkController;
 use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Product\Attachment\AddAttachmentController;
+use App\Http\Controllers\Admin\Product\Attachment\AttachmentController;
+use App\Http\Controllers\Admin\Product\Attachment\DeleteAllAttachmentController;
+use App\Http\Controllers\Admin\Product\Attachment\DownloadAttachmentController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Setting\AdminChangePasswordController;
@@ -75,7 +79,11 @@ Route::group(
                 //_______________________
                 // products
                 //_______________________
-                Route::resource('products',                 ProductController::class);
+                Route::resource('products',                                 ProductController::class);
+                Route::resource('products.attachments',                     AttachmentController::class)->only(['create', 'store']);
+                Route::get('attachment/{attachment}/destroy',               [AttachmentController::class, 'destroy'])->name('products.attachments.destroy');
+                Route::get('attachment/{attachment}/download',              DownloadAttachmentController::class)->name('products.attachments.download');
+                Route::get('attachment/{attachment}/delete-all',            DeleteAllAttachmentController::class)->name('products.attachments.deleteAll');
             });
         });
     }

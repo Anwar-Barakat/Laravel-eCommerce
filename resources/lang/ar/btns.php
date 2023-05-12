@@ -13,4 +13,5 @@ return [
     'search'        => 'بحث',
     'details'       => 'تفاصيل',
     'approval'      => 'إعتماد',
+    'download'      => 'تنزيل',
 ];
