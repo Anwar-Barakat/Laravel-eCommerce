@@ -24,6 +24,11 @@ class AddEditAttribute extends Component
         return $this->validateOnly($fields);
     }
 
+    public function updateStatus(ProductAttribute $attr)
+    {
+        $attr->update(['is_active' => !$attr->is_active]);
+    }
+
     public function submit()
     {
         $this->validate();
@@ -31,9 +36,21 @@ class AddEditAttribute extends Component
             $this->attribute->product_id = $this->product->id;
             $this->attribute->save();
             toastr()->success(__('msgs.created', ['name' => __('product.product_attribute')]));
+            $this->reset('attribute');
         } catch (\Throwable $th) {
             return redirect()->route('admin.product.attributes.create', ['product' => $this->product])->with(['error' => $th->getMessage()]);
         }
+    }
+
+    public function edit(ProductAttribute $attr)
+    {
+        $this->attribute = $attr;
+    }
+
+    public function delete(ProductAttribute $attr)
+    {
+        $attr->delete();
+        toastr()->info(__('msgs.deleted', ['name' => __('product.product_attribute')]));
     }
 
     public function render()
@@ -49,16 +66,14 @@ class AddEditAttribute extends Component
             'attribute.stock'       => ['required', 'integer'],
             'attribute.size'        => [
                 'required', 'string', 'min:3',
-                Rule::unique('product_attributes', 'product_id')->where(function ($query) {
+                Rule::unique('product_attributes', 'size')->where(function ($query) {
                     return $query->where(['product_id' => $this->product->id]);
                 })->ignore($this->attribute->id)
             ],
             'attribute.sku'         => [
                 'required',
                 'min:3',
-                Rule::unique('product_attributes', 'product_id')->where(function ($query) {
-                    return $query->where(['product_id' => $this->product->id]);
-                })->ignore($this->product->id)
+                Rule::unique('product_attributes', 'sku')->ignore($this->attribute->id)
             ]
         ];
     }
