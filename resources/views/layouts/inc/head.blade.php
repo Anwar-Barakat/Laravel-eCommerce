@@ -15,4 +15,5 @@
 @stack('stylesheets')
 
 <livewire:styles />
+
 <link rel="stylesheet" href="{{ asset('backend/dist/css/custom.css') }}">

@@ -11,3 +11,7 @@ textarea {
 .row-cards {
     margin-bottom: 0.6rem !important;
 }
+
+.page-title {
+    color: var(--tblr-light) !important;
+}

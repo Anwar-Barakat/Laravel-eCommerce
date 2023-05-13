@@ -12,6 +12,8 @@ return [
     //_______________________
     'products'                  => 'Products',
     'product'                   => 'Product',
+    'product_number'            => 'Product number',
+    'product_name'              => 'Product name',
     'price'                     => 'Price',
     'from'                      => 'From',
     'to'                        => 'To',
@@ -29,7 +31,17 @@ return [
     'attachment'                => 'Attachment',
     'attribites'                => 'Attribites',
     'product_attachments'       => 'Product Attachments',
+    'product_attribute'         => 'Product attributes',
+    'attribute'                 => 'Attributes',
+    'must_be_less_than_value'   => ':name must be less than :value',
 
 
-    'must_be_less_than_value'  => ':name must be less than :value',
+    //_______________________
+    // Product Attributes
+    //_______________________
+    'qty'                       => 'َQTY',
+    'size'                      => 'Size',
+    'stock'                     => 'Stock',
+    'qty_stock'                 => 'Stock QTY',
+    'SKU'                       => 'SKU',
 ];

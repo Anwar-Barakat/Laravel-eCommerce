@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Admin\Product\Attachment;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class AttachmentController extends Controller
+class ProductAttachmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -95,11 +94,7 @@ class AttachmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        $media = Media::whereId($id)->first();
-        $media->delete();
-        toastr()->info(__('msgs.deleted', ['name' => __('product.attachment')]));
-        return redirect()->back();
     }
 }

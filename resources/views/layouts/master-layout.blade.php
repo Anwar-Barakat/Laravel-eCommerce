@@ -15,10 +15,9 @@
 <body>
     <script src="{{ asset('backend/dist/js/demo-theme.min.js?1674944402') }}"></script>
     <div class="page">
-        <!-- Sidebar -->
-        @include('layouts.inc.sidebar')
         <!-- Navbar -->
         @include('layouts.inc.header')
+
         <div class="page-wrapper">
             <!-- Page header -->
             <div class="page-header d-print-none">

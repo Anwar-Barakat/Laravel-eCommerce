@@ -5,70 +5,7 @@
 
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4 mb-3">
-            <div class="card">
-                <div class="card-header flex justify-content-between items-center">
-                    <h3 class="card-title">{{ __('msgs.main_info') }}</h3>
-                </div>
-                <table class="table card-table table-vcenter table-striped-columns">
-                    <thead>
-                        <tr>
-                            <th>{{ __('msgs.column') }}</th>
-                            <th colspan="2">{{ __('btns.details') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>{{ __('product.product') }}</th>
-                            <td>#{{ $product->id }}</td>
-                        </tr>
-                        <tr>
-                            <th>{{ __('section.section') }}</th>
-                            <td>{{ $product->section->name }}</td>
-                        </tr>
-                        <tr>
-                            <th>{{ __('category.category') }}</th>
-                            <td>{{ $product->category->name }}</td>
-                        </tr>
-                        <tr>
-                            <th>{{ __('product.brand') }}</th>
-                            <td>{{ $product->brand->name }}</td>
-                        </tr>
-                        <tr>
-                            <th>{{ __('product.price') }}</th>
-                            <td>${{ $product->price }}</td>
-                        </tr>
-                        <tr>
-                            <th>{{ __('product.weight') }} (g)</th>
-                            <td>{{ $product->weight }}</td>
-                        </tr>
-                        <tr>
-                            <th>{{ __('product.gst') }}</th>
-                            <td>{{ $product->gst ?? '0' }}</td>
-                        </tr>
-                        <tr>
-                            <th>{{ __('product.discount') }}</th>
-                            <td>
-                                {{ $product->discount_value ?? '0' }}
-                                {{ $product->discount_type == 0 ? '%' : '$' }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>{{ __('product.product_is_best_seller') }}</th>
-                            <td>{{ $product->is_best_seller ? __('msgs.yes') : __('msgs.no') }}</td>
-                        </tr>
-                        <tr>
-                            <th>{{ __('product.product_is_featured') }}</th>
-                            <td>{{ $product->is_featured ? __('msgs.yes') : __('msgs.no') }}</td>
-                        </tr>
-                        <tr>
-                            <th>{{ __('setting.status') }}</th>
-                            <td>{{ $product->is_active ? __('msgs.active') : __('msgs.not_active') }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="card-footer border-top-0">
-                </div>
-            </div>
+            @include('admin.products.inc.main-info', ['product' => $product])
         </div>
         <div class="col-12 col-lg-8 mb-3 d-flex flex-column">
             <div class="card">
@@ -77,12 +14,12 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-8 text-center m-auto">
+                        <div class="col-md-5 text-center m-auto">
                             <div id="carousel-indicators-thumb" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                                <div class="carousel-indicators carousel-indicators-thumb">
+                                <div class="carousel-indicators carousel-indicators-thumb" style="margin-bottom: -2rem;">
                                     @foreach ($product->getMedia('product_attachments') as $key => $attachment)
                                         <button type="button" data-bs-target="#carousel-indicators-thumb" data-bs-slide-to="{{ $key }}" class=" ratio ratio-4x3 active">
-                                            <img src="{{ $attachment->getUrl('small') }}" alt="{{ $attachment->getUrl('small') }}" class="img img-thumbnail" style="height: unset;">
+                                            <img src="{{ $attachment->getUrl('small') }}" alt="{{ $attachment->getUrl('small') }}" style="height: unset;">
                                         </button>
                                     @endforeach
                                 </div>
@@ -99,9 +36,9 @@
                         </div>
                     </div>
                 </div>
-                <form method="POST" action="{{ route('admin.products.attachments.store', ['product' => $product]) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.product.attachments.store', ['product' => $product]) }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="card-body">
+                    <div class="card-body mt-4">
                         @include('layouts.inc.errors-message')
                         <hr class="mt-4 mb-3 w-50">
                         <h3 class="mb-4 text-blue">{{ __('msgs.add', ['name' => __('product.attachments')]) }}</h3>

@@ -90,14 +90,14 @@
                             </div>
                         </div>
                         <div class="d-flex">
-                            <a href="{{ route('admin.products.attachments.create', ['product' => $product]) }}" class="card-btn flex items-center gap-1">
+                            <a href="{{ route('admin.product.attachments.create', ['product' => $product]) }}" class="card-btn flex items-center gap-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-paperclip" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5"></path>
                                 </svg>
                                 {{ __('product.attachments') }}
                             </a>
-                            <a href="#" class="card-btn flex items-center gap-1">
+                            <a href="{{ route('admin.product.attributes.create', ['product' => $product]) }}" class="card-btn flex items-center gap-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <circle cx="8.5" cy="8.5" r="1" fill="currentColor"></circle>
