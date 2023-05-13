@@ -43,5 +43,5 @@ return [
     'size'                      => 'Size',
     'stock'                     => 'Stock',
     'qty_stock'                 => 'Stock QTY',
-    'SKU'                       => 'SKU',
+    'sku'                       => 'SKU',
 ];

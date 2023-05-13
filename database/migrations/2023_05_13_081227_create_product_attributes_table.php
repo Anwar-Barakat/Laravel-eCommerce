@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('size');
             $table->float('price');
             $table->integer('stock');
-            $table->string('sku');
+            $table->string('sku')->unique();
             $table->boolean('is_active')->default('1');
             $table->timestamps();
         });
