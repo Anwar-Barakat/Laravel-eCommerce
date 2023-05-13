@@ -4,11 +4,18 @@
     @section('breadcrumbSubtitle', __('product.products'))
 
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-4 mb-3">
-            @include('admin.products.inc.main-info', ['product' => $product])
-        </div>
+        @include('admin.products.inc.main-info', ['product' => $product])
         <div class="col-12 col-lg-8 mb-3 d-flex flex-column">
             <div class="card">
+                <div class="card-stamp">
+                    <div class="card-stamp-icon bg-yellow">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"></path>
+                            <path d="M9 17v1a3 3 0 0 0 6 0v-1"></path>
+                        </svg>
+                    </div>
+                </div>
                 <div class="card-header">
                     <h3 class="card-title">{{ __('product.product_attachments') }}</h3>
                 </div>

@@ -44,4 +44,11 @@ return [
     'stock'                     => 'Stock',
     'qty_stock'                 => 'Stock QTY',
     'sku'                       => 'SKU',
+
+
+    //_______________________
+    // banners
+    //_______________________
+    'banners'                   => 'Banners',
+    'banner'                    => 'Banner',
 ];
