@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\LogoutController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordRestLinkController;
+use App\Http\Controllers\Admin\Banner\BannerController;
 use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -40,46 +41,46 @@ Route::group(
     function () {
 
         Route::prefix('admin')->name('admin.')->group(function () {
-            Route::get('/login',                        [LoginController::class, 'show'])->name('login.show');
-            Route::post('/login',                       [LoginController::class, 'login'])->name('login');
+            Route::get('/login',                                    [LoginController::class, 'show'])->name('login.show');
+            Route::post('/login',                                   [LoginController::class, 'login'])->name('login');
 
-            Route::get('/password/forget',              [PasswordRestLinkController::class, 'create'])->name('forget.password.form');
-            Route::post('/password/forget',             [PasswordRestLinkController::class, 'store'])->name('forget.password.store');
+            Route::get('/password/forget',                          [PasswordRestLinkController::class, 'create'])->name('forget.password.form');
+            Route::post('/password/forget',                         [PasswordRestLinkController::class, 'store'])->name('forget.password.store');
 
-            Route::get('/reset/password/{token}',       [NewPasswordController::class, 'create'])->name('password.reset.link');
-            Route::post('reset-password',               [NewPasswordController::class, 'store'])->name('password.reset');
+            Route::get('/reset/password/{token}',                   [NewPasswordController::class, 'create'])->name('password.reset.link');
+            Route::post('reset-password',                           [NewPasswordController::class, 'store'])->name('password.reset');
 
             Route::group(['middleware' => 'admin'], function () {
-                Route::get('/logout',                       LogoutController::class)->name('logout');
-                Route::get('/dashboard',                    DashboardController::class)->name('dashboard');
+                Route::get('/logout',                                       LogoutController::class)->name('logout');
+                Route::get('/dashboard',                                    DashboardController::class)->name('dashboard');
 
 
                 //_______________________
                 // setting
                 //_______________________
-                Route::resource('/setting',                 SettingController::class)->only(['index']);
-                Route::get('/profile',                      AdminProfileController::class)->name('setting.profile');
-                Route::get('/change-password',              AdminChangePasswordController::class)->name('setting.change-password');
+                Route::resource('/setting',                                 SettingController::class)->only(['index']);
+                Route::get('/profile',                                      AdminProfileController::class)->name('setting.profile');
+                Route::get('/change-password',                              AdminChangePasswordController::class)->name('setting.change-password');
 
                 //_______________________
                 // sections
                 //_______________________
-                Route::resource('sections',                 SectionController::class)->only(['index', 'create', 'edit']);
+                Route::resource('sections',                                 SectionController::class)->only(['index', 'create', 'edit']);
 
                 //_______________________
                 // categories
                 //_______________________
-                Route::resource('categories',               CategoryController::class)->only(['index', 'create', 'edit']);
+                Route::resource('categories',                               CategoryController::class)->only(['index', 'create', 'edit']);
 
                 //_______________________
                 // brands
                 //_______________________
-                Route::resource('brands',                   BrandController::class)->only(['index', 'create', 'edit']);
+                Route::resource('brands',                                   BrandController::class)->only(['index', 'create', 'edit']);
 
                 //_______________________
                 // products
                 //_______________________
-                Route::resource('products',                                 ProductController::class);
+                Route::resource('products',                                 ProductController::class)->only(['index', 'create', 'edit']);
 
                 //_______________________
                 // products attachments
@@ -92,6 +93,12 @@ Route::group(
                 // products attributes
                 //_______________________
                 Route::resource('product.attributes',                       ProductAttributeController::class)->only('create');
+
+
+                //_______________________
+                // Banners
+                //_______________________
+                Route::resource('banners',                                  BannerController::class)->only(['index', 'create', 'edit']);
             });
         });
     }

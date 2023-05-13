@@ -51,4 +51,6 @@ return [
     //_______________________
     'banners'                   => 'Banners',
     'banner'                    => 'Banner',
+    'title'                     => 'Title',
+    'link'                      => 'Link',
 ];

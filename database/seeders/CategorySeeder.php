@@ -65,7 +65,7 @@ class CategorySeeder extends Seeder
         ];
 
         foreach ($categories as $category) {
-            if (is_null(Category::where('name', $category['name'])->first()))
+            if (is_null(Category::where('url', $category['url'])->first()))
                 Category::create($category);
         }
     }

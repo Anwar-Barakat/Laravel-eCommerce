@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Banner;
 
-use App\Http\Requests\StoreBannerRequest;
-use App\Http\Requests\UpdateBannerRequest;
 use App\Models\Banner;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class BannerController extends Controller
 {
@@ -13,7 +13,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.banners.index');
     }
 
     /**
@@ -21,13 +21,13 @@ class BannerController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.banners.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBannerRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -45,13 +45,13 @@ class BannerController extends Controller
      */
     public function edit(Banner $banner)
     {
-        //
+        return view('admin.banners.edit', ['banner' => $banner]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBannerRequest $request, Banner $banner)
+    public function update(Request $request, Banner $banner)
     {
         //
     }
