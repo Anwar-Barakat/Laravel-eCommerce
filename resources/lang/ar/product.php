@@ -54,4 +54,23 @@ return [
     'banner'                    => 'شعار',
     'title'                     => 'العنوان',
     'link'                      => 'الرابط',
+
+
+    //_______________________
+    // coupons
+    //_______________________
+    'coupons'                   => 'القسائم',
+    'coupon'                    => 'قسيمة',
+    'coupon_option'             => 'خيار القسيمة',
+    'coupon_type'               => 'نوع القسيمة',
+    'amount_type'               => 'نوع القيمة',
+    'amount'                    => 'القيمة',
+    'coupon_code'               => 'الكود',
+    'expiry_date'               => 'تاريخ الأنتهاء',
+    'single_time'               => 'مرة واحدة',
+    'multiple_times'            => 'عدة مرات',
+    'manual'                    => 'يدوي',
+    'automatic'                 => 'أوتوماتيكي',
+    'percentage'                => 'نسبة مئوية',
+    'fixed'                     => 'ثابت',
 ];

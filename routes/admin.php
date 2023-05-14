@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Auth\PasswordRestLinkController;
 use App\Http\Controllers\Admin\Banner\BannerController;
 use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Admin\Category\CategoryController;
+use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Product\Attachment\ProductAttachmentController;
 use App\Http\Controllers\Admin\Product\Attachment\DestroyAttachment;
@@ -99,6 +100,11 @@ Route::group(
                 // Banners
                 //_______________________
                 Route::resource('banners',                                  BannerController::class)->only(['index', 'create', 'edit']);
+
+                //_______________________
+                // Coupons
+                //_______________________
+                Route::resource('coupons',                                  CouponController::class)->only(['index', 'create', 'edit']);
             });
         });
     }

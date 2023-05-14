@@ -56,7 +56,11 @@
                                 </td>
                             </tr>
                         @empty
-                            <x-blank-section :url="'#add-attributes'" :content="__('msgs.create', ['name' => __('product.product_attribute')])" />
+                            <tr>
+                                <td colspan="7" class="border-bottom-0">
+                                    <x-blank-section :url="'#add-attributes'" :content="__('msgs.create', ['name' => __('product.product_attribute')])" />
+                                </td>
+                            </tr>
                         @endforelse
                     </tbody>
                 </table>

@@ -53,4 +53,22 @@ return [
     'banner'                    => 'Banner',
     'title'                     => 'Title',
     'link'                      => 'Link',
+
+    //_______________________
+    // coupons
+    //_______________________
+    'coupons'                   => 'Coupons',
+    'coupon'                    => 'Coupon',
+    'coupon_option'             => 'Coupon option',
+    'coupon_type'               => 'Coupon type',
+    'amount_type'               => 'Amount type',
+    'amount'                    => 'Amount',
+    'coupon_code'               => 'Coupon code',
+    'expiry_date'               => 'Expiry date',
+    'single_time'               => 'Single time',
+    'multiple_times'            => 'Multiple times',
+    'manual'                    => 'Manual',
+    'automatic'                 => 'Automatic',
+    'percentage'                => 'Percentage',
+    'fixed'                     => 'Fixed',
 ];

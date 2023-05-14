@@ -52,8 +52,8 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5">
-                                <x-blank-section :url="route('admin.sections.create')" :content="__('msgs.create', ['name' => __('section.section')])" />
+                            <td colspan="5" class="border-bottom-0">
+                                <x-blank-section :url="route('admin.sections.create')" :content="__('section.section')" />
                             </td>
                         </tr>
                     @endforelse

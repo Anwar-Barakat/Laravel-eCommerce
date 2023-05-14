@@ -114,7 +114,7 @@
                     </div>
                 </div>
             @empty
-                <x-blank-section :url="route('admin.products.create')" :content="__('msgs.create', ['name' => __('product.product')])" />
+                <x-blank-section :url="route('admin.products.create')" :content="__('product.product')" />
             @endforelse
         </div>
         @if ($products->count() > 10)

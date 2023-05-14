@@ -26,9 +26,9 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>
                                 @if ($banner->getFirstMediaUrl('banners', 'thumb'))
-                                    <img src="{{ $banner->getFirstMediaUrl('banners') }}" class="img img-thumbnail" alt="{{ $banner->name }}" width="80">
+                                    <img src="{{ $banner->getFirstMediaUrl('banners') }}" class="img img-thumbnail" alt="{{ $banner->name }}" width="200">
                                 @else
-                                    <img src="{{ asset('backend/static/rect-default-image.jpeg') }}" class="img img-thumbnail" alt="{{ $banner->name }}" width="80">
+                                    <img src="{{ asset('backend/static/rect-default-image.jpeg') }}" class="img img-thumbnail" alt="{{ $banner->name }}" width="120">
                                 @endif
                             </td>
                             <td> {{ $banner->title }}</td>
@@ -62,8 +62,8 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7">
-                                <x-blank-section :url="route('admin.banners.create')" :content="__('msgs.create', ['name' => __('product.banner')])" />
+                            <td colspan="7" class="border-bottom-0">
+                                <x-blank-section :url="route('admin.banners.create')" :content="__('product.banner')" />
                             </td>
                         </tr>
                     @endforelse
