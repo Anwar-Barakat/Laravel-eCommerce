@@ -29,7 +29,7 @@
                              <td><span class="badge bg-blue-lt">{{ $coupon->code }}</span></td>
                              <td>
                                  @foreach ($coupon->categories as $id)
-                                     <span class="badge bg-blue">{{ App\Models\Category::find($id)->name }}</span>
+                                     <span class="badge bg-blue mb-1">{{ App\Models\Category::find($id)->name }}</span>
                                  @endforeach
                              </td>
                              <td>{{ __('product.' . App\Models\Coupon::COUPONTYPE[$coupon->type]) }}</td>
@@ -37,7 +37,7 @@
                                  {{ $coupon->amount }}
                                  {{ $coupon->amount_type ? '$' : '%' }}
                              </td>
-                             <td> {{ $coupon->expiry_date }}</td>
+                             <td><span class="badge bg-red-lt"> {{ $coupon->expiry_date }}</span></td>
                              <td>
                                  <div>
                                      <button wire:click='updateStatus({{ $coupon }})' class="btn position-relative">

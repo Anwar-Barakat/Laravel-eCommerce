@@ -71,4 +71,11 @@ return [
     'automatic'                 => 'Automatic',
     'percentage'                => 'Percentage',
     'fixed'                     => 'Fixed',
+
+
+    //_______________________
+    // filters
+    //_______________________
+    'filters'                   => 'Filters',
+    'filter'                    => 'Filter',
 ];
