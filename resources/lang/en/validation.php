@@ -125,6 +125,7 @@ return [
     'discount_less_grand_total'     => 'The discount cannot be greater than the total amount',
     'select_item_batch'             => 'Please, select the item batch',
     'qty_not_available_now'         => 'Quantity unavailable in the store now',
+    'coupon_code_must_be_10_chars'  => 'Coupon code must be 10 characters',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

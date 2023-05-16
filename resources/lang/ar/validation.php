@@ -149,6 +149,7 @@ return [
     'discount_less_grand_total'     => 'لا يمكن ان يكون الخصم اكبر من المبلغ الأجمالي',
     'select_item_batch'             => 'من فضلك اختر الكمية من المخزن المحدد',
     'qty_not_available_now'         => 'الكمية غير متاحة حاليا في المخزن',
+    'coupon_code_must_be_10_chars'  => 'كود القسيمة يجب ان يكون 10 محارف',
 
 
     /*

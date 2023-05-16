@@ -15,9 +15,9 @@
                          <th> {{ __('product.coupon_code') }}</th>
                          <th> {{ __('category.categories') }}</th>
                          <th> {{ __('product.coupon_type') }}</th>
-                         <th> {{ __('product.amount_type') }}</th>
                          <th> {{ __('product.amount') }}</th>
                          <th> {{ __('product.expiry_date') }}</th>
+                         <th>{{ __('setting.status') }}</th>
                          <th></th>
                      </tr>
                  </thead>
@@ -25,13 +25,19 @@
                      @forelse ($coupons as $coupon)
                          <tr>
                              <td>{{ $loop->iteration }}</td>
-                             <td>{{ __('product.' . App\Model\Coupon::COUPONOPTION[$coupon->option]) }}</td>
+                             <td>{{ __('product.' . App\Models\Coupon::COUPONOPTION[$coupon->option]) }}</td>
                              <td><span class="badge bg-blue-lt">{{ $coupon->code }}</span></td>
-                             <td><span class="badge bg-blue">{{ $coupon->categories }}</span></td>
-                             <td>{{ __('product.' . App\Model\Coupon::COUPONTYPE[$coupon->type]) }}</td>
-                             <td>{{ __('product.' . App\Model\Coupon::AMOUNTTYPE[$coupon->amount_type]) }}</td>
-                             <td>{{ $coupon->amount_value }}</td>
-                             <td>{{ $coupon->expiry_date }}</td>
+                             <td>
+                                 @foreach ($coupon->categories as $id)
+                                     <span class="badge bg-blue">{{ App\Models\Category::find($id)->name }}</span>
+                                 @endforeach
+                             </td>
+                             <td>{{ __('product.' . App\Models\Coupon::COUPONTYPE[$coupon->type]) }}</td>
+                             <td>
+                                 {{ $coupon->amount }}
+                                 {{ $coupon->amount_type ? '$' : '%' }}
+                             </td>
+                             <td> {{ $coupon->expiry_date }}</td>
                              <td>
                                  <div>
                                      <button wire:click='updateStatus({{ $coupon }})' class="btn position-relative">
