@@ -76,6 +76,7 @@ return [
     //_______________________
     // filters
     //_______________________
+    'fitler_name'               => 'Filter name',
     'filters'                   => 'Filters',
     'filter'                    => 'Filter',
 ];

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->boolean('option');
             $table->string('code');
-            $table->text('categories');
+            $table->mediumText('categories');
             $table->boolean('type');
             $table->boolean('amount_type');
             $table->float('amount');

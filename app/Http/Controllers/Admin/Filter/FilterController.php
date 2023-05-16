@@ -15,7 +15,7 @@ class FilterController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.filters.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class FilterController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.filters.create');
     }
 
     /**
@@ -47,7 +47,7 @@ class FilterController extends Controller
      */
     public function edit(Filter $filter)
     {
-        //
+        return view('admin.filters.edit', ['filter' => $filter]);
     }
 
     /**

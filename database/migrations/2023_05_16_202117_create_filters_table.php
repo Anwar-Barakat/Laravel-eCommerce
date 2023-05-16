@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('filters', function (Blueprint $table) {
             $table->id();
-            $table->string('category_ids');
-            $table->string('filter_name');
-            $table->string('filter_column');
-            $table->boolean('status')->default(true);
+            $table->mediumText('categories');
+            $table->string('name');
+            $table->string('field');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations.`
      */
     public function down(): void
     {
