@@ -95,13 +95,17 @@
                               <div class="form-selectgroup">
                                   @if ($categories)
                                       @foreach ($categories as $category)
-                                          @if ($category->is_parent == 1)
-                                              <div class="w-100"></div>
-                                          @endif
                                           <label class="form-selectgroup-item">
                                               <input type="checkbox" value="{{ $category->id }}" class="form-selectgroup-input" wire:model='coupon.categories.{{ $category->id }}' />
                                               <span class="form-selectgroup-label">{{ $category->name }}</span>
                                           </label>
+                                          @foreach ($category->subCategories as $sub)
+                                              <label class="form-selectgroup-item">
+                                                  <input type="checkbox" value="{{ $sub->id }}" class="form-selectgroup-input" wire:model='coupon.categories.{{ $sub->id }}' />
+                                                  <span class="form-selectgroup-label">{{ $sub->name }}</span>
+                                              </label>
+                                          @endforeach
+                                          <div class="w-100"></div>
                                       @endforeach
                                   @endif
                               </div>
