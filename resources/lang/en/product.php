@@ -79,5 +79,12 @@ return [
     'fitler_name'                        => 'Filter name',
     'filters'                           => 'Filters',
     'filter'                            => 'Filter',
-    'filter_name_must_be_in_english'    => 'Filter name  must be in english'
+    'filter_name_must_be_in_english'    => 'Filter name  must be in english',
+
+
+    //_______________________
+    // Filters values
+    //_______________________
+    'filters_values'                    => 'Filters values',
+    'filter_value'                      => 'Filter value',
 ];

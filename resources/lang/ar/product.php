@@ -81,6 +81,13 @@ return [
     'fitler_name'                       => 'اسم الفلتر',
     'filters'                           => 'الفلاتر',
     'filter'                            => 'فلتر',
-    'filter_name_must_be_in_english'    => 'يجب أن يكون اسم الفلتر باللغة الإنجليزية'
+    'filter_name_must_be_in_english'    => 'يجب أن يكون اسم الفلتر باللغة الإنجليزية',
+
+
+    //_______________________
+    // Filters values
+    //_______________________
+    'filters_values'                    => 'قيم الفلاتر',
+    'filter_value'                      => 'قيمة الفلتر',
 
 ];

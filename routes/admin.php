@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Filter\FilterController;
+use App\Http\Controllers\Admin\FilterValue\FilterValueController;
 use App\Http\Controllers\Admin\Product\Attachment\ProductAttachmentController;
 use App\Http\Controllers\Admin\Product\Attachment\DestroyAttachment;
 use App\Http\Controllers\Admin\Product\Attachment\DownloadAttachmentController;
@@ -111,6 +112,7 @@ Route::group(
                 // Filters
                 //_______________________
                 Route::resource('filters',                                  FilterController::class)->only(['index', 'create', 'edit']);
+                Route::resource('filter-values',                            FilterValueController::class)->only(['index', 'create', 'edit']);
             });
         });
     }

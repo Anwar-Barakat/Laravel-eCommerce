@@ -17,4 +17,14 @@ class Filter extends Model
     ];
 
     protected $casts = ['categories' => 'array'];
+
+    public function scopeActive($query)
+    {
+        return $query->where(['is_active' => 1]);
+    }
+
+    public function filter_values()
+    {
+        return $this->hasMany(FilterValue::class, 'filter_id');
+    }
 }
