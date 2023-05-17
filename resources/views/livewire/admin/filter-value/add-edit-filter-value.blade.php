@@ -8,41 +8,31 @@
                           <div class="col-12 col-md-6 col-lg-4">
                               <div class="mb-3">
                                   <x-input-label class="form-label" :value="__('product.fitler_name')" />
-                                  <input type="text" class="form-control" wire:model='filter.name' @if ($filter) readonly disabled @else placeholder="{{ __('product.must_be_in_english', ['name' => __('product.fitler_name')]) }}" required @endif>
-                                  <x-input-error :messages="$errors->get('filter.name')" class="mt-2" />
+                                  <select class="form-select" wire:model="filter_value.filter_id">
+                                      <option value="">{{ __('btns.select') }}</option>
+                                      @foreach ($filters as $filter)
+                                          <option value="{{ $filter->id }}">{{ $filter->name }}</option>
+                                      @endforeach
+                                  </select>
+                                  <x-input-error :messages="$errors->get('filter_value.filter_id')" class="mt-2" />
+                              </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-lg-4">
+                              <div class="mb-3">
+                                  <x-input-label class="form-label" :value="__('product.filter_value')" />
+                                  <x-text-input type="text" class="form-control" wire:model='filter_value.value' placeholder="{{ __('product.must_be_in_english', ['name' => __('product.filter_value')]) }}" required />
+                                  <x-input-error :messages="$errors->get('filter_value.name')" class="mt-2" />
                               </div>
                           </div>
                           <div class="col-12 col-md-6 col-lg-4">
                               <div class="mb-3">
                                   <x-input-label class="form-label" :value="__('setting.status')" />
-                                  <select class="form-select" wire:model="filter.is_active">
+                                  <select class="form-select" wire:model="filter_value.is_active">
                                       <option value="">{{ __('btns.select') }}</option>
                                       <option value="0">{{ __('msgs.not_active') }}</option>
                                       <option value="1">{{ __('msgs.active') }}</option>
                                   </select>
-                                  <x-input-error :messages="$errors->get('filter.is_active')" class="mt-2" />
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row row-cards">
-                          <div class="mb-3">
-                              <label class="form-label">{{ __('category.categories') }}</label>
-                              <div class="form-selectgroup">
-                                  @if ($categories)
-                                      @foreach ($categories as $category)
-                                          <label class="form-selectgroup-item">
-                                              <input type="checkbox" value="{{ $category->id }}" class="form-selectgroup-input" wire:model='filter.categories.{{ $category->id }}' />
-                                              <span class="form-selectgroup-label">{{ $category->name }}</span>
-                                          </label>
-                                          @foreach ($category->subCategories as $sub)
-                                              <label class="form-selectgroup-item">
-                                                  <input type="checkbox" value="{{ $sub->id }}" class="form-selectgroup-input" wire:model='filter.categories.{{ $sub->id }}' />
-                                                  <span class="form-selectgroup-label">{{ $sub->name }}</span>
-                                              </label>
-                                          @endforeach
-                                          <div class="w-100"></div>
-                                      @endforeach
-                                  @endif
+                                  <x-input-error :messages="$errors->get('filter_value.is_active')" class="mt-2" />
                               </div>
                           </div>
                       </div>

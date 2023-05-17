@@ -76,10 +76,10 @@ return [
     //_______________________
     // filters
     //_______________________
-    'fitler_name'                        => 'Filter name',
+    'fitler_name'                       => 'Filter name',
     'filters'                           => 'Filters',
     'filter'                            => 'Filter',
-    'filter_name_must_be_in_english'    => 'Filter name  must be in english',
+    'must_be_in_english'                => ':name  must be in english',
 
 
     //_______________________
