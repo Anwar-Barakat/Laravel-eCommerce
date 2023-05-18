@@ -3,5 +3,5 @@
     @section('breadcrumbTitle', __('msgs.list', ['name' => __('product.filters')]))
     @section('breadcrumbSubtitle', __('product.filters'))
 
-    @livewire('admin.filter.display-filter')
+    <livewire:admin.filter.display-filter />
 </x-master-layout>

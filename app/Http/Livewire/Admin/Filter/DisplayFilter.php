@@ -10,7 +10,7 @@ class DisplayFilter extends Component
 {
     use WithPagination;
 
-    public function updateStatus($filter)
+    public function updatedStatus(Filter $filter)
     {
         $filter->update(['is_active' => !$filter->is_active]);
     }

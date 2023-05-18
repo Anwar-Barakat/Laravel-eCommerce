@@ -24,7 +24,7 @@
                              <td>{{ $filter->name }}</td>
                              <td>
                                  @foreach ($filter->categories as $id)
-                                     <span class="badge bg-blue mb-1">{{ App\Models\Category::find($id)->name }}</span>
+                                     <span class="badge badge-outline text-azure mb-1">{{ App\Models\Category::find($id)->name }}</span>
                                  @endforeach
                              </td>
                              <td>

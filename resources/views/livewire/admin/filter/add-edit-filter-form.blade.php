@@ -1,14 +1,16 @@
   <div class="card">
       <div class="row g-0">
           <div class="col d-flex flex-column">
-              <form wire:submit.prevent='submit'>
+              <form wire:submit.prevent='submit' id="add-filter">
                   <div class="card-body">
                       <h3 class="mb-4 text-blue">{{ __('msgs.main_info') }}</h3>
                       <div class="row row-cards">
                           <div class="col-12 col-md-6 col-lg-4">
                               <div class="mb-3">
                                   <x-input-label class="form-label" :value="__('product.fitler_name')" />
-                                  <input type="text" class="form-control" wire:model='filter.name' @if ($filter) readonly disabled @else placeholder="{{ __('product.must_be_in_english', ['name' => __('product.fitler_name')]) }}" required @endif>
+                                  <input type="text" class="form-control" wire:model='filter.name' @if ($filter->field) readonly disabled @else
+                                  placeholder="{{ __('product.must_be_in_english', ['name' => __('product.fitler_name')]) }}"
+                                  required @endif>
                                   <x-input-error :messages="$errors->get('filter.name')" class="mt-2" />
                               </div>
                           </div>
@@ -24,28 +26,23 @@
                               </div>
                           </div>
                       </div>
-                      <div class="row row-cards">
-                          <div class="mb-3">
-                              <label class="form-label">{{ __('category.categories') }}</label>
-                              <div class="form-selectgroup">
-                                  @if ($categories)
+                      @if ($categories)
+                          <div class="row row-cards">
+                              <div class="mb-3">
+                                  <label class="form-label">{{ __('category.categories') }}</label>
+                                  <div class="form-selectgroup">
                                       @foreach ($categories as $category)
                                           <label class="form-selectgroup-item">
-                                              <input type="checkbox" value="{{ $category->id }}" class="form-selectgroup-input" wire:model='filter.categories.{{ $category->id }}' />
-                                              <span class="form-selectgroup-label">{{ $category->name }}</span>
+                                              <input type="checkbox" value="{{ $category->id }}" class="form-selectgroup-input" wire:model.lazy="filter.categories.{{ $category->id }}" />
+                                              <span class="form-selectgroup-label">{{ $category->name }}
+                                                  {{ $category->id }}</span>
                                           </label>
-                                          @foreach ($category->subCategories as $sub)
-                                              <label class="form-selectgroup-item">
-                                                  <input type="checkbox" value="{{ $sub->id }}" class="form-selectgroup-input" wire:model='filter.categories.{{ $sub->id }}' />
-                                                  <span class="form-selectgroup-label">{{ $sub->name }}</span>
-                                              </label>
-                                          @endforeach
                                           <div class="w-100"></div>
                                       @endforeach
-                                  @endif
+                                  </div>
                               </div>
                           </div>
-                      </div>
+                      @endif
                   </div>
                   <div class="card-footer text-end">
                       <button type="submit" class="btn btn-primary">

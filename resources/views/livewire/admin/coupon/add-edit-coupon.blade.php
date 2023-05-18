@@ -5,6 +5,7 @@
                   <div class="card-body">
                       <h3 class="mb-4 text-blue">{{ __('msgs.main_info') }}</h3>
                       <div class="row row-cards">
+                          @include('layouts.inc.errors-message')
                           <div class="col-12 col-md-6 col-lg-4">
                               <div class="mb-3">
                                   <div class="mb-3">
@@ -96,17 +97,12 @@
                                   @if ($categories)
                                       @foreach ($categories as $category)
                                           <label class="form-selectgroup-item">
-                                              <input type="checkbox" value="{{ $category->id }}" class="form-selectgroup-input" wire:model='coupon.categories.{{ $category->id }}' />
-                                              <span class="form-selectgroup-label">{{ $category->name }}</span>
+                                              <input type="checkbox" value="{{ $category->id }}" class="form-selectgroup-input" wire:model.defer='coupon.categories.{{ $category->id }}' />
+                                              <span class="form-selectgroup-label">{{ $category->name }} {{ $category->id }}</span>
                                           </label>
-                                          @foreach ($category->subCategories as $sub)
-                                              <label class="form-selectgroup-item">
-                                                  <input type="checkbox" value="{{ $sub->id }}" class="form-selectgroup-input" wire:model='coupon.categories.{{ $sub->id }}' />
-                                                  <span class="form-selectgroup-label">{{ $sub->name }}</span>
-                                              </label>
-                                          @endforeach
                                           <div class="w-100"></div>
                                       @endforeach
+                                      <x-input-error :messages="$errors->get('coupon.categories')" class="mt-2" />
                                   @endif
                               </div>
                           </div>
