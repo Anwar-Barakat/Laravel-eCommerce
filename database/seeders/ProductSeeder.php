@@ -19,10 +19,10 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $faker      = Factory::create();
-        $section    = Section::where('name->en', 'Men')->first();
-        $category   = Category::where('name->en', 'Shirts')->first();
-        $brand      = Brand::where('name', 'Gap')->first();
-        $admin      = Admin::where('email', 'admin@admin.com')->first();
+        $section    = Section::select('id')->where('name->en', 'Men')->first();
+        $category   = Category::select('id')->where('name->en', 'Shirts')->first();
+        $brand      = Brand::select('id')->where('name', 'Gap')->first();
+        $admin      = Admin::select('id')->where('email', 'admin@admin.com')->first();
         $products = [
             [
                 'section_id'        => $section->id,

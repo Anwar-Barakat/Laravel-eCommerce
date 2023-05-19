@@ -17,8 +17,8 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $faker          = Factory::create();
-        $men_section    = Section::where('name->en', 'Men')->first()->id;
-        $house_section  = Section::where('name->en', 'Houseware')->first()->id;
+        $men_section    = Section::select('id')->where('name->en', 'Men')->first()->id;
+        $house_section  = Section::select('id')->where('name->en', 'Houseware')->first()->id;
         $categories = [
             [
                 'section_id'        => $men_section,

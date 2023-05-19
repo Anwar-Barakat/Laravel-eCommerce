@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Filter;
 
 use App\Models\Category;
 use App\Models\Filter;
+use Illuminate\Support\Arr;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -16,8 +17,9 @@ class AddEditFilterForm extends Component
 
     public function mount(Filter $filter)
     {
-        $this->filter       = $filter;
-        $this->categories   = Category::active()->orderBy('parent_id')->get();
+        $this->filter               = $filter;
+        $this->filter->categories   = $filter ? array_combine($filter->categories, $filter->categories) : '';
+        $this->categories           = Category::select('id', 'name')->active()->orderBy('parent_id')->get();
     }
 
     public function updated($fields)
@@ -34,6 +36,7 @@ class AddEditFilterForm extends Component
     {
         $this->validate();
         $this->filter->field        = Str::slug(Str::lower($this->filter->name), '_');
+        $this->filter->categories   = array_values(array_filter($this->filter->categories));
         $this->filter->save();
 
         toastr()->success(__('msgs.submitted', ['name' => __('product.filter')]));

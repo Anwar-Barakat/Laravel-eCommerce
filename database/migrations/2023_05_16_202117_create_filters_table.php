@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('filters', function (Blueprint $table) {
             $table->id();
             $table->mediumText('categories');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('field');
             $table->boolean('is_active')->default(true);
             $table->timestamps();

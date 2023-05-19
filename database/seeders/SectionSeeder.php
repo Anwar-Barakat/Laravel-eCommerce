@@ -14,7 +14,7 @@ class SectionSeeder extends Seeder
      */
     public function run(): void
     {
-        $admin      = Admin::where('email', 'admin@admin.com')->first();
+        $admin      = Admin::select('id')->where('email', 'admin@admin.com')->first();
         $sections   = [
             [
                 'name'          => [

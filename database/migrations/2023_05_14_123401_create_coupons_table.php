@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->boolean('option');
-            $table->string('code');
+            $table->string('code')->unique();
             $table->mediumText('categories');
             $table->boolean('type');
             $table->boolean('amount_type');

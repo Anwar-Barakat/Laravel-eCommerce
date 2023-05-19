@@ -31,11 +31,11 @@
                               <div class="mb-3">
                                   <label class="form-label">{{ __('category.categories') }}</label>
                                   <div class="form-selectgroup">
-                                      @foreach ($categories as $category)
+                                      @foreach ($categories as $cat)
                                           <label class="form-selectgroup-item">
-                                              <input type="checkbox" value="{{ $category->id }}" class="form-selectgroup-input" wire:model.lazy="filter.categories.{{ $category->id }}" />
-                                              <span class="form-selectgroup-label">{{ $category->name }}
-                                                  {{ $category->id }}</span>
+                                              <input type="checkbox" value="{{ $cat->id }}" class="form-selectgroup-input" wire:model.lazy="filter.categories.{{ $cat->id }}" />
+                                              <span class="form-selectgroup-label">{{ $cat->name }}
+                                                  {{ $cat->id }}</span>
                                           </label>
                                           <div class="w-100"></div>
                                       @endforeach
