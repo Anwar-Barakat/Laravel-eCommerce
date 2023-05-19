@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
             BrandSeeder::class,
             ProductSeeder::class,
             BannerSeeder::class,
-            FilterSeeder::class,
         ]);
     }
 }

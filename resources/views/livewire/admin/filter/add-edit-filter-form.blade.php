@@ -33,9 +33,8 @@
                                   <div class="form-selectgroup">
                                       @foreach ($categories as $cat)
                                           <label class="form-selectgroup-item">
-                                              <input type="checkbox" value="{{ $cat->id }}" class="form-selectgroup-input" wire:model.lazy="filter.categories.{{ $cat->id }}" />
-                                              <span class="form-selectgroup-label">{{ $cat->name }}
-                                                  {{ $cat->id }}</span>
+                                              <input type="checkbox" value="{{ $cat->id }}" class="form-selectgroup-input" wire:model.defer="filter.categories.{{ $cat->id }}" />
+                                              <span class="form-selectgroup-label">{{ $cat->name }}</span>
                                           </label>
                                           <div class="w-100"></div>
                                       @endforeach

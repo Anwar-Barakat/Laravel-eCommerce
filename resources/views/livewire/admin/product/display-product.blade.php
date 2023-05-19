@@ -6,7 +6,7 @@
             </div>
             <div class="card-body">
                 <div class="mb-4">
-                    <div class="subheader mb-2 text-blue-500">{{ __('section.sections') }}</div>
+                    <div class="subheader mb-2 text-blue-500">{{ __('product.product_name') }}</div>
                     <div>
                         <input type="text" wire:model='name' class="form-control" placeholder="{{ __('msgs.search_by_name') }}">
                     </div>
@@ -105,6 +105,14 @@
                                 </svg>
                                 {{ __('product.attribites') }}
                             </a>
+                            <a href="{{ route('admin.product.filters.create', ['product' => $product]) }}" class="card-btn flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="8.5" cy="8.5" r="1" fill="currentColor"></circle>
+                                    <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
+                                </svg>
+                                {{ __('product.filters') }}
+                            </a>
                         </div>
                         <div class="progress progress-sm card-progress">
                             <div class="progress-bar" style="width: 38%" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" aria-label="38% Complete">
@@ -114,7 +122,9 @@
                     </div>
                 </div>
             @empty
-                <x-blank-section :url="route('admin.products.create')" :content="__('product.product')" />
+                <div class="mt-4">
+                    <x-blank-section :url="route('admin.products.create')" :content="__('product.product')" />
+                </div>
             @endforelse
         </div>
         @if ($products->count() > 10)

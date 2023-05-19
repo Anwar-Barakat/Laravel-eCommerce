@@ -15,3 +15,7 @@ textarea {
 .page-title {
     color: var(--tblr-light) !important;
 }
+
+.card-btn {
+    padding: 1rem;
+}

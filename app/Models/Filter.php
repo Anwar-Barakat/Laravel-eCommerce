@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Filter extends Model
 {
@@ -23,8 +24,8 @@ class Filter extends Model
         return $query->where(['is_active' => 1]);
     }
 
-    public function filter_values()
+    public function filter_values(): HasMany
     {
-        return $this->hasMany(FilterValue::class, 'filter_id');
+        return $this->hasMany(FilterValue::class);
     }
 }

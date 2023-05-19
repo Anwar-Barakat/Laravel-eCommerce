@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\Product\Attachment\ProductAttachmentController;
 use App\Http\Controllers\Admin\Product\Attachment\DestroyAttachment;
 use App\Http\Controllers\Admin\Product\Attachment\DownloadAttachmentController;
 use App\Http\Controllers\Admin\Product\Attribute\ProductAttributeController;
+use App\Http\Controllers\Admin\Product\Filter\ProductFilterController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Setting\AdminChangePasswordController;
@@ -96,6 +97,11 @@ Route::group(
                 // products attributes
                 //_______________________
                 Route::resource('product.attributes',                       ProductAttributeController::class)->only('create');
+
+                //_______________________
+                // products filters
+                //_______________________
+                Route::resource('product.filters',                          ProductFilterController::class)->only('create');
 
 
                 //_______________________
