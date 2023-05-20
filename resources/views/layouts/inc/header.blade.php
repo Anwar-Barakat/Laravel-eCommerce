@@ -246,7 +246,7 @@
                     </li>
 
 
-                    <li class="nav-item active dropdown">
+                    <li class="nav-item active dropdown {{ request()->routeIs('admin.shipping-charges.*') ? 'active' : '' }}">
                         <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -267,48 +267,22 @@
                         <div class="dropdown-menu">
                             <div class="dropdown-menu-columns">
                                 <div class="dropdown-menu-column">
-                                    <a class="dropdown-item" href="./layout-horizontal.html">
-                                        Horizontal
-                                    </a>
-                                    <a class="dropdown-item" href="./layout-boxed.html">
-                                        Boxed
-                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                    </a>
-                                    <a class="dropdown-item" href="./layout-vertical.html">
-                                        Vertical
-                                    </a>
-                                    <a class="dropdown-item" href="./layout-vertical-transparent.html">
-                                        Vertical transparent
-                                    </a>
-                                    <a class="dropdown-item" href="./layout-vertical-right.html">
-                                        Right vertical
-                                    </a>
-                                    <a class="dropdown-item" href="./layout-condensed.html">
-                                        Condensed
-                                    </a>
-                                    <a class="dropdown-item" href="./layout-combo.html">
-                                        Combined
+                                    <!-- shopping charges -->
+                                    <a class="dropdown-item {{ request()->routeIs('admin.shipping-charges.*') ? 'active' : '' }}" href="{{ route('admin.shipping-charges.index') }}">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-discount" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M9 15l6 -6"></path>
+                                                <circle cx="9.5" cy="9.5" r=".5" fill="currentColor"></circle>
+                                                <circle cx="14.5" cy="14.5" r=".5" fill="currentColor"></circle>
+                                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                            </svg>
+                                        </span>
+                                        {{ __('order.shipping_charge') }}
                                     </a>
                                 </div>
                                 <div class="dropdown-menu-column">
-                                    <a class="dropdown-item" href="./layout-navbar-dark.html">
-                                        Navbar dark
-                                    </a>
-                                    <a class="dropdown-item" href="./layout-navbar-sticky.html">
-                                        Navbar sticky
-                                    </a>
-                                    <a class="dropdown-item active" href="./layout-navbar-overlap.html">
-                                        Navbar overlap
-                                    </a>
-                                    <a class="dropdown-item" href="./layout-rtl.html">
-                                        RTL mode
-                                    </a>
-                                    <a class="dropdown-item" href="./layout-fluid.html">
-                                        Fluid
-                                    </a>
-                                    <a class="dropdown-item" href="./layout-fluid-vertical.html">
-                                        Fluid vertical
-                                    </a>
+
                                 </div>
                             </div>
                         </div>

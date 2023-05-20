@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\ShippingCharge;
 
-use App\Http\Requests\StoreShippingChargeRequest;
-use App\Http\Requests\UpdateShippingChargeRequest;
 use App\Models\ShippingCharge;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class ShippingChargeController extends Controller
 {
@@ -13,7 +13,7 @@ class ShippingChargeController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.shipping-chages.index');
     }
 
     /**
@@ -27,7 +27,7 @@ class ShippingChargeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreShippingChargeRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -45,13 +45,13 @@ class ShippingChargeController extends Controller
      */
     public function edit(ShippingCharge $shippingCharge)
     {
-        //
+        return view('admin.shipping-chages.edit', ['shippingCharge' => $shippingCharge]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateShippingChargeRequest $request, ShippingCharge $shippingCharge)
+    public function update(Request $request, ShippingCharge $shippingCharge)
     {
         //
     }

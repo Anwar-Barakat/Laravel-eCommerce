@@ -13,4 +13,12 @@ class Country extends Model
     {
         return $query->where(['is_active' => 1]);
     }
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('name', 'LIKE', $term);
+        });
+    }
 }

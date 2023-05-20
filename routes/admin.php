@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Setting\AdminChangePasswordController;
 use App\Http\Controllers\Admin\Setting\AdminProfileController;
 use App\Http\Controllers\Admin\Setting\SettingController;
+use App\Http\Controllers\Admin\ShippingCharge\ShippingChargeController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -58,7 +59,6 @@ Route::group(
                 Route::get('/logout',                                       LogoutController::class)->name('logout');
                 Route::get('/dashboard',                                    DashboardController::class)->name('dashboard');
 
-
                 //_______________________
                 // setting
                 //_______________________
@@ -66,6 +66,9 @@ Route::group(
                 Route::get('/profile',                                      AdminProfileController::class)->name('setting.profile');
                 Route::get('/change-password',                              AdminChangePasswordController::class)->name('setting.change-password');
 
+
+                // _________________________________________________________________________________________
+                // _________________________________________________________________________________________
                 //_______________________
                 // sections
                 //_______________________
@@ -81,6 +84,19 @@ Route::group(
                 //_______________________
                 Route::resource('brands',                                   BrandController::class)->only(['index', 'create', 'edit']);
 
+                //_______________________
+                // Banners
+                //_______________________
+                Route::resource('banners',                                  BannerController::class)->only(['index', 'create', 'edit']);
+
+                //_______________________
+                // Coupons
+                //_______________________
+                Route::resource('coupons',                                  CouponController::class)->only(['index', 'create', 'edit']);
+
+
+                // _________________________________________________________________________________________
+                // _________________________________________________________________________________________
                 //_______________________
                 // products
                 //_______________________
@@ -103,22 +119,19 @@ Route::group(
                 //_______________________
                 Route::resource('product.filters',                          ProductFilterController::class)->only('create');
 
-
-                //_______________________
-                // Banners
-                //_______________________
-                Route::resource('banners',                                  BannerController::class)->only(['index', 'create', 'edit']);
-
-                //_______________________
-                // Coupons
-                //_______________________
-                Route::resource('coupons',                                  CouponController::class)->only(['index', 'create', 'edit']);
-
                 //_______________________
                 // Filters
                 //_______________________
                 Route::resource('filters',                                  FilterController::class)->only(['index', 'create', 'edit']);
                 Route::resource('filter-values',                            FilterValueController::class)->only(['index', 'create', 'edit']);
+
+
+                // _________________________________________________________________________________________
+                // _________________________________________________________________________________________
+                //_______________________
+                // shipping charges
+                //_______________________
+                Route::resource('shipping-charges',                                 ShippingChargeController::class)->only(['index', 'edit']);
             });
         });
     }

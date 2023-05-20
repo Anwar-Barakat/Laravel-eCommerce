@@ -1,7 +1,9 @@
 <?php
 
 return [
-    //? Actions :
+    // -------------------------------
+    // Actions :
+    // -------------------------------
     'all'                   => 'All :name',
     'list'                  => ':name List',
     'create'                => 'Create new :name',
@@ -14,7 +16,9 @@ return [
     'exists'                => ':name already exists',
     'already_approved'      => 'Order Has already Been Approved previous',
 
-    //? Results :
+    // -------------------------------
+    // Results :
+    // -------------------------------
     'updated'               => ':name Has Been Updated Successfuly',
     'created'               => ':name Has Been Created Successfuly',
     'added'                 => ':name Has Been Added Successfuly',
@@ -30,7 +34,9 @@ return [
 
 
 
-    //? Public Masseges :
+    // -------------------------------
+    // Public Masseges :
+    // -------------------------------
     'not_found'             => 'No results found',
     'not_valid'             => ':name not valid',
     'created_at'            => 'Created at',

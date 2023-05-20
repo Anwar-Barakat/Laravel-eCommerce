@@ -16,7 +16,7 @@ class ShippingCharge extends Model
         '_1001_2000g',
         '_2001_5000g',
         'above_5000g',
-        'status'
+        'is_active'
     ];
 
     public function country()
