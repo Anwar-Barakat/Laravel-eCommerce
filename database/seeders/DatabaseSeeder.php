@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             BannerSeeder::class,
 
             CountrySeeder::class,
+            ShippingChargeSeeder::class,
         ]);
     }
 }
