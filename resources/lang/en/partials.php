@@ -13,9 +13,11 @@ return [
     'accounts'      => 'Accounts',
     'by'            => 'By',
     'Profile'       => 'Profile',
+    'warehouse'     => 'Warehouse',
+    'orders'        => 'Orders',
 
     //? Footer :
-    'copyright'             => 'Copyright',
-    'all_rights_reserved'   => 'All rights reserved',
-    'sales_management'      => 'Sales management',
+    'copyright'                 => 'Copyright',
+    'all_rights_reserved'       => 'All rights reserved',
+    'ecommerce_management'      => 'Online Store management',
 ];

@@ -6,10 +6,12 @@
             <div class="card mb-3">
                 <div class="card-stamp">
                     <div class="card-stamp-icon bg-yellow">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-article" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"></path>
-                            <path d="M9 17v1a3 3 0 0 0 6 0v-1"></path>
+                            <path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+                            <path d="M7 8h10"></path>
+                            <path d="M7 12h10"></path>
+                            <path d="M7 16h10"></path>
                         </svg>
                     </div>
                 </div>
@@ -22,10 +24,7 @@
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
-                                    <label for="" class="form-label">
-                                        {{ __('product.product_name') }}
-                                        ( <a href="{{ route('admin.products.create') }}" class="text-blue" title="{{ __('msgs.add', ['name' => __('product.product')]) }}">{{ __('msgs.add_new') }}</a> )
-                                    </label>
+                                    <x-input-label class="form-label" :value="__('product.product_name')" />
                                     <select class="form-select" readonly disabled>
                                         <option value="">{{ $product->name }}</option>
                                     </select>
@@ -33,10 +32,7 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
-                                    <label for="" class="form-label">
-                                        {{ __('category.category') }}
-                                        ( <a href="{{ route('admin.categories.create') }}" class="text-blue" title="{{ __('msgs.add', ['name' => __('category.category')]) }}">{{ __('msgs.add_new') }}</a> )
-                                    </label>
+                                    <x-input-label class="form-label" :value="__('category.category')" />
                                     <select class="form-select" readonly disabled>
                                         <option value="">{{ $product->category->name }}</option>
                                     </select>
@@ -44,7 +40,10 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
-                                    <x-input-label class="form-label" :value="__('product.filters')" />
+                                    <label for="" class="form-label">
+                                        {{ __('product.filters') }}
+                                        ( <a href="{{ route('admin.filters.create') }}" class="text-blue" title="{{ __('msgs.add', ['name' => __('product.filter')]) }}">{{ __('msgs.add_new') }}</a> )
+                                    </label>
                                     <select class="form-select" wire:model='productFilter.filter_id'>
                                         <option value="">{{ __('btns.select') }}</option>
                                         @foreach ($filters as $filter)
@@ -57,7 +56,10 @@
                             @if ($filter_values)
                                 <div class="col-12 col-md-6">
                                     <div class="mb-3">
-                                        <x-input-label class="form-label" :value="__('product.filter_value')" />
+                                        <label for="" class="form-label">
+                                            {{ __('product.filter_value') }}
+                                            ( <a href="{{ route('admin.filter-values.create') }}" class="text-blue" title="{{ __('msgs.add', ['name' => __('product.filter_value')]) }}">{{ __('msgs.add_new') }}</a> )
+                                        </label>
                                         <select class="form-select" wire:model='productFilter.filter_value_id'>
                                             <option value="">{{ __('btns.select') }}</option>
                                             @foreach ($filter_values as $value)

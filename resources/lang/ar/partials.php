@@ -13,10 +13,12 @@ return [
     'transactions'  => 'المعاملات',
     'accounts'      => 'الحسابات',
     'Profile'       => 'الملف الشخصي',
+    'warehouse'     => 'المستودع',
+    'orders'        => 'الطلبات',
 
     //? Footer :
-    'copyright'             => 'حقوق النشر',
-    'all_rights_reserved'   => 'جميع الحقوق محفوظة',
-    'sales_management'      => 'إدارة المبيعات',
+    'copyright'                 => 'حقوق النشر',
+    'all_rights_reserved'       => 'جميع الحقوق محفوظة',
+    'ecommerce_management'      => 'إدارة المتجر الألكتروني',
 
 ];

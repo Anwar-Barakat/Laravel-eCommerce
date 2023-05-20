@@ -18,8 +18,8 @@
                     @forelse ($productFilters as $productFilter)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $productFilter->filter->name }}</td>
-                            <td>{{ $productFilter->filter_value->value }}</td>
+                            <td><span class="badge badge-outline text-indigo">{{ $productFilter->filter->name }}</span></td>
+                            <td><span class="badge badge-outline text-orange">{{ $productFilter->filter_value->value }}</span></td>
                             <td>
                                 <div>
                                     <button wire:click='updateStatus({{ $productFilter }})' class="btn position-relative">
