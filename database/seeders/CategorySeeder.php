@@ -18,18 +18,34 @@ class CategorySeeder extends Seeder
     {
         $faker          = Factory::create();
         $men_section    = Section::select('id')->where('name->en', 'Men')->first()->id;
+        $women_section  = Section::select('id')->where('name->en', 'Women')->first()->id;
         $house_section  = Section::select('id')->where('name->en', 'Houseware')->first()->id;
+
         $categories = [
             [
                 'section_id'        => $men_section,
                 'parent_id'         => 0,
                 'name'              => [
-                    'ar'    => 'احذية',
-                    'en'    => 'Shoes',
+                    'ar'    => 'أحذية رجالية',
+                    'en'    => 'Men Shoes',
                 ],
                 'discount'          => 0,
                 'description'       => $faker->sentence(30),
-                'url'               => Str::slug('shoes', '-'),
+                'url'               => Str::slug('men shoes', '-'),
+                'meta_title'        => $faker->words(3, true),
+                'meta_description'  => $faker->sentence(50),
+                'meta_keywords'     => $faker->sentence(15),
+            ],
+            [
+                'section_id'        => $women_section,
+                'parent_id'         => 0,
+                'name'              => [
+                    'ar'    => 'أحذية نسائية',
+                    'en'    => 'Women Shoes',
+                ],
+                'discount'          => 0,
+                'description'       => $faker->sentence(30),
+                'url'               => Str::slug('women shoes', '-'),
                 'meta_title'        => $faker->words(3, true),
                 'meta_description'  => $faker->sentence(50),
                 'meta_keywords'     => $faker->sentence(15),
@@ -38,12 +54,40 @@ class CategorySeeder extends Seeder
                 'section_id'        => $men_section,
                 'parent_id'         => 0,
                 'name'              => [
-                    'ar'    => 'قمصان',
-                    'en'    => 'Shirts',
+                    'ar'    => 'قمصان رجالية',
+                    'en'    => 'Men Shirts',
                 ],
                 'discount'          => 0,
                 'description'       => $faker->sentence(30),
-                'url'               => Str::slug('shirts', '-'),
+                'url'               => Str::slug('men shirts', '-'),
+                'meta_title'        => $faker->words(3, true),
+                'meta_description'  => $faker->sentence(50),
+                'meta_keywords'     => $faker->sentence(15),
+            ],
+            [
+                'section_id'        => $women_section,
+                'parent_id'         => 0,
+                'name'              => [
+                    'ar'    => 'قمصان نسائية',
+                    'en'    => 'Women Shirts',
+                ],
+                'discount'          => 0,
+                'description'       => $faker->sentence(30),
+                'url'               => Str::slug('women shirts', '-'),
+                'meta_title'        => $faker->words(3, true),
+                'meta_description'  => $faker->sentence(50),
+                'meta_keywords'     => $faker->sentence(15),
+            ],
+            [
+                'section_id'        => $women_section,
+                'parent_id'         => 0,
+                'name'              => [
+                    'ar'    => 'مكياجات',
+                    'en'    => 'Makeup',
+                ],
+                'discount'          => 0,
+                'description'       => $faker->sentence(30),
+                'url'               => Str::slug('makeup', '-'),
                 'meta_title'        => $faker->words(3, true),
                 'meta_description'  => $faker->sentence(50),
                 'meta_keywords'     => $faker->sentence(15),
@@ -57,7 +101,7 @@ class CategorySeeder extends Seeder
                 ],
                 'discount'          => 0,
                 'description'       => $faker->sentence(30),
-                'url'               => Str::slug('Hand Tools', '-'),
+                'url'               => Str::slug('hand tools', '-'),
                 'meta_title'        => $faker->words(3, true),
                 'meta_description'  => $faker->sentence(50),
                 'meta_keywords'     => $faker->sentence(15),

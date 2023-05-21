@@ -13,13 +13,14 @@ use Illuminate\Support\Str;
 
 class AddEditFilterForm extends Component
 {
-    public Filter $filter;
+    public Filter $filtered;
 
     public $categories = [];
 
     public function mount(Filter $filter)
     {
-        $this->filter               = $filter;
+        $this->filtered             = $filter;
+        $this->filtered->categories = $filter->categories ? array_combine($filter->categories, $filter->categories) : [];
         $this->categories           = Category::select('id', 'name')->active()->orderBy('parent_id')->get();
     }
 
@@ -39,9 +40,9 @@ class AddEditFilterForm extends Component
         try {
             DB::beginTransaction();
 
-            $this->filter->field        = Str::slug(Str::lower($this->filter->name), '_');
-            $this->filter->categories   = array_values(array_filter($this->filter->categories));
-            $this->filter->save();
+            $this->filtered->field        = Str::slug(Str::lower($this->filtered->name), '_');
+            $this->filtered->categories   = array_values(array_filter($this->filtered->categories));
+            $this->filtered->save();
 
             DB::commit();
             toastr()->success(__('msgs.submitted', ['name' => __('product.filter')]));
@@ -55,10 +56,10 @@ class AddEditFilterForm extends Component
     public function rules()
     {
         return [
-            'filter.name'           => ['required', 'string', 'regex:/^[a-zA-Z\s]+$/'],
-            'filter.is_active'      => ['required', 'boolean'],
-            'filter.categories'     => ['required', 'array'],
-            'filter.categories.*'   => ['required', 'integer']
+            'filtered.name'           => ['required', 'string', 'regex:/^[a-zA-Z\s]+$/'],
+            'filtered.is_active'      => ['required', 'boolean'],
+            'filtered.categories'     => ['required', 'array'],
+            'filtered.categories.*'   => ['required', 'integer']
         ];
     }
 }
