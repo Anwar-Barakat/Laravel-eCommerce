@@ -16,6 +16,15 @@ return [
 
 
     // -------------------------------
+    // Shipping charges :
+    // -------------------------------
+    'currencies'                => 'Currencies',
+    'currency'                  => 'Currency',
+    'currency_name'             => 'Currency name',
+    'currency_code'             => 'Currency code',
+    'exchange_rate'             => 'Exchange rate',
+
+    // -------------------------------
     // Orders
     // -------------------------------
     'orders'            => 'Orders',

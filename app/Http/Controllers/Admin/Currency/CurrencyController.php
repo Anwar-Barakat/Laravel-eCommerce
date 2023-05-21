@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Currency;
 
-use App\Http\Requests\StoreCurrencyRequest;
-use App\Http\Requests\UpdateCurrencyRequest;
 use App\Models\Currency;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class CurrencyController extends Controller
 {
@@ -13,7 +13,7 @@ class CurrencyController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.currencies.index');
     }
 
     /**
@@ -21,13 +21,13 @@ class CurrencyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.currencies.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCurrencyRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -45,13 +45,13 @@ class CurrencyController extends Controller
      */
     public function edit(Currency $currency)
     {
-        //
+        return view('admin.currencies.edit', ['currency' => $currency]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCurrencyRequest $request, Currency $currency)
+    public function update(Request $request, Currency $currency)
     {
         //
     }

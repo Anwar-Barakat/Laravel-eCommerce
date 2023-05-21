@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Banner\BannerController;
 use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Coupon\CouponController;
+use App\Http\Controllers\Admin\Currency\CurrencyController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Filter\FilterController;
 use App\Http\Controllers\Admin\FilterValue\FilterValueController;
@@ -131,7 +132,12 @@ Route::group(
                 //_______________________
                 // shipping charges
                 //_______________________
-                Route::resource('shipping-charges',                                 ShippingChargeController::class)->only(['index', 'edit']);
+                Route::resource('shipping-charges',                         ShippingChargeController::class)->only(['index', 'edit']);
+
+                //_______________________
+                // currencies
+                //_______________________
+                Route::resource('currencies',                               CurrencyController::class)->only(['index', 'edit']);
             });
         });
     }
