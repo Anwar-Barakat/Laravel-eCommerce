@@ -137,7 +137,7 @@ Route::group(
                 //_______________________
                 // currencies
                 //_______________________
-                Route::resource('currencies',                               CurrencyController::class)->only(['index', 'edit']);
+                Route::resource('currencies',                               CurrencyController::class)->only(['index', 'create', 'edit']);
             });
         });
     }

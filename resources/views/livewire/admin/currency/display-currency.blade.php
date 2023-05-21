@@ -1,6 +1,9 @@
 <div class="card">
     <div class="card-header d-flex align-items-center justify-content-between">
         <h3 class="card-title">{{ __('msgs.all', ['name' => __('order.shipping_charge')]) }}</h3>
+        <a href="{{ route('admin.currencies.create') }}" class="btn btn-primary">
+            {{ __('msgs.create', ['name' => __('order.currency')]) }}
+        </a>
     </div>
 
     <div class="card-body">
@@ -50,6 +53,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>{{ __('order.currency_name') }}</th>
                         <th>{{ __('order.currency_code') }}</th>
                         <th>{{ __('order.exchange_rate') }}</th>
                         <th>{{ __('partials.status') }}</th>
@@ -60,6 +64,7 @@
                     @forelse ($currencies as $currency)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
+                            <td> {{ $currency->name }}</td>
                             <td> {{ $currency->code }}</td>
                             <td> {{ $currency->exchange_rate }}</td>
                             <td>
@@ -74,7 +79,7 @@
                                 <span class="dropdown">
                                     <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('btns.actions') }}</button>
                                     <div class="dropdown-menu">
-                                        <a href="{{ route('admin.shipping-charges.edit', ['shipping_charge' => $currency]) }}" class="dropdown-item d-flex align-items-center gap-1">
+                                        <a href="{{ route('admin.currencies.edit', ['currency' => $currency]) }}" class="dropdown-item d-flex align-items-center gap-1">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon text-success" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
@@ -90,7 +95,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="border-bottom-0">
+                            <td colspan="5" class="border-bottom-0">
                                 <x-blank-section :url="'javascript:;'" :content="__('')" />
                             </td>
                         </tr>

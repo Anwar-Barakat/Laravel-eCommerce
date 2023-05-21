@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('currencies', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('code');
             $table->float('exchange_rate');
             $table->boolean('is_active')->default(true);

@@ -30,7 +30,7 @@ class AddEditSection extends Component
         try {
             $this->section->name = [
                 'ar' => $this->name_ar,
-                'en' => $this->name_ar,
+                'en' => $this->name_en,
             ];
 
             $this->section->save();

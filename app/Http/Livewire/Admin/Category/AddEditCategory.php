@@ -46,7 +46,7 @@ class AddEditCategory extends Component
         try {
             $this->category->name = [
                 'ar' => $this->name_ar,
-                'en' => $this->name_ar,
+                'en' => $this->name_en,
             ];
             $this->category->url = Str::slug($this->name_en, '-');
             $this->category->save();

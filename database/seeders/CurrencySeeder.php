@@ -15,24 +15,36 @@ class CurrencySeeder extends Seeder
     {
         $currenciesRecords = [
             [
-                'code'              => 'USA',
+                'name'              => [
+                    'ar'    => 'الليرة السورية',
+                    'en'    => 'Syrian Pound'
+                ],
+                'code'              => 'Lira',
                 'exchange_rate'     => 1,
             ],
             [
-                'code'              => 'GBP',
-                'exchange_rate'     => 1.26,
-            ],
-            [
+                'name'              => [
+                    'ar'    => 'يورو',
+                    'en'    => 'Euro'
+                ],
                 'code'              => 'EUR',
-                'exchange_rate'     => 1.06,
+                'exchange_rate'     => 9500,
             ],
             [
-                'code'              => 'CAD',
-                'exchange_rate'     => 0.79,
+                'name'              => [
+                    'ar'    => 'دولار أمريكي',
+                    'en'    => 'U.S. Dollar'
+                ],
+                'code'              => 'USA',
+                'exchange_rate'     => 8500,
             ],
             [
+                'name'              => [
+                    'ar'    => 'جنيه أسترليني',
+                    'en'    => 'Australian Pound'
+                ],
                 'code'              => 'AUD',
-                'exchange_rate'     => 0.73,
+                'exchange_rate'     => 6400,
             ],
         ];
 
