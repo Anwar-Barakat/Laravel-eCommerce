@@ -10,6 +10,11 @@ class DisplayBanner extends Component
 {
     use WithPagination;
 
+    public $title,
+        $order_by   = 'title',
+        $sort_by    = 'asc',
+        $per_page   = CUSTOMPAGINATION;
+
     public function updateStatus(Banner $banner)
     {
         $banner->update(['is_active' => !$banner->is_active]);
@@ -22,6 +27,8 @@ class DisplayBanner extends Component
 
     public function getBanners()
     {
-        return Banner::latest()->paginate(CUSTOMPAGINATION);
+        return Banner::search(trim($this->title))
+            ->orderBy($this->order_by, $this->sort_by)
+            ->paginate($this->per_page);
     }
 }

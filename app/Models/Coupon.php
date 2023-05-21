@@ -25,4 +25,12 @@ class Coupon extends Model
     const COUPONOPTION  = [0 => 'manual',       1 => 'automatic'];
     const COUPONTYPE    = [0 => 'single_time',  1 => 'multiple_times'];
     const AMOUNTTYPE    = [0 => 'percentage',   1 => 'fixed'];
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('name', 'LIKE', $term);
+        });
+    }
 }

@@ -98,8 +98,16 @@
                                       @foreach ($categories as $category)
                                           <label class="form-selectgroup-item">
                                               <input type="checkbox" value="{{ $category->id }}" class="form-selectgroup-input" wire:model.defer='coupon.categories.{{ $category->id }}' />
-                                              <span class="form-selectgroup-label">{{ $category->name }} {{ $category->id }}</span>
+                                              <span class="form-selectgroup-label">{{ $category->name }}</span>
                                           </label>
+                                          @if ($category->subCategories)
+                                              @foreach ($category->subCategories as $sub)
+                                                  <label class="form-selectgroup-item">
+                                                      <input type="checkbox" value="{{ $sub->id }}" class="form-selectgroup-input" wire:model.defer='coupon.categories.{{ $sub->id }}' />
+                                                      <span class="form-selectgroup-label">{{ $sub->name }}</span>
+                                                  </label>
+                                              @endforeach
+                                          @endif
                                           <div class="w-100"></div>
                                       @endforeach
                                       <x-input-error :messages="$errors->get('coupon.categories')" class="mt-2" />

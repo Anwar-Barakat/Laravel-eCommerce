@@ -37,6 +37,14 @@ class Category extends Model implements HasMedia
             ->height(720);
     }
 
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('name', 'LIKE', $term);
+        });
+    }
+
     public function scopeActive($query)
     {
         return $query->where(['is_active' => 1]);

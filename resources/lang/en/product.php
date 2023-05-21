@@ -6,6 +6,7 @@ return [
     //_______________________
     'brands'        => 'Brands',
     'brand'         => 'Brand',
+    'brand_name'    => 'Brand name',
 
     //_______________________
     // products
@@ -53,6 +54,7 @@ return [
     'banner'                    => 'Banner',
     'title'                     => 'Title',
     'link'                      => 'Link',
+    'banner_title'              => 'Banner title',
 
     //_______________________
     // coupons

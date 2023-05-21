@@ -7,6 +7,47 @@
     </div>
 
     <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-2">
+                <div class="mb-3">
+                    <x-input-label class="form-label" :value="__('msgs.search_by_name')" />
+                    <x-text-input class="form-control" placeholder="{{ __('btns.search') }}" wire:model="name" />
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-2">
+                <div class="mb-3">
+                    <x-input-label class="form-label" :value="__('msgs.order_by')" />
+                    <select class="form-select" wire:model='order_by'>
+                        <option value="">{{ __('btns.select') }}</option>
+                        <option value="name">{{ __('product.brand_name') }}</option>
+                        <option value="created_at">{{ __('msgs.created_at') }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-2">
+                <div class="mb-3">
+                    <x-input-label class="form-label" :value="__('msgs.per_page')" />
+                    <select class="form-select" wire:model='per_page'>
+                        <option value="">{{ __('btns.select') }}</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-2">
+                <div class="mb-3">
+                    <x-input-label class="form-label" :value="__('msgs.sort_by')" />
+                    <select class="form-select" wire:model='sort_by'>
+                        <option value="">{{ __('btns.select') }}</option>
+                        <option value="asc">{{ __('msgs.asc') }}</option>
+                        <option value="desc">{{ __('msgs.desc') }}</option>
+                    </select>
+                    <x-input-error :messages="$errors->get('is_active')" class="mt-2" />
+                </div>
+            </div>
+        </div>
+        <br>
         <div id="table-default" class="table-responsive">
             <table id="dataTables" class="table table-vcenter table-mobile-md card-table">
                 <thead>

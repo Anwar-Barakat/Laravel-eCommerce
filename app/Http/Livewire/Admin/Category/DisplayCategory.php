@@ -10,6 +10,12 @@ class DisplayCategory extends Component
 {
     use WithPagination;
 
+    public $name,
+        $section_id,
+        $order_by   = 'name',
+        $sort_by    = 'asc',
+        $per_page   = CUSTOMPAGINATION;
+
     public function updateStatus($category_id)
     {
         $category  = Category::findOrFail($category_id);
@@ -23,6 +29,11 @@ class DisplayCategory extends Component
 
     public function getCategories()
     {
-        return Category::latest()->paginate(CUSTOMPAGINATION);
+        return Category::whereHas('section', function ($query) {
+            $query->when($this->section_id, fn ($q) => $q->where('section_id', $this->section_id));
+        })->with('section:id,name')
+            ->search(trim($this->name))
+            ->orderBy($this->order_by, $this->sort_by)
+            ->paginate($this->per_page);
     }
 }

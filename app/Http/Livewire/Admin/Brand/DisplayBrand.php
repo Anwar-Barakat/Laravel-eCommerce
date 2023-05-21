@@ -10,6 +10,11 @@ class DisplayBrand extends Component
 {
     use WithPagination;
 
+    public $name,
+        $order_by   = 'name',
+        $sort_by    = 'asc',
+        $per_page   = CUSTOMPAGINATION;
+
     public function updateStatus($brand_id)
     {
         $brand  = Brand::findOrFail($brand_id);
@@ -23,6 +28,8 @@ class DisplayBrand extends Component
 
     public function getBrands()
     {
-        return Brand::latest()->paginate(CUSTOMPAGINATION);
+        return Brand::search(trim($this->name))
+            ->orderBy($this->order_by, $this->sort_by)
+            ->paginate($this->per_page);
     }
 }
