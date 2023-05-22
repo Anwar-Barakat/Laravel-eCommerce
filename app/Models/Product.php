@@ -58,6 +58,35 @@ class Product extends Model implements HasMedia
             ->height(1000);
     }
 
+    public static function applyDiscount($product_id, $price)
+    {
+        $product = Product::with('category')->where('id', $product_id)->first();
+        $category = $product->category;
+
+        $data['original_price'] = $price;
+        $data['final_price']    = $price;
+        $data['discount']       = 0;
+        if (!$product->created_at->diffInMonths() < 1) {
+
+            if ($product->discount > 0) {
+                $data['final_price'] = self::calculateDiscount($price, $product->discount);
+                $data['discount'] = $product->discount;
+            } elseif ($category->discount > 0) {
+                $data['final_price'] = self::calculateDiscount($price, $category->discount);
+                $data['discount'] = $category->discount;
+            }
+        }
+        return $data;
+    }
+
+    public static function calculateDiscount($price, $discount)
+    {
+        if (!is_numeric($discount))
+            throw new \InvalidArgumentException(__('validation.numeric', ['attribute' => __('product.discount')]));
+
+        return $price - ($price * $discount / 100);
+    }
+
     public function scopeActive($query)
     {
         return $query->where(['status' => 1]);

@@ -26,11 +26,8 @@ class Coupon extends Model
     const COUPONTYPE    = [0 => 'single_time',  1 => 'multiple_times'];
     const AMOUNTTYPE    = [0 => 'percentage',   1 => 'fixed'];
 
-    public function scopeSearch($query, $term)
+    public function scopeActive($query)
     {
-        $term = "%$term%";
-        $query->where(function ($query) use ($term) {
-            $query->where('name', 'LIKE', $term);
-        });
+        return $query->where('is_active', 1);
     }
 }

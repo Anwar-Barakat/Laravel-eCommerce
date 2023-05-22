@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('parent_id');
             $table->string('name');
             $table->string('url')->unique();
-            $table->float('discount');
+            $table->float('discount')->comment('discount in percentage');
             $table->longText('description');
             $table->string('meta_title');
             $table->text('meta_description');

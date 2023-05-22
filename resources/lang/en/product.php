@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'new'           => 'NEW',
+
+
     //_______________________
     // brands
     //_______________________
@@ -73,7 +76,8 @@ return [
     'automatic'                 => 'Automatic',
     'percentage'                => 'Percentage',
     'fixed'                     => 'Fixed',
-
+    'expiry_date_from'          => 'Expiry date from',
+    'expiry_date_to'            => 'Expiry date to',
 
     //_______________________
     // filters

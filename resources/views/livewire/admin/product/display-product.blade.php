@@ -48,6 +48,7 @@
                     <div class="subheader mb-2 text-blue-500">{{ __('product.price') }}</div>
                     <div class="row g-2 align-items-center mb-3">
                         <div class="col">
+
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
                                 <input type="text" class="form-control" placeholder="{{ __('product.from') }}" autocomplete="off" wire:model='price_from'>
@@ -72,7 +73,16 @@
                     <div class="card card-stacked">
                         <div class="card-body p-4 text-center">
                             @if ($product->created_at->diffInMonths() < 1)
-                                <div class="ribbon bg-red">NEW</div>
+                                <div class="ribbon bg-yellow">{{ __('product.new') }}</div>
+                            @elseif ($product->discount > 0 || $product->category->discount > 0)
+                                <div class="ribbon bg-red-lt" App::getLocale()=='ar' ? style="direction: ltr" : ''>
+                                    @if ($product->discount > 0)
+                                        -{{ $product->discount_type == 0 ? '%' : '' }}
+                                        {{ $product->discount }}
+                                    @else
+                                        -%{{ $product->category->discount }}
+                                    @endif
+                                </div>
                             @endif
                             <span class="avatar avatar-xl mb-3 rounded" style="background-image: url(./static/avatars/000m.jpg)">
                                 @if ($product->getFirstMediaUrl('products', 'thumb'))
@@ -84,7 +94,21 @@
                             <h3 class="m-0 mb-1">
                                 <a href="{{ route('admin.products.edit', ['product' => $product]) }}">{{ $product->name }}</a>
                             </h3>
-                            <div class="text-muted">${{ $product->price }}</div>
+                            <div class="text-muted">
+                                @php
+                                    $dataPrices = App\Models\Product::applyDiscount($product->id, $product->price);
+                                @endphp
+                                <h5 class="mt-2 d-flex justify-content-center gap-2">
+                                    @isset($dataPrices)
+                                        @if ($dataPrices['discount'] > 0)
+                                            <span class="font-weight-bold text-green">${{ $dataPrices['final_price'] }}</span>
+                                            <span class="text-secondary font-weight-normal text-decoration-line-through text-red">${{ $dataPrices['original_price'] }}</span>
+                                        @else
+                                            ${{ $product->price }}
+                                        @endif
+                                    @endisset
+                                </h5>
+                            </div>
                             <div class="mt-3">
                                 <span class="badge bg-purple-lt">{{ $product->brand->name }}</span>
                             </div>
@@ -105,6 +129,8 @@
                                 </svg>
                                 {{ __('product.attribites') }}
                             </a>
+                        </div>
+                        <div class="d-flex">
                             <a href="{{ route('admin.product.filters.create', ['product' => $product]) }}" class="card-btn flex items-center gap-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>

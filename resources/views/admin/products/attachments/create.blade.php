@@ -24,17 +24,15 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-5 text-center m-auto">
-                            <div id="carousel-indicators-thumb" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                                <div class="carousel-indicators carousel-indicators-thumb" style="margin-bottom: -2rem;">
+                            <div id="carousel-indicators" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
                                     @foreach ($product->getMedia('product_attachments') as $key => $attachment)
-                                        <button type="button" data-bs-target="#carousel-indicators-thumb" data-bs-slide-to="{{ $key }}" class=" ratio ratio-4x3 active">
-                                            <img src="{{ $attachment->getUrl('small') }}" alt="{{ $attachment->getUrl('small') }}" style="height: unset;">
-                                        </button>
+                                        <button type="button" data-bs-target="#carousel-indicators" data-bs-slide-to="{{ $key }}" class="active"></button>
                                     @endforeach
                                 </div>
                                 <div class="carousel-inner">
                                     @forelse ($product->getMedia('product_attachments') as $key => $attachment)
-                                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                        <div class="carousel-item active">
                                             <img class="d-block w-100 img" alt="{{ $attachment->getUrl('large') }}" src="{{ $attachment->getUrl('large') }}">
                                         </div>
                                     @empty

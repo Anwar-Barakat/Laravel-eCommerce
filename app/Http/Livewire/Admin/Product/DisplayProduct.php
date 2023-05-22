@@ -47,7 +47,7 @@ class DisplayProduct extends Component
 
     public function getProducts()
     {
-        return Product::with(['category:id,name', 'brand:id,name'])
+        return Product::with(['category:id,name,discount', 'brand:id,name'])
             ->search(trim($this->name))
             ->when($this->category_id,  fn ($q) => $q->where('category_id', $this->category_id))
             ->when($this->section_id,   fn ($q) => $q->where('section_id', $this->section_id))
