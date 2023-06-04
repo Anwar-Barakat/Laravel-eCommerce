@@ -20,5 +20,5 @@
     });
 </script> --}}
 
-{{-- <livewire:scripts /> --}}
+<livewire:scripts />
 <script src="{{ asset('backend/dist/js/demo.min.js') }}" defer></script>
