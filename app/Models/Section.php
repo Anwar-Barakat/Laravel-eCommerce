@@ -23,4 +23,9 @@ class Section extends Model
     {
         return $query->where(['is_active' => 1]);
     }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class)->where('parent_id', 0)->with('subCategories');
+    }
 }
