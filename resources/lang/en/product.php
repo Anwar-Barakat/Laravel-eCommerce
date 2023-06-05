@@ -58,6 +58,9 @@ return [
     'title'                     => 'Title',
     'link'                      => 'Link',
     'banner_title'              => 'Banner title',
+    'banner_type'               => 'Banner type',
+    'slider'                    => 'Slider',
+    'fixed'                     => 'Fixed',
 
     //_______________________
     // coupons

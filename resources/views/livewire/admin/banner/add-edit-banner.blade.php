@@ -41,10 +41,23 @@
                               </div>
                           </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4">
-                          <x-input-label class="form-label" :value="__('msgs.photo')" />
-                          <x-text-input type="file" class="form-control" wire:model='image' />
-                          <x-input-error :messages="$errors->get('image')" class="mt-2" />
+                      <div class="row row-cards">
+                          <div class="col-sm-12 col-md-6 col-lg-4">
+                              <div class="mb-3">
+                                  <x-input-label class="form-label" :value="__('product.banner_type')" />
+                                  <select class="form-select" wire:model='banner.type'>
+                                      <option value="">{{ __('btns.select') }}</option>
+                                      <option value="1">{{ __('product.fixed') }}</option>
+                                      <option value="0">{{ __('product.slider') }}</option>
+                                  </select>
+                                  <x-input-error :messages="$errors->get('banner.type')" class="mt-2" />
+                              </div>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-4">
+                              <x-input-label class="form-label" :value="__('msgs.photo')" />
+                              <x-text-input type="file" class="form-control" wire:model='image' />
+                              <x-input-error :messages="$errors->get('image')" class="mt-2" />
+                          </div>
                       </div>
                   </div>
                   <div class="card-footer text-end">

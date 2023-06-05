@@ -33,8 +33,13 @@ class Banner extends Model implements HasMedia
         });
     }
 
-    public function scopeActive($query)
+    public function scopeSlider($query)
     {
-        return $query->where(['is_active' => 1]);
+        return $query->where(['type' => 0, 'is_active' => 1]);
+    }
+
+    public function scopeFixed($query)
+    {
+        return $query->where(['type' => 1, 'is_active' => 1]);
     }
 }

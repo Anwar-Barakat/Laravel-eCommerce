@@ -15,12 +15,13 @@
                         <th>{{ __('msgs.photo') }}</th>
                         <th>{{ __('product.title') }}</th>
                         <th>{{ __('product.link') }}</th>
+                        <th>{{ __('product.banner_type') }}</th>
                         <th>{{ __('partials.status') }}</th>
                         <th>{{ __('msgs.created_at') }}</th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody class="table-tbody">
+                <tbody class="table-tbody ">
                     @forelse ($banners as $banner)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
@@ -38,6 +39,14 @@
                                     <button wire:click='updateStatus({{ $banner }})' class="btn position-relative">
                                         {{ $banner->is_active ? __('msgs.active') : __('msgs.not_active') }}
                                         <span class="badge {{ $banner->is_active ? 'bg-green' : 'bg-red' }} badge-notification badge-blink"></span>
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <button class="btn position-relative pointer-events-none">
+                                        {{ $banner->type ? __('product.fixed') : __('product.slider') }}
+                                        <span class="badge {{ $banner->type ? 'bg-yellow' : 'bg-info' }} badge-notification badge-blink"></span>
                                     </button>
                                 </div>
                             </td>

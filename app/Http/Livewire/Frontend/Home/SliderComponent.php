@@ -14,6 +14,6 @@ class SliderComponent extends Component
 
     public function getBanners()
     {
-        return Banner::active()->get();
+        return Banner::slider()->get();
     }
 }

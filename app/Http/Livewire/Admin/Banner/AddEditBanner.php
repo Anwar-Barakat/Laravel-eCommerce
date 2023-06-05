@@ -58,6 +58,7 @@ class AddEditBanner extends Component
             'banner.title'      => ['required', 'string', 'min:3'],
             'banner.link'       => ['required', 'string', 'min:3'],
             'banner.is_active'  => ['required', 'boolean'],
+            'banner.type'       => ['required', 'boolean'],
         ];
     }
 }
