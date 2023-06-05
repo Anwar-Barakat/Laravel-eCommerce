@@ -89,7 +89,7 @@ class Product extends Model implements HasMedia
 
     public function scopeActive($query)
     {
-        return $query->where(['status' => 1]);
+        return $query->where(['is_active' => 1]);
     }
 
     public function section()

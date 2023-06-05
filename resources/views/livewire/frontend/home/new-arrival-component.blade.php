@@ -23,7 +23,9 @@
               <div class="slider-fouc">
                   <div class="owl-carousel product-slider" data-item="4">
                       @foreach ($new_arrivals as $product)
-                          <x-front-product-block :product="$product" />
+                          <div class="u-s-m-b-30 shadow-sm">
+                              <x-front-product-block :product="$product" />
+                          </div>
                       @endforeach
                   </div>
               </div>

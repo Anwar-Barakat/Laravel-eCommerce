@@ -6,6 +6,7 @@ return [
     // -------------------------------
     'shop_now'      => 'Shop now',
     'new_arrival'   => 'NEW ARRIVALS',
+    'new_arrival'   => 'NEW ARRIVALS',
 
 
     // -------------------------------

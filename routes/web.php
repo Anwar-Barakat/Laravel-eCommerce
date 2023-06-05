@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\Home\HomeController;
+use App\Http\Controllers\Frontend\Shop\CategoryProductController;
 use App\Http\Controllers\Frontend\Shop\ShopController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -38,5 +39,7 @@ Route::group(
         Route::get('/',                 [HomeController::class, 'index'])->name('frontend.home');
 
         Route::get('/shop',             [ShopController::class, 'index'])->name('frontend.shop');
+
+        Route::get('shop/{url}',        CategoryProductController::class)->name('frontend.category.products');
     }
 );
