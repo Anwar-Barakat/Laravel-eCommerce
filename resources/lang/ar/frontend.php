@@ -5,6 +5,7 @@ return [
     // Home page
     // -------------------------------
     'shop_now'      => 'Shop now',
+    'new_arrival'   => 'NEW ARRIVALS',
 
 
     // -------------------------------

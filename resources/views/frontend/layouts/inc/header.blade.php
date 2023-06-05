@@ -1053,8 +1053,7 @@
                         <!--====== List ======-->
                         <ul class="ah-list ah-list--design2 ah-list--link-color-secondary">
                             <li>
-
-                                <a href="shop-side-version-2.html">NEW ARRIVALS</a>
+                                <a href="#new-arrivals">NEW ARRIVALS</a>
                             </li>
                             <li class="has-dropdown">
 

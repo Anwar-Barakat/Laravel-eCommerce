@@ -46,12 +46,12 @@ class Product extends Model implements HasMedia
     public function registerMediaCollections(Media $media = null): void
     {
         $this->addMediaConversion('small')
-            ->width(250)
-            ->height(250);
+            ->width(300)
+            ->height(300);
 
         $this->addMediaConversion('medium')
-            ->width(500)
-            ->height(500);
+            ->width(600)
+            ->height(600);
 
         $this->addMediaConversion('large')
             ->width(1000)

@@ -3,7 +3,7 @@
          @foreach ($banners as $banner)
              <div class="hero-slide">
                  @if ($banner->getFirstMediaUrl('banners', 'thumb'))
-                     <img src="{{ $banner->getFirstMediaUrl('banners', 'thumb') }}" alt="{{ $banner->title }}" class="absolute opacity-75">
+                     <img src="{{ $banner->getFirstMediaUrl('banners', 'thumb') }}" alt="{{ $banner->title }}" class="absolute opacity-50">
                  @endif
                  <div class="container">
                      <div class="row">
