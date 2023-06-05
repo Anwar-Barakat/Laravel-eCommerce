@@ -22,7 +22,7 @@ class Banner extends Model implements HasMedia
     {
         $this->addMediaConversion('banners')
             ->width(1920)
-            ->height(720);
+            ->height(900);
     }
 
     public function scopeSearch($query, $term)
@@ -35,6 +35,6 @@ class Banner extends Model implements HasMedia
 
     public function scopeActive($query)
     {
-        return $query->where(['status' => 1]);
+        return $query->where(['is_active' => 1]);
     }
 }

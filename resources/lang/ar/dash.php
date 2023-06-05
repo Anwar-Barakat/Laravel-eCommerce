@@ -6,11 +6,11 @@ return [
 
 
 
-    //? Footer :
+    // -------------------------------
+    // Footer
+    // -------------------------------
     'copyright'     => 'Copyright',
     'all'           => 'All',
     'rights'        => 'rights',
     'reserved'      => 'Reserved',
 ];
-
-

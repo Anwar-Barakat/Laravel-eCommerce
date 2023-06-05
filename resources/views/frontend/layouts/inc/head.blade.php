@@ -9,3 +9,6 @@
 
 <!--====== App ======-->
 <link rel="stylesheet" href="{{ asset('frontend/dist/css/app.css') }}">
+
+<!--====== Custom ======-->
+<link rel="stylesheet" href="{{ asset('backend/dist/css/custom-front.css') }}">

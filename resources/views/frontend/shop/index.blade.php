@@ -650,13 +650,13 @@
                                         @foreach (App\Models\Section::with('categories')->active()->get() as $section)
                                             <li class="{{ $section->categories->count() ? 'has-list' : '' }} mb-2">
                                                 <a href="javascript:;" class="pointer-events-none">{{ $section->name }}</a>
-                                                <span class="category-list__text u-s-m-l-6">(23)</span>
                                                 @if ($section->categories->count() > 0)
                                                     <span class="js-shop-category-span is-expanded fas fa-plus u-s-m-l-6"></span>
                                                     <ul style="display:block">
                                                         @foreach ($section->categories as $category)
                                                             <li class="{{ $category->subCategories->count() > 0 ? 'has-list' : '' }}">
                                                                 <a href="#">{{ $category->name }}</a>
+                                                                <span class="category-list__text u-s-m-l-6">({{ $category->products->count() ?? 0 }})</span>
                                                                 @if ($category->subCategories->count() > 0)
                                                                     <span class="js-shop-category-span fas fa-plus u-s-m-l-6"></span>
                                                                     <ul>

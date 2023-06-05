@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Category;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class CategoryController extends Controller
 {
@@ -61,6 +62,18 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        try {
+            if ($category->subCategories->count() > 0)
+                toastr()->error(ucwords($category->name) . __('category.has_sub_categories'));
+            else {
+                $category->clearMediaCollection('categories');
+                Media::where(['model_id' => $category->id, 'collection_name' => 'categories'])->delete();
+                $category->delete();
+                toastr()->info(__('msgs.deleted', ['name' => __('category.category')]));
+            }
+            return back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error', $th->getMessage()]);
+        }
     }
 }

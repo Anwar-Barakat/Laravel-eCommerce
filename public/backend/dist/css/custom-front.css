@@ -1,0 +1,9 @@
+.position-absolute {
+    position: absolute;
+    background-size: cover;
+}
+
+img {
+    object-fit: cover;
+    max-width: 100%;
+}

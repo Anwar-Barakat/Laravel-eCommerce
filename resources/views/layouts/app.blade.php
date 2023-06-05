@@ -8,6 +8,7 @@
     <meta name="author" content="">
     <link href="images/favicon.png" rel="shortcut icon">
     <title>@yield('pageTitle')</title>
+    @vite('resources/css/app.css')
 
     @include('frontend.layouts.inc.head')
 </head>

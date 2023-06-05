@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Banner;
 use App\Models\Banner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class BannerController extends Controller
 {
@@ -61,6 +62,14 @@ class BannerController extends Controller
      */
     public function destroy(Banner $banner)
     {
-        //
+        try {
+            $banner->clearMediaCollection('banners');
+            Media::where(['model_id' => $banner->id, 'collection_name' => 'banners'])->delete();
+            $banner->delete();
+            toastr()->info(__('msgs.deleted', ['name' => __('product.banner')]));
+            return back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error', $th->getMessage()]);
+        }
     }
 }
