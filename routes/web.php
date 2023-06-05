@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\Home\HomeController;
+use App\Http\Controllers\Frontend\Shop\ShopController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -22,10 +23,6 @@ Route::group(
         'middleware'    => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        Route::get('/', function () {
-            return view('components.front.app-layout');
-        });
-
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->middleware(['auth', 'verified'])->name('dashboard');
@@ -38,6 +35,8 @@ Route::group(
 
         require __DIR__ . '/auth.php';
 
-        Route::get('home',              [HomeController::class, 'index'])->name('frontend.home');
+        Route::get('/',                 [HomeController::class, 'index'])->name('frontend.home');
+
+        Route::get('/shop',             [ShopController::class, 'index'])->name('frontend.shop');
     }
 );
