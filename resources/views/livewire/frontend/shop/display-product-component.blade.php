@@ -5,21 +5,27 @@
                  <div class="shop-p">
                      <div class="shop-p__toolbar u-s-m-b-30">
                          <div class="shop-p__meta-wrap u-s-m-b-60">
-                             <span class="shop-p__meta-text-1">{{ __('frontend.found') }} {{ $products->count() ?? 0 }} {{ __('frontend.results') }}</span>
+
+                             <span class="shop-p__meta-text-1">FOUND 18 RESULTS</span>
                              <div class="shop-p__meta-text-2">
-                                 @if ($category->subCategories->count() > 0)
-                                     <span>{{ __('frontend.related_searches') }}:</span>
-                                     @foreach ($category->subCategories as $sub)
-                                         <a class="gl-tag btn--e-brand-shadow" href="{{ route('frontend.category.products', ['url' => $sub->url]) }}">{{ $sub->name }}</a>
-                                     @endforeach
-                                 @endif
+
+                                 <span>Related Searches:</span>
+
+                                 <a class="gl-tag btn--e-brand-shadow" href="#">men's clothing</a>
+
+                                 <a class="gl-tag btn--e-brand-shadow" href="#">mobiles & tablets</a>
+
+                                 <a class="gl-tag btn--e-brand-shadow" href="#">books & audible</a>
                              </div>
                          </div>
                          <div class="shop-p__tool-style">
                              <div class="tool-style__group u-s-m-b-8">
-                                 <span class="js-shop-filter-target" data-side="#side-filter">{{ __('product.filters') }}</span>
-                                 <span class="js-shop-grid-target">{{ __('frontend.grid') }}</span>
-                                 <span class="js-shop-list-target is-active">{{ __('frontend.list') }}</span>
+
+                                 <span class="js-shop-filter-target" data-side="#side-filter">Filters</span>
+
+                                 <span class="js-shop-grid-target">Grid</span>
+
+                                 <span class="js-shop-list-target is-active">List</span>
                              </div>
                              <form>
                                  <div class="tool-style__form-wrap">
@@ -106,21 +112,27 @@
                          </div>
                      </div>
                      <div class="u-s-p-y-60">
+
                          <!--====== Pagination ======-->
                          <ul class="shop-p__pagination">
                              <li class="is-active">
+
                                  <a href="shop-list-full.html">1</a>
                              </li>
                              <li>
+
                                  <a href="shop-list-full.html">2</a>
                              </li>
                              <li>
+
                                  <a href="shop-list-full.html">3</a>
                              </li>
                              <li>
+
                                  <a href="shop-list-full.html">4</a>
                              </li>
                              <li>
+
                                  <a class="fas fa-angle-right" href="shop-list-full.html"></a>
                              </li>
                          </ul>
