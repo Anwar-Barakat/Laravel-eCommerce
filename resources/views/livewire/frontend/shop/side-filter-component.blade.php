@@ -23,14 +23,14 @@
                                                 <ul style="display:block">
                                                     @foreach ($section->categories as $category)
                                                         <li class="{{ $category->subCategories->count() > 0 ? 'has-list' : '' }}">
-                                                            <a href="#">{{ $category->name }}</a>
+                                                            <a href="{{ route('frontend.category.products', ['url' => $category->url]) }}">{{ $category->name }}</a>
                                                             <span class="category-list__text u-s-m-l-6">({{ $category->products->count() ?? 0 }})</span>
                                                             @if ($category->subCategories->count() > 0)
                                                                 <span class="js-shop-category-span fas fa-plus u-s-m-l-6"></span>
                                                                 <ul>
                                                                     @foreach ($category->subCategories as $sub)
                                                                         <li>
-                                                                            <a href="#">{{ $sub->name }}</a>
+                                                                            <a href="{{ route('frontend.category.products', ['url' => $sub->url]) }}">{{ $sub->name }}</a>
                                                                         </li>
                                                                     @endforeach
                                                                 </ul>

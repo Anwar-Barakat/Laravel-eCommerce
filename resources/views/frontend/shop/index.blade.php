@@ -1,13 +1,10 @@
 <x-app-layout>
-    @section('pageTitle', __('msgs.create', ['name' => __('category.category')]))
-    @section('breadcrumbTitle', __('msgs.create', ['name' => __('category.category')]))
-    @section('breadcrumbSubtitle', __('category.categories'))
-
-
+    @section('pageTitle', __('frontend.page_of', ['name' => __('frontend.shop')]))
+    @section('breadcrumbTitle', __('frontend.page_of', ['name' => __('frontend.shop')]))
+    @section('breadcrumbSubtitle', __('frontend.page_of', ['name' => __('frontend.shop')]))
 
     <!--====== App Content ======-->
     <div class="app-content">
-
         <!--====== Section 1 ======-->
         <div class="u-s-p-y-90">
             <div class="container">

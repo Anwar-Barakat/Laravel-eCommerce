@@ -40,6 +40,6 @@ Route::group(
 
         Route::get('/shop',             [ShopController::class, 'index'])->name('frontend.shop');
 
-        Route::get('shop/{url}',        CategoryProductController::class)->name('frontend.category.products');
+        Route::get('/{url}',        CategoryProductController::class)->name('frontend.category.products');
     }
 );
