@@ -16,7 +16,7 @@ class CategoryProductComponent extends Component
 
     public function mount($url)
     {
-        $this->category = Category::with('subCategories:id,name,url')->select('id', 'name', 'url')->where('url', $url)->first();
+        $this->category = Category::with('subCategories:id,name,url,description', 'parentCategory:id,name,url')->select('id', 'name', 'url', 'description', 'parent_id')->where('url', $url)->first();
         if (!$this->category)
             return redirect()->back();
 
@@ -27,7 +27,7 @@ class CategoryProductComponent extends Component
 
     public function render()
     {
-        $products = Product::with(['category'])
+        $products = Product::with(['category:id,name', 'brand:id,name'])
             ->whereIn('category_id', $this->sub_cats)->paginate(CUSTOMPAGINATION);
 
         return view('livewire.frontend.shop.category-product-component', ['products' => $products]);

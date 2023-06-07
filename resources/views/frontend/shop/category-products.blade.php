@@ -8,8 +8,12 @@
     @section('breadcrumbTitle', __('frontend.products_of', ['name' => $category->name]))
     @section('breadcrumbSubtitle', __('frontend.products_of', ['name' => $category->name]))
 
+
+
+
     <!--====== App Content ======-->
     <div class="app-content">
+
         <!--====== Section 1 ======-->
         @livewire('frontend.shop.category-product-component', ['url' => $url])
         <!--====== End - Section 1 ======-->

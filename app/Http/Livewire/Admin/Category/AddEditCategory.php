@@ -82,7 +82,7 @@ class AddEditCategory extends Component
                 Rule::unique('categories', 'name->en')->ignore($this->category->id)
             ],
             'category.is_active'        => ['required', 'boolean'],
-            'category.discount'         => ['required', 'numeric', 'between:1,50'],
+            'category.discount'         => ['required', 'numeric', 'between:0,50'],
             'category.parent_id'        => ['required', 'integer'],
             'category.section_id'       => ['required', 'integer'],
             'category.description'      => ['required', 'min:10'],

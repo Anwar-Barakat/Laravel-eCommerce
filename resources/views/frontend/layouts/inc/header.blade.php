@@ -1064,30 +1064,12 @@
                                 <span class="js-menu-toggle"></span>
                                 <ul style="width:170px">
                                     <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                        <a>Home<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-
-                                        <!--====== Dropdown ======-->
-
-                                        <span class="js-menu-toggle"></span>
-                                        <ul style="width:118px">
-                                            <li>
-
-                                                <a href="index.html">Home 1</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="index-2.html">Home 2</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="index-3.html">Home 3</a>
-                                            </li>
-                                        </ul>
-                                        <!--====== End - Dropdown ======-->
+                                        <a href="{{ route('frontend.home') }}">{{ __('frontend.home') }}</a>
                                     </li>
                                     <li class="has-dropdown has-dropdown--ul-left-100">
-
+                                        <a href="{{ route('frontend.shop') }}">{{ __('frontend.shop') }}</a>
+                                    </li>
+                                    <li class="has-dropdown has-dropdown--ul-left-100">
                                         <a>Account<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
 
                                         <!--====== Dropdown ======-->

@@ -12,7 +12,7 @@ class DisplayProductComponent extends Component
 
     public function render()
     {
-        $products = Product::with(['category:id,name'])
+        $products = Product::with(['category:id,name,description', 'brand:id,name'])
             ->paginate(CUSTOMPAGINATION);
 
         return view('livewire.frontend.shop.display-product-component', ['products' => $products]);
