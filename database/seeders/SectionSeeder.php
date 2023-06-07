@@ -17,33 +17,45 @@ class SectionSeeder extends Seeder
         $admin      = Admin::select('id')->where('email', 'admin@admin.com')->first();
         $sections   = [
             [
+                'id'            => 1,
                 'name'          => [
-                    'en'        => 'Men',
-                    'ar'        => "رجال",
+                    'en'        => 'Electronics',
+                    'ar'        => "الألكترونيات",
                 ],
             ],
             [
+                'id'            => 2,
                 'name'          => [
-                    'en'        => 'Women',
-                    'ar'        => 'نساء',
+                    'en'        => 'Men\'s Clothing',
+                    'ar'        => "ملابس رجالية",
                 ],
             ],
             [
+                'id'            => 3,
                 'name'          => [
-                    'en'        => 'Appliances',
-                    'ar'        => 'أجهزة وأدوات',
+                    'en'        => 'Women\'s Clothing',
+                    'ar'        => 'ملابس نسائية',
                 ],
             ],
             [
+                'id'            => 4,
                 'name'          => [
-                    'en'        => 'Foods',
-                    'ar'        => 'طعام',
+                    'en'        => 'Food & Supplies',
+                    'ar'        => 'طعام و اللوازم',
                 ],
             ],
             [
+                'id'            => 5,
                 'name'          => [
-                    'en'        => 'Houseware',
-                    'ar'        => 'الأدوات المنزلية',
+                    'en'        => 'Furniture & Decor',
+                    'ar'        => 'الأثاث المنزلي',
+                ],
+            ],
+            [
+                'id'            => 6,
+                'name'          => [
+                    'en'        => 'Sports & Game',
+                    'ar'        => 'الرياضات والألعاب',
                 ],
             ],
         ];

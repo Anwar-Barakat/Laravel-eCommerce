@@ -3,7 +3,6 @@
         <div class="shop-a__inner gl-scroll">
             <div class="shop-w-master">
                 <h1 class="shop-w-master__heading u-s-m-b-30"><i class="fas fa-filter u-s-m-r-8"></i>
-
                     <span>{{ __('frontend.filters') }}</span>
                 </h1>
                 <div class="shop-w-master__sidebar">
@@ -30,7 +29,7 @@
                                                                 <ul>
                                                                     @foreach ($category->subCategories as $sub)
                                                                         <li>
-                                                                            <a href="{{ route('frontend.category.products', ['url' => $sub->url]) }}">{{ $sub->name }}</a>
+                                                                            <a href="{{ route('frontend.category.products', ['url' => $sub->url]) }}">{{ $sub->name }} ({{ $sub->products->count() ?? 0 }})</a>
                                                                         </li>
                                                                     @endforeach
                                                                 </ul>

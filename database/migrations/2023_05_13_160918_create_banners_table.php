@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('link');
-            $table->boolean('type')->comment('0 => slider, 1 => fixed');
+            $table->boolean('type')->default(0)->comment('0 => slider, 1 => fixed');
             $table->boolean('is_active')->default('1');
             $table->timestamps();
         });

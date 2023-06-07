@@ -13,7 +13,7 @@ class BrandSeeder extends Seeder
      */
     public function run(): void
     {
-        $brands = ['Nike', 'Arrow', 'Gap', 'Lee', 'Samsung', 'Apple', 'MI', 'Lenovo', 'ASUS', 'DELL'];
+        $brands = ['Nike', 'Arrow', 'Gap', 'Lee', 'Samsung', 'Apple', 'MI', 'Lenovo', 'ASUS', 'DELL', 'Cannon', 'Nikon'];
 
         foreach ($brands as $brand) {
             if (is_null(Brand::where('name', $brand)->first()))

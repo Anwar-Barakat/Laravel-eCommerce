@@ -253,7 +253,6 @@
                                                 <div class="col-lg-3">
                                                     <ul>
                                                         <li class="mega-list-title">
-
                                                             <a href="shop-side-version-2.html">3D PRINTER & SUPPLIES</a>
                                                         </li>
                                                         <li>

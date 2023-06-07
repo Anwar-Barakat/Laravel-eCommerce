@@ -14,8 +14,8 @@ class FilterSeeder extends Seeder
      */
     public function run(): void
     {
-        $men_shirt_category     = Category::select('id')->where('url', 'men-shirts')->first();
-        $women_shirt_category   = Category::select('id')->where('url', 'women-shirts')->first();
+        $men_shirt_category     = Category::select('id')->where('url', 'men-t-shirts')->first();
+        $women_shirt_category   = Category::select('id')->where('url', 'women-t-shirts')->first();
 
         $filters = [
             [
