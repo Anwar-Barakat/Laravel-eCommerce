@@ -16,13 +16,13 @@ class CategoryProductComponent extends Component
 
     public function mount($url)
     {
-        $this->category = Category::with('subCategories:id,name,url,description', 'parentCategory:id,name,url')->select('id', 'name', 'url', 'description', 'parent_id')->where('url', $url)->first();
+        $this->category = Category::with('subCategories:id,name,url,description,parent_id', 'parentCategory:id,name,url')->select('id', 'name', 'url', 'description', 'parent_id')->where('url', $url)->first();
         if (!$this->category)
             return redirect()->back();
 
 
+        $this->sub_cats   = $this->category->subcategories->pluck('id');
         $this->sub_cats[]   = $this->category->id;
-        $this->sub_cats     += $this->category->subcategories->pluck('id')->toArray();
     }
 
     public function render()

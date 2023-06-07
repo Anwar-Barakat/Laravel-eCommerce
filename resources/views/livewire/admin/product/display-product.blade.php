@@ -78,12 +78,10 @@
                 </div>
             @endforelse
         </div>
-        @if ($products->count() > 10)
-            <div class="card p-3 mt-3 pb-0">
-                <div class="card-title m-0">
-                    {{ $products->links('pagination::bootstrap-5') }}
-                </div>
+        <div class="card p-3 mt-3 pb-0">
+            <div class="card-title m-0">
+                {{ $products->links('pagination::bootstrap-5') }}
             </div>
-        @endif
+        </div>
     </div>
 </div>

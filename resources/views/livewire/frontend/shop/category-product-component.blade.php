@@ -2,7 +2,6 @@
      <div class="u-s-p-y-90">
          <div class="container">
              <div class="row">
-
                  <div class="col-lg-12">
                      <div class="shop-p">
                          <div class="shop-p__toolbar u-s-m-b-30">
@@ -69,7 +68,8 @@
                                                  <option>Sort By: Best Rating</option>
                                                  <option>Sort By: Lowest Price</option>
                                                  <option>Sort By: Highest Price</option>
-                                             </select></div>
+                                             </select>
+                                         </div>
                                      </div>
                                  </form>
                              </div>
@@ -148,23 +148,7 @@
                      </div>
                      <div class="u-s-p-y-60">
                          <!--====== Pagination ======-->
-                         <ul class="shop-p__pagination">
-                             <li class="is-active">
-                                 <a href="shop-list-full.html">1</a>
-                             </li>
-                             <li>
-                                 <a href="shop-list-full.html">2</a>
-                             </li>
-                             <li>
-                                 <a href="shop-list-full.html">3</a>
-                             </li>
-                             <li>
-                                 <a href="shop-list-full.html">4</a>
-                             </li>
-                             <li>
-                                 <a class="fas fa-angle-right" href="shop-list-full.html"></a>
-                             </li>
-                         </ul>
+                         {{ $products->links() }}
                          <!--====== End - Pagination ======-->
                      </div>
                  </div>
