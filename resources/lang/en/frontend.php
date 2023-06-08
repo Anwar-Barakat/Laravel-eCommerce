@@ -31,4 +31,8 @@ return [
     'results'           => 'RESULTS',
     'related_searches'  => 'Related Searches',
     'add_to_card'       => 'Add to card',
+    'show'              => 'SHOW',
+    'sort_by'           => 'SORT BY',
+    'asc'               => 'ASC',
+    'desc'              => 'DESC'
 ];

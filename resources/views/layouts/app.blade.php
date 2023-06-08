@@ -11,6 +11,7 @@
     @vite('resources/css/app.css')
 
     @include('frontend.layouts.inc.head')
+    @livewireStyles
 </head>
 
 <body class="config">
@@ -367,7 +368,7 @@
 
     <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
     @include('frontend.layouts.inc.footer-scripts')
-
+    @livewireScripts
     <!--====== Noscript ======-->
     <noscript>
         <div class="app-setting">

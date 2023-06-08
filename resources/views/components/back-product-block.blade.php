@@ -20,7 +20,7 @@
              @endif
          </span>
          <h3 class="m-0 mb-1">
-             <a href="{{ route('admin.products.edit', ['product' => $product]) }}">{{ $product->name }}</a>
+             <a href="{{ route('admin.products.edit', ['product' => $product]) }}" title="{{ $product->name }}">{{ Str::limit($product->name, 25, '...') }}</a>
          </h3>
          <div class="text-muted">
              @php

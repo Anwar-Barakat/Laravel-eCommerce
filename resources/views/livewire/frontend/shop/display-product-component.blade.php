@@ -11,28 +11,30 @@
                                      <span class="js-shop-grid-target">Grid</span>
                                      <span class="js-shop-list-target is-active">List</span>
                                  </div>
-                                 <form>
-                                     <div class="tool-style__form-wrap">
-                                         <div class="u-s-m-b-8">
-                                             <select class="form-select-sm text-xs rounded-none">
-                                                 <option>Show: 8</option>
-                                                 <option selected>Show: 12</option>
-                                                 <option>Show: 16</option>
-                                                 <option>Show: 28</option>
-                                             </select>
-                                         </div>
-                                         <div class="u-s-m-b-8">
-                                             <select class="form-select-sm text-xs rounded-none">
-                                                 <option selected>Sort By: Newest Items</option>
-                                                 <option>Sort By: Latest Items</option>
-                                                 <option>Sort By: Best Selling</option>
-                                                 <option>Sort By: Best Rating</option>
-                                                 <option>Sort By: Lowest Price</option>
-                                                 <option>Sort By: Highest Price</option>
-                                             </select>
-                                         </div>
+                                 <div class="tool-style__form-wrap">
+                                     <div class="u-s-m-b-8">
+                                         <select class="form-select-sm text-xs rounded-none" wire:model='per_page'>
+                                             <option value="8">{{ __('frontend.show') }}: 8</option>
+                                             <option value="12">{{ __('frontend.show') }}: 12</option>
+                                             <option value="16">{{ __('frontend.show') }}: 16</option>
+                                             <option value="28">{{ __('frontend.show') }}: 28</option>
+                                         </select>
                                      </div>
-                                 </form>
+                                     <div class="u-s-m-b-8">
+                                         <select class="form-select-sm text-xs rounded-none" wire:model='order_by'>
+                                             <option value="created_at">{{ __('frontend.sort_by') }}: Newest Items</option>
+                                             <option value="name">{{ __('frontend.sort_by') }}: Name</option>
+                                             <option value="price">{{ __('frontend.sort_by') }}: Price</option>
+                                             <option value="is_best_seller">{{ __('frontend.sort_by') }}: Best Selling</option>
+                                         </select>
+                                     </div>
+                                     <div class="u-s-m-b-8">
+                                         <select class="form-select-sm text-xs rounded-none" wire:model='sort_by'>
+                                             <option value="asc">{{ __('frontend.asc') }}</option>
+                                             <option value="desc">{{ __('frontend.desc') }}</option>
+                                         </select>
+                                     </div>
+                                 </div>
                              </div>
                          </div>
                          <div class="shop-p__collection">
@@ -108,23 +110,7 @@
                          </div>
                          <div class="u-s-p-y-60">
                              <!--====== Pagination ======-->
-                             <ul class="shop-p__pagination">
-                                 <li class="is-active">
-                                     <a href="shop-list-full.html">1</a>
-                                 </li>
-                                 <li>
-                                     <a href="shop-list-full.html">2</a>
-                                 </li>
-                                 <li>
-                                     <a href="shop-list-full.html">3</a>
-                                 </li>
-                                 <li>
-                                     <a href="shop-list-full.html">4</a>
-                                 </li>
-                                 <li>
-                                     <a class="fas fa-angle-right" href="shop-list-full.html"></a>
-                                 </li>
-                             </ul>
+                             {{ $products->links() }}
                              <!--====== End - Pagination ======-->
                          </div>
                      </div>

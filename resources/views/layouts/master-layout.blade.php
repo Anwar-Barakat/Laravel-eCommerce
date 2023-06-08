@@ -9,7 +9,7 @@
     <title>@yield('pageTitle')</title>
     <!-- CSS files -->
     @include('layouts.inc.head')
-    <livewire:styles />
+    @livewireStyles
 </head>
 
 <body>
@@ -72,6 +72,7 @@
 
     <!-- Libs JS -->
     @include('layouts.inc.footer-scripts')
+    @livewireScripts
 </body>
 
 </html>
