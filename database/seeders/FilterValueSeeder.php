@@ -14,8 +14,9 @@ class FilterValueSeeder extends Seeder
      */
     public function run(): void
     {
-        $sleeve   = Filter::select('id')->where('name', 'Sleeve')->first();
-        $cotton   = Filter::select('id')->where('name', 'Cotton')->first();
+        $sleeve     = Filter::select('id')->where('name', 'Sleeve')->first();
+        $cotton     = Filter::select('id')->where('name', 'Cotton')->first();
+        $ram        = Filter::select('id')->where('name', 'RAM')->first();
 
         $filters_values = [
             [
@@ -45,6 +46,14 @@ class FilterValueSeeder extends Seeder
             [
                 'filter_id'     => $cotton->id,
                 'value'         => 'Durability',
+            ],
+            [
+                'filter_id'     => $ram->id,
+                'value'         => '4GB',
+            ],
+            [
+                'filter_id'     => $ram->id,
+                'value'         => '8GB',
             ],
 
         ];

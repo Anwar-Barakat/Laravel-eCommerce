@@ -14,24 +14,26 @@ class FilterSeeder extends Seeder
      */
     public function run(): void
     {
-        $men_shirt_category     = Category::select('id')->where('url', 'men-t-shirts')->first();
-        $women_shirt_category   = Category::select('id')->where('url', 'women-t-shirts')->first();
+        $men_shirt      = Category::select('id')->where('url', 'men-t-shirts')->first();
+        $women_shirt    = Category::select('id')->where('url', 'women-t-shirts')->first();
+        $women_blouses  = Category::select('id')->where('url', 'blouses-and-shirts')->first();
 
-        $filters = [
+        $mobile         = Category::select('id')->where('url', 'mobile-phones')->first();
+        $tablet         = Category::select('id')->where('url', 'tablets')->first();
+        $laptop         = Category::select('id')->where('url', 'laptops')->first();
+
+        $filters        = [
             [
-                'categories'    => [$men_shirt_category->id, $women_shirt_category->id],
+                'categories'    => [$men_shirt->id, $women_shirt->id, $women_blouses->id],
                 'name'          => 'Cotton',
-                'field'         => 'cotton',
             ],
             [
-                'categories'    => [$men_shirt_category->id, $women_shirt_category->id],
+                'categories'    => [$men_shirt->id, $women_shirt->id],
                 'name'          => 'Sleeve',
-                'field'         => 'sleeve',
             ],
             [
-                'categories'    => [$men_shirt_category->id, $women_shirt_category->id],
-                'name'          => 'Fiber',
-                'field'         => 'fiber',
+                'categories'    => [$mobile->id, $tablet->id, $laptop->id],
+                'name'          => 'RAM',
             ],
         ];
 

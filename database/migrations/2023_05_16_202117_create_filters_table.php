@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->mediumText('categories');
             $table->string('name')->unique();
-            $table->string('field');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

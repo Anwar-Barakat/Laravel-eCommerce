@@ -13,15 +13,14 @@ use Illuminate\Support\Str;
 
 class AddEditFilterForm extends Component
 {
-    public Filter $filtered;
+    public Filter $filter;
 
     public $categories = [];
 
     public function mount(Filter $filter)
     {
-        $this->filtered             = $filter;
-        $this->filtered->categories = $filter->categories ? array_combine($filter->categories, $filter->categories) : [];
-        $this->categories           = Category::select('id', 'name')->active()->orderBy('parent_id')->get();
+        $this->filter             = $filter;
+        $this->categories           = Category::with('subCategories:id,name,parent_id')->select('id', 'name', 'parent_id')->activeParent()->get();
     }
 
     public function updated($fields)
@@ -38,17 +37,11 @@ class AddEditFilterForm extends Component
     {
         $this->validate();
         try {
-            DB::beginTransaction();
+            $this->filter->save();
 
-            $this->filtered->field        = Str::slug(Str::lower($this->filtered->name), '_');
-            $this->filtered->categories   = array_values(array_filter($this->filtered->categories));
-            $this->filtered->save();
-
-            DB::commit();
             toastr()->success(__('msgs.submitted', ['name' => __('product.filter')]));
             return redirect()->route('admin.filters.index');
         } catch (\Throwable $th) {
-            DB::rollBack();
             return redirect()->route('admin.filters.index')->with(['error' => $th->getMessage()]);
         }
     }
@@ -56,10 +49,10 @@ class AddEditFilterForm extends Component
     public function rules()
     {
         return [
-            'filtered.name'           => ['required', 'string', 'regex:/^[a-zA-Z\s]+$/'],
-            'filtered.is_active'      => ['required', 'boolean'],
-            'filtered.categories'     => ['required', 'array'],
-            'filtered.categories.*'   => ['required', 'integer']
+            'filter.name'           => ['required', 'string', 'regex:/^[a-zA-Z\s]+$/'],
+            'filter.is_active'      => ['required', 'boolean'],
+            'filter.categories'     => ['required', 'array'],
+            'filter.categories.*'   => ['required', 'integer']
         ];
     }
 }
