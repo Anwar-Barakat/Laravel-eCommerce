@@ -88,7 +88,7 @@
                                  <div class="col-lg-3 col-md-4 col-sm-6">
                                      <div class="product-m">
                                          <div class="product-m__thumb">
-                                             <a class="aspect aspect--bg-grey aspect--square u-d-block" href="#">
+                                             <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('frontend.product.detail', ['product' => $product]) }}">
                                                  @if ($product->getFirstMediaUrl('products', 'medium'))
                                                      <img class="aspect__img" src="{{ $product->getFirstMediaUrl('products', 'medium') }}" alt="{{ $product->name }}">
                                                  @else

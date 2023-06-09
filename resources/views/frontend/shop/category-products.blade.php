@@ -20,9 +20,4 @@
     </div>
     <!--====== End - App Content ======-->
 
-    <!--====== Side Filters ======-->
-    @livewire('frontend.shop.side-filter-component')
-    <!--====== End - Side Filters ======-->
-
-
 </x-app-layout>

@@ -1,6 +1,6 @@
 <div class="product-o product-o--hover-on">
     <div class="product-o__wrap product-shadow">
-        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('frontend.product.detail', ['product' => $product]) }}">
             @if ($product->getFirstMediaUrl('products', 'small'))
                 <img class="aspect__img" src="{{ $product->getFirstMediaUrl('products', 'small') }}" alt="{{ $product->name }}">
             @else
