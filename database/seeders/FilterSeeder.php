@@ -25,15 +25,28 @@ class FilterSeeder extends Seeder
         $filters        = [
             [
                 'categories'    => [$men_shirt->id, $women_shirt->id, $women_blouses->id],
-                'name'          => 'Cotton',
+                'name'          => 'Fabric',
             ],
             [
-                'categories'    => [$men_shirt->id, $women_shirt->id],
+                'categories'    => [$men_shirt->id, $women_shirt->id, $women_blouses->id],
+                'name'          => 'Pattern',
+            ],
+            [
+                'categories'    => [$men_shirt->id, $women_shirt->id, $women_blouses->id],
                 'name'          => 'Sleeve',
             ],
+
             [
                 'categories'    => [$mobile->id, $tablet->id, $laptop->id],
                 'name'          => 'RAM',
+            ],
+            [
+                'categories'    => [$mobile->id, $tablet->id, $laptop->id],
+                'name'          => 'Screen Size',
+            ],
+            [
+                'categories'    => [$mobile->id, $tablet->id, $laptop->id],
+                'name'          => 'Operation Systen',
             ],
         ];
 

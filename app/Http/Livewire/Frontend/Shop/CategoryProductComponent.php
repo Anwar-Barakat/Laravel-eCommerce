@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Frontend\Shop;
 
 use App\Models\Category;
+use App\Models\Filter;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -11,6 +12,8 @@ class CategoryProductComponent extends Component
 {
     use WithPagination;
 
+    public $clearFilter = false;
+
     public $category,
         $sub_cats = [];
 
@@ -18,14 +21,18 @@ class CategoryProductComponent extends Component
         $sort_by    = 'asc',
         $per_page   = CUSTOMPAGINATION - 2;
 
+    public $filters;
+
     public function mount($url)
     {
         $this->category = Category::with('subCategories:id,name,url,description,parent_id', 'parentCategory:id,name,url')->select('id', 'name', 'url', 'description', 'parent_id')->where('url', $url)->first();
         if (!$this->category)
             return redirect()->back();
 
-        $this->sub_cats   = $this->category->subcategories->pluck('id');
+        $this->sub_cats     = $this->category->subcategories->pluck('id');
         $this->sub_cats[]   = $this->category->id;
+
+        $this->filters      = Filter::with(['filter_values'])->active()->get();
     }
 
     public function render()

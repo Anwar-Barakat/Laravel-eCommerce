@@ -15,38 +15,73 @@ class FilterValueSeeder extends Seeder
     public function run(): void
     {
         $sleeve     = Filter::select('id')->where('name', 'Sleeve')->first();
-        $cotton     = Filter::select('id')->where('name', 'Cotton')->first();
-        $ram        = Filter::select('id')->where('name', 'RAM')->first();
+        $fabric     = Filter::select('id')->where('name', 'Fabric')->first();
+        $pattern    = Filter::select('id')->where('name', 'Pattern')->first();
+
+        $ram            = Filter::select('id')->where('name', 'RAM')->first();
+        $screen_size    = Filter::select('id')->where('name', 'Screen Size')->first();
+        $operation_sys  = Filter::select('id')->where('name', 'Operation Systen')->first();
 
         $filters_values = [
             [
                 'filter_id'     => $sleeve->id,
-                'value'         => 'Full sleeve',
+                'value'         => 'Full Sleeve',
             ],
             [
                 'filter_id'     => $sleeve->id,
-                'value'         => '3/4 sleeve',
+                'value'         => '3/4 Sleeve',
             ],
             [
                 'filter_id'     => $sleeve->id,
-                'value'         => 'Cap sleeve',
+                'value'         => 'Half Sleeve',
             ],
             [
                 'filter_id'     => $sleeve->id,
-                'value'         => 'Short sleeve',
+                'value'         => 'Cap Sleeve',
+            ],
+            [
+                'filter_id'     => $sleeve->id,
+                'value'         => 'Short Sleeve',
             ],
             [
                 'filter_id'     => $sleeve->id,
                 'value'         => 'Sleeveless',
             ],
+            // _______________
             [
-                'filter_id'     => $cotton->id,
-                'value'         => 'Comfort',
+                'filter_id'     => $fabric->id,
+                'value'         => 'Cotton',
             ],
             [
-                'filter_id'     => $cotton->id,
-                'value'         => 'Durability',
+                'filter_id'     => $fabric->id,
+                'value'         => 'Polyester',
             ],
+            [
+                'filter_id'     => $fabric->id,
+                'value'         => 'Wool',
+            ],
+            // _______________
+            [
+                'filter_id'     => $pattern->id,
+                'value'         => 'Checked',
+            ],
+            [
+                'filter_id'     => $pattern->id,
+                'value'         => 'Plain',
+            ],
+            [
+                'filter_id'     => $pattern->id,
+                'value'         => 'Printed',
+            ],
+            [
+                'filter_id'     => $pattern->id,
+                'value'         => 'Self',
+            ],
+            [
+                'filter_id'     => $pattern->id,
+                'value'         => 'Solid',
+            ],
+            // _______________
             [
                 'filter_id'     => $ram->id,
                 'value'         => '4GB',
@@ -54,6 +89,44 @@ class FilterValueSeeder extends Seeder
             [
                 'filter_id'     => $ram->id,
                 'value'         => '8GB',
+            ],
+            // _______________
+            [
+                'filter_id'     => $operation_sys->id,
+                'value'         => 'IOS',
+            ],
+            [
+                'filter_id'     => $operation_sys->id,
+                'value'         => 'Android',
+            ],
+            [
+                'filter_id'     => $operation_sys->id,
+                'value'         => 'Windows Phone',
+            ],
+            // _______________
+            [
+                'filter_id'     => $screen_size->id,
+                'value'         => 'Up to 3.9 in',
+            ],
+            [
+                'filter_id'     => $screen_size->id,
+                'value'         => 'Up to 3.9 in',
+            ],
+            [
+                'filter_id'     => $screen_size->id,
+                'value'         => '4 to 4.4 in',
+            ],
+            [
+                'filter_id'     => $screen_size->id,
+                'value'         => '4.5 to 4.9 in',
+            ],
+            [
+                'filter_id'     => $screen_size->id,
+                'value'         => '5 to 5.4 in',
+            ],
+            [
+                'filter_id'     => $screen_size->id,
+                'value'         => '5.5 to 5.9 in',
             ],
 
         ];
