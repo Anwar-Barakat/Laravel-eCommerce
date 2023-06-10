@@ -15,7 +15,7 @@ class Cart extends Model
         'product_id',
         'size',
         'qty',
-        'grand_total',
+        'grand_price',
     ];
 
     public function product()

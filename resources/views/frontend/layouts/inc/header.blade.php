@@ -1069,6 +1069,9 @@
                                         <a href="{{ route('frontend.shop') }}">{{ __('frontend.shop') }}</a>
                                     </li>
                                     <li class="has-dropdown has-dropdown--ul-left-100">
+                                        <a href="{{ route('frontend.cart.index') }}">{{ __('frontend.cart') }}</a>
+                                    </li>
+                                    <li class="has-dropdown has-dropdown--ul-left-100">
                                         <a>Account<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
 
                                         <!--====== Dropdown ======-->

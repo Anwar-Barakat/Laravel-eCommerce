@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained()->cascadeOnUpdate();
             $table->string('size');
             $table->integer('qty');
-            $table->decimal('grand_total');
+            $table->decimal('grand_price');
             $table->timestamps();
         });
     }

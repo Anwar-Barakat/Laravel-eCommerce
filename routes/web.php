@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\Cart\CartController;
 use App\Http\Controllers\Frontend\Home\HomeController;
 use App\Http\Controllers\Frontend\ProductDetail\ProductDetailController;
 use App\Http\Controllers\Frontend\Shop\CategoryProductController;
@@ -37,12 +38,16 @@ Route::group(
 
         require __DIR__ . '/auth.php';
 
-        Route::get('/',                     [HomeController::class, 'index'])->name('frontend.home');
+        Route::as('frontend.')->group(function () {
+            Route::get('/',                     [HomeController::class, 'index'])->name('home');
 
-        Route::get('/shop',                 [ShopController::class, 'index'])->name('frontend.shop');
+            Route::get('/shop',                 [ShopController::class, 'index'])->name('shop');
 
-        Route::get('/{url}',                CategoryProductController::class)->name('frontend.category.products');
+            Route::get('/category/{url}',       CategoryProductController::class)->name('category.products');
 
-        Route::get('/product/{product}',    ProductDetailController::class)->name('frontend.product.detail');
+            Route::get('/product/{product}',    ProductDetailController::class)->name('product.detail');
+
+            Route::view('/cart',                'frontend.cart.index')->name('cart.index');
+        });
     }
 );
