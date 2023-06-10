@@ -3,7 +3,8 @@
 namespace App\Http\Livewire\Frontend\ProductDetail;
 
 use App\Models\Product;
-use App\Models\ProductAttribute;
+use App\Models\RecentlyViewedProduct;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class ProductDetailComponent extends Component
