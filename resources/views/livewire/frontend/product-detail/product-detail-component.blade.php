@@ -88,39 +88,28 @@
                              </ul>
                          </div>
                          <div class="u-s-m-b-15">
-                             <form class="pd-detail__form">
+                             <form class="pd-detail__form" wire:submit.prevent='addToCard'>
                                  <div class="u-s-m-b-15">
-
                                      <span class="pd-detail__label u-s-m-b-8">Color:</span>
                                      <div class="pd-detail__color">
                                          <div class="color__radio">
-
                                              <input type="radio" id="jet" name="color" checked>
-
                                              <label class="color__radio-label" for="jet" style="background-color: #333333"></label>
                                          </div>
                                          <div class="color__radio">
-
                                              <input type="radio" id="folly" name="color">
-
                                              <label class="color__radio-label" for="folly" style="background-color: #FF0055"></label>
                                          </div>
                                          <div class="color__radio">
-
                                              <input type="radio" id="yellow" name="color">
-
                                              <label class="color__radio-label" for="yellow" style="background-color: #FFFF00"></label>
                                          </div>
                                          <div class="color__radio">
-
                                              <input type="radio" id="granite-gray" name="color">
-
                                              <label class="color__radio-label" for="granite-gray" style="background-color: #605F5E"></label>
                                          </div>
                                          <div class="color__radio">
-
                                              <input type="radio" id="space-cadet" name="color">
-
                                              <label class="color__radio-label" for="space-cadet" style="background-color: #1D3461"></label>
                                          </div>
                                      </div>
@@ -140,23 +129,20 @@
                                          </div>
                                      </div>
                                  @endif
+
+
                                  <div class="pd-detail-inline-2">
                                      <div class="u-s-m-b-15">
-
                                          <!--====== Input Counter ======-->
                                          <div class="input-counter">
-
-                                             <span class="input-counter__minus fas fa-minus"></span>
-
-                                             <input class="input-counter__text input-counter--text-primary-style" type="text" value="1" data-min="1" data-max="1000">
-
-                                             <span class="input-counter__plus fas fa-plus"></span>
+                                             <span class="input-counter__minus fas fa-minus cursor-pointer" wire:click="decreaseQty"></span>
+                                             <input class="input-counter__text input-counter--text-primary-style" type="text" value="1" data-min="1" data-max="100" wire:model='qty'>
+                                             <span class="input-counter__plus fas fa-plus cursor-pointer" wire:click="increaseQty"></span>
                                          </div>
                                          <!--====== End - Input Counter ======-->
                                      </div>
                                      <div class="u-s-m-b-15">
-
-                                         <button class="btn btn--e-brand-b-2" type="submit">{{ __('frontend.add_to_card') }}</button>
+                                         <button class="btn btn--e-brand-b-2" type="submit" w>{{ __('frontend.add_to_card') }}</button>
                                      </div>
                                  </div>
                              </form>
