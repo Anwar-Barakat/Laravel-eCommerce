@@ -11,12 +11,12 @@ class AddEditAttribute extends Component
 {
     public Product $product;
 
-    public ProductAttribute $attribute;
+    public $attribute;
 
     public function mount(Product $product, ProductAttribute $attribute)
     {
         $this->product      = $product;
-        $this->attribute    = $attribute;
+        $this->attribute    = $attribute ?? ProductAttribute::make();
     }
 
     public function updated($fields)
@@ -37,6 +37,7 @@ class AddEditAttribute extends Component
             $this->attribute->save();
             toastr()->success(__('msgs.created', ['name' => __('product.product_attribute')]));
             $this->reset('attribute');
+            $this->attribute = new ProductAttribute();
         } catch (\Throwable $th) {
             return redirect()->route('admin.product.attributes.create', ['product' => $this->product])->with(['error' => $th->getMessage()]);
         }

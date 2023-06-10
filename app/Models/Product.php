@@ -106,4 +106,9 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsTo(Brand::class, 'brand_id');
     }
+
+    public function attributes()
+    {
+        return $this->hasMany(ProductAttribute::class);
+    }
 }

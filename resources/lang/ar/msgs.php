@@ -55,6 +55,7 @@ return [
     'no'                    => 'لا',
     'added_by'              => 'أُضيفت من قبل',
     'photo'                 => 'الصورة',
+    'video'                 => 'الفيديو',
     'descriprion'           => 'الوصف',
     'attachements'          => 'المرفقات',
     'notes'                 => 'ملاحظات',

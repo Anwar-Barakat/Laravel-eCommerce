@@ -210,6 +210,11 @@
                               <x-text-input type="file" class="form-control" wire:model.defer='image' />
                               <x-input-error :messages="$errors->get('image')" class="mt-2" />
                           </div>
+                          <div class="col-12 col-md-6 col-lg-4">
+                              <x-input-label class="form-label" :value="__('msgs.video')" />
+                              <x-text-input type="file" class="form-control" wire:model.defer='video' />
+                              <x-input-error :messages="$errors->get('video')" class="mt-2" />
+                          </div>
                       </div>
                   </div>
                   <div class="card-footer text-end">

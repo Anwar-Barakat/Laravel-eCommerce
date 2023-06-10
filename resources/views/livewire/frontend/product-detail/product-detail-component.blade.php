@@ -4,68 +4,12 @@
      <div class="u-s-p-t-90">
          <div class="container">
              <div class="row">
-                 <div class="col-lg-5">
 
-                     <!--====== Product Breadcrumb ======-->
-                     <div class="pd-breadcrumb u-s-m-b-30">
-                         <ul class="pd-breadcrumb__list">
-                             <li class="has-separator">
-                                 <a href="{{ route('frontend.home') }}">{{ __('frontend.home') }}</a>
-                             </li>
-                             @if ($product->category->parent_id == 0)
-                                 <li class="is-marked">
-                                     <a href="{{ route('frontend.category.products', ['url' => $product->category->url]) }}">
-                                         {{ $product->category->name }}
-                                     </a>
-                                 </li>
-                             @else
-                                 <li class="has-separator">
-                                     <a href="{{ route('frontend.category.products', ['url' => $product->category->parentCategory->url]) }}">
-                                         {{ $product->category->parentCategory->name }}
-                                     </a>
-                                 </li>
-                                 <li class="is-marked">
-                                     <a href="javascript:;">
-                                         {{ $product->category->name }}
-                                     </a>
-                                 </li>
-                             @endif
-                         </ul>
-                     </div>
-                     <!--====== End - Product Breadcrumb ======-->
-
-
-                     <!--====== Product Detail Zoom ======-->
-                     <div class="pd u-s-m-b-30">
-                         <div class="slider-fouc pd-wrap">
-                             <div id="pd-o-initiate">
-                                 @foreach ($product->getMedia('product_attachments') as $key => $attachment)
-                                     <div class="pd-o-img-wrap" data-src="{{ $attachment->getUrl('large') }}">
-                                         <img class="u-img-fluid" src="{{ $attachment->getUrl('large') }}" data-zoom-image="{{ $attachment->getUrl('large') }}" alt="">
-                                     </div>
-                                 @endforeach
-                             </div>
-                         </div>
-                         <div class="u-s-m-t-15">
-                             <div class="slider-fouc">
-                                 <div id="pd-o-thumbnail">
-                                     @foreach ($product->getMedia('product_attachments') as $key => $attachment)
-                                         <div>
-                                             <img class="u-img-fluid" alt="{{ $attachment->getUrl('large') }}" src="{{ $attachment->getUrl('large') }}">
-                                         </div>
-                                     @endforeach
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                     <!--====== End - Product Detail Zoom ======-->
-                 </div>
+                 @livewire('frontend.product-detail.product-detail-fixed-side', ['product' => $product])
                  <div class="col-lg-7">
-
                      <!--====== Product Right Side Details ======-->
                      <div class="pd-detail">
                          <div>
-
                              <span class="pd-detail__name">{{ $product->name }}</span>
                          </div>
                          <div>
@@ -81,47 +25,42 @@
                                          <span class="pd-detail__price">${{ $product->price }}</span>
                                      @endif
                                  @endisset
-
                              </div>
                          </div>
                          <div class="u-s-m-b-15">
                              <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
                                  <span class="pd-detail__review u-s-m-l-4">
-
-                                     <a data-click-scroll="#view-review">23 Reviews</a></span>
+                                     <a data-click-scroll="#view-review">23 Reviews</a>
+                                 </span>
                              </div>
                          </div>
                          <div class="u-s-m-b-15">
                              <div class="pd-detail__inline">
-
-                                 <span class="pd-detail__stock">200 in stock</span>
-
-                                 <span class="pd-detail__left">Only 2 left</span>
+                                 @if ($total_stock > 0)
+                                     <span class="pd-detail__stock">{{ __('frontend.in_stock') }}</span>
+                                     <span class="pd-detail__left">{{ __('frontend.only') }} {{ $total_stock }} {{ __('frontend.left') }}</span>
+                                 @else
+                                     <span class="pd-detail__left">{{ __('frontend.out_of_stock') }}</span>
+                                 @endif
                              </div>
                          </div>
                          <div class="u-s-m-b-15">
-
-                             <span class="pd-detail__preview-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+                             <span class="pd-detail__preview-desc">{{ Str::limit($product->description, 220, '...') }}</span>
                          </div>
                          <div class="u-s-m-b-15">
                              <div class="pd-detail__inline">
-
                                  <span class="pd-detail__click-wrap"><i class="far fa-heart u-s-m-r-6"></i>
-
                                      <a href="signin.html">Add to Wishlist</a>
-
-                                     <span class="pd-detail__click-count">(222)</span></span>
+                                     <span class="pd-detail__click-count">(222)</span>
+                                 </span>
                              </div>
                          </div>
                          <div class="u-s-m-b-15">
                              <div class="pd-detail__inline">
-
                                  <span class="pd-detail__click-wrap"><i class="far fa-envelope u-s-m-r-6"></i>
-
                                      <a href="signin.html">Email me When the price drops</a>
-
-                                     <span class="pd-detail__click-count">(20)</span></span>
+                                     <span class="pd-detail__click-count">(20)</span>
+                                 </span>
                              </div>
                          </div>
                          <div class="u-s-m-b-15">
@@ -186,48 +125,19 @@
                                          </div>
                                      </div>
                                  </div>
-                                 <div class="u-s-m-b-15">
-
-                                     <span class="pd-detail__label u-s-m-b-8">Size:</span>
-                                     <div class="pd-detail__size">
-                                         <div class="size__radio">
-
-                                             <input type="radio" id="xs" name="size" checked>
-
-                                             <label class="size__radio-label" for="xs">XS</label>
-                                         </div>
-                                         <div class="size__radio">
-
-                                             <input type="radio" id="small" name="size">
-
-                                             <label class="size__radio-label" for="xxl">Small</label>
-                                         </div>
-                                         <div class="size__radio">
-
-                                             <input type="radio" id="medium" name="size">
-
-                                             <label class="size__radio-label" for="medium">Medium</label>
-                                         </div>
-                                         <div class="size__radio">
-
-                                             <input type="radio" id="large" name="size">
-
-                                             <label class="size__radio-label" for="xxl">Large</label>
-                                         </div>
-                                         <div class="size__radio">
-
-                                             <input type="radio" id="xl" name="size">
-
-                                             <label class="size__radio-label" for="xl">XL</label>
-                                         </div>
-                                         <div class="size__radio">
-
-                                             <input type="radio" id="xxl" name="size">
-
-                                             <label class="size__radio-label" for="xxl">XXL</label>
+                                 @if ($product->attributes->count() > 0)
+                                     <div class="u-s-m-b-15">
+                                         <span class="pd-detail__label u-s-m-b-8">{{ __('product.size') }}:</span>
+                                         <div class="pd-detail__size">
+                                             @foreach ($product->attributes as $key => $attr)
+                                                 <div class="size__radio">
+                                                     <input type="radio" id="{{ $attr->size }}" value="{{ $attr->size }}" name="size" wire:model='size'>
+                                                     <label class="size__radio-label" for="{{ $attr->size }}">{{ $attr->size }}</label>
+                                                 </div>
+                                             @endforeach
                                          </div>
                                      </div>
-                                 </div>
+                                 @endif
                                  <div class="pd-detail-inline-2">
                                      <div class="u-s-m-b-15">
 
@@ -244,7 +154,7 @@
                                      </div>
                                      <div class="u-s-m-b-15">
 
-                                         <button class="btn btn--e-brand-b-2" type="submit">Add to Cart</button>
+                                         <button class="btn btn--e-brand-b-2" type="submit">{{ __('frontend.add_to_card') }}</button>
                                      </div>
                                  </div>
                              </form>
@@ -283,18 +193,15 @@
                          <div class="u-s-m-b-30">
                              <ul class="nav pd-tab__list">
                                  <li class="nav-item">
-
-                                     <a class="nav-link" data-toggle="tab" href="#pd-desc">DESCRIPTION</a>
+                                     <a class="nav-link" data-toggle="tab" href="#pd-desc">{{ __('frontend.description') }}</a>
                                  </li>
                                  <li class="nav-item">
-
                                      <a class="nav-link" data-toggle="tab" href="#pd-tag">TAGS</a>
                                  </li>
                                  <li class="nav-item">
-
-                                     <a class="nav-link active" id="view-review" data-toggle="tab" href="#pd-rev">REVIEWS
-
-                                         <span>(23)</span></a>
+                                     <a class="nav-link active" id="view-review" data-toggle="tab" href="#pd-rev">{{ __('frontend.reviews') }}
+                                         <span>(23)</span>
+                                     </a>
                                  </li>
                              </ul>
                          </div>
@@ -303,27 +210,6 @@
                              <!--====== Tab 1 ======-->
                              <div class="tab-pane" id="pd-desc">
                                  <div class="pd-tab__desc">
-                                     <div class="u-s-m-b-15">
-                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
-                                             Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                     </div>
-                                     <div class="u-s-m-b-30"><iframe src="https://www.youtube.com/embed/qKqSBm07KZk" allowfullscreen></iframe></div>
-                                     <div class="u-s-m-b-30">
-                                         <ul>
-                                             <li><i class="fas fa-check u-s-m-r-8"></i>
-
-                                                 <span>Buyer Protection.</span>
-                                             </li>
-                                             <li><i class="fas fa-check u-s-m-r-8"></i>
-
-                                                 <span>Full Refund if you don't receive your order.</span>
-                                             </li>
-                                             <li><i class="fas fa-check u-s-m-r-8"></i>
-
-                                                 <span>Returns accepted if product not as described.</span>
-                                             </li>
-                                         </ul>
-                                     </div>
                                      <div class="u-s-m-b-15">
                                          <h4>PRODUCT INFORMATION</h4>
                                      </div>
@@ -379,17 +265,34 @@
                              <!--====== Tab 2 ======-->
                              <div class="tab-pane" id="pd-tag">
                                  <div class="pd-tab__tag">
-                                     <h2 class="u-s-m-b-15">ADD YOUR TAGS</h2>
                                      <div class="u-s-m-b-15">
-                                         <form>
+                                         <p>{{ $product->description }}</p>
 
-                                             <input class="input-text input-text--primary-style" type="text">
-
-                                             <button class="btn btn--e-brand-b-2" type="submit">ADD TAGS</button>
-                                         </form>
                                      </div>
+                                     <div class="u-s-m-b-30"><iframe src="https://www.youtube.com/embed/qKqSBm07KZk" allowfullscreen></iframe></div>
+                                     <div class="u-s-m-b-30">
+                                         <ul>
+                                             <li><i class="fas fa-check u-s-m-r-8"></i>
+                                                 <span>Buyer Protection.</span>
+                                             </li>
+                                             <li><i class="fas fa-check u-s-m-r-8"></i>
+                                                 <span>Full Refund if you don't receive your order.</span>
+                                             </li>
+                                             <li><i class="fas fa-check u-s-m-r-8"></i>
 
-                                     <span class="gl-text">Use spaces to separate tags. Use single quotes (') for phrases.</span>
+                                                 <span>Returns accepted if product not as described.</span>
+                                             </li>
+                                         </ul>
+                                     </div>
+                                     <div class="u-s-m-b-30">
+                                         @if ($product->getFirstMediaUrl('product_video'))
+                                             <video width="700" class="img img-thumbnail mb-4" controls>
+                                                 <source src="{{ $product->getFirstMediaUrl('product_video') }}" type="video/mp4" class="img img-thumbnail">
+                                                 <source src="{{ $product->getFirstMediaUrl('product_video') }}" type="video/ogg" class="img img-thumbnail">
+                                                 Browser Error
+                                             </video>
+                                         @endif
+                                     </div>
                                  </div>
                              </div>
                              <!--====== End - Tab 2 ======-->

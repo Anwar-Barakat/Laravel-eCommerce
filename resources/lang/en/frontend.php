@@ -34,5 +34,17 @@ return [
     'show'              => 'SHOW',
     'sort_by'           => 'SORT BY',
     'asc'               => 'ASC',
-    'desc'              => 'DESC'
+    'desc'              => 'DESC',
+
+
+    // -------------------------------
+    // Product Detail Page
+    // -------------------------------
+    'in_stock'          => 'In Stock',
+    'out_of_stock'      => 'Out of Stock',
+    'left'              => 'Left',
+    'only'              => 'Only',
+    'description'       => 'DESCRIPTION',
+    'reviews'           => 'REVIEWS',
+    'specifications'    => 'SPECIFICATIONS',
 ];

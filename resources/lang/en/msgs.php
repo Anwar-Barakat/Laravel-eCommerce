@@ -66,6 +66,7 @@ return [
     'not_active'            => 'Not active',
     'added_by'              => 'Added by',
     'photo'                 => 'Photo',
+    'video'                 => 'Video',
     'descriprion'           => 'Description',
     'attachements'          => 'Attachements',
     'notes'                 => 'Notes',

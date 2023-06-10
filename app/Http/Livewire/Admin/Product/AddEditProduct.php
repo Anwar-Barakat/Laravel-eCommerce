@@ -16,7 +16,8 @@ class AddEditProduct extends Component
 
     public Product $product;
 
-    public $image, $name_ar, $name_en;
+    public $image, $video,
+        $name_ar, $name_en;
 
     public $categories = [];
 
@@ -69,6 +70,11 @@ class AddEditProduct extends Component
                 $this->product->addMedia($this->image)->toMediaCollection('products');
             }
 
+            if ($this->video) {
+                $this->product->clearMediaCollection('product_video');
+                $this->product->addMedia($this->video)->toMediaCollection('product_video');
+            }
+
             toastr()->success(__('msgs.submitted', ['name' => __('product.product')]));
             return redirect()->route('admin.products.index');
         } catch (\Throwable $th) {
@@ -112,12 +118,6 @@ class AddEditProduct extends Component
             'product.meta_keywords'     => ['required', 'min:10'],
             'product.is_featured'       => ['required', 'boolean'],
             'product.is_best_seller'    => ['required', 'boolean'],
-
         ];
     }
 }
-
-/*
-    Arithmatics operations :
-    + addition
-*/
