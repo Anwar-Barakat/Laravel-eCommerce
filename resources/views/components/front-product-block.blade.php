@@ -25,10 +25,10 @@
         </div>
     </div>
     <span class="product-o__category">
-        <a href="">{{ $product->category->name }}</a>
+        <a href="{{ route('frontend.category.products', ['url' => $product->category->url]) }}">{{ $product->category->name }}</a>
     </span>
     <span class="product-o__name">
-        <a href="product-detail.html">{{ $product->name }}</a>
+        <a href="{{ route('frontend.product.detail', ['product' => $product]) }}">{{ Str::limit($product->name, 30, '..') }}</a>
     </span>
     <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
         <span class="product-o__review">(0)</span>

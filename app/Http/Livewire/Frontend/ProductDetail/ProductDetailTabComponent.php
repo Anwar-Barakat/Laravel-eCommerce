@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Frontend\ProductDetail;
 use App\Models\Product;
 use Livewire\Component;
 
-class ProductDetailFixedSide extends Component
+class ProductDetailTabComponent extends Component
 {
     public Product $product;
 
@@ -16,6 +16,6 @@ class ProductDetailFixedSide extends Component
 
     public function render()
     {
-        return view('livewire.frontend.product-detail.product-detail-fixed-side');
+        return view('livewire.frontend.product-detail.product-detail-tab-component');
     }
 }

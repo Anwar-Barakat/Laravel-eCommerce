@@ -47,4 +47,6 @@ return [
     'description'       => 'DESCRIPTION',
     'reviews'           => 'REVIEWS',
     'specifications'    => 'SPECIFICATIONS',
+    'similar_products'  => 'SIMILAR PRODUCTS',
+
 ];
