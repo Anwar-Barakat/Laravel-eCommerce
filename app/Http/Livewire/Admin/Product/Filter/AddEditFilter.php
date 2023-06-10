@@ -12,7 +12,7 @@ class AddEditFilter extends Component
 {
     public Product $product;
 
-    public ProductFilter $productFilter;
+    public  $productFilter;
 
     public $filters = [],
         $filter_values = [];
@@ -20,7 +20,7 @@ class AddEditFilter extends Component
     public function mount(Product $product, ProductFilter $productFilter)
     {
         $this->product          = $product;
-        $this->productFilter    = $productFilter;
+        $this->productFilter    = $productFilter ?? ProductFilter::make();
 
         $filters = Filter::active()->get();
         foreach ($filters as $filter) {
@@ -60,6 +60,7 @@ class AddEditFilter extends Component
             $this->productFilter->save();
             toastr()->success(__('msgs.added', ['name' => __('product.filter')]));
             $this->reset('productFilter');
+            $this->productFilter = new ProductFilter();
         } catch (\Throwable $th) {
             return redirect()->route('admin.product.filters.create', ['product' => $this->product])->with(['error' => $th->getMessage()]);
         }

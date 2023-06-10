@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -107,8 +108,13 @@ class Product extends Model implements HasMedia
         return $this->belongsTo(Brand::class, 'brand_id');
     }
 
-    public function attributes()
+    public function attributes(): HasMany
     {
         return $this->hasMany(ProductAttribute::class);
+    }
+
+    public function filters(): HasMany
+    {
+        return $this->hasMany(ProductFilter::class)->with('filter', 'filter_value');
     }
 }

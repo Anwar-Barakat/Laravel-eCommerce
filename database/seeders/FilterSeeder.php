@@ -22,6 +22,8 @@ class FilterSeeder extends Seeder
         $tablet         = Category::select('id')->where('url', 'tablets')->first();
         $laptop         = Category::select('id')->where('url', 'laptops')->first();
 
+        $earphone       = Category::select('id')->where('url', 'earphones')->first();
+
         $filters        = [
             [
                 'categories'    => [$men_shirt->id, $women_shirt->id, $women_blouses->id],
@@ -47,6 +49,15 @@ class FilterSeeder extends Seeder
             [
                 'categories'    => [$mobile->id, $tablet->id, $laptop->id],
                 'name'          => 'Operation Systen',
+            ],
+
+            [
+                'categories'    => [$earphone->id],
+                'name'          => 'Material',
+            ],
+            [
+                'categories'    => [$earphone->id],
+                'name'          => 'Cable Feature',
             ],
         ];
 

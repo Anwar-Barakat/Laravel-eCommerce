@@ -130,10 +130,12 @@
                                          <span class="pd-detail__label u-s-m-b-8">{{ __('product.size') }}:</span>
                                          <div class="pd-detail__size">
                                              @foreach ($product->attributes as $key => $attr)
-                                                 <div class="size__radio">
-                                                     <input type="radio" id="{{ $attr->size }}" value="{{ $attr->size }}" name="size" wire:model='size'>
-                                                     <label class="size__radio-label" for="{{ $attr->size }}">{{ $attr->size }}</label>
-                                                 </div>
+                                                 @if ($attr->stock > 0)
+                                                     <div class="size__radio">
+                                                         <input type="radio" id="{{ $attr->size }}" value="{{ $attr->size }}" name="size" wire:model='size'>
+                                                         <label class="size__radio-label" for="{{ $attr->size }}">({{ $attr->stock }}) {{ $attr->size }}</label>
+                                                     </div>
+                                                 @endif
                                              @endforeach
                                          </div>
                                      </div>
@@ -192,11 +194,13 @@
                      <div class="pd-tab">
                          <div class="u-s-m-b-30">
                              <ul class="nav pd-tab__list">
+                                 @if ($product->filters->count() > 0)
+                                     <li class="nav-item">
+                                         <a class="nav-link" data-toggle="tab" href="#pd-specification">{{ __('frontend.specifications') }}</a>
+                                     </li>
+                                 @endif
                                  <li class="nav-item">
                                      <a class="nav-link" data-toggle="tab" href="#pd-desc">{{ __('frontend.description') }}</a>
-                                 </li>
-                                 <li class="nav-item">
-                                     <a class="nav-link" data-toggle="tab" href="#pd-tag">TAGS</a>
                                  </li>
                                  <li class="nav-item">
                                      <a class="nav-link active" id="view-review" data-toggle="tab" href="#pd-rev">{{ __('frontend.reviews') }}
@@ -207,69 +211,39 @@
                          </div>
                          <div class="tab-content">
 
-                             <!--====== Tab 1 ======-->
-                             <div class="tab-pane" id="pd-desc">
-                                 <div class="pd-tab__desc">
-                                     <div class="u-s-m-b-15">
-                                         <h4>PRODUCT INFORMATION</h4>
-                                     </div>
-                                     <div class="u-s-m-b-15">
-                                         <div class="pd-table gl-scroll">
-                                             <table>
-                                                 <tbody>
-                                                     <tr>
-                                                         <td>Main Material</td>
-                                                         <td>Cotton</td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td>Color</td>
-                                                         <td>Green, Blue, Red</td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td>Sleeves</td>
-                                                         <td>Long Sleeve</td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td>Top Fit</td>
-                                                         <td>Regular</td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td>Print</td>
-                                                         <td>Not Printed</td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td>Neck</td>
-                                                         <td>Round Neck</td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td>Pieces Count</td>
-                                                         <td>1 Piece</td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td>Occasion</td>
-                                                         <td>Casual</td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td>Shipping Weight (kg)</td>
-                                                         <td>0.5</td>
-                                                     </tr>
-                                                 </tbody>
-                                             </table>
+                             @if ($product->filters->count() > 0)
+                                 <!--====== Tab 1 ======-->
+                                 <div class="tab-pane" id="pd-specification">
+                                     <div class="pd-tab__desc">
+                                         <div class="u-s-m-b-15">
+                                             <h4>PRODUCT INFORMATION</h4>
+                                         </div>
+                                         <div class="u-s-m-b-15">
+                                             <div class="pd-table gl-scroll">
+                                                 <table>
+                                                     <tbody>
+                                                         @foreach ($product->filters as $productFilter)
+                                                             <tr>
+                                                                 <td>{{ $productFilter->filter->name }}</td>
+                                                                 <td>{{ $productFilter->filter_value->value }}</td>
+                                                             </tr>
+                                                         @endforeach
+                                                     </tbody>
+                                                 </table>
+                                             </div>
                                          </div>
                                      </div>
                                  </div>
-                             </div>
-                             <!--====== End - Tab 1 ======-->
+                                 <!--====== End - Tab 1 ======-->
+                             @endif
 
 
                              <!--====== Tab 2 ======-->
-                             <div class="tab-pane" id="pd-tag">
+                             <div class="tab-pane" id="pd-desc">
                                  <div class="pd-tab__tag">
                                      <div class="u-s-m-b-15">
                                          <p>{{ $product->description }}</p>
-
                                      </div>
-                                     <div class="u-s-m-b-30"><iframe src="https://www.youtube.com/embed/qKqSBm07KZk" allowfullscreen></iframe></div>
                                      <div class="u-s-m-b-30">
                                          <ul>
                                              <li><i class="fas fa-check u-s-m-r-8"></i>

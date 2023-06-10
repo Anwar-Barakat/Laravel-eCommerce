@@ -22,6 +22,9 @@ class FilterValueSeeder extends Seeder
         $screen_size    = Filter::select('id')->where('name', 'Screen Size')->first();
         $operation_sys  = Filter::select('id')->where('name', 'Operation Systen')->first();
 
+        $material       = Filter::select('id')->where('name', 'Material')->first();
+        $cable          = Filter::select('id')->where('name', 'Cable Feature')->first();
+
         $filters_values = [
             [
                 'filter_id'     => $sleeve->id,
@@ -128,7 +131,36 @@ class FilterValueSeeder extends Seeder
                 'filter_id'     => $screen_size->id,
                 'value'         => '5.5 to 5.9 in',
             ],
-
+            // _______________
+            [
+                'filter_id'     => $material->id,
+                'value'         => 'Acrylonitrile Butadiene Styrene (ABS)',
+            ],
+            [
+                'filter_id'     => $material->id,
+                'value'         => 'Aluminum',
+            ],
+            [
+                'filter_id'     => $material->id,
+                'value'         => 'Leather',
+            ],
+            [
+                'filter_id'     => $material->id,
+                'value'         => 'Plastic',
+            ],
+            [
+                'filter_id'     => $material->id,
+                'value'         => 'Stainless Steel',
+            ],
+            // _______________
+            [
+                'filter_id'     => $cable->id,
+                'value'         => 'Retractable',
+            ],
+            [
+                'filter_id'     => $cable->id,
+                'value'         => 'Without Cable',
+            ],
         ];
 
         foreach ($filters_values as $filter_value) {

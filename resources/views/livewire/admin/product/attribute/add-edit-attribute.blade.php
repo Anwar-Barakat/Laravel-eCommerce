@@ -68,7 +68,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
                                     <x-input-label class="form-label" :value="__('product.price')" />
-                                    <x-text-input type="number" placeholder="10.15" class="form-control" wire:model.debounce.500s='attribute.price' />
+                                    <x-text-input type="number" placeholder="10.15" class="form-control" wire:model='attribute.price' />
                                     <x-input-error :messages="$errors->get('attribute.price')" class="mt-2" />
                                 </div>
                             </div>

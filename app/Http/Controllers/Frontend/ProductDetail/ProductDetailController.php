@@ -13,7 +13,7 @@ class ProductDetailController extends Controller
      */
     public function __invoke(Product $product)
     {
-        $product->load('category', 'attributes');
+        $product->load('category:id,name,url,parent_id', 'attributes', 'filters');
         return view('frontend.product-details.index', ['product' => $product]);
     }
 }

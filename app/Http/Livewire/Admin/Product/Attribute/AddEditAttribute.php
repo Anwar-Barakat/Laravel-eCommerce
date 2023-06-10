@@ -24,6 +24,14 @@ class AddEditAttribute extends Component
         return $this->validateOnly($fields);
     }
 
+    public function updatedAttributePrice($value)
+    {
+        if ($value < $this->product->price) {
+            toastr()->info(__('validation.gt.numeric', ['attribute' => __('product.price'), 'value' => $this->product->price]));
+            $this->attribute->price = $this->product->price;
+        }
+    }
+
     public function updateStatus(ProductAttribute $attr)
     {
         $attr->update(['is_active' => !$attr->is_active]);
