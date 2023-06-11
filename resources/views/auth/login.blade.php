@@ -1,4 +1,6 @@
 <x-guest-layout>
+    @section('pageTitle', __('auth.login'))
+
     <div class="app-content">
         <!--====== Section 1 ======-->
         <div class="u-s-p-y-60">

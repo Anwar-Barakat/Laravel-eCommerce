@@ -1,7 +1,7 @@
-<header class="header--style-1">
+<header class="header--style-2">
 
     <!--====== Nav 1 ======-->
-    <nav class="primary-nav primary-nav-wrapper--border">
+    <nav class="primary-nav-wrapper">
         <div class="container">
 
             <!--====== Primary Nav ======-->
@@ -9,18 +9,13 @@
                 <!--====== Main Logo ======-->
 
                 <a class="main-logo" href="index.html">
-
-                    <img src="images/logo/logo-1.png" alt=""></a>
+                    <img src="{{ asset('frontend/dist/images/logo/logo-2.png') }}" alt=""></a>
                 <!--====== End - Main Logo ======-->
-
 
                 <!--====== Search Form ======-->
                 <form class="main-form">
-
                     <label for="main-search"></label>
-
-                    <input class="input-text input-text--border-radius input-text--style-1" type="text" id="main-search" placeholder="Search">
-
+                    <input class="input-text input-text--border-radius input-text--style-2" type="text" id="main-search" placeholder="Search">
                     <button class="btn btn--icon fas fa-search main-search-button" type="submit"></button>
                 </form>
                 <!--====== End - Search Form ======-->
@@ -37,7 +32,7 @@
                         <span class="ah-close">✕ Close</span>
 
                         <!--====== List ======-->
-                        <ul class="ah-list ah-list--design1 ah-list--link-color-secondary">
+                        <ul class="ah-list ah-list--design1 ah-list--link-color-white">
                             <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Account">
 
                                 <a><i class="far fa-user-circle"></i></a>
@@ -46,29 +41,37 @@
 
                                 <span class="js-menu-toggle"></span>
                                 <ul style="width:120px">
-                                    <li>
-                                        <a href="dashboard.html"><i class="fas fa-user-circle u-s-m-r-6"></i>
-                                            <span>Account</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('frontend.register') }}">
-                                            <i class="fas fa-user-plus u-s-m-r-6"></i>
-                                            <span>Signup</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('frontend.login') }}">
-                                            <i class="fas fa-lock u-s-m-r-6"></i>
-                                            <span>Signin</span>
-                                        </a>
-                                    </li>
-                                    <li>
+                                    @auth
+                                        <li>
+                                            <a href="dashboard.html"><i class="fas fa-user-circle u-s-m-r-6"></i>
+                                                <span>Account</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;" onclick="document.getElementById('user-logout-form').submit()">
+                                                <i class="fas fa-lock-open u-s-m-r-6"></i>
+                                                <span>Signout</span>
+                                            </a>
+                                            <form action="{{ route('frontend.logout') }}" method="POST" id="user-logout-form" class="hidden">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    @endauth
 
-                                        <a href="signup.html"><i class="fas fa-lock-open u-s-m-r-6"></i>
-
-                                            <span>Signout</span></a>
-                                    </li>
+                                    @guest
+                                        <li>
+                                            <a href="{{ route('frontend.register') }}">
+                                                <i class="fas fa-user-plus u-s-m-r-6"></i>
+                                                <span>Signup</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('frontend.login') }}">
+                                                <i class="fas fa-lock u-s-m-r-6"></i>
+                                                <span>Signin</span>
+                                            </a>
+                                        </li>
+                                    @endguest
                                 </ul>
                                 <!--====== End - Dropdown ======-->
                             </li>
@@ -200,7 +203,7 @@
                                                 <!--====== Mega Menu Row ======-->
                                                 <div class="row flex-wrap ">
                                                     @forelse ($section->categories as $category)
-                                                        <div class="col-lg-3 mb-4">
+                                                        <div class="col-lg-3 u-s-m-b-20">
                                                             <ul>
                                                                 <li class="mega-list-title">
                                                                     <a href="{{ route('frontend.category.products', ['url' => $category->url]) }}">{{ $category->name }}</a>
@@ -212,6 +215,7 @@
                                                                 @endforeach
                                                             </ul>
                                                         </div>
+                                                        <br>
                                                     @empty
                                                         <h5>No Categories</h5>
                                                     @endforelse
@@ -247,7 +251,7 @@
                         <span class="ah-close">✕ Close</span>
 
                         <!--====== List ======-->
-                        <ul class="ah-list ah-list--design2 ah-list--link-color-secondary">
+                        <ul class="ah-list ah-list--design2 ah-list--link-color-white">
                             <li>
                                 <a href="#new-arrivals">NEW ARRIVALS</a>
                             </li>
@@ -554,10 +558,9 @@
                         <span class="ah-close">✕ Close</span>
 
                         <!--====== List ======-->
-                        <ul class="ah-list ah-list--design1 ah-list--link-color-secondary">
+                        <ul class="ah-list ah-list--design1 ah-list--link-color-white">
                             <li>
-
-                                <a href="index.html"><i class="fas fa-home u-c-brand"></i></a>
+                                <a href="{{ route('frontend.home') }}"><i class="fas fa-home u-c-brand"></i></a>
                             </li>
                             <li>
                                 <a href="wishlist.html"><i class="far fa-heart"></i></a>
@@ -616,16 +619,16 @@
 
                                     <!--====== Mini Product Statistics ======-->
                                     <div class="mini-product-stat">
-                                        <div class="mini-total">
-
-                                            <span class="subtotal-text">{{ __('frontend.subtotal') }}</span>
-
-                                            <span class="subtotal-value">${{ $sub_total }}</span>
-                                        </div>
+                                        @if ($cart_items->count() > 0)
+                                            <div class="mini-total">
+                                                <span class="subtotal-text">{{ __('frontend.subtotal') }}</span>
+                                                <span class="subtotal-value">${{ $sub_total }}</span>
+                                            </div>
+                                        @endif
                                         <div class="mini-action">
-
-                                            <a class="mini-link btn--e-brand-b-2" href="checkout.html">{{ __('frontend.proceed_to_checkout') }}</a>
-
+                                            @if ($cart_items->count() > 0)
+                                                <a class="mini-link btn--e-brand-b-2" href="checkout.html">{{ __('frontend.proceed_to_checkout') }}</a>
+                                            @endif
                                             <a class="mini-link btn--e-transparent-secondary-b-2" href="{{ route('frontend.cart.index') }}">{{ __('frontend.view_cart') }}</a>
                                         </div>
                                     </div>

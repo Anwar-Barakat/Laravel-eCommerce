@@ -15,18 +15,18 @@ class ProductDetailRecentViewed extends Component
 
     public function mount(Product $product)
     {
-        $this->product          = $product;
+        $this->product            = $product;
 
         // set session
-        $session_id     = empty(Session::get('session_id')) ? md5(uniqid(rand(), true)) : Session::get('session_id');
-        $session_exists = RecentlyViewedProduct::where(['product_id' => $this->product->id, 'session_id' => $session_id])->exists();
+        $session_id               = empty(Session::get('session_id')) ? md5(uniqid(rand(), true)) : Session::get('session_id');
+        $session_exists           = RecentlyViewedProduct::where(['product_id' => $this->product->id, 'session_id' => $session_id])->exists();
         Session::put('session_id', $session_id);
         $this->emit('getSessionID', ['sessionId' => $session_id]);
 
         if (!$session_exists)
             RecentlyViewedProduct::create(['product_id' => $this->product->id, 'session_id' => $session_id]);
 
-        $this->recently_viewed  = RecentlyViewedProduct::with('product:id,name,category_id,price,discount_value')
+        $this->recently_viewed    = RecentlyViewedProduct::with('product:id,name,category_id,price,discount_value')
             ->where('session_id', $session_id)->InRandomOrder()->limit(6)->get();
     }
 

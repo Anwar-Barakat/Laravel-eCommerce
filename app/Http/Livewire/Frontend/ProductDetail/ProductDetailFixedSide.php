@@ -11,7 +11,7 @@ class ProductDetailFixedSide extends Component
 
     public function mount(Product $product)
     {
-        $this->product = $product;
+        $this->product    = $product;
     }
 
     public function render()

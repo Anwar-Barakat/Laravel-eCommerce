@@ -14,22 +14,22 @@ class ProductDetailAddToCart extends Component
 {
     public Product $product;
     public ProductAttribute $attr;
-    public $qty = 1;
+    public $qty                   = 1;
 
     public function mount(Product $product, ProductAttribute $attr)
     {
-        $this->product  = $product;
-        $this->attr     = $attr;
+        $this->product            = $product;
+        $this->attr               = $attr;
     }
 
     public function decreaseQty()
     {
-        $this->qty = $this->qty < 1 ? 1 : $this->qty - 1;
+        $this->qty                = $this->qty < 1 ? 1 : $this->qty - 1;
     }
 
     public function increaseQty()
     {
-        $this->qty  = $this->qty >= $this->attr->stock ? 1 : $this->qty + 1;
+        $this->qty                = $this->qty >= $this->attr->stock ? 1 : $this->qty + 1;
     }
 
     public function addToCard()
@@ -37,32 +37,32 @@ class ProductDetailAddToCart extends Component
         try {
             if ($this->qty >= $this->attr->stock) {
                 toastr()->info(__('validation.qty_not_available_now'));
-                $this->qty = 1;
+                $this->qty        = 1;
                 return false;
             }
 
-            $session_id = Session::get('session_id');
+            $session_id           = Session::get('session_id');
             if (!$session_id) {
-                $session_id = Session::getId();
+                $session_id       = Session::getId();
                 Session::put('session_id', $session_id);
             }
 
             DB::beginTransaction();
 
             if (Auth::check()) :
-                $productExists = Cart::where(['product_id' => $this->product->id, 'size' => $this->attr->size, 'user_id' => Auth::id()])->count();
+                $productExists    = Cart::where(['product_id' => $this->product->id, 'size' => $this->attr->size, 'user_id' => Auth::id()])->count();
             else :
-                $productExists = Cart::where(['product_id' => $this->product->id, 'size' => $this->attr->size, 'session_id' => $session_id])->count();
+                $productExists    = Cart::where(['product_id' => $this->product->id, 'size' => $this->attr->size, 'session_id' => $session_id])->count();
             endif;
 
-            $cart               = new Cart();
-            $cart->session_id   = $session_id;
-            $cart->user_id      = Auth::check() ? Auth::id() : null;
-            $cart->qty          = $this->qty;
-            $cart->product_id   = $this->product->id;
-            $cart->size         = $this->attr->size;
-            $cart->unit_price   = $this->attr->price;
-            $cart->grand_total  = $this->attr->price * $this->qty;
+            $cart                 = new Cart();
+            $cart->session_id     = $session_id;
+            $cart->user_id        = Auth::check() ? Auth::id() : null;
+            $cart->qty            = $this->qty;
+            $cart->product_id     = $this->product->id;
+            $cart->size           = $this->attr->size;
+            $cart->unit_price     = $this->attr->price;
+            $cart->grand_total    = $this->attr->price * $this->qty;
             $cart->save();
 
             DB::commit();

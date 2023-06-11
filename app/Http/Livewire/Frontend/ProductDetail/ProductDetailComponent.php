@@ -15,16 +15,16 @@ class ProductDetailComponent extends Component
 {
     public Product $product;
 
-    public $size, $qty = 1,
+    public $size, $qty          = 1,
         $total_stock;
 
     public $attr;
 
     public function mount(Product $product)
     {
-        $this->product  = $product;
-        $this->attr     = $product->attributes ? $product->attributes->first() : '';
-        $this->size     = $this->attr ? $this->attr->size : '';
+        $this->product          = $product;
+        $this->attr             = $product->attributes ? $product->attributes->first() : '';
+        $this->size             = $this->attr ? $this->attr->size : '';
     }
 
     public function updatedSize($value)
@@ -35,7 +35,7 @@ class ProductDetailComponent extends Component
 
     public function render()
     {
-        $this->total_stock  = $this->product->attributes->sum('stock');
+        $this->total_stock      = $this->product->attributes->sum('stock');
         return view('livewire.frontend.product-detail.product-detail-component');
     }
 }

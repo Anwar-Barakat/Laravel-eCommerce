@@ -13,8 +13,8 @@ class ProductDetailSimilarProduct extends Component
 
     public function mount(Product $product)
     {
-        $this->product          = $product;
-        $this->similar_products = Product::where('category_id', $this->product->category_id)->active()->where('id', '!=', $this->product->id)->limit(6)->get();
+        $this->product            = $product;
+        $this->similar_products   = Product::where('category_id', $this->product->category_id)->active()->where('id', '!=', $this->product->id)->limit(6)->get();
     }
 
     public function render()

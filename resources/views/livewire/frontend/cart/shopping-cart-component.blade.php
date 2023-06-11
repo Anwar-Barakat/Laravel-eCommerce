@@ -130,11 +130,13 @@
                                     <span>{{ __('frontend.continue_shopping') }}</span>
                                 </a>
                             </div>
-                            <div class="route-box__g2">
-                                <a class="route-box__link"><i class="fas fa-trash"></i>
-                                    <span>{{ __('frontend.clear_cart') }}</span>
-                                </a>
-                            </div>
+                            @if ($cart_items->count() > 0)
+                                <div class="route-box__g2">
+                                    <a class="route-box__link"><i class="fas fa-trash"></i>
+                                        <span>{{ __('frontend.clear_cart') }}</span>
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
