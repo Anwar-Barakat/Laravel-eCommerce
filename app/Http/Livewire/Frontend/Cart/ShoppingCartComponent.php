@@ -24,6 +24,8 @@ class ShoppingCartComponent extends Component
         else :
             $cart->update(['qty' => $this->qty, 'grand_total' => $this->qty * $cart->unit_price]);
         endif;
+        $this->emit('updatedCartItem', ['cart' => $cart]);
+
     }
 
     public function increaseQty(int $cart_id)
@@ -39,6 +41,7 @@ class ShoppingCartComponent extends Component
         }
 
         $cart->update(['qty' => $this->qty, 'grand_total' => $this->qty * $cart->unit_price]);
+        $this->emit('updatedCartItem', ['cart' => $cart]);
     }
 
 

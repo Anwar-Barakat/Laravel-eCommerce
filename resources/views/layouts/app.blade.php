@@ -26,7 +26,7 @@
     <div id="app">
 
         <!--====== Main Header ======-->
-        @include('frontend.layouts.inc.header')
+        @livewire('frontend.layout.header-component')
         <!--====== End - Main Header ======-->
 
 
