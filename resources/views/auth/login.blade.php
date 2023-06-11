@@ -1,43 +1,105 @@
 <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <h2 class="h2 text-center mb-4">{{ __('auth.login_to_your_account') }}</h2>
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label class="form-label" for="email" :value="__('auth.email')" />
-            <x-text-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+    <div class="app-content">
+        <!--====== Section 1 ======-->
+        <div class="u-s-p-y-60">
+            <!--====== Section Content ======-->
+            <div class="section__content">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <div class="breadcrumb__wrap">
+                            <ul class="breadcrumb__list">
+                                <li class="has-separator">
+                                    <a href="{{ route('frontend.home') }}">Home</a>
+                                </li>
+                                <li class="is-marked">
+                                    <a href="javascript:;">Signin</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!--====== End - Section 1 ======-->
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label class="form-label" for="password" :value="__('auth.password')" />
-            <x-text-input id="password" class="form-control" type="password" name="password" required autocomplete="current-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <!--====== Section 2 ======-->
+        <div class="u-s-p-b-60">
+            <!--====== Section Intro ======-->
+            <div class="section__intro u-s-m-b-60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section__text-wrap">
+                                <h1 class="section__heading u-c-secondary">
+                                    ALREADY REGISTERED?
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--====== End - Section Intro ======-->
+
+            <!--====== Section Content ======-->
+            <div class="section__content">
+                <div class="container">
+                    <div class="row row--center">
+                        <div class="col-lg-6 col-md-8 u-s-m-b-30">
+                            <div class="l-f-o">
+                                <div class="l-f-o__pad-box">
+                                    <h1 class="gl-h1">I'M NEW CUSTOMER</h1>
+                                    <span class="gl-text u-s-m-b-30">By creating an account with our store, you will be able
+                                        to move through the checkout process faster, store
+                                        shipping addresses, view and track your orders in your
+                                        account and more.</span>
+                                    <div class="u-s-m-b-15">
+                                        <a class="l-f-o__create-link btn--e-transparent-brand-b-2" href="{{ route('register') }}">CREATE AN ACCOUNT</a>
+                                    </div>
+                                    <h1 class="gl-h1">SIGNIN</h1>
+
+                                    <span class="gl-text u-s-m-b-30">If you have an account with us, please log in.</span>
+                                    <form class="l-f-o__form">
+                                        <div class="u-s-m-b-30">
+                                            <label class="gl-label" for="login-email">E-MAIL *</label>
+                                            <input class="input-text input-text--primary-style" type="email" id="login-email" placeholder="Enter E-mail" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" />
+                                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                        </div>
+                                        <div class="u-s-m-b-30">
+                                            <label class="gl-label" for="login-password">PASSWORD *</label>
+                                            <input class="input-text input-text--primary-style" type="password" id="login-password" placeholder="********" name="password" required autocomplete="current-password" />
+                                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                        </div>
+                                        <div class="gl-inline">
+                                            <div class="u-s-m-b-30">
+                                                <button class="btn btn--e-transparent-brand-b-2" type="submit">
+                                                    LOGIN
+                                                </button>
+                                            </div>
+                                            <div class="u-s-m-b-30">
+                                                @if (Route::has('password.request'))
+                                                    <a class="gl-link" href="{{ route('password.request') }}">Lost Your Password?</a>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="u-s-m-b-30">
+                                            <!--====== Check Box ======-->
+                                            <div class="check-box">
+                                                <input type="checkbox" id="remember-me" name="remember" />
+                                                <div class="check-box__state check-box__state--primary">
+                                                    <label class="check-box__label" for="remember-me">Remember Me</label>
+                                                </div>
+                                            </div>
+                                            <!--====== End - Check Box ======-->
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--====== End - Section Content ======-->
         </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center gap-2">
-                <input id="remember_me" type="checkbox" class="rounded  border-gray-300  text-indigo-600 shadow-sm focus:ring-indigo-500 " name="remember">
-                <span class="ml-2 text-sm text-gray-600 ">{{ __('auth.remember_me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4 gap-2">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600  hover:text-gray-900  rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('auth.forget_your_password') }}
-                </a>
-            @endif
-
-            <button class="ml-3 btn btn-primary">
-                {{ __('auth.login') }}
-            </button>
-        </div>
-    </form>
+        <!--====== End - Section 2 ======-->
+    </div>
 </x-guest-layout>

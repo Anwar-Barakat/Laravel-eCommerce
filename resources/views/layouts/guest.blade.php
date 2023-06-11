@@ -2,54 +2,61 @@
 <html @if (App::getLocale() == 'ar') dir="rtl" @else dir="ltr" @endif>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="images/favicon.png" rel="shortcut icon">
+    <title>@yield('pageTitle')</title>
+    @vite('resources/css/app.css')
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    @if (App::getLocale() == 'ar')
-        <link href="{{ asset('backend/dist/css/tabler.rtl.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('backend/dist/css/tabler-flags.rtl.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('backend/dist/css/tabler-payments.rtl.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('backend/dist/css/tabler-vendors.rtl.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('backend/dist/css/demo.rtl.min.css') }}" rel="stylesheet" />
-    @else
-        <link href="{{ asset('backend/dist/css/tabler.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('backend/dist/css/tabler-flags.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('backend/dist/css/tabler-payments.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('backend/dist/css/tabler-vendors.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('backend/dist/css/demo.min.css') }}" rel="stylesheet" />
-    @endif
-
-    <link rel="stylesheet" href="{{ asset('backend/dist/css/custom.css') }}">
+    @include('frontend.layouts.inc.head')
+    @livewireStyles
 </head>
 
 <body class="text-gray-900 antialiased">
-    <div class="page page-center">
-        <div class="container container-tight py-4">
-            <div class="text-center mb-4">
-                <a href="" class="navbar-brand navbar-brand-autodark">
-                    <img src="{{ asset('backend/static/logo.svg') }}" style="height: 36px;">
-                </a>
-            </div>
-            <div class="card card-md">
-                <div class="card-body">
-                    {{ $slot }}
+    <div class="preloader is-active">
+        <div class="preloader__wrap">
+            <img class="preloader__img" src="{{ asset('frontend/dist/images/preloader.png') }}" alt="">
+        </div>
+    </div>
+    <div id="app">
+        <!--====== Main Header ======-->
+        @livewire('frontend.layout.header-component')
+        <!--====== End - Main Header ======-->
+
+        <!--====== App Content ======-->
+
+        {{ $slot }}
+
+        <!--====== End - App Content ======-->
+
+
+        <!--====== Main Footer ======-->
+        @include('frontend.layouts.inc.footer-section')
+
+        <!--====== Modal Section ======-->
+
+    </div>
+    <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
+    @include('frontend.layouts.inc.footer-scripts')
+    @livewireScripts
+    <!--====== Noscript ======-->
+    <noscript>
+        <div class="app-setting">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="app-setting__wrap">
+                            <h1 class="app-setting__h1">JavaScript is disabled in your browser.</h1>
+
+                            <span class="app-setting__text">Please enable JavaScript in your browser or upgrade to a JavaScript-capable browser.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="{{ asset('backend/dist/js/tabler.min.js') }}" defer></script>
-    <script src="{{ asset('backend/dist/js/demo.min.js') }}" defer></script>
-    <script src="{{ asset('backend/dist/js/demo-theme.min.js') }}"></script>
+    </noscript>
 </body>
 
 </html>
