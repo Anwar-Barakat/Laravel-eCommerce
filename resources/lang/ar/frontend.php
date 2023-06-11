@@ -65,5 +65,6 @@ return [
     'subtotal'                              => 'SUBTOTAL',
     'grand_total'                           => 'GRAND TOTAL',
     'proceed_to_checkout'                   => 'PROCEED TO CHECKOUT',
+    'coupon_discount'                       => 'COUPON DISCOUNT',
 
 ];
