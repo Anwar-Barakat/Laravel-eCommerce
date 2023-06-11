@@ -18,7 +18,7 @@ class ProductDetailComponent extends Component
     public $size, $qty = 1,
         $total_stock;
 
-    public ProductAttribute $attr;
+    public $attr;
 
     public function mount(Product $product)
     {
@@ -45,6 +45,7 @@ class ProductDetailComponent extends Component
 
     public function addToCard()
     {
+
         try {
             if ($this->qty >= $this->attr->stock) {
                 toastr()->info(__('validation.qty_not_available_now'));
@@ -72,7 +73,8 @@ class ProductDetailComponent extends Component
             $cart->qty          = $this->qty;
             $cart->product_id   = $this->product->id;
             $cart->size         = $this->size;
-            $cart->grand_price  = $this->qty * $this->attr->pric;
+            $cart->unit_price   = $this->attr->price;
+            $cart->grand_total  = $this->attr->price * $this->qty;
             $cart->save();
 
             DB::commit();
@@ -87,7 +89,6 @@ class ProductDetailComponent extends Component
     public function render()
     {
         $this->total_stock  = $this->product->attributes->sum('stock');
-        $product            = $this->product;
-        return view('livewire.frontend.product-detail.product-detail-component', ['product' => $product]);
+        return view('livewire.frontend.product-detail.product-detail-component', ['product' => $this->product, 'attr' => $this->attr]);
     }
 }

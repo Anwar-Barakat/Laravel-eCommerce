@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class Cart extends Model
 {
@@ -15,8 +17,16 @@ class Cart extends Model
         'product_id',
         'size',
         'qty',
-        'grand_price',
+        'unit_price',
+        'grand_total',
     ];
+
+    public static function getCartItems()
+    {
+        return Auth::check()
+            ? Auth::user()->cart_items
+            : Cart::with('product:id,name,category_id')->where('session_id', Session::get('session_id'))->orderBy('id', 'desc')->get();
+    }
 
     public function product()
     {

@@ -51,50 +51,60 @@
                             <table class="table-p">
                                 <tbody>
                                     <!--====== Row ======-->
-                                    <tr>
-                                        <td>
-                                            <div class="table-p__box">
-                                                <div class="table-p__img-wrap">
-                                                    <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt="">
+                                    @forelse ($cart_items as $item)
+                                        <tr>
+                                            <td>
+                                                <div class="table-p__box">
+                                                    <div class="table-p__img-wrap">
+                                                        @if ($item->product->getFirstMediaUrl('products', 'small'))
+                                                            <img class="u-img-fluid" src="{{ $item->product->getFirstMediaUrl('products', 'small') }}" alt="{{ $item->product->name }}">
+                                                        @else
+                                                            <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt="">
+                                                        @endif
+                                                    </div>
+                                                    <div class="table-p__info">
+                                                        <span class="table-p__name">
+                                                            <a href="{{ route('frontend.product.detail', ['product' => $item->product]) }}">{{ $item->product->name }}</a>
+                                                        </span>
+                                                        <span class="table-p__category">
+                                                            <a href="{{ route('frontend.category.products', ['url' => $item->product->category->url]) }}">{{ $item->product->category->name }}</a>
+                                                        </span>
+                                                        <ul class="table-p__variant-list">
+                                                            <li>
+                                                                <span>{{ __('frontend.size') }}: {{ $item->size }}</span>
+                                                            </li>
+                                                            <li>
+                                                                <span>Color: Red</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                                <div class="table-p__info">
-                                                    <span class="table-p__name">
-                                                        <a href="product-detail.html">Yellow Wireless Headphone</a>
-                                                    </span>
-                                                    <span class="table-p__category">
-                                                        <a href="shop-side-version-2.html">Electronics</a>
-                                                    </span>
-                                                    <ul class="table-p__variant-list">
-                                                        <li>
-                                                            <span>Size: 22</span>
-                                                        </li>
-                                                        <li>
-                                                            <span>Color: Red</span>
-                                                        </li>
-                                                    </ul>
+                                            </td>
+                                            <td>
+                                                <span class="table-p__price">${{ $item->unit_price }}</span>
+                                            </td>
+                                            <td>
+                                                <div class="table-p__input-counter-wrap">
+                                                    <!--====== Input Counter ======-->
+                                                    <div class="input-counter">
+                                                        <span class="input-counter__minus fas fa-minus" wire:click='decreaseQty({{ $item->product->id }}, {{ $item->id }}'></span>
+                                                        <input class="input-counter__text input-counter--text-primary-style" type="text" value="{{ $item->qty }}" data-min="1" data-max="1000">
+                                                        <span class="input-counter__plus fas fa-plus" wire:click='increaseQty({{ $item->product->id }}, {{ $item->id }})'></span>
+                                                    </div>
+                                                    <!--====== End - Input Counter ======-->
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="table-p__price">$125.00</span>
-                                        </td>
-                                        <td>
-                                            <div class="table-p__input-counter-wrap">
-                                                <!--====== Input Counter ======-->
-                                                <div class="input-counter">
-                                                    <span class="input-counter__minus fas fa-minus"></span>
-                                                    <input class="input-counter__text input-counter--text-primary-style" type="text" value="1" data-min="1" data-max="1000">
-                                                    <span class="input-counter__plus fas fa-plus"></span>
+                                            </td>
+                                            <td>
+                                                <span class="table-p__price">${{ $item->grand_total }}</span>
+                                            </td>
+                                            <td>
+                                                <div class="table-p__del-wrap">
+                                                    <a class="far fa-trash-alt table-p__delete-link" href="#"></a>
                                                 </div>
-                                                <!--====== End - Input Counter ======-->
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="table-p__del-wrap">
-                                                <a class="far fa-trash-alt table-p__delete-link" href="#"></a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                    @endforelse
                                     <!--====== End - Row ======-->
                                 </tbody>
                             </table>
