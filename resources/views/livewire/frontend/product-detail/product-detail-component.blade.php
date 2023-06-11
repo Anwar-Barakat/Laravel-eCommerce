@@ -13,7 +13,7 @@
                              <span class="pd-detail__name">{{ $product->name }}</span>
                          </div>
                          <div>
-                             <div class="pd-detail__inline">
+                             <div class="pd-detail__inline" wire:ignore.self=''>
                                  @php
                                      $dataPrices = App\Models\Product::applyDiscount($product->id, $product->price);
                                  @endphp

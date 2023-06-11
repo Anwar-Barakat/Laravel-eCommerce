@@ -13,6 +13,15 @@ class ShoppingCartComponent extends Component
     public Product $product;
     public ProductAttribute $attr;
 
+    public $cart_items;
+
+    protected $listeners = ['updatedCartItem'];
+
+    public function updatedCartItem($cart)
+    {
+        $this->cart_items = $cart;
+    }
+
     public function decreaseQty(int $cart_id)
     {
         $cart       = Cart::find($cart_id);
@@ -25,7 +34,6 @@ class ShoppingCartComponent extends Component
             $cart->update(['qty' => $this->qty, 'grand_total' => $this->qty * $cart->unit_price]);
         endif;
         $this->emit('updatedCartItem', ['cart' => $cart]);
-
     }
 
     public function increaseQty(int $cart_id)
@@ -44,9 +52,17 @@ class ShoppingCartComponent extends Component
         $this->emit('updatedCartItem', ['cart' => $cart]);
     }
 
+    public function deleteItem(int $cart_id)
+    {
+        $cart       = Cart::find($cart_id);
+        $cart->delete();
+        toastr()->info(__('msgs.deleted', ['name' => __('product.product')]));
+        $this->emit('updatedCartItem', ['cart' => $cart]);
+    }
 
     public function render()
     {
-        return view('livewire.frontend.cart.shopping-cart-component', ['cart_items' => Cart::getCartItems()]);
+        $this->cart_items = Cart::getCartItems();
+        return view('livewire.frontend.cart.shopping-cart-component', ['cart_items' => $this->cart_items]);
     }
 }

@@ -105,7 +105,7 @@
                                             </td>
                                             <td>
                                                 <div class="table-p__del-wrap">
-                                                    <a class="far fa-trash-alt table-p__delete-link" href="#"></a>
+                                                    <a class="far fa-trash-alt table-p__delete-link" href="javascript:;" wire:click="deleteItem({{ $cart_item->id }})"></a>
                                                 </div>
                                             </td>
                                         </tr>

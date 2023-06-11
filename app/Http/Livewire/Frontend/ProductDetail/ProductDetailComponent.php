@@ -90,6 +90,6 @@ class ProductDetailComponent extends Component
     public function render()
     {
         $this->total_stock  = $this->product->attributes->sum('stock');
-        return view('livewire.frontend.product-detail.product-detail-component', ['product' => $this->product, 'attr' => $this->attr]);
+        return view('livewire.frontend.product-detail.product-detail-component');
     }
 }

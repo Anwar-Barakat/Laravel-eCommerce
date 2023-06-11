@@ -24,6 +24,14 @@ class HeaderComponent extends Component
         $this->sections = Section::with('categories')->active()->get();
     }
 
+    public function deleteItem(int $cart_id)
+    {
+        $cart       = Cart::find($cart_id);
+        $cart->delete();
+        toastr()->info(__('msgs.deleted', ['name' => __('product.product')]));
+        $this->emit('updatedCartItem', ['cart' => $cart]);
+    }
+
     public function render()
     {
         $this->cart_items = Cart::getCartItems();

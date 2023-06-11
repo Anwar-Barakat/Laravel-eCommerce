@@ -192,7 +192,6 @@
                                                         <span class="js-menu-toggle js-toggle-mark"></span>
                                                     </li>
                                                 @endforeach
-
                                             </ul>
                                         </div>
 
@@ -607,7 +606,7 @@
                                                         <span class="mini-product__price">${{ $cart_item->unit_price }}</span>
                                                     </div>
                                                 </div>
-                                                <a class="mini-product__delete-link far fa-trash-alt"></a>
+                                                <a class="mini-product__delete-link far fa-trash-alt" wire:click='deleteItem({{ $cart_item->id }})'></a>
                                             </div>
                                             <!--====== End - Card for mini cart ======-->
                                         @endforeach
