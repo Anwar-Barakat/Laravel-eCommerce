@@ -17,4 +17,9 @@ class ProductAttribute extends Model
         'stock',
         'is_active',
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where(['is_active' => 1])->where('stock', '>', 0);
+    }
 }

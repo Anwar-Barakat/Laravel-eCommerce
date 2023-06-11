@@ -110,7 +110,7 @@ class Product extends Model implements HasMedia
 
     public function attributes(): HasMany
     {
-        return $this->hasMany(ProductAttribute::class);
+        return $this->hasMany(ProductAttribute::class)->active();
     }
 
     public function filters(): HasMany

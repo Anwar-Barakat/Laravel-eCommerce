@@ -45,7 +45,6 @@ class ProductDetailComponent extends Component
 
     public function addToCard()
     {
-
         try {
             if ($this->qty >= $this->attr->stock) {
                 toastr()->info(__('validation.qty_not_available_now'));
@@ -80,6 +79,8 @@ class ProductDetailComponent extends Component
             DB::commit();
             toastr()->success(__('msgs.added', ['name' => __('product.product')]));
             $this->reset('qty');
+
+            $this->emit('updatedCartItem', ['cart' => $cart]);
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->route('frontend.product.detail', ['product' => $this->product])->with(['error' => $th->getMessage()]);

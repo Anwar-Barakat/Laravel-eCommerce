@@ -82,7 +82,9 @@ class AddEditAttribute extends Component
             'attribute.sku'         => [
                 'required',
                 'min:3',
-                Rule::unique('product_attributes', 'sku')->ignore($this->attribute->id)
+                Rule::unique('product_attributes', 'sku')->where(function ($query) {
+                    return $query->where(['product_id' => $this->product->id]);
+                })->ignore($this->attribute->id)
             ]
         ];
     }

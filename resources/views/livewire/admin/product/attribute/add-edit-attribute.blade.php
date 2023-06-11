@@ -47,21 +47,21 @@
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
                                     <x-input-label class="form-label" :value="__('product.sku')" />
-                                    <x-text-input type="text" placeholder="SH001-SM" class="form-control" wire:model.debounce.500s='attribute.sku' />
+                                    <x-text-input type="text" placeholder="SH001-SM" class="form-control" wire:model.defer='attribute.sku' />
                                     <x-input-error :messages="$errors->get('attribute.sku')" class="mt-2" />
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
                                     <x-input-label class="form-label" :value="__('product.size')" />
-                                    <x-text-input type="text" placeholder="small" class="form-control" wire:model.debounce.500s='attribute.size' />
+                                    <x-text-input type="text" placeholder="small" class="form-control" wire:model.defer='attribute.size' />
                                     <x-input-error :messages="$errors->get('attribute.size')" class="mt-2" />
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
                                     <x-input-label class="form-label" :value="__('product.qty_stock')" />
-                                    <x-text-input type="number" placeholder="5" class="form-control" wire:model.debounce.500s='attribute.stock' />
+                                    <x-text-input type="number" placeholder="5" class="form-control" wire:model.defer='attribute.stock' />
                                     <x-input-error :messages="$errors->get('attribute.stock')" class="mt-2" />
                                 </div>
                             </div>

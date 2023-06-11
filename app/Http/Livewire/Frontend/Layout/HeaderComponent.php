@@ -9,17 +9,18 @@ use Livewire\Component;
 class HeaderComponent extends Component
 {
     public $sections;
-    public $cart_items;
+    public  $cart_items;
 
     protected $listeners = ['updatedCartItem'];
 
-    public function updatedCartItem(Cart $cart)
+    public function updatedCartItem($cart)
     {
         $this->cart_items = $cart;
     }
 
     public function mount()
     {
+        $this->cart_items = Cart::getCartItems();
         $this->sections = Section::with('categories')->active()->get();
     }
 
