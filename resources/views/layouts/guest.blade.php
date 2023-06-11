@@ -26,15 +26,12 @@
         <!--====== End - Main Header ======-->
 
         <!--====== App Content ======-->
-
         {{ $slot }}
-
         <!--====== End - App Content ======-->
 
 
         <!--====== Main Footer ======-->
         @include('frontend.layouts.inc.footer-section')
-
         <!--====== Modal Section ======-->
 
     </div>

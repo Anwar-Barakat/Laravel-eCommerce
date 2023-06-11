@@ -36,9 +36,11 @@ Route::group(
             Route::delete('/profile',       [ProfileController::class, 'destroy'])->name('profile.destroy');
         });
 
-        require __DIR__ . '/auth.php';
 
         Route::as('frontend.')->group(function () {
+
+            require __DIR__ . '/auth.php';
+
             Route::get('/',                     [HomeController::class, 'index'])->name('home');
 
             Route::get('/shop',                 [ShopController::class, 'index'])->name('shop');

@@ -53,12 +53,13 @@
                                         shipping addresses, view and track your orders in your
                                         account and more.</span>
                                     <div class="u-s-m-b-15">
-                                        <a class="l-f-o__create-link btn--e-transparent-brand-b-2" href="{{ route('register') }}">CREATE AN ACCOUNT</a>
+                                        <a class="l-f-o__create-link btn--e-transparent-brand-b-2" href="{{ route('frontend.register') }}">CREATE AN ACCOUNT</a>
                                     </div>
                                     <h1 class="gl-h1">SIGNIN</h1>
 
                                     <span class="gl-text u-s-m-b-30">If you have an account with us, please log in.</span>
-                                    <form class="l-f-o__form">
+                                    <form class="l-f-o__form" action="{{ route('frontend.login') }}" method="POST">
+                                        @csrf
                                         <div class="u-s-m-b-30">
                                             <label class="gl-label" for="login-email">E-MAIL *</label>
                                             <input class="input-text input-text--primary-style" type="email" id="login-email" placeholder="Enter E-mail" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" />
@@ -77,7 +78,7 @@
                                             </div>
                                             <div class="u-s-m-b-30">
                                                 @if (Route::has('password.request'))
-                                                    <a class="gl-link" href="{{ route('password.request') }}">Lost Your Password?</a>
+                                                    <a class="gl-link" href="{{ route('frontend.password.request') }}">Lost Your Password?</a>
                                                 @endif
                                             </div>
                                         </div>

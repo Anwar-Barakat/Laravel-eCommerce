@@ -47,22 +47,21 @@
                                 <span class="js-menu-toggle"></span>
                                 <ul style="width:120px">
                                     <li>
-
                                         <a href="dashboard.html"><i class="fas fa-user-circle u-s-m-r-6"></i>
-
-                                            <span>Account</span></a>
+                                            <span>Account</span>
+                                        </a>
                                     </li>
                                     <li>
-
-                                        <a href="signup.html"><i class="fas fa-user-plus u-s-m-r-6"></i>
-
-                                            <span>Signup</span></a>
+                                        <a href="{{ route('frontend.register') }}">
+                                            <i class="fas fa-user-plus u-s-m-r-6"></i>
+                                            <span>Signup</span>
+                                        </a>
                                     </li>
                                     <li>
-
-                                        <a href="signin.html"><i class="fas fa-lock u-s-m-r-6"></i>
-
-                                            <span>Signin</span></a>
+                                        <a href="{{ route('frontend.login') }}">
+                                            <i class="fas fa-lock u-s-m-r-6"></i>
+                                            <span>Signin</span>
+                                        </a>
                                     </li>
                                     <li>
 
