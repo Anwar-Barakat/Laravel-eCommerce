@@ -52,7 +52,7 @@
                                                 <i class="fas fa-lock-open u-s-m-r-6"></i>
                                                 <span>Signout</span>
                                             </a>
-                                            <form action="{{ route('frontend.logout') }}" method="POST" id="user-logout-form" class="hidden">
+                                            <form action="{{ route('logout') }}" method="POST" id="user-logout-form" class="hidden">
                                                 @csrf
                                             </form>
                                         </li>
@@ -60,13 +60,13 @@
 
                                     @guest
                                         <li>
-                                            <a href="{{ route('frontend.register') }}">
+                                            <a href="{{ route('register') }}">
                                                 <i class="fas fa-user-plus u-s-m-r-6"></i>
                                                 <span>Signup</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('frontend.login') }}">
+                                            <a href="{{ route('login') }}">
                                                 <i class="fas fa-lock u-s-m-r-6"></i>
                                                 <span>Signin</span>
                                             </a>

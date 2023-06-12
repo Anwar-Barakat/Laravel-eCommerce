@@ -1,7 +1,6 @@
 <x-guest-layout>
     @section('pageTitle', __('auth.register'))
 
-
     <div class="app-content">
         <div class="u-s-p-y-60">
             <div class="section__content">
@@ -46,7 +45,7 @@
                                 <div class="l-f-o__pad-box">
                                     <h1 class="gl-h1">PERSONAL INFORMATION</h1>
                                     <x-auth-session-status class="mb-4" :status="session('status')" />
-                                    <form class="l-f-o__form" action="{{ route('frontend.register') }}" method="POST">
+                                    <form class="l-f-o__form" action="{{ route('register') }}" method="POST">
                                         @csrf
                                         <div class="row">
                                             <div class="col-lg-6">

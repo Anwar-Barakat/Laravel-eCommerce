@@ -5,3 +5,25 @@
 .tool-style__form-wrap select {
     border-radius: 0 !important;
 }
+
+[type="text"]:focus,
+[type="email"]:focus,
+[type="url"]:focus,
+[type="password"]:focus,
+[type="number"]:focus,
+[type="date"]:focus,
+[type="datetime-local"]:focus,
+[type="month"]:focus,
+[type="search"]:focus,
+[type="tel"]:focus,
+[type="time"]:focus,
+[type="week"]:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
+    --tw-ring-color: unset;
+    --tw-ring-offset-shadow: unset;
+    --tw-ring-shadow: unset;
+    box-shadow: unset;
+    border-color: #ff4500 !important;
+}

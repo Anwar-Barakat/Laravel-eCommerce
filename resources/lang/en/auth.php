@@ -1,24 +1,21 @@
 <?php
 
 return [
-    'email'         => 'Email Address',
-    'password'      => 'Password',
-    'name'          => 'Name',
+    'email'                 => 'Email Address',
+    'password'              => 'Password',
+    'name'                  => 'Name',
 
-
-    //? Login Page :
     'admin_login'           => 'Admin Login',
     'login'                 => 'Login',
     'remember_me'           => 'Remember me',
     'login_to_your_account' => 'Login to your account',
 
+    'register'                          => 'Register',
+    'register_page'                     => 'Create a new Account',
+    'already_registered'                => 'Already registered?',
+    'email_verification'                => 'Email Verification',
+    'forget_password'                   => 'Forget Password',
 
-    //? Register Page :
-    'register'                  => 'Register',
-    'register_page'             => 'Create a new Account',
-    'already_registered'        => 'Already registered?',
-
-    //? Forget Password Page :
     'confirm_password'          => 'Confirm Password',
     'reset_password'            => 'Reset Password',
     'forget_your_password'      => 'Forget your password?',
