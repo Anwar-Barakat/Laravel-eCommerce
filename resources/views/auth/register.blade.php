@@ -44,7 +44,6 @@
                             <div class="l-f-o">
                                 <div class="l-f-o__pad-box">
                                     <h1 class="gl-h1">PERSONAL INFORMATION</h1>
-                                    <x-auth-session-status class="mb-4" :status="session('status')" />
                                     <form class="l-f-o__form" action="{{ route('register') }}" method="POST">
                                         @csrf
                                         <div class="row">

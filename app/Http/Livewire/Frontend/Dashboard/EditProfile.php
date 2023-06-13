@@ -15,6 +15,11 @@ class EditProfile extends Component
         $this->user = $user;
     }
 
+    public function updated($fields)
+    {
+        return $this->validateOnly($fields);
+    }
+
     public function submit()
     {
         $this->validate();

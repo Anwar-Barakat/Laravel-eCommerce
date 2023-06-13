@@ -86,5 +86,6 @@ return [
     'cancel_orders'                 => 'Cancel Orders',
     'wishlist'                      => 'Wishlist',
     'edit_profile'                  => 'Edit Profile',
-
+    'current_passowrd'              => 'CURRENT PASSWORD',
+    'new_password'                  => 'NEW PASSWORD',
 ];

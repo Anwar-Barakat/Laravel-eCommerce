@@ -50,8 +50,9 @@ Route::group(
             Route::view('/cart',                'frontend.cart.index')->name('cart.index');
 
             Route::group(['middleware' => 'auth', 'verified'], function () {
-                Route::view('/profile',         'frontend.dashboard.profile')->name('profile.index');
-                Route::view('/profile/edit',    'frontend.dashboard.edit-profile')->name('profile.edit');
+                Route::view('/profile',             'frontend.dashboard.profile')->name('profile.index');
+                Route::view('/profile/edit',        'frontend.dashboard.edit-profile')->name('profile.edit');
+                Route::view('/password/change',     'frontend.dashboard.change-password')->name('password.change');
             });
         });
     }

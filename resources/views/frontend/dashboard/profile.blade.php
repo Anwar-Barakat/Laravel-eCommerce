@@ -65,7 +65,7 @@
                                                     <a class="dash__custom-link btn--e-transparent-brand-b-2" href="{{ route('frontend.profile.edit') }}">{{ __('frontend.edit_profile') }}</a>
                                                 </div>
                                                 <div>
-                                                    <a class="dash__custom-link btn--e-brand-b-2" href="#">Change Password</a>
+                                                    <a class="dash__custom-link btn--e-brand-b-2" href="{{ route('frontend.password.change') }}">{{ __('setting.change_password') }}</a>
                                                 </div>
                                             </div>
                                         </div>
