@@ -68,4 +68,22 @@ return [
     'coupon_discount'                       => 'COUPON DISCOUNT',
     'view_cart'                             => 'VIEW CART',
 
+
+    // -------------------------------
+    // Dashboard Page
+    // -------------------------------
+    'my_profile'                    => 'My Profile',
+    'first_name'                    => 'FIRST Name',
+    'last_name'                     => 'LAST Name',
+    'full_name'                     => 'Full Name',
+    'hello'                         => 'Hello',
+    'manage_my_account'             => 'Manage My Account',
+    'my_orders'                     => 'My Orders',
+    'my_returns_and_cancellations'  => 'My Returns & Cancellations',
+    'address_book'                  => 'Address Book',
+    'orders_placed'                 => 'Orders Placed',
+    'cancel_orders'                 => 'Cancel Orders',
+    'wishlist'                      => 'Wishlist',
+    'edit_profile'                  => 'Edit Profile',
+
 ];

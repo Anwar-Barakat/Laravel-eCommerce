@@ -26,9 +26,7 @@ Route::group(
         'middleware'    => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->middleware(['auth', 'verified'])->name('dashboard');
+
 
         Route::middleware('auth')->group(function () {
             Route::get('/profile',          [ProfileController::class, 'edit'])->name('profile.edit');
@@ -50,6 +48,11 @@ Route::group(
             Route::get('/product/{product}',    ProductDetailController::class)->name('product.detail');
 
             Route::view('/cart',                'frontend.cart.index')->name('cart.index');
+
+            Route::group(['middleware' => 'auth', 'verified'], function () {
+                Route::view('/profile',         'frontend.dashboard.profile')->name('profile.index');
+                Route::view('/profile/edit',    'frontend.dashboard.edit-profile')->name('profile.edit');
+            });
         });
     }
 );

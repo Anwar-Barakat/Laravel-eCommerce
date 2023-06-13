@@ -27,3 +27,9 @@ select:focus {
     box-shadow: unset;
     border-color: #ff4500 !important;
 }
+
+.dash-edit-p .btn,
+.dash-edit-p .input-text,
+.dash-edit-p .select-box {
+    border-radius: 0;
+}
