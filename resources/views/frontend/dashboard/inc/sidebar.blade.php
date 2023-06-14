@@ -14,8 +14,7 @@
                     <a class="dash-active" href="dash-my-profile.html">{{ __('frontend.my_profile') }}</a>
                 </li>
                 <li>
-
-                    <a href="dash-address-book.html">{{ __('frontend.address_book') }}</a>
+                    <a href="{{ route('frontend.delivery-addresses.index') }}">{{ __('frontend.delivery_addresses') }}</a>
                 </li>
                 <li>
 

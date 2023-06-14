@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\Checkout\CheckoutController;
+use App\Http\Controllers\Frontend\Dashboard\DeliveryAddressController;
 use App\Http\Controllers\Frontend\Home\HomeController;
 use App\Http\Controllers\Frontend\ProductDetail\ProductDetailController;
 use App\Http\Controllers\Frontend\Shop\CategoryProductController;
@@ -39,15 +40,15 @@ Route::group(
 
         Route::as('frontend.')->group(function () {
 
-            Route::get('/',                     [HomeController::class, 'index'])->name('home');
+            Route::get('/',                         [HomeController::class, 'index'])->name('home');
 
-            Route::get('/shop',                 [ShopController::class, 'index'])->name('shop');
+            Route::get('/shop',                     [ShopController::class, 'index'])->name('shop');
 
-            Route::get('/category/{url}',       CategoryProductController::class)->name('category.products');
+            Route::get('/category/{url}',           CategoryProductController::class)->name('category.products');
 
-            Route::get('/product/{product}',    ProductDetailController::class)->name('product.detail');
+            Route::get('/product/{product}',        ProductDetailController::class)->name('product.detail');
 
-            Route::view('/cart',                'frontend.cart.index')->name('cart.index');
+            Route::view('/cart',                    'frontend.cart.index')->name('cart.index');
 
             Route::group(['middleware' => 'auth', 'verified'], function () {
                 Route::view('/profile',                 'frontend.dashboard.profile')->name('profile.index');
@@ -55,7 +56,9 @@ Route::group(
                 Route::view('/password/change',         'frontend.dashboard.change-password')->name('password.change');
             });
 
-            Route::get('/checkout',                 CheckoutController::class)->name('checkout');
+            Route::get('/checkout',                     CheckoutController::class)->name('checkout');
+
+            Route::resource('/delivery-addresses',      DeliveryAddressController::class);
         });
     }
 );

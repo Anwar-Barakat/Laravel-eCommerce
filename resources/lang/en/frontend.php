@@ -75,6 +75,7 @@ return [
     'you_must_be_logged_in'                 => 'You must be logged in',
     'coupon_has_expired'                    => 'The Coupon has expired',
 
+
     // -------------------------------
     // Dashboard Page
     // -------------------------------
@@ -95,6 +96,8 @@ return [
     'edit_profile'                  => 'Edit Profile',
     'current_passowrd'              => 'CURRENT PASSWORD',
     'new_password'                  => 'NEW PASSWORD',
+    'delivery_addresses'            => 'Delivery Addresses',
+    'street_address'                => 'Street Address',
 
 
     // -------------------------------
@@ -111,4 +114,5 @@ return [
     'ship_to'                               => 'Ship to',
     'select_default_address'                => 'Select Your Delivery Address',
     'discount'                              => 'DISCOUNT',
+    'quantity'                              => 'Quantity',
 ];

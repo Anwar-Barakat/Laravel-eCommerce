@@ -47,7 +47,7 @@
                                                         <span class="o-card__name">
                                                             <a href="{{ route('frontend.product.detail', ['product' => $cart_item->product]) }}">{{ $cart_item->product->name }}</a>
                                                         </span>
-                                                        <span class="o-card__quantity">Quantity x {{ $cart_item->qty }}</span>
+                                                        <span class="o-card__quantity">{{ __('frontend.quantity') }} x {{ $cart_item->qty }}</span>
                                                         <span class="o-card__price">${{ $cart_item->grand_total }}</span>
                                                     </div>
                                                 </div>
@@ -74,7 +74,7 @@
                                                 </div>
                                             </div>
                                         @else
-                                            <span class="ship-b__text">{{ __('frontend.select_default_address') }}</span>
+                                            <a class="ship-b__text" href="{{ route('frontend.delivery-addresses.add') }}">{{ __('frontend.select_default_address') }} </a>
                                         @endif
                                     </div>
                                 </div>

@@ -95,6 +95,7 @@ return [
     'edit_profile'                  => 'Edit Profile',
     'current_passowrd'              => 'CURRENT PASSWORD',
     'new_password'                  => 'NEW PASSWORD',
+    'street_address'                => 'Street Address',
 
 
     // -------------------------------
