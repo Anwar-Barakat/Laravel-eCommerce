@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
 
-        if (!empty(Session::get('session_id'))) {
+        if (!empty(Session::get('session_id')) && !empty(Cart::getCartItems())) {
             $cart           = Cart::where('session_id', Session::get('session_id'))->first();
             $cart->user_id  = Auth::user()->id;
             $cart->save();

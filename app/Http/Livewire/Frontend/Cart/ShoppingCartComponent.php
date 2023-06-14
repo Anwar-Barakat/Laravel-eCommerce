@@ -3,8 +3,10 @@
 namespace App\Http\Livewire\Frontend\Cart;
 
 use App\Models\Cart;
+use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\ProductAttribute;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ShoppingCartComponent extends Component
@@ -14,6 +16,8 @@ class ShoppingCartComponent extends Component
     public ProductAttribute $attr;
 
     public $cart_items;
+
+    public $coupon = '';
 
     protected $listeners = ['updatedCartItem'];
 
@@ -58,6 +62,27 @@ class ShoppingCartComponent extends Component
         $cart->delete();
         toastr()->info(__('msgs.deleted', ['name' => __('product.product')]));
         $this->emit('updatedCartItem', ['cart' => $cart]);
+    }
+
+    public function applyCoupon()
+    {
+        if (!Auth::check()) {
+            toastr()->error(__('frontend.you_must_be_logged_in'));
+            return redirect()->route('login');
+        }
+
+        $coupon = Coupon::where('code', $this->coupon)->first();
+
+        if (!$coupon) {
+            toastr()->info(__('frontend.coupon_not_found'));
+            $this->reset('coupon');
+            return false;
+        }
+
+        if ($coupon->expiry_date < date('Y-m-d')) {
+            toastr()->info(__('frontend.coupon_has_expired'));
+            return false;
+        }
     }
 
     public function render()

@@ -14,5 +14,5 @@ return [
     'details'       => 'Details',
     'approval'      => 'Approval',
     'download'      => 'Download',
-
+    'apply'         => 'APPLY',
 ];

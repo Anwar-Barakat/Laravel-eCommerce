@@ -19,8 +19,6 @@
 <!--====== App ======-->
 <script src="{{ asset('frontend/dist/js/app.js') }}"></script>
 
-
-
 <!--====== Noscript ======-->
 <noscript>
     <div class="app-setting">

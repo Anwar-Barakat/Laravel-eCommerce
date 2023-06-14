@@ -68,7 +68,12 @@ return [
     'proceed_to_checkout'                   => 'PROCEED TO CHECKOUT',
     'coupon_discount'                       => 'COUPON DISCOUNT',
     'view_cart'                             => 'VIEW CART',
-
+    'have_a_coupon'                         => 'Have a coupon?',
+    'click_here_to_enter_code'              => 'Click Here to enter your code',
+    'you_have_a_coupon_code'                => 'Enter your coupon code if you have one.',
+    'coupon_not_found'                      => 'Coupon not found',
+    'you_must_be_logged_in'                 => 'You must be logged in',
+    'coupon_has_expired'                    => 'The Coupon has expired',
 
     // -------------------------------
     // Dashboard Page

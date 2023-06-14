@@ -45,6 +45,35 @@
         <!--====== Section Content ======-->
         <div class="section__content">
             <div class="container">
+                @if ($cart_items->count() > 0)
+                    <div class="row mb-4">
+                        <div class="col-lg-12">
+                            <div id="checkout-msg-group">
+                                <div class="f-cart__pad-box">
+                                    <span class="msg__text">{{ __('frontend.have_a_coupon') }}
+                                        <a class="gl-link" href="#have-coupon" data-toggle="collapse">{{ __('frontend.click_here_to_enter_code') }}</a>
+                                    </span>
+                                    <div class="collapse" id="have-coupon" data-parent="#checkout-msg-group">
+                                        <div class="c-f u-s-m-b-16">
+                                            <span class="gl-text u-s-m-b-16">{{ __('frontend.you_have_a_coupon_code') }}</span>
+                                            <form class="c-f__form" wire:submit.prevent='applyCoupon'>
+                                                <div class="u-s-m-b-16">
+                                                    <div class="u-s-m-b-15">
+                                                        <label for="coupon"></label>
+                                                        <input class="input-text input-text--primary-style" type="text" id="coupon" placeholder="{{ __('product.coupon_code') }}" wire:model.defer='coupon' required>
+                                                    </div>
+                                                    <div class="u-s-m-b-15">
+                                                        <button class="btn btn--e-transparent-brand-b-2" type="submit">{{ __('btns.apply') }}</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
                         <div class="table-responsive">
@@ -140,9 +169,12 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <!--====== End - Section Content ======-->
+
+
     </div>
     <!--====== End - Section 2 ======-->
 

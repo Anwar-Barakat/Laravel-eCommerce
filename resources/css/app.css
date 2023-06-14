@@ -33,3 +33,7 @@ select:focus {
 .dash-edit-p .select-box {
     border-radius: 0;
 }
+
+.collapse {
+    visibility: unset;
+}

@@ -14,4 +14,6 @@ return [
     'details'       => 'تفاصيل',
     'approval'      => 'إعتماد',
     'download'      => 'تنزيل',
+    'apply'         => 'تطبيق',
+
 ];
