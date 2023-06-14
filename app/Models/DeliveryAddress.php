@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DeliveryAddress extends Model
 {
@@ -13,15 +14,21 @@ class DeliveryAddress extends Model
         'user_id',
         'first_name',
         'last_name',
+        'email',
         'mobile',
         'street_address',
         'country_id',
         'city',
-        'is_active',
+        'is_default',
     ];
 
     public function getFullNameAttribute()
     {
         return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

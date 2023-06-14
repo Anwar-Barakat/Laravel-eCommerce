@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('delivery_addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('email');
             $table->string('mobile');
             $table->string('street_address');
             $table->foreignId('country_id')->constrained()->cascadeOnUpdate();
             $table->string('city');
-            $table->boolean('is_default')->default(true);
+            $table->string('is_default', 100);
             $table->timestamps();
         });
     }
