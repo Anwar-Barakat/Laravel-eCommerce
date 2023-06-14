@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Frontend\Cart\CartController;
+use App\Http\Controllers\Frontend\Checkout\CheckoutController;
 use App\Http\Controllers\Frontend\Home\HomeController;
 use App\Http\Controllers\Frontend\ProductDetail\ProductDetailController;
 use App\Http\Controllers\Frontend\Shop\CategoryProductController;
@@ -50,10 +50,12 @@ Route::group(
             Route::view('/cart',                'frontend.cart.index')->name('cart.index');
 
             Route::group(['middleware' => 'auth', 'verified'], function () {
-                Route::view('/profile',             'frontend.dashboard.profile')->name('profile.index');
-                Route::view('/profile/edit',        'frontend.dashboard.edit-profile')->name('profile.edit');
-                Route::view('/password/change',     'frontend.dashboard.change-password')->name('password.change');
+                Route::view('/profile',                 'frontend.dashboard.profile')->name('profile.index');
+                Route::view('/profile/edit',            'frontend.dashboard.edit-profile')->name('profile.edit');
+                Route::view('/password/change',         'frontend.dashboard.change-password')->name('password.change');
             });
+
+            Route::get('/checkout',                 CheckoutController::class)->name('checkout');
         });
     }
 );

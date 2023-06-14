@@ -93,4 +93,10 @@ return [
     'edit_profile'                  => 'Edit Profile',
     'current_passowrd'              => 'CURRENT PASSWORD',
     'new_password'                  => 'NEW PASSWORD',
+
+
+    // -------------------------------
+    // Checkout Page
+    // -------------------------------
+    'checkout'                      => 'Checkout',
 ];

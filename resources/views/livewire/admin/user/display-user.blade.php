@@ -63,7 +63,7 @@
                     @forelse ($users as $user)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td> {{ $user->first_name . ' ' . $user->last_name }}</td>
+                            <td> {{ $user->full_name }}</td>
                             <td> {{ $user->email }}</td>
                             <td> {{ $user->mobile }}</td>
                             <td>

@@ -40,6 +40,11 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
+    }
+
     public function cart_items(): HasMany
     {
         return $this->hasMany(Cart::class);

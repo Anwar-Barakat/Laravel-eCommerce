@@ -477,7 +477,7 @@
                                     </li>
                                     <li>
 
-                                        <a href="checkout.html">Checkout</a>
+                                        <a href="{{ route('frontend.checkout') }}">{{ __('frontend.checkout') }}</a>
                                     </li>
                                     <li>
 
