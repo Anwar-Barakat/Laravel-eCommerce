@@ -79,9 +79,11 @@ return [
     // Dashboard Page
     // -------------------------------
     'my_profile'                    => 'My Profile',
-    'first_name'                    => 'FIRST Name',
-    'last_name'                     => 'LAST Name',
+    'first_name'                    => 'FIRST NAME',
+    'last_name'                     => 'LAST NAME',
     'full_name'                     => 'Full Name',
+    'email'                         => 'EMAIL ADDRESS',
+    'mobile'                        => 'MOBILE',
     'hello'                         => 'Hello',
     'manage_my_account'             => 'Manage My Account',
     'my_orders'                     => 'My Orders',
@@ -93,4 +95,19 @@ return [
     'edit_profile'                  => 'Edit Profile',
     'current_passowrd'              => 'CURRENT PASSWORD',
     'new_password'                  => 'NEW PASSWORD',
+
+
+    // -------------------------------
+    // Checkout Page
+    // -------------------------------
+    'checkout'                              => 'Checkout',
+    'delivery_info'                         => 'DELIVERY INFORMATION',
+    'use_default_delivery_address'          => 'Use default delivery address from the account',
+    'country'                               => 'COUNTRY',
+    'make_it_default_delivery_address'      => 'make this address the default delivery address',
+    'delivery_address'                      => 'Delivery Address',
+    'town_city'                             => 'TOWN/CITY',
+    'order_summary'                         => 'ORDER SUMMARY',
+    'ship_to'                               => 'Ship to',
+    'select_default_address'                => 'Select Your Delivery Address'
 ];

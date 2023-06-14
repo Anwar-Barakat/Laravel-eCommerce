@@ -13,7 +13,6 @@ class AddDeliveryAddressForm extends Component
     public function mount(DeliveryAddress $address)
     {
         $this->address = $address ?? DeliveryAddress::make();
-        // dd(Auth::user()->delivery_addresses);
     }
 
     public function updated($fields)

@@ -3,8 +3,13 @@
     <form class="checkout-f__delivery" wire:submit.prevent='submit'>
         <div class="u-s-m-b-30">
             @auth
-                @if (Auth::user()->delivery_addressess &&
-                        Auth::user()->delivery_addressess->where('is_default', 1)->first())
+                @php
+                    $address = Auth::user()
+                        ->delivery_addresses->where('is_default', 1)
+                        ->first();
+                @endphp
+
+                @if ($address)
                     <div class="u-s-m-b-15">
                         <div class="check-box">
                             <input type="checkbox" id="get-address">

@@ -28,111 +28,54 @@
                     <div class="row">
                         @livewire('frontend.checkout.add-delivery-address-form')
                         <div class="col-lg-6">
-                            <h1 class="checkout-f__h1">ORDER SUMMARY</h1>
+                            <h1 class="checkout-f__h1">{{ __('frontend.order_summary') }}</h1>
                             <!--====== Order Summary ======-->
                             <div class="o-summary">
                                 <div class="o-summary__section u-s-m-b-30">
                                     <div class="o-summary__item-wrap gl-scroll">
-                                        <div class="o-card">
-                                            <div class="o-card__flex">
-                                                <div class="o-card__img-wrap">
-
-                                                    <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt="">
-                                                </div>
-                                                <div class="o-card__info-wrap">
-
-                                                    <span class="o-card__name">
-
-                                                        <a href="product-detail.html">Yellow Wireless Headphone</a></span>
-
-                                                    <span class="o-card__quantity">Quantity x 1</span>
-
-                                                    <span class="o-card__price">$150.00</span>
-                                                </div>
-                                            </div>
-
-                                            <a class="o-card__del far fa-trash-alt"></a>
-                                        </div>
-                                        <div class="o-card">
-                                            <div class="o-card__flex">
-                                                <div class="o-card__img-wrap">
-
-                                                    <img class="u-img-fluid" src="images/product/electronic/product18.jpg" alt="">
-                                                </div>
-                                                <div class="o-card__info-wrap">
-
-                                                    <span class="o-card__name">
-
-                                                        <a href="product-detail.html">Nikon DSLR Camera 4k</a></span>
-
-                                                    <span class="o-card__quantity">Quantity x 1</span>
-
-                                                    <span class="o-card__price">$150.00</span>
+                                        @forelse ($cart_items as $cart_item)
+                                            <div class="o-card">
+                                                <div class="o-card__flex">
+                                                    <div class="o-card__img-wrap">
+                                                        @if ($cart_item->product->getFirstMediaUrl('products', 'small'))
+                                                            <img class="u-img-fluid" src="{{ $cart_item->product->getFirstMediaUrl('products', 'small') }}" alt="{{ $cart_item->product }}">
+                                                        @else
+                                                            <img class="u-img-fluid" src="{{ asset('frontend/dist/images/product/electronic/product3.jpg') }}" alt="{{ $cart_item->product }}">
+                                                        @endif
+                                                    </div>
+                                                    <div class="o-card__info-wrap">
+                                                        <span class="o-card__name">
+                                                            <a href="{{ route('frontend.product.detail', ['product' => $cart_item->product]) }}">{{ $cart_item->product->name }}</a>
+                                                        </span>
+                                                        <span class="o-card__quantity">Quantity x {{ $cart_item->qty }}</span>
+                                                        <span class="o-card__price">${{ $cart_item->grand_total }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            <a class="o-card__del far fa-trash-alt"></a>
-                                        </div>
-                                        <div class="o-card">
-                                            <div class="o-card__flex">
-                                                <div class="o-card__img-wrap">
-
-                                                    <img class="u-img-fluid" src="images/product/women/product8.jpg" alt="">
-                                                </div>
-                                                <div class="o-card__info-wrap">
-
-                                                    <span class="o-card__name">
-
-                                                        <a href="product-detail.html">New Dress D Nice Elegant</a></span>
-
-                                                    <span class="o-card__quantity">Quantity x 1</span>
-
-                                                    <span class="o-card__price">$150.00</span>
-                                                </div>
-                                            </div>
-
-                                            <a class="o-card__del far fa-trash-alt"></a>
-                                        </div>
-                                        <div class="o-card">
-                                            <div class="o-card__flex">
-                                                <div class="o-card__img-wrap">
-
-                                                    <img class="u-img-fluid" src="images/product/men/product8.jpg" alt="">
-                                                </div>
-                                                <div class="o-card__info-wrap">
-
-                                                    <span class="o-card__name">
-
-                                                        <a href="product-detail.html">New Fashion D Nice Elegant</a></span>
-
-                                                    <span class="o-card__quantity">Quantity x 1</span>
-
-                                                    <span class="o-card__price">$150.00</span>
-                                                </div>
-                                            </div>
-
-                                            <a class="o-card__del far fa-trash-alt"></a>
-                                        </div>
+                                        @empty
+                                            <h5 class="text-center">{{ __('msgs.not_found') }}</h5>
+                                        @endforelse
                                     </div>
                                 </div>
                                 <div class="o-summary__section u-s-m-b-30">
                                     <div class="o-summary__box">
-                                        <h1 class="checkout-f__h1">SHIPPING & BILLING</h1>
-                                        <div class="ship-b">
-
-                                            <span class="ship-b__text">Ship to:</span>
-                                            <div class="ship-b__box u-s-m-b-10">
-                                                <p class="ship-b__p">4247 Ashford Drive Virginia VA-20006 USA (+0) 900901904</p>
-
-                                                <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal" data-modal-id="#edit-ship-address">Edit</a>
+                                        <h1 class="checkout-f__h1">{{ __('frontend.shipping') }}</h1>
+                                        @php
+                                            $address = Auth::user()
+                                                ->delivery_addresses->where('is_default', 1)
+                                                ->first();
+                                        @endphp
+                                        @if ($address)
+                                            <div class="ship-b">
+                                                <span class="ship-b__text">{{ __('frontend.ship_to') }}:</span>
+                                                <div class="ship-b__box u-s-m-b-10">
+                                                    <p class="ship-b__p">{{ $address->full_name }}, {{ $address->mobile }}, {{ $address->street_address }}, {{ $address->city }}, {{ $address->country->name }}</p>
+                                                    <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal" data-modal-id="#edit-ship-address">Edit</a>
+                                                </div>
                                             </div>
-                                            <div class="ship-b__box">
-
-                                                <span class="ship-b__text">Bill to default billing address</span>
-
-                                                <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal" data-modal-id="#edit-ship-address">Edit</a>
-                                            </div>
-                                        </div>
+                                        @else
+                                            <span class="ship-b__text">{{ __('frontend.select_default_address') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="o-summary__section u-s-m-b-30">
@@ -140,20 +83,24 @@
                                         <table class="o-summary__table">
                                             <tbody>
                                                 <tr>
-                                                    <td>SHIPPING</td>
-                                                    <td>$4.00</td>
+                                                    <td>{{ __('frontend.shipping') }}</td>
+                                                    <td>$0.00</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>TAX</td>
+                                                    <td>{{ __('frontend.tax') }}</td>
                                                     <td>$0.00</td>
                                                 </tr>
                                                 <tr>
                                                     <td>SUBTOTAL</td>
-                                                    <td>$379.00</td>
+                                                    <td>${{ $cart_items->sum('grand_total') }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>GRAND TOTAL</td>
-                                                    <td>$379.00</td>
+                                                    <td>{{ __('frontend.discount') }}</td>
+                                                    <td>$0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ __('frontend.grand_total') }}</td>
+                                                    <td>${{ $cart_items->sum('grand_total') }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

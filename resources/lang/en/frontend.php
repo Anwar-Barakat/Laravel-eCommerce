@@ -107,4 +107,8 @@ return [
     'make_it_default_delivery_address'      => 'make this address the default delivery address',
     'delivery_address'                      => 'Delivery Address',
     'town_city'                             => 'TOWN/CITY',
+    'order_summary'                         => 'ORDER SUMMARY',
+    'ship_to'                               => 'Ship to',
+    'select_default_address'                => 'Select Your Delivery Address',
+    'discount'                              => 'DISCOUNT',
 ];
