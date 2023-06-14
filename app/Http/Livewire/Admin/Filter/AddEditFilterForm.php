@@ -4,11 +4,7 @@ namespace App\Http\Livewire\Admin\Filter;
 
 use App\Models\Category;
 use App\Models\Filter;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 use Livewire\Component;
-use Illuminate\Support\Str;
 
 
 class AddEditFilterForm extends Component
@@ -19,8 +15,8 @@ class AddEditFilterForm extends Component
 
     public function mount(Filter $filter)
     {
-        $this->filter             = $filter;
-        $this->categories           = Category::with('subCategories:id,name,parent_id')->select('id', 'name', 'parent_id')->activeParent()->get();
+        $this->filter           = $filter;
+        $this->categories       = Category::with('subCategories:id,name,parent_id')->select('id', 'name', 'parent_id')->activeParent()->get();
     }
 
     public function updated($fields)

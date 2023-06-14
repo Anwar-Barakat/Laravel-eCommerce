@@ -63,6 +63,8 @@ class FilterController extends Controller
      */
     public function destroy(Filter $filter)
     {
-        //
+        $filter->delete();
+        toastr()->info(__('msgs.deleted', ['name' => __('product.filter')]));
+        return redirect()->back();
     }
 }

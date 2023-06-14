@@ -123,7 +123,7 @@ Route::group(
                 //_______________________
                 // Filters
                 //_______________________
-                Route::resource('filters',                                  FilterController::class)->only(['index', 'create', 'edit']);
+                Route::resource('filters',                                  FilterController::class)->only(['index', 'create', 'edit', 'destroy']);
                 Route::resource('filter-values',                            FilterValueController::class)->only(['index', 'create', 'edit']);
 
 

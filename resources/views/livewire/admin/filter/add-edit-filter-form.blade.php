@@ -8,14 +8,14 @@
                           <div class="col-12 col-md-6 col-lg-4">
                               <div class="mb-3">
                                   <x-input-label class="form-label" :value="__('product.fitler_name')" />
-                                  <x-text-input type="text" class="form-control" wire:model='filter.name' placeholder="{{ __('product.must_be_in_english', ['name' => __('product.fitler_name')]) }}" />
+                                  <x-text-input type="text" class="form-control" wire:model.defer='filter.name' placeholder="{{ __('product.must_be_in_english', ['name' => __('product.fitler_name')]) }}" />
                                   <x-input-error :messages="$errors->get('filter.name')" class="mt-2" />
                               </div>
                           </div>
                           <div class="col-12 col-md-6 col-lg-4">
                               <div class="mb-3">
                                   <x-input-label class="form-label" :value="__('setting.status')" />
-                                  <select class="form-select" wire:model="filter.is_active">
+                                  <select class="form-select" wire:model.defer="filter.is_active">
                                       <option value="">{{ __('btns.select') }}</option>
                                       <option value="0">{{ __('msgs.not_active') }}</option>
                                       <option value="1">{{ __('msgs.active') }}</option>
@@ -30,15 +30,17 @@
                               <div class="form-selectgroup">
                                   @foreach ($categories as $cat)
                                       <label class="form-selectgroup-item" wire:key='cat-{{ $cat->id }}'>
-                                          <input type="checkbox" value="{{ $cat->id }}" class="form-selectgroup-input" wire:model="filter.categories.{{ $cat->id }}" />
+                                          <input type="checkbox" value="{{ $cat->id }}" class="form-selectgroup-input" wire:model.defer="filter.categories.{{ $cat->id }}" />
                                           <span class="form-selectgroup-label">{{ $cat->name }}</span>
                                       </label>
-                                      @foreach ($cat->subCategories as $sub)
-                                          <label class="form-selectgroup-item" wire:key='sub-{{ $sub->id }}'>
-                                              <input type="checkbox" value="{{ $sub->id }}" class="form-selectgroup-input" wire:model="filter.categories.{{ $sub->id }}" />
-                                              <span class="form-selectgroup-label">{{ $sub->name }}</span>
-                                          </label>
-                                      @endforeach
+                                      @if ($cat->subCategories)
+                                          @foreach ($cat->subCategories as $sub)
+                                              <label class="form-selectgroup-item">
+                                                  <input type="checkbox" value="{{ $sub->id }}" class="form-selectgroup-input" wire:model.defer='filter.categories.{{ $sub->id }}' />
+                                                  <span class="form-selectgroup-label">{{ $sub->name }}</span>
+                                              </label>
+                                          @endforeach
+                                      @endif
                                       <div class="w-100"></div>
                                   @endforeach
                               </div>

@@ -15,7 +15,7 @@ class AddEditCoupon extends Component
     public function mount(Coupon $coupon)
     {
         $this->coupon               = $coupon;
-        $this->categories           = Category::activeParent()->orderBy('parent_id')->get();
+        $this->categories           = Category::with('subCategories:id,name,parent_id')->select('id', 'name', 'parent_id')->activeParent()->get();
     }
 
     public function updated($fields)

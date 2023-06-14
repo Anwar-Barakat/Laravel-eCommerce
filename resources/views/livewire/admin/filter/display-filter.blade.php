@@ -61,7 +61,7 @@
                                          </a>
                                      </div>
                                  </span>
-                                 {{-- <x-modal-delete :id="$filter->id" :action="route('admin.filters.destroy', ['filter' => $filter])" /> --}}
+                                 <x-modal-delete :id="$filter->id" :action="route('admin.filters.destroy', ['filter' => $filter])" />
                              </td>
                          </tr>
                      @empty
