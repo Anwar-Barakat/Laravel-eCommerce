@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\Setting\AdminChangePasswordController;
 use App\Http\Controllers\Admin\Setting\AdminProfileController;
 use App\Http\Controllers\Admin\Setting\SettingController;
 use App\Http\Controllers\Admin\ShippingCharge\ShippingChargeController;
+use App\Http\Controllers\Admin\User\UserController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -138,6 +139,12 @@ Route::group(
                 // currencies
                 //_______________________
                 Route::resource('currencies',                               CurrencyController::class)->only(['index', 'create', 'edit']);
+
+
+                //_______________________
+                // Users
+                //_______________________
+                Route::get('users',                                         UserController::class)->name('users.index');
             });
         });
     }

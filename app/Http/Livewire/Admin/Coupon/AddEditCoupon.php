@@ -18,11 +18,6 @@ class AddEditCoupon extends Component
         $this->categories           = Category::with('subCategories:id,name,parent_id')->select('id', 'name', 'parent_id')->activeParent()->get();
     }
 
-    public function updated($fields)
-    {
-        return $this->validateOnly($fields);
-    }
-
     public function submit()
     {
         $this->validate();
@@ -60,7 +55,7 @@ class AddEditCoupon extends Component
                     $this->coupon->amount = 0;
                 }
             }],
-            'coupon.categories'     => ['required', 'array'],
+            'coupon.categories'     => ['required'],
             'coupon.categories.*'   => ['required', 'integer']
         ];
     }

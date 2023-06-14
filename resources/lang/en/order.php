@@ -24,9 +24,18 @@ return [
     'currency_code'             => 'Currency code',
     'exchange_rate'             => 'Exchange rate',
 
+
     // -------------------------------
     // Orders
     // -------------------------------
     'orders'            => 'Orders',
-    'order'             => 'Order'
+    'order'             => 'Order',
+
+
+    // -------------------------------
+    // Users
+    // -------------------------------
+    'users'             => 'Users',
+    'user'              => 'User',
+    'user_name'         => 'Username',
 ];
