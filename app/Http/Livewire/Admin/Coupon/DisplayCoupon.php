@@ -22,7 +22,7 @@ class DisplayCoupon extends Component
         $this->expiry_date_from = date('Y-m-d');
     }
 
-    public function updateStatus($coupon)
+    public function updateStatus(Coupon $coupon)
     {
         $coupon->update(['is_active' => !$coupon->is_active]);
     }

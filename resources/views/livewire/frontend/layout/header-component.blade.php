@@ -578,7 +578,7 @@
                                         @php
                                             $sub_total = 0;
                                         @endphp
-                                        @foreach ($cart_items as $cart_item)
+                                        @forelse ($cart_items as $cart_item)
                                             @php
                                                 $sub_total = $sub_total + $cart_item->grand_total;
                                             @endphp
@@ -600,6 +600,9 @@
                                                                 {{ $cart_item->product->category->name }}
                                                             </a>
                                                         </span>
+                                                        <span class="mini-product__category">
+                                                            <a href="javascript:;">{{ __('frontend.size') }} : {{ $cart_item->size }}</a>
+                                                        </span>
                                                         <span class="mini-product__name">
                                                             <a href="{{ route('frontend.product.detail', ['product' => $cart_item->product]) }}">{{ $cart_item->product->name }}
                                                             </a>
@@ -611,7 +614,9 @@
                                                 <a class="mini-product__delete-link far fa-trash-alt" wire:click='deleteItem({{ $cart_item->id }})'></a>
                                             </div>
                                             <!--====== End - Card for mini cart ======-->
-                                        @endforeach
+                                        @empty
+                                            <h5 class="text-center">{{ __('msgs.not_found') }}</h5>
+                                        @endforelse
 
                                     </div>
                                     <!--====== End - Mini Product Container ======-->

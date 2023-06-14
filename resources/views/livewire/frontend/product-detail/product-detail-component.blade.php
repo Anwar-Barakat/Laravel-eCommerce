@@ -66,23 +66,18 @@
                          <div class="u-s-m-b-15">
                              <ul class="pd-social-list">
                                  <li>
-
                                      <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a>
                                  </li>
                                  <li>
-
                                      <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a>
                                  </li>
                                  <li>
-
                                      <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a>
                                  </li>
                                  <li>
-
                                      <a class="s-wa--color-hover" href="#"><i class="fab fa-whatsapp"></i></a>
                                  </li>
                                  <li>
-
                                      <a class="s-gplus--color-hover" href="#"><i class="fab fa-google-plus-g"></i></a>
                                  </li>
                              </ul>
@@ -114,6 +109,7 @@
                                          </div>
                                      </div>
                                  </div>
+                                 @include('layouts.inc.errors-message')
                                  @if ($product->attributes->count() > 0)
                                      <div class="u-s-m-b-15">
                                          <span class="pd-detail__label u-s-m-b-8">{{ __('product.size') }}:</span>
@@ -131,7 +127,20 @@
                                  @endif
 
                                  @if ($product->attributes->count() > 0)
-                                     @livewire('frontend.product-detail.product-detail-add-to-cart', [$product, $attr])
+                                     <div class="pd-detail-inline-2">
+                                         <div class="u-s-m-b-15">
+                                             <!--====== Input Counter ======-->
+                                             <div class="input-counter">
+                                                 <span class="input-counter__minus fas fa-minus cursor-pointer" wire:click="decreaseQty()"></span>
+                                                 <input class="input-counter__text input-counter--text-primary-style" type="text" value="1" data-min="1" data-max="100" wire:model='qty'>
+                                                 <span class="input-counter__plus fas fa-plus cursor-pointer" wire:click="increaseQty()"></span>
+                                             </div>
+                                             <!--====== End - Input Counter ======-->
+                                         </div>
+                                         <div class="u-s-m-b-15">
+                                             <button class="btn btn--e-brand-b-2" type="submit" wire:click.prevent="addToCard()">{{ __('frontend.add_to_card') }}</button>
+                                         </div>
+                                     </div>
                                  @endif
                              </form>
                          </div>
