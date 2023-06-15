@@ -21,7 +21,7 @@ class DeliveryAddressController extends Controller
      */
     public function create()
     {
-        //
+        return view('frontend.dashboard.delivery-addresses.create');
     }
 
     /**
@@ -43,9 +43,8 @@ class DeliveryAddressController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DeliveryAddress $deliveryAddress)
+    public function edit(DeliveryAddress $delivery_address)
     {
-        //
     }
 
     /**

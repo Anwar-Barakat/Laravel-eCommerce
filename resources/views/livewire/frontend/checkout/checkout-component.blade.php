@@ -26,7 +26,23 @@
             <div class="container">
                 <div class="checkout-f">
                     <div class="row">
-                        @livewire('frontend.checkout.add-delivery-address-form')
+                        <div class="col-lg-6">
+                            <h1 class="checkout-f__h1">{{ __('frontend.delivery_info') }}</h1>
+                            @auth
+                                @if ($default_address)
+                                    <div class="u-s-m-b-15">
+                                        <div class="check-box">
+                                            <input type="checkbox" id="get-address">
+                                            <div class="check-box__state check-box__state--primary">
+                                                <label class="check-box__label" for="get-address">{{ __('frontend.use_default_delivery_address') }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endauth
+
+                            @livewire('frontend.checkout.add-delivery-address-form')
+                        </div>
                         <div class="col-lg-6">
                             <h1 class="checkout-f__h1">{{ __('frontend.order_summary') }}</h1>
                             <!--====== Order Summary ======-->
@@ -60,21 +76,16 @@
                                 <div class="o-summary__section u-s-m-b-30">
                                     <div class="o-summary__box">
                                         <h1 class="checkout-f__h1">{{ __('frontend.shipping') }}</h1>
-                                        @php
-                                            $address = Auth::user()
-                                                ->delivery_addresses->where('is_default', 1)
-                                                ->first();
-                                        @endphp
-                                        @if ($address)
+                                        @if ($default_address)
                                             <div class="ship-b">
                                                 <span class="ship-b__text">{{ __('frontend.ship_to') }}:</span>
                                                 <div class="ship-b__box u-s-m-b-10">
-                                                    <p class="ship-b__p">{{ $address->full_name }}, {{ $address->mobile }}, {{ $address->street_address }}, {{ $address->city }}, {{ $address->country->name }}</p>
+                                                    <p class="ship-b__p">{{ $default_address->full_name }}, {{ $default_address->mobile }}, {{ $default_address->street_address }}, {{ $default_address->city }}, {{ $default_address->country->name }}</p>
                                                     <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal" data-modal-id="#edit-ship-address">Edit</a>
                                                 </div>
                                             </div>
                                         @else
-                                            <a class="ship-b__text" href="{{ route('frontend.delivery-addresses.add') }}">{{ __('frontend.select_default_address') }} </a>
+                                            <a class="ship-b__text" href="{{ route('frontend.delivery-addresses.create') }}">{{ __('frontend.select_default_address') }} </a>
                                         @endif
                                     </div>
                                 </div>
@@ -216,3 +227,21 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script type="text/javascript">
+        function checkAddress() {
+            var getAddress = $("#get-address");
+
+            if (getAddress.is(":checked")) {
+                $("#save-delivery-address").hide();
+            } else {
+                $("#save-delivery-address").show();
+            }
+        }
+
+        $('#get-address').click(function() {
+            checkAddress()
+        });
+    </script>
+@endpush

@@ -8,16 +8,13 @@ use Livewire\Component;
 
 class AddDeliveryAddressForm extends Component
 {
-    public $address;
+    public $address,
+        $default_address;
 
     public function mount(DeliveryAddress $address)
     {
         $this->address = $address ?? DeliveryAddress::make();
-    }
-
-    public function updated($fields)
-    {
-        return $this->validateOnly($fields);
+        $this->default_address  = Auth::check() ? Auth::user()->delivery_addresses->where('is_default', null)->first() : '';
     }
 
     public function render()

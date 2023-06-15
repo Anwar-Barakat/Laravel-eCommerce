@@ -16,6 +16,7 @@
                         <th>{{ __('setting.mobile') }}</th>
                         <th>{{ __('auth.email') }}</th>
                         <th>{{ __('setting.status') }}</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +34,11 @@
                             </td>
                         </tr>
                     @empty
+                        <tr>
+                            <td colspan="6">
+                                <x-blank-section :url="route('frontend.delivery-addresses.create')" :content="__('frontend.delivery_address')" />
+                            </td>
+                        </tr>
                     @endforelse
                 </tbody>
             </table>
@@ -40,8 +46,9 @@
     </div>
     <div>
 
-        <a class="dash__custom-link btn--e-brand-b-2" href="dash-address-add.html"><i class="fas fa-plus u-s-m-r-8"></i>
-
-            <span>Add New Address</span></a>
+        <a class="dash__custom-link btn--e-brand-b-2 w-fit " href="{{ route('frontend.delivery-addresses.create') }}">
+            <i class="fas fa-plus u-s-m-r-8"></i>
+            <span>{{ __('msgs.add', ['name' => __('frontend.delivery_address')]) }}</span>
+        </a>
     </div>
 </div>
