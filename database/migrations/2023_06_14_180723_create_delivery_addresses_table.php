@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('street_address');
             $table->foreignId('country_id')->constrained()->cascadeOnUpdate();
             $table->string('city');
-            $table->string('is_default', 100);
+            $table->string('is_default')->nullable();
             $table->timestamps();
         });
     }

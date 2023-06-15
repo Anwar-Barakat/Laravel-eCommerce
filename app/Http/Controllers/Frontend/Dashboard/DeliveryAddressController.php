@@ -45,6 +45,7 @@ class DeliveryAddressController extends Controller
      */
     public function edit(DeliveryAddress $delivery_address)
     {
+        return view('frontend.dashboard.delivery-addresses.edit', ['delivery_address' => $delivery_address]);
     }
 
     /**

@@ -69,22 +69,18 @@
         </div>
         <!--====== End - Town / City ======-->
 
-
-
         <div class="u-s-m-b-10">
             <!--====== Check Box ======-->
-            <div class="check-box">
-                <input type="checkbox" id="make-default-address" data-bill="" wire:model='address.is_default'>
-                <div class="check-box__state check-box__state--primary">
-                    <label class="check-box__label" for="make-default-address">{{ __('frontend.make_it_default_delivery_address') }}</label>
-                </div>
+            <div class="">
+                <input type="checkbox" id="make-default-address" data-bill="" wire:model='address.is_default' {{ $address->is_default ? 'checked' : '' }} />
+                <label class="check-box__label" for="make-default-address ml-0">{{ __('frontend.make_it_default_delivery_address') }}</label>
                 <x-input-error :messages="$errors->get('address.is_default')" class="mt-2" />
             </div>
             <!--====== End - Check Box ======-->
         </div>
-        <div class="gl-inline">
+        <div class="gl-inline mt-4">
             <div class="u-s-m-b-30">
-                <button class="btn btn--e-transparent-hover-brand-b-2" id="save-delivery-address" type="submit">{{ __('btns.submit') }}</button>
+                <button class="btn btn--e-transparent-hover-brand-b-2" style="width: fit-content" id="save-delivery-address" type="submit">{{ __('btns.submit') }}</button>
             </div>
         </div>
     </div>

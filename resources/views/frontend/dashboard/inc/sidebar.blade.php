@@ -10,11 +10,12 @@
                     <a href="dashboard.html">{{ __('frontend.manage_my_account') }}</a>
                 </li>
                 <li>
-
-                    <a class="dash-active" href="dash-my-profile.html">{{ __('frontend.my_profile') }}</a>
+                    <a href="{{ route('frontend.profile.index') }}" class="{{ request()->routeIs('frontend.profile.*') ? 'dash-active' : '' }}">{{ __('frontend.my_profile') }}</a>
                 </li>
                 <li>
-                    <a href="{{ route('frontend.delivery-addresses.index') }}">{{ __('frontend.delivery_addresses') }}</a>
+                    <a href="{{ route('frontend.delivery-addresses.index') }}" class=" {{ request()->routeIs('frontend.delivery-addresses.*') ? 'dash-active' : '' }}">
+                        {{ __('frontend.delivery_addresses') }}
+                    </a>
                 </li>
                 <li>
 

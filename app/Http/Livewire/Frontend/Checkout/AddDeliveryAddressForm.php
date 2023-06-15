@@ -30,7 +30,13 @@ class AddDeliveryAddressForm extends Component
                 toastr()->info(__('frontend.you_must_be_logged_in'));
                 return redirect()->route('login');
             }
-            $this->address->user_id = Auth::id();
+
+            $addressDefault = Auth::user()->delivery_addresses->where('is_default', 1)->first();
+
+            if (($this->address->is_default == 1 && $this->address->user_id) || $addressDefault)
+                $addressDefault->update(['is_default' => null]);
+
+            $this->address->user_id     = Auth::id();
             $this->address->save();
             toastr()->success(__('msgs.added', ['name' => __('frontend.delivery_address')]));
             $this->reset(['address']);

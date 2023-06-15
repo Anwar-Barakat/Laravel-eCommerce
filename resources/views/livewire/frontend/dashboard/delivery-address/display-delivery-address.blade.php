@@ -27,16 +27,16 @@
                             <td>{{ $address->mobile }}</td>
                             <td>{{ $address->email }}</td>
                             <td>
-                                <div class="{{ $address->is_default ? 'text-green-500 text-bold' : 'gl-text' }}">{{ $address->is_default ? 'Selected' : 'Normal' }}</div>
+                                <div class="{{ $address->is_default == 1 ? 'text-green-500 text-bold' : 'gl-text' }}">{{ $address->is_default == 1 ? 'Selected' : 'Normal' }}</div>
                             </td>
                             <td>
-                                <a class="address-book-edit btn--e-transparent-platinum-b-2" href="dash-address-edit.html">Edit</a>
+                                <a class="address-book-edit btn--e-transparent-platinum-b-2" href="{{ route('frontend.delivery-addresses.edit', ['delivery_address' => $address]) }}">Edit</a>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6">
-                                <x-blank-section :url="route('frontend.delivery-addresses.create')" :content="__('frontend.delivery_address')" />
+                            <td>
+                                <h5>{{ __('msgs.not_found') }}</h5>
                             </td>
                         </tr>
                     @endforelse
@@ -46,7 +46,7 @@
     </div>
     <div>
 
-        <a class="dash__custom-link btn--e-brand-b-2 w-fit " href="{{ route('frontend.delivery-addresses.create') }}">
+        <a class="dash__custom-link btn--e-brand-b-2" style="width: fit-content" href="{{ route('frontend.delivery-addresses.create') }}">
             <i class="fas fa-plus u-s-m-r-8"></i>
             <span>{{ __('msgs.add', ['name' => __('frontend.delivery_address')]) }}</span>
         </a>

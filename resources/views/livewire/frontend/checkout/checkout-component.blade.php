@@ -81,7 +81,7 @@
                                                 <span class="ship-b__text">{{ __('frontend.ship_to') }}:</span>
                                                 <div class="ship-b__box u-s-m-b-10">
                                                     <p class="ship-b__p">{{ $default_address->full_name }}, {{ $default_address->mobile }}, {{ $default_address->street_address }}, {{ $default_address->city }}, {{ $default_address->country->name }}</p>
-                                                    <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal" data-modal-id="#edit-ship-address">Edit</a>
+                                                    <a class="ship-b__edit btn--e-transparent-platinum-b-2" href="{{ route('frontend.delivery-addresses.index') }}">Edit</a>
                                                 </div>
                                             </div>
                                         @else
