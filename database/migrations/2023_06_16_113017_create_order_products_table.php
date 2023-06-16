@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained()->cascadeOnUpdate();
             $table->integer('qty');
             $table->string('product_size');
-            $table->decimal('product_price', 2);
-            $table->decimal('grand_price', 2);
+            $table->float('product_price', 10, 2);
+            $table->float('grand_price', 10, 2);
             $table->timestamps();
         });
     }

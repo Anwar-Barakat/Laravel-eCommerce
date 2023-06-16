@@ -261,7 +261,7 @@
                                                 </table>
                                             </div>
                                             <div>
-                                                <button class="btn btn--e-brand-b-2" type="submit"> {{ __('frontend.proceed_to_checkout') }}</button>
+                                                <a href="{{ route('frontend.checkout') }}" class="btn btn--e-brand-b-2 w-full"> {{ __('frontend.proceed_to_checkout') }}</a>
                                             </div>
                                         </div>
                                     </div>

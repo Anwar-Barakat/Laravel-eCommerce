@@ -120,11 +120,11 @@
                                 <div class="o-summary__section u-s-m-b-30">
                                     <div class="o-summary__box">
                                         <h1 class="checkout-f__h1">PAYMENT INFORMATION</h1>
-                                        <form class="checkout-f__payment" wire:submit.prevent='placeOrder'>
+                                        <form class="checkout-f__payment" wire:submit.prevent='placeOrder()'>
                                             @foreach (App\Models\Order::PAYMENTMETHOD as $payment)
                                                 <div class=" mb-4">
                                                     <div class="radio-box">
-                                                        <input type="radio" id="cash-on-delivery" name="payment" wire:model="payment_method" value="{{ $payment['id'] }}">
+                                                        <input type="radio" id="cash-on-delivery" name="payment" wire:model="order.payment_gateway" value="{{ $payment['id'] }}">
                                                         <div class="radio-box__state radio-box__state--primary">
                                                             <label class="radio-box__label" for="cash-on-delivery">{{ $payment['title'] }}</label>
                                                         </div>
@@ -132,6 +132,7 @@
                                                     <span class="gl-text u-s-m-t-6">{{ $payment['desc'] }}</span>
                                                 </div>
                                             @endforeach
+                                            <x-input-error :messages="$errors->get('order.payment_gateway')" class="mt-2" />
 
                                             <div>
                                                 <button class="btn btn--e-brand-b-2 mt-4" type="submit">PLACE ORDER</button>

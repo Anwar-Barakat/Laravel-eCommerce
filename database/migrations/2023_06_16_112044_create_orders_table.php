@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('delivery_address_id')->constrained()->cascadeOnUpdate();
-            $table->float('shipping_charges', 2)->nullable();
+            $table->float('shipping_charges', 10, 2)->default(0);
             $table->string('coupon_code')->nullable();
-            $table->decimal('coupon_value', 2)->nullable();
-            $table->tinyInteger('status');
-            $table->tinyInteger('payment_method');
+            $table->float('coupon_value', 10, 2)->default(0);
+            $table->string('status');
+            $table->string('payment_method');
             $table->string('payment_gateway');
-            $table->decimal('grand_price', 2);
+            $table->float('grand_price', 10, 2);
             $table->timestamps();
         });
     }

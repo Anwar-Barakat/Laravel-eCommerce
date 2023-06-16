@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Order extends Model
 {
@@ -33,4 +34,15 @@ class Order extends Model
             'desc'  => 'International Credit Cards must be eligible for use within the United States.',
         ],
     ];
+
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function delivery_address(): BelongsTo
+    {
+        return $this->belongsTo(DeliveryAddress::class, 'delivery_address_id');
+    }
 }

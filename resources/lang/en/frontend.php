@@ -115,4 +115,5 @@ return [
     'select_default_address'                => 'Select Your Delivery Address',
     'discount'                              => 'DISCOUNT',
     'quantity'                              => 'Quantity',
+    'cart_is_empty'                         => 'Your shopping cart is empty',
 ];
