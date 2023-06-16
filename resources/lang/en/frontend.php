@@ -116,4 +116,5 @@ return [
     'discount'                              => 'DISCOUNT',
     'quantity'                              => 'Quantity',
     'cart_is_empty'                         => 'Your shopping cart is empty',
+    'thanks'                                => 'Thanks'
 ];

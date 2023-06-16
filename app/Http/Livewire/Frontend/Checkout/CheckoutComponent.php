@@ -66,9 +66,7 @@ class CheckoutComponent extends Component
 
             DB::commit();
             toastr()->success(__('msgs.placed', ['name' => __('order.order')]));
-
-            $this->reset('order');
-            $this->order = new Order();
+            return redirect()->route('frontend.thanks', ['order' => $this->order]);
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->route('frontend.checkout')->with(['error' => $th->getMessage()]);

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\Checkout\CheckoutController;
+use App\Http\Controllers\Frontend\Checkout\ThanksMsgController;
 use App\Http\Controllers\Frontend\Dashboard\DeliveryAddressController;
 use App\Http\Controllers\Frontend\Home\HomeController;
 use App\Http\Controllers\Frontend\ProductDetail\ProductDetailController;
@@ -51,6 +52,8 @@ Route::group(
             });
 
             Route::get('/checkout',                     CheckoutController::class)->name('checkout');
+
+            Route::get('/thanks/{order}',               ThanksMsgController::class)->name('thanks');
         });
     }
 );
