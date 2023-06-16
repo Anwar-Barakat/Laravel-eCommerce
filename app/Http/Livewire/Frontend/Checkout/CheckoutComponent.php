@@ -10,15 +10,43 @@ class CheckoutComponent extends Component
 {
     public $cart_items;
 
-    public $default_address = '';
+    public $defaultAddress = '';
+
+    protected $listeners = ['updatedUserAddresses'];
+
+    public function updatedUserAddresses()
+    {
+        $this->defaultAddress = auth()->user()->delivery_addresses->where('is_default', 1)->first();
+    }
 
     public function mount()
     {
         $this->cart_items       = Cart::getCartItems();
-        $this->default_address  = Auth::check() ? Auth::user()->delivery_addresses->where('is_default', 1)->first() : '';
+        $this->defaultAddress        = auth()->user()->delivery_addresses->where('is_default', 1)->first();
     }
+
+    public function placeOrder()
+    {
+        auth_check();
+        try {
+            if (!$this->defaultAddress != '') {
+                toastr()->error(__('frontend.select_default_address'));
+                return false;
+            }
+        } catch (\Throwable $th) {
+            return redirect()->route('frontend.checkout')->with(['error' => $th->getMessage()]);
+        }
+    }
+
     public function render()
     {
         return view('livewire.frontend.checkout.checkout-component');
+    }
+
+    public function rules()
+    {
+        return [
+            'payment_method'    => ['required', 'integer'],
+        ];
     }
 }

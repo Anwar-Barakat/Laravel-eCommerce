@@ -28,37 +28,29 @@ Route::group(
     ],
     function () {
 
-
-        Route::middleware('auth')->group(function () {
-            Route::get('/profile',          [ProfileController::class, 'edit'])->name('profile.edit');
-            Route::patch('/profile',        [ProfileController::class, 'update'])->name('profile.update');
-            Route::delete('/profile',       [ProfileController::class, 'destroy'])->name('profile.destroy');
-        });
-
-
         require __DIR__ . '/auth.php';
 
         Route::as('frontend.')->group(function () {
 
-            Route::get('/',                         [HomeController::class, 'index'])->name('home');
+            Route::get('/',                             [HomeController::class, 'index'])->name('home');
 
-            Route::get('/shop',                     [ShopController::class, 'index'])->name('shop');
+            Route::get('/shop',                         [ShopController::class, 'index'])->name('shop');
 
-            Route::get('/category/{url}',           CategoryProductController::class)->name('category.products');
+            Route::get('/category/{url}',               CategoryProductController::class)->name('category.products');
 
-            Route::get('/product/{product}',        ProductDetailController::class)->name('product.detail');
+            Route::get('/product/{product}',            ProductDetailController::class)->name('product.detail');
 
-            Route::view('/cart',                    'frontend.cart.index')->name('cart.index');
+            Route::view('/cart',                        'frontend.cart.index')->name('cart.index');
 
             Route::group(['middleware' => 'auth', 'verified'], function () {
-                Route::view('/profile',                 'frontend.dashboard.profile')->name('profile.index');
-                Route::view('/profile/edit',            'frontend.dashboard.edit-profile')->name('profile.edit');
-                Route::view('/password/change',         'frontend.dashboard.change-password')->name('password.change');
+                Route::view('/profile',                     'frontend.dashboard.profile')->name('profile.index');
+                Route::view('/profile/edit',                'frontend.dashboard.edit-profile')->name('profile.edit');
+                Route::view('/password/change',             'frontend.dashboard.change-password')->name('password.change');
+
+                Route::resource('/delivery-addresses',      DeliveryAddressController::class);
             });
 
             Route::get('/checkout',                     CheckoutController::class)->name('checkout');
-
-            Route::resource('/delivery-addresses',      DeliveryAddressController::class);
         });
     }
 );

@@ -24,12 +24,10 @@ class AddDeliveryAddressForm extends Component
 
     public function submit()
     {
+        auth_check();
+
         $this->validate();
         try {
-            if (!Auth::check()) {
-                toastr()->info(__('frontend.you_must_be_logged_in'));
-                return redirect()->route('login');
-            }
 
             $addressDefault = Auth::user()->delivery_addresses->where('is_default', 1)->first();
 
@@ -38,7 +36,10 @@ class AddDeliveryAddressForm extends Component
 
             $this->address->user_id     = Auth::id();
             $this->address->save();
+
             toastr()->success(__('msgs.added', ['name' => __('frontend.delivery_address')]));
+            $this->emit('updatedUserAddresses', ['addresses' => auth()->user()->delivery_addresses]);
+
             $this->reset(['address']);
             $this->address = new DeliveryAddress();
         } catch (\Throwable $th) {

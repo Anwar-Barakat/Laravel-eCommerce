@@ -66,11 +66,7 @@ class ShoppingCartComponent extends Component
 
     public function applyCoupon()
     {
-        if (!Auth::check()) {
-            toastr()->error(__('frontend.you_must_be_logged_in'));
-            return redirect()->route('login');
-        }
-
+        auth_check();
         $coupon = Coupon::where('code', $this->coupon)->first();
 
         if (!$coupon) {

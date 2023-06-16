@@ -69,14 +69,12 @@
         </div>
         <!--====== End - Town / City ======-->
 
-        <div class="u-s-m-b-10">
-            <!--====== Check Box ======-->
-            <div class="">
+        <div class="u-s-m-b-15 ">
+            <div class="flex gap-2">
                 <input type="checkbox" id="make-default-address" data-bill="" wire:model='address.is_default' {{ $address->is_default ? 'checked' : '' }} />
-                <label class="check-box__label" for="make-default-address ml-0">{{ __('frontend.make_it_default_delivery_address') }}</label>
-                <x-input-error :messages="$errors->get('address.is_default')" class="mt-2" />
+                <label class="gl-label" for="make-default-address">{{ __('frontend.make_it_default_delivery_address') }}</label>
             </div>
-            <!--====== End - Check Box ======-->
+            <x-input-error :messages="$errors->get('address.is_default')" class="mt-2" />
         </div>
         <div class="gl-inline mt-4">
             <div class="u-s-m-b-30">
