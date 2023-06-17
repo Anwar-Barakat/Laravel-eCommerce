@@ -49,6 +49,7 @@ return [
     'stock'                     => 'المخزن',
     'qty_stock'                 => 'الكمية في المخزن',
     'sku'                       => 'SKU',
+    'unit_price'                => 'سعر الوحدة',
 
 
     //_______________________
@@ -73,7 +74,7 @@ return [
     'coupon_type'               => 'نوع القسيمة',
     'amount_type'               => 'نوع القيمة',
     'amount'                    => 'القيمة',
-    'coupon_code'               => 'الكود',
+    'coupon_code'               => 'كود القسيمة',
     'expiry_date'               => 'تاريخ الأنتهاء',
     'single_time'               => 'مرة واحدة',
     'multiple_times'            => 'عدة مرات',

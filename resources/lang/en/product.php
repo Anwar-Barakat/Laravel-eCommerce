@@ -48,6 +48,7 @@ return [
     'stock'                     => 'Stock',
     'qty_stock'                 => 'Stock QTY',
     'sku'                       => 'SKU',
+    'unit_price'                => 'Unit price',
 
 
     //_______________________

@@ -51,6 +51,13 @@ return [
     'pending'                   => 'Pending',
     'processing'                => "Processing",
     'approved'                  => 'Approved',
+    'delivered'                 => 'Delivered',
+    'shipped'                   => 'Shipped',
+    'in_process'                => 'In processe',
     'cancelled'                 => 'Cancelled',
-    'search_by_customer_name'   => 'Search by customer name'
+    'search_by_customer_name'   => 'Search by customer name',
+    'value'                     => 'Value',
+    'field'                     => 'Field',
+    'order_number'              => 'Order number',
+    'grand_price'               => 'Grand price',
 ];
