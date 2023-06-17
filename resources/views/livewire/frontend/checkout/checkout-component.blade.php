@@ -80,7 +80,7 @@
                                             <div class="ship-b">
                                                 <span class="ship-b__text">{{ __('frontend.ship_to') }}:</span>
                                                 <div class="ship-b__box u-s-m-b-10">
-                                                    <p class="ship-b__p">{{ $defaultAddress->full_name }}, {{ $defaultAddress->mobile }}, {{ $defaultAddress->street_address }}, {{ $defaultAddress->city }}, {{ $defaultAddress->country->name }}</p>
+                                                    <p class="ship-b__p">{{ $defaultAddress->full_name }} - {{ $defaultAddress->street_address }} - {{ $defaultAddress->city }} - {{ $defaultAddress->country->name }} ( {{ $defaultAddress->mobile }} )</p>
                                                     <a class="ship-b__edit btn--e-transparent-platinum-b-2" href="{{ route('frontend.delivery-addresses.index') }}">Edit</a>
                                                 </div>
                                             </div>

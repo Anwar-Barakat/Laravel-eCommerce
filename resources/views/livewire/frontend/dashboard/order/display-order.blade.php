@@ -5,13 +5,12 @@
              <span class="dash__text u-s-m-b-30">Here you can see all products that have been delivered.</span>
              <form class="m-order u-s-m-b-30">
                  <div class="m-order__select-wrapper">
-                     <label class="u-s-m-r-8" for="my-order-sort">Show:</label><select class="select-box select-box--primary-style" id="my-order-sort">
-                         <option selected>Last 5 orders</option>
-                         <option>Last 15 days</option>
-                         <option>Last 30 days</option>
-                         <option>Last 6 months</option>
-                         <option>Orders placed in 2018</option>
-                         <option>All Orders</option>
+                     <label class="u-s-m-r-8" for="my-order-sort">Show:</label>
+                     <select class="select-box select-box--primary-style" id="my-order-sort" wire:model='per_page'>
+                         <option value="5">Last 5 orders</option>
+                         <option value="15">Last 15 Orders</option>
+                         <option value="30">Last 30 Orders</option>
+                         <option value="50">Last 50 Orders</option>
                      </select>
                  </div>
              </form>
@@ -22,11 +21,14 @@
                              <div class="dash-l-r">
                                  <div>
                                      <div class="manage-o__text-2 u-c-secondary">Order #{{ $order->id }}</div>
-                                     <div class="manage-o__text u-c-silver">Placed on {{ $order->created_at }}</div>
+                                     <div class="manage-o__text u-c-silver">Placed on : {{ $order->created_at }}</div>
                                  </div>
-                                 <div>
+                                 <div class="flex flex-col items-center gap-2">
                                      <div class="dash__link dash__link--brand">
-                                         <a href="">MANAGE</a>
+                                         <a href="{{ route('frontend.orders.show', ['order' => $order]) }}">MANAGE</a>
+                                     </div>
+                                     <div>
+                                         <span class="manage-o__badge badge--processing">Processing</span>
                                      </div>
                                  </div>
                              </div>
@@ -44,9 +46,7 @@
                                      <div class="description-title">{{ $ele->product->name }}</div>
                                  </div>
                                  <div class="description__info-wrap">
-                                     <div>
-                                         <span class="manage-o__badge badge--processing">Processing</span>
-                                     </div>
+
                                      <div>
                                          <span class="manage-o__text-2 u-c-silver">Quantity:
                                              <span class="manage-o__text-2 u-c-secondary">{{ $ele->qty }}</span>
@@ -62,6 +62,10 @@
                          @endforeach
                      </div>
                  @endforeach
+
+                 <div class="flex justify-between">
+                     {{ $orders->links('pagination::tailwind') }}
+                 </div>
              </div>
          </div>
      </div>

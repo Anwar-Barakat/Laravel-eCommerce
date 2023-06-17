@@ -2,19 +2,23 @@
 
 namespace App\Http\Livewire\Frontend\Dashboard\Order;
 
+use App\Models\Order;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class DisplayOrder extends Component
 {
-    public $orders;
+    use WithPagination;
 
-    public function mount()
-    {
-        $this->orders = auth()->user()->orders;
-    }
+    public $per_page   = CUSTOMPAGINATION;
 
     public function render()
     {
-        return view('livewire.frontend.dashboard.order.display-order');
+        return view('livewire.frontend.dashboard.order.display-order', ['orders' => $this->getUserOrders()]);
+    }
+
+    public function getUserOrders()
+    {
+        return Order::where('user_id', auth()->id())->paginate($this->per_page);
     }
 }

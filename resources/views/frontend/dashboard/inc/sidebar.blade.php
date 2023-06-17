@@ -22,7 +22,6 @@
                     <a href="dash-track-order.html">Track Order</a>
                 </li>
                 <li>
-
                     <a href="{{ route('frontend.orders.index') }}" class=" {{ request()->routeIs('frontend.orders.*') ? 'dash-active' : '' }}">
                         {{ __('frontend.my_orders') }}</a>
                 </li>
@@ -45,7 +44,7 @@
 
                         <span class="dash__w-icon dash__w-icon-style-1"><i class="fas fa-cart-arrow-down"></i></span>
 
-                        <span class="dash__w-text">4</span>
+                        <span class="dash__w-text">{{ auth()->user()->orders->count() ?? 0 }}</span>
 
                         <span class="dash__w-name">{{ __('frontend.orders_placed') }}</span>
                     </div>

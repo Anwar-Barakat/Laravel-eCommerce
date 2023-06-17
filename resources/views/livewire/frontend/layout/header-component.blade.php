@@ -43,13 +43,14 @@
                                 <ul style="width:120px">
                                     @auth
                                         <li>
-                                            <a href="dashboard.html"><i class="fas fa-user-circle u-s-m-r-6"></i>
+                                            <a href="dashboard.html">
+                                                <i class="fas fa-user-circle u-s-m-r-6"></i>
                                                 <span>Account</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="{{ route('frontend.orders.index') }}">
-                                                <i class="fas fa-tags u-s-m-r-6"></i>
+                                                <i class="fas fa-shopping-bag u-s-m-r-6"></i>
                                                 <span>{{ __('frontend.my_orders') }}</span>
                                             </a>
                                         </li>
