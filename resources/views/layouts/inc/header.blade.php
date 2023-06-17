@@ -253,7 +253,7 @@
                     </li>
 
 
-                    <li class="nav-item active dropdown {{ request()->routeIs('admin.shipping-charges.*') || request()->routeIs('admin.currencies.*') | request()->routeIs('admin.users.*') ? 'active' : '' }}">
+                    <li class="nav-item active dropdown {{ request()->routeIs('admin.shipping-charges.*') || request()->routeIs('admin.currencies.*') || request()->routeIs('admin.users.*') || request()->routeIs('admin.orders.*') ? 'active' : '' }}">
                         <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -305,8 +305,7 @@
                                         </span>
                                         {{ __('order.currencies') }}
                                     </a>
-                                </div>
-                                <div class="dropdown-menu-column">
+
                                     <!-- users -->
                                     <a class="dropdown-item {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -321,6 +320,23 @@
                                             </svg>
                                         </span>
                                         {{ __('order.users') }}
+                                    </a>
+                                </div>
+                                <div class="dropdown-menu-column">
+                                    <!-- users -->
+                                    <a class="dropdown-item {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}" href="{{ route('admin.orders.index') }}">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users-group" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"></path>
+                                                <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                <path d="M17 10h2a2 2 0 0 1 2 2v1"></path>
+                                                <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                <path d="M3 13v-1a2 2 0 0 1 2 -2h2"></path>
+                                            </svg>
+                                        </span>
+                                        {{ __('order.orders') }}
                                     </a>
                                 </div>
                             </div>

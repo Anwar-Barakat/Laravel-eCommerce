@@ -50,7 +50,7 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('frontend.orders.index') }}">
-                                                <i class="fas fa-shopping-bag u-s-m-r-6"></i>
+                                                <i class="fas fa-cart-arrow-down u-s-m-r-6"></i>
                                                 <span>{{ __('frontend.my_orders') }}</span>
                                             </a>
                                         </li>

@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\Currency\CurrencyController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Filter\FilterController;
 use App\Http\Controllers\Admin\FilterValue\FilterValueController;
+use App\Http\Controllers\Admin\Order\OrderController;
 use App\Http\Controllers\Admin\Product\Attachment\ProductAttachmentController;
 use App\Http\Controllers\Admin\Product\Attachment\DestroyAttachment;
 use App\Http\Controllers\Admin\Product\Attachment\DownloadAttachmentController;
@@ -140,11 +141,15 @@ Route::group(
                 //_______________________
                 Route::resource('currencies',                               CurrencyController::class)->only(['index', 'create', 'edit']);
 
-
                 //_______________________
                 // Users
                 //_______________________
                 Route::get('users',                                         UserController::class)->name('users.index');
+
+                //_______________________
+                // Orders
+                //_______________________
+                Route::resource('orders',                                   OrderController::class);
             });
         });
     }

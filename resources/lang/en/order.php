@@ -38,4 +38,19 @@ return [
     'users'             => 'Users',
     'user'              => 'User',
     'user_name'         => 'Username',
+
+
+    // -------------------------------
+    // Orders
+    // -------------------------------
+    'payment_method'            => 'Payment method',
+    'order_date'                => 'Order date',
+    'customer_name'             => 'Customer name',
+    'customer_email'            => 'Customer email',
+    'new'                       => 'New',
+    'pending'                   => 'Pending',
+    'processing'                => "Processing",
+    'approved'                  => 'Approved',
+    'cancelled'                 => 'Cancelled',
+    'search_by_customer_name'   => 'Search by customer name'
 ];
