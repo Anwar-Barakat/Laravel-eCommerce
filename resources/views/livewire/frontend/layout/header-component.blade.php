@@ -48,6 +48,12 @@
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="{{ route('frontend.orders.index') }}">
+                                                <i class="fas fa-tags u-s-m-r-6"></i>
+                                                <span>{{ __('frontend.my_orders') }}</span>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="javascript:;" onclick="document.getElementById('user-logout-form').submit()">
                                                 <i class="fas fa-lock-open u-s-m-r-6"></i>
                                                 <span>Signout</span>
@@ -466,10 +472,6 @@
                                             </li>
                                         </ul>
                                         <!--====== End - Dropdown ======-->
-                                    </li>
-                                    <li>
-
-                                        <a href="cart.html">Cart</a>
                                     </li>
                                     <li>
 

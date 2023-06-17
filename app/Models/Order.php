@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
@@ -44,5 +45,10 @@ class Order extends Model
     public function delivery_address(): BelongsTo
     {
         return $this->belongsTo(DeliveryAddress::class, 'delivery_address_id');
+    }
+
+    public function order_products(): HasMany
+    {
+        return $this->hasMany(OrderProduct::class);
     }
 }

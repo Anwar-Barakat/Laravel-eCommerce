@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\Checkout\CheckoutController;
 use App\Http\Controllers\Frontend\Checkout\ThanksMsgController;
 use App\Http\Controllers\Frontend\Dashboard\DeliveryAddressController;
 use App\Http\Controllers\Frontend\Home\HomeController;
+use App\Http\Controllers\Frontend\Order\OrderController;
 use App\Http\Controllers\Frontend\ProductDetail\ProductDetailController;
 use App\Http\Controllers\Frontend\Shop\CategoryProductController;
 use App\Http\Controllers\Frontend\Shop\ShopController;
@@ -48,7 +49,15 @@ Route::group(
                 Route::view('/profile/edit',                'frontend.dashboard.edit-profile')->name('profile.edit');
                 Route::view('/password/change',             'frontend.dashboard.change-password')->name('password.change');
 
+                //_______________________
+                // Delivery addresses
+                //_______________________
                 Route::resource('/delivery-addresses',      DeliveryAddressController::class);
+
+                //_______________________
+                // Orders
+                //_______________________
+                Route::resource('/orders',                  OrderController::class);
             });
 
             Route::get('/checkout',                     CheckoutController::class)->name('checkout');

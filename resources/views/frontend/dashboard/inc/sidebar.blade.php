@@ -23,7 +23,8 @@
                 </li>
                 <li>
 
-                    <a href="dash-my-order.html">{{ __('frontend.my_orders') }}</a>
+                    <a href="{{ route('frontend.orders.index') }}" class=" {{ request()->routeIs('frontend.orders.*') ? 'dash-active' : '' }}">
+                        {{ __('frontend.my_orders') }}</a>
                 </li>
                 <li>
 
