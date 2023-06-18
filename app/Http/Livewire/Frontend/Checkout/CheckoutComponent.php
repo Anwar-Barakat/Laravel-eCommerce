@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire\Frontend\Checkout;
 
+use App\Mail\Admin\CustomerOrderDetailEmail;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class CheckoutComponent extends Component
@@ -65,6 +67,9 @@ class CheckoutComponent extends Component
             }
 
             DB::commit();
+
+            Mail::to(auth()->user()->email)->send(new CustomerOrderDetailEmail($this->order));
+
             toastr()->success(__('msgs.placed', ['name' => __('order.order')]));
             return redirect()->route('frontend.thanks', ['order' => $this->order]);
         } catch (\Throwable $th) {

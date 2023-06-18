@@ -15,7 +15,7 @@
             <div class="page-body">
                 <div class="container-xl">
                     <div class="row row-cards">
-                        <div class="col-lg-8">
+                        <div class="col-lg-4">
                             <div class="card">
                                 <table class="table table-vcenter card-table">
                                     <thead>
@@ -187,6 +187,50 @@
                                                 {{ $order->delivery_address->country->name }}
                                             </td>
                                         </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for=""></label>
+                                        <select class="form-control" wire:model='status'>
+                                            <option>{{ __('msgs.update', ['name' => __('order.order_status')]) }}</option>
+                                            @foreach ($orderCases as $case)
+                                                <option value="{{ $case->name }}">{{ __('order.' . $case->name) }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <table class="table  card-table">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">
+                                                {{ __('order.order_status') }}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        {{-- <tr>
+                                            <td>
+                                                <div class="progressbg">
+                                                    <div class="progress progressbg-progress">
+                                                        <div class="progress-bar bg-primary-lt" role="progressbar" aria-valuenow="76.29" aria-valuemin="0" aria-valuemax="100" aria-label="76.29% Complete">
+                                                            <span class="visually-hidden"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="progressbg-text">
+                                                        {{ strtolower(__('frontend.full_name')) }}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="fw-bold text-end">
+                                                {{ $order->delivery_address->full_name }}
+                                            </td>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
                             </div>
