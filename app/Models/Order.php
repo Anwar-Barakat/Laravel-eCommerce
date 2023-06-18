@@ -51,4 +51,9 @@ class Order extends Model
     {
         return $this->hasMany(OrderProduct::class);
     }
+
+    public function order_cases()
+    {
+        return $this->hasMany(OrderLog::class);
+    }
 }

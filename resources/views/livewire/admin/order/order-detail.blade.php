@@ -2,11 +2,12 @@
     <div class="card-header">
         <div class="card-body">
             <ul class="steps steps-green steps-counter my-4">
-                <li class="step-item">{{ __('order.new') }}</li>
-                <li class="step-item">{{ __('order.in_process') }}</li>
-                <li class="step-item">{{ __('order.pending') }}</li>
-                <li class="step-item active">{{ __('order.shipped') }}</li>
-                <li class="step-item">{{ __('order.delivered') }}</li>
+                <li class="step-item {{ $order->status == 'new' ? 'active' : '' }}">{{ __('order.new') }}</li>
+                <li class="step-item {{ $order->status == 'in_process' ? 'active' : '' }}">{{ __('order.in_process') }}</li>
+                <li class="step-item {{ $order->status == 'pending' ? 'active' : '' }}">{{ __('order.pending') }}</li>
+                <li class="step-item {{ $order->status == 'shipped' ? 'active' : '' }}">{{ __('order.shipped') }}</li>
+                <li class="step-item {{ $order->status == 'delivered' ? 'active' : '' }}">{{ __('order.delivered') }}</li>
+                <li class="step-item {{ $order->status == 'cancelled' ? 'active' : '' }}">{{ __('order.cancelled') }}</li>
             </ul>
         </div>
     </div>
@@ -213,26 +214,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        {{-- <tr>
-                                            <td>
-                                                <div class="progressbg">
-                                                    <div class="progress progressbg-progress">
-                                                        <div class="progress-bar bg-primary-lt" role="progressbar" aria-valuenow="76.29" aria-valuemin="0" aria-valuemax="100" aria-label="76.29% Complete">
-                                                            <span class="visually-hidden"></span>
+                                        @foreach ($orderLogs as $case)
+                                            <tr>
+                                                <td>
+                                                    <div class="progressbg">
+                                                        <div class="progress progressbg-progress">
+                                                            <div class="progress-bar bg-primary-lt" role="progressbar">
+                                                                <span class="visually-hidden"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progressbg-text">
+                                                            {{ $case->status }}
                                                         </div>
                                                     </div>
-                                                    <div class="progressbg-text">
-                                                        {{ strtolower(__('frontend.full_name')) }}
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="fw-bold text-end">
-                                                {{ $order->delivery_address->full_name }}
-                                            </td>
-                                        </tr> --}}
+                                                </td>
+                                                <td class="fw-bold text-end">
+                                                    {{ $case->created_at }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
                                     </tbody>
                                 </table>
+                                <div class="p-3 pb-0">
+                                    {{ $orderLogs->links('pagination::bootstrap-5') }}
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
