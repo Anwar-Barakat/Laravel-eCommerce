@@ -20,6 +20,8 @@ class Order extends Model
         'status',
         'payment_method',
         'payment_gateway',
+        'tracking_number',
+        'courier_name',
         'grand_price',
     ];
 

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('status');
             $table->string('payment_method');
             $table->string('payment_gateway');
+            $table->string('courier_name')->nullable();
+            $table->string('tracking_number')->nullable();
             $table->float('grand_price', 10, 2);
             $table->timestamps();
         });

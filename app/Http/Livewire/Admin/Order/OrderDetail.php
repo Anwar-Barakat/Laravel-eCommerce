@@ -2,8 +2,6 @@
 
 namespace App\Http\Livewire\Admin\Order;
 
-use App\Mail\Admin\UpdateOrderStatus;
-use App\Mail\Admin\CustomerOrderDetailEmail;
 use App\Mail\Admin\UpdateOrderStatusEmail;
 use App\Models\Order;
 use App\Models\OrderLog;
@@ -18,22 +16,21 @@ class OrderDetail extends Component
     use WithPagination;
 
     public Order $order;
-    public $orderCases,
-        $status;
+    public $orderCases;
 
     public function mount(Order $order)
     {
         $this->order        = $order;
         $this->order->load('delivery_address');
         $this->orderCases   = OrderStatus::active()->get();
-        $this->status       = $this->order->status;
     }
 
-    public function updatedStatus($value)
+    public function updateOrderStatus()
     {
+        $this->validate();
         try {
             DB::beginTransaction();
-            $this->order->update(['status' => $value]);
+            $this->order->save();
 
             OrderLog::create([
                 'order_id'  => $this->order->id,
@@ -41,7 +38,7 @@ class OrderDetail extends Component
             ]);
 
             toastr()->success(__('msgs.updated', ['name' => __('order.order_status')]));
-            Mail::to($this->order->user->email)->send(new UpdateOrderStatusEmail($this->order));
+            // Mail::to($this->order->user->email)->send(new UpdateOrderStatusEmail($this->order));
 
             DB::commit();
         } catch (\Throwable $th) {
@@ -57,6 +54,15 @@ class OrderDetail extends Component
 
     public function getOrderLogs()
     {
-        return OrderLog::where('order_id', $this->order->id)->paginate(1);
+        return OrderLog::where('order_id', $this->order->id)->paginate(5);
+    }
+
+    public function rules()
+    {
+        return [
+            'order.status'            => ['required'],
+            'order.courier_name'      => ['required_if:order.status,shipped'],
+            'order.tracking_number'   => ['required_if:order.status,shipped'],
+        ];
     }
 }

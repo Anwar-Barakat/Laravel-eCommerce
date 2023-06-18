@@ -60,5 +60,9 @@ return [
     'field'                     => 'Field',
     'order_number'              => 'Order number',
     'grand_price'               => 'Grand price',
-    'order_status'              => 'Order status'
+    'order_status'              => 'Order status',
+    'tracking_number'           => 'Tracking number',
+    'courier_name'              => 'Courier name',
+    'paid'                      => 'Paid',
+
 ];
