@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Order;
 
 use App\Mail\Admin\UpdateOrderStatus;
 use App\Mail\Admin\CustomerOrderDetailEmail;
+use App\Mail\Admin\UpdateOrderStatusEmail;
 use App\Models\Order;
 use App\Models\OrderStatus;
 use Illuminate\Support\Facades\Mail;
@@ -27,7 +28,7 @@ class OrderDetail extends Component
     {
         $this->order->update(['status' => $value]);
         toastr()->success(__('msgs.updated', ['name' => __('order.order_status')]));
-        Mail::to($this->order->user->email)->send(new CustomerOrderDetailEmail($this->order));
+        Mail::to($this->order->user->email)->send(new UpdateOrderStatusEmail($this->order));
     }
 
     public function render()
