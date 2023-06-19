@@ -6,10 +6,6 @@
             <span class="dash__text u-s-m-b-16">{{ __('frontend.hello') }}, {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
             <ul class="dash__f-list">
                 <li>
-
-                    <a href="dashboard.html">{{ __('frontend.manage_my_account') }}</a>
-                </li>
-                <li>
                     <a href="{{ route('frontend.profile.index') }}" class="{{ request()->routeIs('frontend.profile.*') ? 'dash-active' : '' }}">{{ __('frontend.my_profile') }}</a>
                 </li>
                 <li>
@@ -18,16 +14,8 @@
                     </a>
                 </li>
                 <li>
-
-                    <a href="dash-track-order.html">Track Order</a>
-                </li>
-                <li>
                     <a href="{{ route('frontend.orders.index') }}" class=" {{ request()->routeIs('frontend.orders.*') ? 'dash-active' : '' }}">
                         {{ __('frontend.my_orders') }}</a>
-                </li>
-                <li>
-
-                    <a href="dash-payment-option.html">My Payment Options</a>
                 </li>
                 <li>
 

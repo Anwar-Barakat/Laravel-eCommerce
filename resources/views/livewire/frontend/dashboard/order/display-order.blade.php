@@ -28,7 +28,34 @@
                                          <a href="{{ route('frontend.orders.show', ['order' => $order]) }}">MANAGE</a>
                                      </div>
                                      <div>
-                                         <span class="manage-o__badge badge--processing">Processing</span>
+
+                                         @php
+                                             $status_color = '';
+                                             switch ($order->status) {
+                                                 case 'new':
+                                                     $status_color = 'badge--new';
+                                                     break;
+                                                 case 'cancelled':
+                                                     $status_color = 'badge--cancelled';
+                                                     break;
+                                                 case 'shipped':
+                                                     $status_color = 'badge--shipped';
+                                                     break;
+                                                 case 'paid':
+                                                     $status_color = 'badge--paid';
+                                                     break;
+                                                 case 'in_process':
+                                                     $status_color = 'badge--processing';
+                                                     break;
+                                                 case 'delivered':
+                                                     $status_color = 'badge--delivered';
+                                                     break;
+                                                 default:
+                                                     $status_color = 'bg-gray';
+                                                     break;
+                                             }
+                                         @endphp
+                                         <span class="manage-o__badge {{ $status_color }}">{{ __('order.' . $order->status) }}</span>
                                      </div>
                                  </div>
                              </div>

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --main-color: #ff4500;
+}
+
 .tool-style__form-wrap select {
     border-radius: 0 !important;
 }
@@ -25,7 +29,7 @@ select:focus {
     --tw-ring-offset-shadow: unset;
     --tw-ring-shadow: unset;
     box-shadow: unset;
-    border-color: #ff4500 !important;
+    border-color: var(--main-color) !important;
 }
 
 .dash-edit-p .btn,
@@ -39,7 +43,7 @@ select:focus {
 }
 
 .dash-active {
-    color: #ff4500 !important;
+    color: var(--main-color) !important;
 }
 
 .is-list-active .product-m,
@@ -47,4 +51,19 @@ select:focus {
     box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 4px 0px,
         rgba(90, 125, 188, 0.05) 0px 4px 16px 0px;
     margin-bottom: 2rem;
+}
+
+.badge--cancelling {
+    background-color: rgba(255, 69, 0, 0.14) !important;
+    color: var(--main-color);
+}
+
+.badge--new {
+    background-color: rgba(49, 133, 252, 0.14) !important;
+    color: #3185fc;
+}
+
+.badge--paid {
+    background-color: rgba(0, 148, 68, 0.14) !important;
+    color: #009444;
 }

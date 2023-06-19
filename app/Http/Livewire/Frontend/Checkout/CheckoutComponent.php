@@ -83,6 +83,14 @@ class CheckoutComponent extends Component
                     'product_price' => $cart_item->unit_price,
                     'grand_price'   => $cart_item->grand_total,
                 ]);
+
+                // reduce products inventory when order placed
+                $attr = $cart_item->product->attributes->where('size', $cart_item->size)->first();
+                if ($attr->stock < $cart_item->qty) {
+                    toastr()->error(__('validation.qty_not_available_now'));
+                    return false;
+                }
+                $attr->update(['stock' => $attr->stock - $cart_item->qty]);
             }
 
             DB::commit();

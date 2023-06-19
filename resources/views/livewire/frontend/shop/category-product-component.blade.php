@@ -107,7 +107,7 @@
                                                  <a href="shop-side-version-2.html">{{ $product->category->name }}</a>
                                              </div>
                                              <div class="product-m__name">
-                                                 <a href="product-detail.html">{{ $product->name }}</a>
+                                                 <a href="product-detail.html">{{ Str::limit($product->name, 25, '...') }}</a>
                                              </div>
                                              <div class="product-m__rating gl-rating-style">
                                                  <i class="fas fa-star"></i>
