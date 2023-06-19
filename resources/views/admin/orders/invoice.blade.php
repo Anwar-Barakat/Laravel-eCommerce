@@ -8,8 +8,8 @@
             <div class="card card-lg">
                 <div class="card-body">
                     <div class="row">
-                        {{-- <div class="col-6">
-                            <p class="h3">
+                        <div class="col-6">
+                            {{-- <p class="h3">
                                 @if ($company->getFirstMediaUrl('company_logo'))
                                     <img src="{{ $company->getFirstMediaUrl('company_logo') }}" alt="{{ $company->name }}" width="100">
                                 @else
@@ -20,22 +20,23 @@
                                 {{ $company->name }}<br>
                                 {{ $company->address }}<br>
                                 {{ $company->email }}
-                            </address>
-                        </div> --}}
+                            </address> --}}
+                        </div>
                         <div class="col-6 text-end">
-                            <p class="h3">{{ __('order.user') }}</p>
+                            <p class="h3">{{ __('frontend.delivery_address') }}</p>
                             <address>
                                 {{ $order->delivery_address->full_name }} <br>
                                 {{ $order->delivery_address->street_address }}<br>
+                                {{ $order->delivery_address->city }} - {{ $order->delivery_address->country->name }}<br>
                                 {{ $order->delivery_address->mobile }}
-                                {{ $order->delivery_address->city }}
                             </address>
                         </div>
                         <div class="col-12 my-5">
                             <h4> {{ __('order.order_number') }} {{ '#' . $order->id }}</h4>
                             <h4>{{ __('order.order_date') . ': ' . $order->created_at }}</h4>
                             <h4>{{ __('order.payment_method') . ': ' . $order->payment_method }}</h4>
-                            <h4>{{ __('order.grand_price') . ': ' . $order->grand_price }}</h4>
+                            <h4>{{ __('order.order_status') . ': ' . __('order.' . $order->status) }}</h4>
+                            <h4>{{ __('order.grand_price') . ': ' . $order->grand_price }}$</h4>
                         </div>
                     </div>
                     <table class="table table-transparent table-responsive">
@@ -61,11 +62,11 @@
                                 <td class="">
                                     <div class="strong mb-1">
                                         {{ $ele->product->name }}
-                                        {{-- <div class="mt-3">
+                                        <div class="mt-3">
                                             @php
                                                 echo DNS1D::getBarcodeHTML($ele->product->id, 'C39');
                                             @endphp
-                                        </div> --}}
+                                        </div>
                                     </div>
                                 </td>
 
