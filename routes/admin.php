@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Filter\FilterController;
 use App\Http\Controllers\Admin\FilterValue\FilterValueController;
 use App\Http\Controllers\Admin\Order\OrderController;
+use App\Http\Controllers\Admin\Order\OrderInvoiceController;
 use App\Http\Controllers\Admin\Product\Attachment\ProductAttachmentController;
 use App\Http\Controllers\Admin\Product\Attachment\DestroyAttachment;
 use App\Http\Controllers\Admin\Product\Attachment\DownloadAttachmentController;
@@ -150,6 +151,7 @@ Route::group(
                 // Orders
                 //_______________________
                 Route::resource('orders',                                   OrderController::class);
+                Route::get('order-invoice/{order}',                         OrderInvoiceController::class)->name('orders.invoice');
             });
         });
     }

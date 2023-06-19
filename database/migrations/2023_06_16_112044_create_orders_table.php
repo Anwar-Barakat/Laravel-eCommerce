@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('coupon_code')->nullable();
             $table->float('coupon_value', 10, 2)->default(0);
             $table->string('status');
-            $table->string('payment_method');
             $table->string('payment_gateway');
+            $table->string('payment_method');
             $table->string('courier_name')->nullable();
             $table->string('tracking_number')->nullable();
             $table->float('grand_price', 10, 2);
