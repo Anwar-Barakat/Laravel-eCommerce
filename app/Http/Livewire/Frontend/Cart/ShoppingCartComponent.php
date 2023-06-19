@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\ProductAttribute;
+use App\Models\ShippingCharge;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -13,9 +14,11 @@ class ShoppingCartComponent extends Component
 {
     public $qty;
     public Product $product;
-    public ProductAttribute $attr;
+    public ProductAttribute $attr, $weights;
 
     public $cart_items;
+    public $country,
+        $charges;
 
     public $coupon = '';
 
@@ -26,18 +29,9 @@ class ShoppingCartComponent extends Component
         $this->cart_items = $cart;
     }
 
-    public function decreaseQty(int $cart_id)
+    public function updatedCountry($value)
     {
-        $cart       = Cart::find($cart_id);
-        $this->qty  = (int)$cart->qty - 1;
-
-        if ($this->qty == 0) :
-            $cart->delete();
-            toastr()->info(__('msgs.deleted', ['name' => __('product.product')]));
-        else :
-            $cart->update(['qty' => $this->qty, 'grand_total' => $this->qty * $cart->unit_price]);
-        endif;
-        $this->emit('updatedCartItem', ['cart' => $cart]);
+        $this->charges = ShippingCharge::calcShippingCharges($value);
     }
 
     public function increaseQty(int $cart_id)
@@ -54,7 +48,29 @@ class ShoppingCartComponent extends Component
 
         $cart->update(['qty' => $this->qty, 'grand_total' => $this->qty * $cart->unit_price]);
         $this->emit('updatedCartItem', ['cart' => $cart]);
+
+        if ($this->country)
+            $this->charges = ShippingCharge::calcShippingCharges($this->country);
     }
+
+
+    public function decreaseQty(int $cart_id)
+    {
+        $cart       = Cart::find($cart_id);
+        $this->qty  = (int)$cart->qty - 1;
+
+        if ($this->qty == 0) :
+            $cart->delete();
+            toastr()->info(__('msgs.deleted', ['name' => __('product.product')]));
+        else :
+            $cart->update(['qty' => $this->qty, 'grand_total' => $this->qty * $cart->unit_price]);
+        endif;
+        $this->emit('updatedCartItem', ['cart' => $cart]);
+
+        if ($this->country)
+            $this->charges = ShippingCharge::calcShippingCharges($this->country);
+    }
+
 
     public function deleteItem(int $cart_id)
     {
@@ -62,23 +78,9 @@ class ShoppingCartComponent extends Component
         $cart->delete();
         toastr()->info(__('msgs.deleted', ['name' => __('product.product')]));
         $this->emit('updatedCartItem', ['cart' => $cart]);
-    }
 
-    public function applyCoupon()
-    {
-        auth_check();
-        $coupon = Coupon::where('code', $this->coupon)->first();
-
-        if (!$coupon) {
-            toastr()->info(__('frontend.coupon_not_found'));
-            $this->reset('coupon');
-            return false;
-        }
-
-        if ($coupon->expiry_date < date('Y-m-d')) {
-            toastr()->info(__('frontend.coupon_has_expired'));
-            return false;
-        }
+        if ($this->country)
+            $this->charges = ShippingCharge::calcShippingCharges($this->country);
     }
 
     public function render()

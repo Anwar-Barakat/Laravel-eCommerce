@@ -25,7 +25,7 @@ class Cart extends Model
     {
         return Auth::check()
             ? Auth::user()->cart_items
-            : Cart::with('product:id,name,category_id')->where('session_id', Session::get('session_id'))->orderBy('id', 'desc')->get();
+            : Cart::with('product:id,name,category_id,weight')->where('session_id', Session::get('session_id'))->orderBy('id', 'desc')->get();
     }
 
     public function product()

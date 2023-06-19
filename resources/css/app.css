@@ -41,3 +41,10 @@ select:focus {
 .dash-active {
     color: #ff4500 !important;
 }
+
+.is-list-active .product-m,
+.is-grid-active .product-m {
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 4px 0px,
+        rgba(90, 125, 188, 0.05) 0px 4px 16px 0px;
+    margin-bottom: 2rem;
+}

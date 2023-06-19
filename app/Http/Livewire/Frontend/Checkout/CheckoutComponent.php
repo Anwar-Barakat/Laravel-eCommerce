@@ -78,6 +78,24 @@ class CheckoutComponent extends Component
         }
     }
 
+
+    // public function applyCoupon()
+    // {
+    //     auth_check();
+    //     $coupon = Coupon::where('code', $this->coupon)->first();
+
+    //     if (!$coupon) {
+    //         toastr()->info(__('frontend.coupon_not_found'));
+    //         $this->reset('coupon');
+    //         return false;
+    //     }
+
+    //     if ($coupon->expiry_date < date('Y-m-d')) {
+    //         toastr()->info(__('frontend.coupon_has_expired'));
+    //         return false;
+    //     }
+    // }
+
     public function render()
     {
         return view('livewire.frontend.checkout.checkout-component');

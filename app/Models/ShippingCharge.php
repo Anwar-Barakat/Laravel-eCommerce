@@ -23,4 +23,33 @@ class ShippingCharge extends Model
     {
         return $this->belongsTo(Country::class, 'country_id');
     }
+
+    public static function calcShippingCharges($country_id = null)
+    {
+        if ($country_id) {
+            $charges = self::where('country_id', $country_id)->first();
+
+            foreach (Cart::getCartItems() as $cart)
+                $weights = $cart->product->weight * $cart->qty;
+
+            if ($weights > 0 && $weights <= 500) {
+                $shippingCharges = $charges->zero_500g;
+            } elseif ($weights > 501 && $weights <= 1000) {
+                $shippingCharges = $charges->_501_1000g;
+            } elseif ($weights > 1000 && $weights <= 2000) {
+                $shippingCharges = $charges->_1001_2000g;
+            } elseif ($weights > 2000 && $weights <= 5000) {
+                $shippingCharges = $charges->_2001_5000g;
+            } elseif ($weights > 5000) {
+                $shippingCharges = $charges->above_5000g;
+            } else {
+                $shippingCharges = 0;
+            }
+
+            return [
+                'value'     => $shippingCharges,
+                'weights'   => $weights
+            ];
+        }
+    }
 }

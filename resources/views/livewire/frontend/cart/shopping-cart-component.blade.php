@@ -45,35 +45,6 @@
         <!--====== Section Content ======-->
         <div class="section__content">
             <div class="container">
-                @if ($cart_items->count() > 0)
-                    <div class="row mb-4">
-                        <div class="col-lg-12">
-                            <div id="checkout-msg-group">
-                                <div class="f-cart__pad-box">
-                                    <span class="msg__text">{{ __('frontend.have_a_coupon') }}
-                                        <a class="gl-link" href="#have-coupon" data-toggle="collapse">{{ __('frontend.click_here_to_enter_code') }}</a>
-                                    </span>
-                                    <div class="collapse" id="have-coupon" data-parent="#checkout-msg-group">
-                                        <div class="c-f u-s-m-b-16">
-                                            <span class="gl-text u-s-m-b-16">{{ __('frontend.you_have_a_coupon_code') }}</span>
-                                            <form class="c-f__form" wire:submit.prevent='applyCoupon'>
-                                                <div class="u-s-m-b-16">
-                                                    <div class="u-s-m-b-15">
-                                                        <label for="coupon"></label>
-                                                        <input class="input-text input-text--primary-style" type="text" id="coupon" placeholder="{{ __('product.coupon_code') }}" wire:model.defer='coupon' required>
-                                                    </div>
-                                                    <div class="u-s-m-b-15">
-                                                        <button class="btn btn--e-transparent-brand-b-2" type="submit">{{ __('btns.apply') }}</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
                         <div class="table-responsive">
@@ -169,7 +140,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <!--====== End - Section Content ======-->
@@ -190,56 +160,36 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
                             <form class="f-cart">
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-6 u-s-m-b-30">
+                                    <div class="col-lg-6 col-md-6 u-s-m-b-30">
                                         <div class="f-cart__pad-box">
-                                            <h1 class="gl-h1">ESTIMATE SHIPPING AND TAXES</h1>
+                                            <h1 class="gl-h1">SHIPPING CHARGES</h1>
 
-                                            <span class="gl-text u-s-m-b-30">Enter your destination to get a shipping estimate.</span>
+                                            <span class="gl-text u-s-m-b-30">Select your country to calculate your shipping charges fees.</span>
                                             <div class="u-s-m-b-30">
                                                 <!--====== Select Box ======-->
-                                                <label class="gl-label" for="shipping-country">COUNTRY *</label><select class="select-box select-box--primary-style" id="shipping-country">
-                                                    <option selected value="">Choose Country</option>
-                                                    <option value="uae">United Arab Emirate (UAE)</option>
-                                                    <option value="uk">United Kingdom (UK)</option>
-                                                    <option value="us">United States (US)</option>
+                                                <label class="gl-label" for="shipping-country">COUNTRY *</label>
+                                                <select class="select-box select-box--primary-style" id="shipping-country" wire:model='country'>
+                                                    <option value="">{{ __('btns.select') }}</option>
+                                                    @foreach (App\Models\Country::active()->get() as $country)
+                                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                    @endforeach
                                                 </select>
                                                 <!--====== End - Select Box ======-->
-                                            </div>
-                                            <div class="u-s-m-b-30">
-                                                <!--====== Select Box ======-->
-                                                <label class="gl-label" for="shipping-state">STATE/PROVINCE *</label><select class="select-box select-box--primary-style" id="shipping-state">
-                                                    <option selected value="">Choose State/Province</option>
-                                                    <option value="al">Alabama</option>
-                                                    <option value="al">Alaska</option>
-                                                    <option value="ny">New York</option>
-                                                </select>
-                                                <!--====== End - Select Box ======-->
-                                            </div>
-                                            <div class="u-s-m-b-30">
-                                                <label class="gl-label" for="shipping-zip">ZIP/POSTAL CODE *</label>
-                                                <input class="input-text input-text--primary-style" type="text" id="shipping-zip" placeholder="Zip/Postal Code">
                                             </div>
                                             <span class="gl-text">{{ __('frontend.cart_free_shipping_note') }}</span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-6 u-s-m-b-30">
-                                        <div class="f-cart__pad-box">
-                                            <h1 class="gl-h1">{{ __('frontend.note') }}</h1>
-                                            <span class="gl-text u-s-m-b-30">{{ __('frontend.add_special_note_about_your_product') }}</span>
-                                            <div>
-                                                <label for="f-cart-note"></label>
-                                                <textarea class="text-area text-area--primary-style" id="f-cart-note"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 u-s-m-b-30">
+                                    <div class="col-lg-6 col-md-6 u-s-m-b-30">
                                         <div class="f-cart__pad-box">
                                             <div class="u-s-m-b-30">
                                                 <table class="f-cart__table">
                                                     <tbody>
                                                         <tr>
                                                             <td>{{ __('frontend.shipping') }}</td>
-                                                            <td>$0.00</td>
+                                                            <td>
+                                                                ${{ $charges ? number_format($charges['value'], 2) : 0 }}
+                                                                ({{ $charges['weights'] ?? 0 }}g)
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td>{{ __('frontend.tax') }}</td>
@@ -248,10 +198,6 @@
                                                         <tr>
                                                             <td>{{ __('frontend.subtotal') }}</td>
                                                             <td>${{ number_format($sub_total, 2) }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>{{ __('frontend.coupon_discount') }}</td>
-                                                            <td>$0.00</td>
                                                         </tr>
                                                         <tr>
                                                             <td>{{ __('frontend.grand_total') }}</td>
