@@ -185,6 +185,10 @@
                                                 <table class="f-cart__table">
                                                     <tbody>
                                                         <tr>
+                                                            <td>{{ __('frontend.subtotal') }}</td>
+                                                            <td>${{ number_format($sub_total, 2) }}</td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>{{ __('frontend.shipping') }}</td>
                                                             <td>
                                                                 ${{ $charges ? number_format($charges['value'], 2) : 0 }}
@@ -196,12 +200,8 @@
                                                             <td>$0.00</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>{{ __('frontend.subtotal') }}</td>
-                                                            <td>${{ number_format($sub_total, 2) }}</td>
-                                                        </tr>
-                                                        <tr>
                                                             <td>{{ __('frontend.grand_total') }}</td>
-                                                            <td>${{ number_format($sub_total, 2) }}</td>
+                                                            <td>${{ number_format($sub_total, 2) + ($charges ? number_format($charges['value'], 2) : 0) }} </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

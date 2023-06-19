@@ -6,6 +6,7 @@ use App\Mail\Admin\CustomerOrderDetailEmail;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\ShippingCharge;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
@@ -16,11 +17,18 @@ class CheckoutComponent extends Component
     public $defaultAddress = '';
     public $order;
 
-    protected $listeners = ['updatedUserAddresses'];
+    public $charges = 0;
+
+    protected $listeners = ['updatedUserAddresses', 'UpdatedShippingChargesFee'];
 
     public function updatedUserAddresses()
     {
         $this->defaultAddress = auth()->user()->delivery_addresses->where('is_default', 1)->first();
+    }
+
+    public function UpdatedShippingChargesFee($charges)
+    {
+        $this->charges = $charges;
     }
 
     public function mount(Order $order)
@@ -48,6 +56,7 @@ class CheckoutComponent extends Component
             DB::beginTransaction();
 
             $this->order->user_id               = auth()->id();
+            $this->order->shipping_charges      = ShippingCharge::calcShippingCharges($this->defaultAddress['country_id']);
             $this->order->delivery_address_id   = $this->defaultAddress['id'];
             $this->order->payment_method        = $this->order->payment_gateway == 1 ? 'COD' : 'prepaid';
             $this->order->status                = $this->order->payment_gateway == 1 ? 'new' : 'pending';

@@ -123,16 +123,30 @@
                                         <table class="o-summary__table">
                                             <tbody>
                                                 <tr>
+                                                    <td>SUBTOTAL</td>
+                                                    <td>${{ $cart_items->sum('grand_total') }}</td>
+                                                </tr>
+                                                <tr>
                                                     <td>{{ __('frontend.shipping') }}</td>
-                                                    <td>$0.00</td>
+                                                    <td>
+                                                        @if ($defaultAddress)
+                                                            @php
+                                                                $shipping = App\Models\ShippingCharge::calcShippingCharges($defaultAddress->country_id);
+                                                                $final_price = $cart_items->sum('grand_total') + ($shipping['value'] ?? 0);
+                                                            @endphp
+                                                            ${{ number_format($shipping['value'], 2) }} ({{ $shipping['weights'] ?? 0 }}g)
+                                                        @elseif ($charges)
+                                                            @php
+                                                                $final_price = $cart_items->sum('grand_total') + ($charges[0]['value'] ?? 0);
+                                                            @endphp
+                                                            ${{ number_format($charges[0]['value'], 2) ?? 0 }} ({{ $charges[0]['weights'] ?? 0 }}g)
+                                                        @endif
+
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>{{ __('frontend.tax') }}</td>
                                                     <td>$0.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>SUBTOTAL</td>
-                                                    <td>${{ $cart_items->sum('grand_total') }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>{{ __('frontend.discount') }}</td>
@@ -140,7 +154,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>{{ __('frontend.grand_total') }}</td>
-                                                    <td>${{ $cart_items->sum('grand_total') }}</td>
+                                                    <td>${{ $final_price }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

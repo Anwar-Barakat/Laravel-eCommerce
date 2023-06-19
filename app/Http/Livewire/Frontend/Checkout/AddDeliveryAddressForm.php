@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Frontend\Checkout;
 
 use App\Models\DeliveryAddress;
+use App\Models\ShippingCharge;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class AddDeliveryAddressForm extends Component
@@ -11,10 +13,18 @@ class AddDeliveryAddressForm extends Component
     public $address,
         $default_address;
 
+    public $charges = 0;
+
     public function mount(DeliveryAddress $address)
     {
         $this->address = $address ?? DeliveryAddress::make();
         $this->default_address  = Auth::check() ? Auth::user()->delivery_addresses->where('is_default', null)->first() : '';
+    }
+
+    public function updatedAddressCountryId($value)
+    {
+        $this->charges = ShippingCharge::calcShippingCharges($value);
+        $this->emit('UpdatedShippingChargesFee', [$this->charges]);
     }
 
     public function render()
@@ -31,8 +41,9 @@ class AddDeliveryAddressForm extends Component
 
             $addressDefault = Auth::user()->delivery_addresses->where('is_default', 1)->first();
 
-            if (($this->address->is_default == 1 && $this->address->user_id) || $addressDefault)
+            if (($this->address->is_default == 1 && $this->address->user_id) && $addressDefault != null) {
                 $addressDefault->update(['is_default' => null]);
+            }
 
             $this->address->user_id     = Auth::id();
             $this->address->save();
@@ -41,6 +52,7 @@ class AddDeliveryAddressForm extends Component
             $this->emit('updatedUserAddresses', ['addresses' => auth()->user()->delivery_addresses]);
 
             $this->reset(['address']);
+
             $this->address = new DeliveryAddress();
         } catch (\Throwable $th) {
             return redirect()->route('frontend.checkout')->with(['error' => $th->getMessage()]);
@@ -53,7 +65,10 @@ class AddDeliveryAddressForm extends Component
             'address.is_default'        => ['nullable'],
             'address.first_name'        => ['required', 'min:3', 'max:255'],
             'address.last_name'         => ['required', 'min:3', 'max:255'],
-            'address.email'             => ['required', 'string', 'email', 'max:255', 'unique:delivery_addresses,email'],
+            'address.email'             => [
+                'required', 'string', 'email', 'max:255',
+                Rule::unique('users', 'email')->ignore(auth()->id())
+            ],
             'address.mobile'            => ['required', 'min:10', 'max:10'],
             'address.street_address'    => ['required', 'min:3', 'max:255'],
             'address.country_id'        => ['required', 'integer'],

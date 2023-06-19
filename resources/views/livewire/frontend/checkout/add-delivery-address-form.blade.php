@@ -49,7 +49,7 @@
             <!--====== Select Box ======-->
 
             <label class="gl-label" for="billing-country">{{ __('frontend.country') }} *</label>
-            <select class="select-box select-box--primary-style" id="billing-country" data-bill="" wire:model.defer='address.country_id'>
+            <select class="select-box select-box--primary-style" id="billing-country" data-bill="" wire:model='address.country_id'>
                 <option selected value="">{{ __('btns.select') }}</option>
                 @foreach (App\Models\Country::active()->get() as $country)
                     <option value="{{ $country->id }}">{{ $country->name }}</option>
