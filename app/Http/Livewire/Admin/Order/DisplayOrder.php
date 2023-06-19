@@ -13,7 +13,7 @@ class DisplayOrder extends Component
     public $name,
         $status,
         $order_by   = 'id',
-        $sort_by    = 'asc',
+        $sort_by    = 'desc',
         $per_page   = CUSTOMPAGINATION;
 
     public function render()

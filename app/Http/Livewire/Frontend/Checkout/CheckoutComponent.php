@@ -17,25 +17,35 @@ class CheckoutComponent extends Component
     public $defaultAddress = '';
     public $order;
 
-    public $charges = 0;
+    public $country_id;
+    public $shipping;
+    public $final_price = 0;
 
-    protected $listeners = ['updatedUserAddresses', 'UpdatedShippingChargesFee'];
+    protected $listeners = ['updatedUserAddresses', 'UpdatedShippingChargesCountry'];
 
     public function updatedUserAddresses()
     {
         $this->defaultAddress = auth()->user()->delivery_addresses->where('is_default', 1)->first();
     }
 
-    public function UpdatedShippingChargesFee($charges)
+    public function UpdatedShippingChargesCountry($country_id)
     {
-        $this->charges = $charges;
+        $this->country_id   = $country_id;
+        $this->shipping     = $this->getShippingCharges($country_id);
+        $this->final_price  = $this->cart_items->sum('grand_total') +  $this->shipping['value'];
     }
 
     public function mount(Order $order)
     {
         $this->order            = $order ?? Order::make();
         $this->cart_items       = Cart::getCartItems();
-        $this->defaultAddress   = auth()->check() ? auth()->user()->delivery_addresses->where('is_default', 1)->first() : '';
+        $this->defaultAddress   = auth()->check() ? (auth()->user()->delivery_addresses->where('is_default', 1)->first() ?? 0) : '';
+
+        if ($this->defaultAddress) {
+            $this->shipping     = $this->getShippingCharges($this->defaultAddress->country_id);
+            $this->final_price  = $this->cart_items->sum('grand_total') +  $this->shipping['value'];
+        } else
+            $this->final_price      = $this->cart_items->sum('grand_total');
     }
 
     public function placeOrder()
@@ -56,11 +66,11 @@ class CheckoutComponent extends Component
             DB::beginTransaction();
 
             $this->order->user_id               = auth()->id();
-            $this->order->shipping_charges      = ShippingCharge::calcShippingCharges($this->defaultAddress['country_id']);
+            $this->order->shipping_charges      = $this->shipping['value'];
             $this->order->delivery_address_id   = $this->defaultAddress['id'];
             $this->order->payment_method        = $this->order->payment_gateway == 1 ? 'COD' : 'prepaid';
             $this->order->status                = $this->order->payment_gateway == 1 ? 'new' : 'pending';
-            $this->order->grand_price           = $this->cart_items->sum('grand_total');
+            $this->order->grand_price           = $this->final_price;
             $this->order->save();
 
             foreach ($this->cart_items as $cart_item) {
@@ -115,5 +125,16 @@ class CheckoutComponent extends Component
         return [
             'order.payment_gateway'    => ['required', 'integer'],
         ];
+    }
+
+    public function getShippingCharges()
+    {
+        if ($this->defaultAddress)
+            $country_id = $this->defaultAddress['country_id'];
+
+        elseif ($this->country_id)
+            $country_id = $this->country_id;
+
+        return ShippingCharge::calcShippingCharges($country_id);
     }
 }

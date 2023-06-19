@@ -23,8 +23,7 @@ class AddDeliveryAddressForm extends Component
 
     public function updatedAddressCountryId($value)
     {
-        $this->charges = ShippingCharge::calcShippingCharges($value);
-        $this->emit('UpdatedShippingChargesFee', [$this->charges]);
+        $this->emit('UpdatedShippingChargesCountry', $value);
     }
 
     public function render()
@@ -51,9 +50,10 @@ class AddDeliveryAddressForm extends Component
             toastr()->success(__('msgs.added', ['name' => __('frontend.delivery_address')]));
             $this->emit('updatedUserAddresses', ['addresses' => auth()->user()->delivery_addresses]);
 
-            $this->reset(['address']);
-
-            $this->address = new DeliveryAddress();
+            if (request()->routeIs('frontend.checkout')) {
+                $this->reset(['address']);
+                $this->address = new DeliveryAddress();
+            }
         } catch (\Throwable $th) {
             return redirect()->route('frontend.checkout')->with(['error' => $th->getMessage()]);
         }

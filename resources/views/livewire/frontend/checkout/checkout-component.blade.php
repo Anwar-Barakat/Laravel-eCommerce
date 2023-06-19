@@ -129,19 +129,7 @@
                                                 <tr>
                                                     <td>{{ __('frontend.shipping') }}</td>
                                                     <td>
-                                                        @if ($defaultAddress)
-                                                            @php
-                                                                $shipping = App\Models\ShippingCharge::calcShippingCharges($defaultAddress->country_id);
-                                                                $final_price = $cart_items->sum('grand_total') + ($shipping['value'] ?? 0);
-                                                            @endphp
-                                                            ${{ number_format($shipping['value'], 2) }} ({{ $shipping['weights'] ?? 0 }}g)
-                                                        @elseif ($charges)
-                                                            @php
-                                                                $final_price = $cart_items->sum('grand_total') + ($charges[0]['value'] ?? 0);
-                                                            @endphp
-                                                            ${{ number_format($charges[0]['value'], 2) ?? 0 }} ({{ $charges[0]['weights'] ?? 0 }}g)
-                                                        @endif
-
+                                                        ${{ $shipping ? number_format($shipping['value'], 2) : 0 }} ({{ $shipping['weights'] ?? 0 }}g)
                                                     </td>
                                                 </tr>
                                                 <tr>
