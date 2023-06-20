@@ -133,7 +133,7 @@ Route::group(
                 //_______________________
                 // Products Rating
                 //_______________________
-                Route::get('products-ratings',                              ProductRatingController::class)->name('products.rating');
+                Route::get('products-ratings',                              ProductRatingController::class)->name('products_rating');
 
 
                 //_______________________

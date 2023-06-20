@@ -30,13 +30,13 @@
                               <div class="form-selectgroup">
                                   @foreach ($categories as $cat)
                                       <label class="form-selectgroup-item" wire:key='cat-{{ $cat->id }}'>
-                                          <input type="checkbox" value="{{ $cat->id }}" class="form-selectgroup-input" wire:model.defer="filter.categories.{{ $cat->id }}" />
+                                          <input type="checkbox" value="{{ $cat->id }}" class="form-selectgroup-input" wire:model.defer="selectedCategories" />
                                           <span class="form-selectgroup-label">{{ $cat->name }}</span>
                                       </label>
                                       @if ($cat->subCategories)
                                           @foreach ($cat->subCategories as $sub)
                                               <label class="form-selectgroup-item">
-                                                  <input type="checkbox" value="{{ $sub->id }}" class="form-selectgroup-input" wire:model.defer='filter.categories.{{ $sub->id }}' />
+                                                  <input type="checkbox" value="{{ $sub->id }}" class="form-selectgroup-input" wire:model.defer='selectedCategories' />
                                                   <span class="form-selectgroup-label">{{ $sub->name }}</span>
                                               </label>
                                           @endforeach
@@ -44,7 +44,7 @@
                                       <div class="w-100"></div>
                                   @endforeach
                               </div>
-                              <x-input-error :messages="$errors->get('filter.categories')" class="mt-2" />
+                              <x-input-error :messages="$errors->get('selectedCategories')" class="mt-2" />
                           </div>
                       </div>
                   </div>

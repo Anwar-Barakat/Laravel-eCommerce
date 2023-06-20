@@ -12,7 +12,7 @@
                      <tr>
                          <th>#</th>
                          <th> {{ __('product.fitler_name') }}</th>
-                         <th> {{ __('category.categories') }}</th>
+                         <th class="w-50 text-center"> {{ __('category.categories') }}</th>
                          <th>{{ __('setting.status') }}</th>
                          <th></th>
                      </tr>
@@ -22,9 +22,9 @@
                          <tr>
                              <td>{{ $loop->iteration }}</td>
                              <td>{{ $filter->name }}</td>
-                             <td>
+                             <td class="text-center">
                                  @foreach ($filter->categories as $id)
-                                     <span class="badge badge-outline text-azure mb-1">{{ App\Models\Category::find($id)->name }}</span>
+                                     <span class="badge bg-blue-lt mb-2">{{ App\Models\Category::find($id)->name }}</span>
                                  @endforeach
                              </td>
                              <td>

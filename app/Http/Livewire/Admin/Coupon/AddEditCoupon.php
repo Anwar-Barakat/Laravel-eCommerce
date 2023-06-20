@@ -11,11 +11,14 @@ class AddEditCoupon extends Component
 {
     public Coupon $coupon;
     public $categories = [];
+    public $selectedCategories = [];
+
 
     public function mount(Coupon $coupon)
     {
         $this->coupon               = $coupon;
         $this->categories           = Category::with('subCategories:id,name,parent_id')->select('id', 'name', 'parent_id')->activeParent()->get();
+        $this->selectedCategories   = $coupon->categories ?? [];
     }
 
     public function submit()
@@ -25,6 +28,7 @@ class AddEditCoupon extends Component
             if ($this->coupon->option == 1)
                 $this->coupon->code     = bin2hex(random_bytes(5));
 
+            $this->coupon->categories   = $this->selectedCategories;
             $this->coupon->save();
             toastr()->success(__('msgs.submitted', ['name' => __('product.coupon')]));
             return redirect()->route('admin.coupons.index');
@@ -55,8 +59,8 @@ class AddEditCoupon extends Component
                     $this->coupon->amount = 0;
                 }
             }],
-            'coupon.categories'     => ['required'],
-            'coupon.categories.*'   => ['required', 'integer']
+            'selectedCategories'    => ['required', 'array'],
+
         ];
     }
 }

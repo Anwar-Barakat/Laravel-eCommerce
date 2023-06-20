@@ -11,9 +11,9 @@
                                   <div class="mb-3">
                                       <x-input-label class="form-label" :value="__('product.coupon')" />
                                       <div class="btn-group w-100" role="group">
-                                          <input type="radio" value="0" class="btn-check" id="btn-radio-dropdown-1" autocomplete="off" wire:model='coupon.option' />
+                                          <input type="radio" value="0" class="btn-check" name="option" id="btn-radio-dropdown-1" autocomplete="off" wire:model='coupon.option' {{ $coupon->code ? 'disabled readonly' : '' }} />
                                           <label for="btn-radio-dropdown-1" type="button" class="btn">{{ __('product.manual') }}</label>
-                                          <input type="radio" value="1" class="btn-check" id="btn-radio-dropdown-2" autocomplete="off" wire:model='coupon.option' />
+                                          <input type="radio" value="1" class="btn-check" name="option" id="btn-radio-dropdown-2" autocomplete="off" wire:model='coupon.option' {{ $coupon->code ? 'disabled readonly' : '' }} />
                                           <label for="btn-radio-dropdown-2" type="button" class="btn">{{ __('product.automatic') }}</label>
                                           <x-input-error :messages="$errors->get('coupon.option')" class="mt-2" />
                                       </div>
@@ -94,25 +94,23 @@
                           <div class="mb-3">
                               <label class="form-label">{{ __('category.categories') }}</label>
                               <div class="form-selectgroup">
-                                  @if ($categories)
-                                      @foreach ($categories as $category)
-                                          <label class="form-selectgroup-item">
-                                              <input type="checkbox" value="{{ $category->id }}" class="form-selectgroup-input" wire:model.defer='coupon.categories.{{ $category->id }}' />
-                                              <span class="form-selectgroup-label">{{ $category->name }}</span>
-                                          </label>
-                                          @if ($category->subCategories)
-                                              @foreach ($category->subCategories as $sub)
-                                                  <label class="form-selectgroup-item">
-                                                      <input type="checkbox" value="{{ $sub->id }}" class="form-selectgroup-input" wire:model.defer='coupon.categories.{{ $sub->id }}' />
-                                                      <span class="form-selectgroup-label">{{ $sub->name }}</span>
-                                                  </label>
-                                              @endforeach
-                                          @endif
-                                          <div class="w-100"></div>
-                                      @endforeach
-                                      <x-input-error :messages="$errors->get('coupon.categories')" class="mt-2" />
-                                  @endif
+                                  @foreach ($categories as $cat)
+                                      <label class="form-selectgroup-item" wire:key='cat-{{ $cat->id }}'>
+                                          <input type="checkbox" value="{{ $cat->id }}" class="form-selectgroup-input" wire:model.defer="selectedCategories" />
+                                          <span class="form-selectgroup-label">{{ $cat->name }}</span>
+                                      </label>
+                                      @if ($cat->subCategories)
+                                          @foreach ($cat->subCategories as $sub)
+                                              <label class="form-selectgroup-item">
+                                                  <input type="checkbox" value="{{ $sub->id }}" class="form-selectgroup-input" wire:model.defer='selectedCategories' />
+                                                  <span class="form-selectgroup-label">{{ $sub->name }}</span>
+                                              </label>
+                                          @endforeach
+                                      @endif
+                                      <div class="w-100"></div>
+                                  @endforeach
                               </div>
+                              <x-input-error :messages="$errors->get('selectedCategories')" class="mt-2" />
                           </div>
                       </div>
                   </div>

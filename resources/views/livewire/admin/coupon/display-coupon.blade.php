@@ -59,7 +59,7 @@
                          <th>#</th>
                          <th> {{ __('product.coupon_option') }}</th>
                          <th> {{ __('product.coupon_code') }}</th>
-                         <th> {{ __('category.categories') }}</th>
+                         <th class="text-center w-25"> {{ __('category.categories') }}</th>
                          <th> {{ __('product.coupon_type') }}</th>
                          <th> {{ __('product.amount') }}</th>
                          <th> {{ __('product.expiry_date') }}</th>
@@ -73,9 +73,9 @@
                              <td>{{ $loop->iteration }}</td>
                              <td>{{ __('product.' . App\Models\Coupon::COUPONOPTION[$coupon->option]) }}</td>
                              <td><span class="badge bg-blue-lt">{{ $coupon->code }}</span></td>
-                             <td>
+                             <td class="text-center">
                                  @foreach ($coupon->categories as $id)
-                                     <span class="badge bg-blue mb-1">{{ App\Models\Category::find($id)->name }}</span>
+                                     <span class="badge bg-blue mb-2">{{ App\Models\Category::find($id)->name }}</span>
                                  @endforeach
                              </td>
                              <td>{{ __('product.' . App\Models\Coupon::COUPONTYPE[$coupon->type]) }}</td>

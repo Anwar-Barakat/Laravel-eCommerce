@@ -230,7 +230,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item dropdown {{ request()->routeIs('admin.products.*') || request()->routeIs('admin.filters.*') || request()->routeIs('admin.filter-values.*') || request()->routeIs('admin.products.rating') ? 'active' : '' }}">
+                    <li class="nav-item dropdown {{ request()->routeIs('admin.products.*') || request()->routeIs('admin.filters.*') || request()->routeIs('admin.filter-values.*') || request()->routeIs('admin.products_rating') ? 'active' : '' }}">
                         <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -263,7 +263,7 @@
                                     </a>
 
                                     <!-- products  rating -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.products.rating') ? 'active' : '' }}" href="{{ route('admin.products.rating') }}">
+                                    <a class="dropdown-item {{ request()->routeIs('admin.products_rating') ? 'active' : '' }}" href="{{ route('admin.products_rating') }}">
                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-badge" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
