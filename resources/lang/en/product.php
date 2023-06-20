@@ -97,4 +97,18 @@ return [
     //_______________________
     'filters_values'                    => 'Filters values',
     'filter_value'                      => 'Filter value',
+
+
+    //_______________________
+    // Product rating
+    //_______________________
+    'products_rating'                   => 'Products Rating',
+    'rating'                            => 'Rating',
+    'review'                            => 'Review',
+    'message'                           => 'Message',
+    'one_star'                          => 'One Star',
+    'two_star'                          => 'Two Stars',
+    'three_star'                        => 'Three Stars',
+    'four_star'                         => 'Four Stars',
+    'five_star'                         => 'Five Stars',
 ];

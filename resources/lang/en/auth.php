@@ -1,14 +1,14 @@
 <?php
 
 return [
-    'email'                 => 'Email Address',
-    'password'              => 'Password',
-    'name'                  => 'Name',
+    'email'                             => 'Email Address',
+    'password'                          => 'Password',
+    'name'                              => 'Name',
 
-    'admin_login'           => 'Admin Login',
-    'login'                 => 'Login',
-    'remember_me'           => 'Remember me',
-    'login_to_your_account' => 'Login to your account',
+    'admin_login'                       => 'Admin Login',
+    'login'                             => 'Login',
+    'remember_me'                       => 'Remember me',
+    'login_to_your_account'             => 'Login to your account',
 
     'register'                          => 'Register',
     'register_page'                     => 'Create a new Account',
@@ -16,9 +16,9 @@ return [
     'email_verification'                => 'Email Verification',
     'forget_password'                   => 'Forget Password',
 
-    'confirm_password'          => 'Confirm Password',
-    'reset_password'            => 'Reset Password',
-    'forget_your_password'      => 'Forget your password?',
-    'email_password_reset_link' => 'Email Password Reset Link',
-    'reset_pass_not_problem'    => 'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one'
+    'confirm_password'                  => 'Confirm Password',
+    'reset_password'                    => 'Reset Password',
+    'forget_your_password'              => 'Forget your password?',
+    'email_password_reset_link'         => 'Email Password Reset Link',
+    'reset_pass_not_problem'            => 'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one'
 ];

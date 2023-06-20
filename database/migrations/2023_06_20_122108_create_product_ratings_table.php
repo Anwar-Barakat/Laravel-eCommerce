@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->text('review');
-            $table->float('rating', 10, 1);
+            $table->integer('rating');
             $table->boolean('is_active')->default(1);
             $table->timestamps();
         });

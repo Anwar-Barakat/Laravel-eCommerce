@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Frontend\ProductDetail;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\ProductRating;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -17,6 +18,15 @@ class ProductDetailComponent extends Component
         $total_stock;
 
     public $attr;
+
+    public $reviews;
+
+    protected $listeners = ['updateProductRating'];
+
+    public function updateProductRating($reviews)
+    {
+        $this->reviews = $reviews;
+    }
 
     public function mount(Product $product)
     {
@@ -99,6 +109,7 @@ class ProductDetailComponent extends Component
     public function render()
     {
         $this->total_stock      = $this->product->attributes->sum('stock');
-        return view('livewire.frontend.product-detail.product-detail-component');
+        $this->reviews          = ProductRating::where('product_id', $this->product->id)->active()->get();
+        return view('livewire.frontend.product-detail.product-detail-component', ['reviews' => $this->reviews]);
     }
 }

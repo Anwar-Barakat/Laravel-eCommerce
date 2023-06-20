@@ -14,9 +14,7 @@
                                  <a class="nav-link" data-toggle="tab" href="#pd-desc">{{ __('frontend.description') }}</a>
                              </li>
                              <li class="nav-item">
-                                 <a class="nav-link active" id="view-review" data-toggle="tab" href="#pd-rev">{{ __('frontend.reviews') }}
-                                     <span>(23)</span>
-                                 </a>
+                                 <a class="nav-link active" id="view-review" data-toggle="tab" href="#pd-rev">{{ __('frontend.reviews') }}</a>
                              </li>
                          </ul>
                      </div>

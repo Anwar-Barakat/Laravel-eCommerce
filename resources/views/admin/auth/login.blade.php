@@ -20,7 +20,7 @@
             </div>
             <div class="card card-md">
                 <div class="card-body">
-                    <h2 class="h2 text-center mb-4">Login to your account</h2>
+                    <h2 class="h2 text-center mb-4">{{ __('auth.login_to_your_account') }}</h2>
                     <form method="POST" action="{{ route('admin.login') }}">
                         @csrf
                         <div class="mb-3">

@@ -24,6 +24,7 @@ return [
     'remember_me'               => 'تذكرني',
     'login_to_your_account'     => 'تسجيل الدخول إلى حسابك',
     'email_verification'        => 'توثيق الحساب الألكتروني',
+    'login_to_your_account'             => 'تسجيل الدخول الى حسابك',
 
     'register'                          => 'إنشاء حساب',
     'register_page'                     => 'إنشاء حساب جديد',

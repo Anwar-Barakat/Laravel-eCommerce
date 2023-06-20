@@ -28,9 +28,20 @@
                              </div>
                          </div>
                          <div class="u-s-m-b-15">
-                             <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                             <div class="pd-detail__rating gl-rating-style">
+                                 @php
+                                     $reviews_count = $reviews->count();
+                                     $reviews_avg = $reviews_count ? $reviews->sum('rating') / $reviews_count : 0;
+                                     
+                                 @endphp
+                                 @for ($i = 1; $i <= $reviews_avg; $i++)
+                                     <i class="fas fa-star"></i>
+                                 @endfor
+                                 @if ($reviews_avg - floor($reviews_avg) > 0)
+                                     <i class="fas fa-star-half-alt"></i>
+                                 @endif
                                  <span class="pd-detail__review u-s-m-l-4">
-                                     <a data-click-scroll="#view-review">23 Reviews</a>
+                                     <a data-click-scroll="#view-review">{{ $reviews->count() ?? 0 }} {{ __('frontend.reviews') }}</a>
                                  </span>
                              </div>
                          </div>
