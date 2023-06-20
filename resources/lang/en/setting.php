@@ -29,6 +29,11 @@ return [
     'parent_v_account'      => 'The parent vendors account',
     'parent_d_account'      => 'The parent delegates account',
     'treasury_type'         => 'Treasury type',
+    'social_media'          => 'Social Media',
+    'facebook_url'          => 'Facebook URL',
+    'instagram_url'         => 'Instagram URL',
+    'twitter_url'           => 'Twitter URL',
+
 
     //_______________________
     // Admins

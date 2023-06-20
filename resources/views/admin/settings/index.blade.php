@@ -9,7 +9,7 @@
         <div class="row g-0">
             @include('admin.settings.inc.sidebar')
 
-            @livewire('admin.setting.general-setting', ['setting' => $setting])
+            @livewire('admin.setting.setting-component', ['setting' => $setting])
         </div>
     </div>
 </x-master-layout>

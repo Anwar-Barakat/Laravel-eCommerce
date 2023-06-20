@@ -25,7 +25,6 @@ class Admin extends Authenticatable implements HasMedia
         'is_active',
         'address',
         'bio',
-        'company_code'
     ];
 
     protected $hidden = [
@@ -38,7 +37,7 @@ class Admin extends Authenticatable implements HasMedia
 
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaConversion('admin_avatar')
+        $this->addMediaConversion('avatar')
             ->fit(Manipulations::FIT_CROP, 300)
             ->nonQueued();
     }

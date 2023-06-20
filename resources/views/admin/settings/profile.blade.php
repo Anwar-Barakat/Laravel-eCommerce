@@ -9,7 +9,7 @@
         <div class="row g-0">
             @include('admin.settings.inc.sidebar')
 
-            @livewire('admin.setting.admin-profile')
+            @livewire('admin.setting.admin-profile', ['admin' => Auth::guard('admin')->user()])
         </div>
     </div>
 </x-master-layout>

@@ -1,9 +1,6 @@
  <div class="card">
      <div class="card-header d-flex align-items-center justify-content-between">
          <h3 class="card-title">{{ __('msgs.all', ['name' => __('order.orders')]) }}</h3>
-         <a href="{{ route('admin.orders.create') }}" class="btn btn-primary">
-             {{ __('msgs.create', ['name' => __('order.order')]) }}
-         </a>
      </div>
      <div class="card-body">
          <div id="table-default" class="table-responsive">
@@ -139,7 +136,7 @@
                          </tr>
                      @empty
                          <tr>
-                             <td colspan="4" class="border-bottom-0">
+                             <td colspan="8" class="border-bottom-0">
                                  <x-blank-section :url="route('admin.orders.create')" :content="__('order.order')" />
                              </td>
                          </tr>

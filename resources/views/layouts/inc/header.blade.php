@@ -4,7 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-            <a href=".">
+            <a href="{{ route('admin.dashboard') }}">
                 <img src="./static/logo-white.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
             </a>
         </h1>
@@ -50,19 +50,60 @@
             </div>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                    <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                    <span class="avatar avatar-sm">
+                        @if (auth()->guard('admin')->user()->getFirstMediaUrl('avatar'))
+                            <img src="{{ auth()->guard('admin')->user()->getFirstMediaUrl('avatar') }}" alt="{{ auth()->guard('admin')->user()->company_code }}" width="32" height="32">
+                        @else
+                            <img src="{{ asset('backend/static/logo-white.svg') }}" width="32" height="32" alt="{{ auth()->guard('admin')->user()->name }}">
+                        @endif
+                    </span>
                     <div class="d-none d-xl-block ps-2">
                         <div>{{ Auth::guard('admin')->user()->name }}</div>
                         <div class="mt-1 small text-muted">{{ Auth::guard('admin')->user()->email }}</div>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <a href="#" class="dropdown-item">Status</a>
-                    <a href="{{ route('admin.setting.profile') }}" class="dropdown-item">{{ __('partials.Profile') }}</a>
-                    <a href="#" class="dropdown-item">Feedback</a>
+                    <a href="{{ route('admin.setting.profile') }}" class="dropdown-item">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            {{ __('partials.profile') }}
+                        </span>
+                    </a>
                     <div class="dropdown-divider"></div>
-                    <a href="./settings.html" class="dropdown-item">{{ __('setting.settings') }}</a>
-                    <a href="{{ route('admin.logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('admin-logout').submit();">{{ __('partials.logout') }}</a>
+                    <a href="{{ route('admin.setting.index') }}" class="dropdown-item">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z">
+                                </path>
+                                <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            {{ __('setting.settings') }}
+                        </span>
+                    </a>
+                    <a href="{{ route('admin.logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('admin-logout').submit();">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M10 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2"></path>
+                                <path d="M15 12h-12l3 -3"></path>
+                                <path d="M6 15l-3 -3"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            {{ __('partials.logout') }}
+                        </span>
+                    </a>
                     <form id="admin-logout" action="{{ route('admin.logout') }}" style="display: none;">
                         @csrf
                     </form>

@@ -42,8 +42,8 @@ class CheckoutComponent extends Component
         $this->defaultAddress   = auth()->check() ? (auth()->user()->delivery_addresses->where('is_default', 1)->first() ?? 0) : '';
 
         if ($this->defaultAddress) {
-            $this->shipping     = $this->getShippingCharges($this->defaultAddress->country_id);
-            $this->final_price  = $this->cart_items->sum('grand_total') +  $this->shipping['value'];
+            $this->shipping         = $this->getShippingCharges($this->defaultAddress->country_id);
+            $this->final_price      = $this->cart_items->sum('grand_total') +  $this->shipping['value'];
         } else
             $this->final_price      = $this->cart_items->sum('grand_total');
     }

@@ -17,7 +17,7 @@ class Brand extends Model implements HasMedia
 
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaConversion('admin_avatar')
+        $this->addMediaConversion('avatar')
             ->fit(Manipulations::FIT_CROP, 300, 300)
             ->nonQueued();
     }

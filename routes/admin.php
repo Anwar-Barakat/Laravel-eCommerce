@@ -66,7 +66,7 @@ Route::group(
                 //_______________________
                 // setting
                 //_______________________
-                Route::resource('/setting',                                 SettingController::class)->only(['index']);
+                Route::get('/setting',                                      SettingController::class)->name('setting.index');
                 Route::get('/profile',                                      AdminProfileController::class)->name('setting.profile');
                 Route::get('/change-password',                              AdminChangePasswordController::class)->name('setting.change-password');
 
