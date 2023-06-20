@@ -40,14 +40,15 @@ return [
     // -------------------------------
     // Product Detail Page
     // -------------------------------
-    'in_stock'          => 'In Stock',
-    'out_of_stock'      => 'Out of Stock',
-    'left'              => 'Left',
-    'only'              => 'Only',
-    'description'       => 'DESCRIPTION',
-    'reviews'           => 'REVIEWS',
-    'specifications'    => 'SPECIFICATIONS',
-    'similar_products'  => 'SIMILAR PRODUCTS',
+    'in_stock'                  => 'In Stock',
+    'out_of_stock'              => 'Out of Stock',
+    'left'                      => 'Left',
+    'only'                      => 'Only',
+    'description'               => 'DESCRIPTION',
+    'reviews'                   => 'REVIEWS',
+    'specifications'            => 'SPECIFICATIONS',
+    'similar_products'          => 'SIMILAR PRODUCTS',
+    'you_have_previous_review'  => 'You have a previous rating for this product',
 
 
 
