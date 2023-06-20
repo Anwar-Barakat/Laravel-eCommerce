@@ -19,6 +19,7 @@ return [
     'submitted'             => 'تم حفظ البيانات :name بنجاج',
     'approved'              => 'تم أعتماد :name بنجاج',
     'placed'                => 'تم ترحيل :name بنجاج',
+    'sent'                  => 'تم إرسال :name بنجاج',
     'has_sth'               => ':name لديه :sth',
 
 

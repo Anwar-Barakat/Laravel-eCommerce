@@ -116,5 +116,22 @@ return [
     'discount'                              => 'DISCOUNT',
     'quantity'                              => 'Quantity',
     'cart_is_empty'                         => 'Your shopping cart is empty',
-    'thanks'                                => 'Thanks'
+    'thanks'                                => 'Thanks',
+
+
+    // -------------------------------
+    // Contact Us
+    // -------------------------------
+    'contact_us'                => 'Contact us',
+    'lets_have_a_call'          => 'LET\'S HAVE A CALL',
+    'our_location'              => 'OUR LOCATION',
+    'work_time'                 => 'WORK TIME',
+    '5_days_a_week'             => '5 Days a Week',
+    'from_7_to_9_pm'            => 'From 9 AM to 7 PM',
+    'get_in_touch'              => 'Get In Touch',
+    'required'                  => 'Required',
+    'subject'                   => 'Subject',
+    'compose_a_message'        => 'Compose a Message',
+    'send_message'              => 'Send Message',
+    'message'                   => 'Message'
 ];

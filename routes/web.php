@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\Checkout\ThanksMsgController;
 use App\Http\Controllers\Frontend\Dashboard\DeliveryAddressController;
 use App\Http\Controllers\Frontend\Home\HomeController;
 use App\Http\Controllers\Frontend\Order\OrderController;
+use App\Http\Controllers\Frontend\Page\ContactUsController;
 use App\Http\Controllers\Frontend\ProductDetail\ProductDetailController;
 use App\Http\Controllers\Frontend\Shop\CategoryProductController;
 use App\Http\Controllers\Frontend\Shop\ShopController;
@@ -63,6 +64,11 @@ Route::group(
             Route::get('/checkout',                     CheckoutController::class)->name('checkout');
 
             Route::get('/thanks/{order}',               ThanksMsgController::class)->name('thanks');
+
+            //_______________________
+            // Pages
+            //_______________________
+            Route::get('/contact',                      ContactUsController::class)->name('pages.contact');
         });
     }
 );

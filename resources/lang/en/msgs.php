@@ -26,6 +26,7 @@ return [
     'submitted'             => ':name Has Been Submitted Successfuly',
     'approved'              => ':name Has Been Approved Successfuly',
     'placed'                => ':name Has Been Placed Successfuly',
+    'sent'                  => ':name Has Been Sent Successfuly',
     'has_sth'               => 'The :name has :sth',
 
     'email_pass_not_valid'  => 'Oops, Email or Password not Valid',

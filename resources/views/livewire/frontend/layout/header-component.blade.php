@@ -292,7 +292,7 @@
                                         <a href="about.html">About us</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Contact</a>
+                                        <a href="{{ route('frontend.pages.contact') }}">Contact</a>
                                     </li>
                                 </ul>
                                 <!--====== End - Dropdown ======-->
