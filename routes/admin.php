@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\Filter\FilterController;
 use App\Http\Controllers\Admin\FilterValue\FilterValueController;
 use App\Http\Controllers\Admin\Order\OrderController;
 use App\Http\Controllers\Admin\Order\OrderInvoiceController;
+use App\Http\Controllers\Admin\Page\ContactUsController;
 use App\Http\Controllers\Admin\Product\Attachment\ProductAttachmentController;
 use App\Http\Controllers\Admin\Product\Attachment\DestroyAttachment;
 use App\Http\Controllers\Admin\Product\Attachment\DownloadAttachmentController;
@@ -98,6 +99,10 @@ Route::group(
                 //_______________________
                 Route::resource('coupons',                                  CouponController::class)->only(['index', 'create', 'edit']);
 
+                //_______________________
+                // Pages
+                //_______________________
+                Route::get('/contact',                                      ContactUsController::class)->name('pages.contact');
 
                 // _________________________________________________________________________________________
                 // _________________________________________________________________________________________

@@ -15,4 +15,5 @@ return [
     'approval'      => 'Approval',
     'download'      => 'Download',
     'apply'         => 'APPLY',
+    'click_here'    => 'Click here',
 ];

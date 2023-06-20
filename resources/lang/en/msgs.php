@@ -45,6 +45,7 @@ return [
     'updated_at'            => 'Updated at',
     'main_info'             => 'Main Information',
     'search_by_name'        => 'Search by name',
+    'search_by_subject'     => 'Search by subject',
     'per_page'              => 'Per page',
     'order_by'              => 'Order by',
     'sort_by'               => 'Sort by',

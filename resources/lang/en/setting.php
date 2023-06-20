@@ -42,4 +42,12 @@ return [
     'admin'                 => 'admin',
 
 
+    //_______________________
+    // Contact Us Page
+    //_______________________
+    'pages'                 => 'Pages',
+    'contact_us'            => 'Contact us',
+    'messsages'             => 'Messages',
+    'messsage'              => 'Message',
+    'subject'               => 'Subject',
 ];

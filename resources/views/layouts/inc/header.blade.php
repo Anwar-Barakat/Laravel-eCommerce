@@ -198,8 +198,7 @@
                                         </span>
                                         {{ __('product.banners') }}
                                     </a>
-                                </div>
-                                <div class="dropdown-menu-column">
+
                                     <!-- coupons -->
                                     <a class="dropdown-item {{ request()->routeIs('admin.coupons.*') ? 'active' : '' }}" href="{{ route('admin.coupons.index') }}">
                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -212,6 +211,19 @@
                                             </svg>
                                         </span>
                                         {{ __('product.coupons') }}
+                                    </a>
+                                </div>
+                                <div class="dropdown-menu-column">
+                                    <!-- contact us -->
+                                    <a class="dropdown-item {{ request()->routeIs('admin.pages.contact') ? 'active' : '' }}" href="{{ route('admin.pages.contact') }}">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10"></path>
+                                                <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2"></path>
+                                            </svg>
+                                        </span>
+                                        {{ __('setting.contact_us') }}
                                     </a>
                                 </div>
                             </div>

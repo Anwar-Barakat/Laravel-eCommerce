@@ -15,5 +15,6 @@ return [
     'approval'      => 'إعتماد',
     'download'      => 'تنزيل',
     'apply'         => 'تطبيق',
+    'click_here'    => 'إضغط هنا',
 
 ];

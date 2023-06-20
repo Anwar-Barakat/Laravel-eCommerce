@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Frontend\Page;
 
 use App\Models\ContactUs;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ContactComponent extends Component
@@ -17,9 +18,19 @@ class ContactComponent extends Component
     public function sendMessage()
     {
         $this->validate();
-        $this->contact->save();
-        toastr()->success(__('msgs.sent', ['name' => __('frontend.message')]));
-        $this->contact = new ContactUs();
+        try {
+
+            if (!Auth::check()) {
+                toastr()->info(__('frontend.you_must_be_logged_in'));
+                return redirect()->route('login');
+            }
+
+            $this->contact->save();
+            toastr()->success(__('msgs.sent', ['name' => __('frontend.message')]));
+            $this->contact = new ContactUs();
+        } catch (\Throwable $th) {
+            return redirect()->route('frontend.pages.contact')->with(['error' => $th->getMessage()]);
+        }
     }
 
     public function render()

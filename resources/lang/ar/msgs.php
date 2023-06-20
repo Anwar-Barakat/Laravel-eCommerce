@@ -35,6 +35,7 @@ return [
     'updated_at'            => 'تاريخ التحديث',
     'main_info'             => 'المعلومات الأساسية',
     'search_by_name'        => 'بحث بواسطة الاسم',
+    'search_by_subject'     => 'بحث بواسطة العنوان',
     'per_page'              => 'لكل صفحة',
     'order_by'              => 'ترتيب حسب',
     'sort_by'               => 'فرز حسب',
