@@ -13,7 +13,9 @@ class DisplayProductComponent extends Component
     public $order_by   = 'created_at',
         $sort_by    = 'asc',
         $rating = [],
-        $per_page   = CUSTOMPAGINATION - 2;
+        $min_price, $max_price,
+        $selectedBrands = [],
+        $per_page   = CUSTOMPAGINATION;
 
     public function render()
     {
@@ -28,6 +30,8 @@ class DisplayProductComponent extends Component
                     $query->when($this->rating, fn ($q) => $q->whereIn('rating',  $this->rating));
                 });
             })
+            ->when($this->max_price, fn ($q) => $q->whereBetween('price', [$this->min_price, $this->max_price]))
+            ->when($this->selectedBrands, fn ($q) => $q->whereIn('brand_id',  $this->selectedBrands))
             ->orderBy($this->order_by, $this->sort_by)
             ->paginate($this->per_page);
     }

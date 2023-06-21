@@ -35,6 +35,8 @@ return [
     'sort_by'           => 'SORT BY',
     'asc'               => 'ASC',
     'desc'              => 'DESC',
+    'shop'              => 'SHOP',
+    'brands'            => 'BRANDS',
 
 
     // -------------------------------

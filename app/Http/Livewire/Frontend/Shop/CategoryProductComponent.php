@@ -12,17 +12,15 @@ class CategoryProductComponent extends Component
 {
     use WithPagination;
 
-    public $clearFilter = false;
-
     public $category,
-        $sub_cats = [];
-
-    public $order_by   = 'created_at',
+        $sub_cats           = [],
+        $filters,
+        $selectedFilters    = [],
+        $min_price, $max_price,
+        $selectedBrands     = [],
+        $order_by   = 'created_at',
         $sort_by    = 'asc',
         $per_page   = CUSTOMPAGINATION - 2;
-
-    public $filters;
-    public $selectedFilters = [];
 
     public function mount($url)
     {
@@ -60,6 +58,8 @@ class CategoryProductComponent extends Component
                 })
             )
             ->whereIn('category_id', $this->sub_cats)
+            ->when($this->max_price, fn ($q) => $q->whereBetween('price', [$this->min_price, $this->max_price]))
+            ->when($this->selectedBrands, fn ($q) => $q->whereIn('brand_id',  $this->selectedBrands))
             ->orderBy($this->order_by, $this->sort_by)
             ->paginate($this->per_page);
     }
