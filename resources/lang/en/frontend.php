@@ -7,6 +7,9 @@ return [
     'shop_now'      => 'Shop now',
     'new_arrival'   => 'NEW ARRIVALS',
     'new_arrival'   => 'NEW ARRIVALS',
+    'newest'        => 'The Newest',
+    'top_trending'  => 'TOP TRENDING',
+    'choose_cat'    => 'CHOOSE CATEGORY',
 
 
     // -------------------------------
@@ -37,6 +40,7 @@ return [
     'desc'              => 'DESC',
     'shop'              => 'SHOP',
     'brands'            => 'BRANDS',
+    'best_seller'       => 'Best Seller',
 
 
     // -------------------------------

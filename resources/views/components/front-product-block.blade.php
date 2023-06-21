@@ -28,10 +28,20 @@
         <a href="{{ route('frontend.category.products', ['url' => $product->category->url]) }}">{{ $product->category->name }}</a>
     </span>
     <span class="product-o__name">
-        <a href="{{ route('frontend.product.detail', ['product' => $product]) }}">{{ Str::limit($product->name, 30, '..') }}</a>
+        <a href="{{ route('frontend.product.detail', ['product' => $product]) }}">{{ Str::limit($product->name, 25, '..') }}</a>
     </span>
-    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-        <span class="product-o__review">(0)</span>
+    <div class="product-o__rating gl-rating-style">
+        @php
+            $reviews_count = product_reviews($product->id)->count();
+            $reviews_avg = $reviews_count ? product_reviews($product->id)->sum('rating') / $reviews_count : 0;
+        @endphp
+        @for ($i = 1; $i <= $reviews_avg; $i++)
+            <i class="fas fa-star"></i>
+        @endfor
+        @if ($reviews_avg - floor($reviews_avg) > 0)
+            <i class="fas fa-star-half-alt"></i>
+        @endif
+        <span class="product-o__review">{{ $reviews_count ?? 0 }} {{ __('frontend.reviews') }}</span>
     </div>
     @php
         $dataPrices = App\Models\Product::applyDiscount($product->id, $product->price);

@@ -79,8 +79,10 @@ select:focus {
 .is-grid-active .product-m,
 .is-list-active .product-m,
 .is-list-active .product-m:hover,
-.product-o--hover-on:hover,
-.is-list-active .product-m:hover {
+.is-list-active .product-m:hover,
+.product-o--hover-on,
+.product-o--hover-on:hover {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px 0px !important;
     margin-bottom: 2rem;
+    border-radius: 0;
 }

@@ -53,32 +53,30 @@
                                      <span class="js-shop-grid-target">{{ __('frontend.grid') }}</span>
                                      <span class="js-shop-list-target is-active">{{ __('frontend.list') }}</span>
                                  </div>
-                                 <form>
-                                     <div class="tool-style__form-wrap">
-                                         <div class="u-s-m-b-8">
-                                             <select class="form-select-sm text-xs rounded-none" wire:model='per_page'>
-                                                 <option value="8">{{ __('frontend.show') }}: 8</option>
-                                                 <option value="12">{{ __('frontend.show') }}: 12</option>
-                                                 <option value="16">{{ __('frontend.show') }}: 16</option>
-                                                 <option value="28">{{ __('frontend.show') }}: 28</option>
-                                             </select>
-                                         </div>
-                                         <div class="u-s-m-b-8">
-                                             <select class="form-select-sm text-xs rounded-none" wire:model='order_by'>
-                                                 <option value="created_at">{{ __('frontend.sort_by') }}: Newest Items</option>
-                                                 <option value="name">{{ __('frontend.sort_by') }}: Name</option>
-                                                 <option value="price">{{ __('frontend.sort_by') }}: Price</option>
-                                                 <option value="is_best_seller">{{ __('frontend.sort_by') }}: Best Selling</option>
-                                             </select>
-                                         </div>
-                                         <div class="u-s-m-b-8">
-                                             <select class="form-select-sm text-xs rounded-none" wire:model='sort_by'>
-                                                 <option value="asc">{{ __('msgs.asc') }}</option>
-                                                 <option value="desc">{{ __('msgs.desc') }}</option>
-                                             </select>
-                                         </div>
+                                 <div class="tool-style__form-wrap">
+                                     <div class="u-s-m-b-8">
+                                         <select class="font-bold text-black form-select-sm text-xs rounded-none" wire:model='per_page'>
+                                             <option value="8">{{ __('frontend.show') }}: 8</option>
+                                             <option value="12">{{ __('frontend.show') }}: 12</option>
+                                             <option value="16">{{ __('frontend.show') }}: 16</option>
+                                             <option value="28">{{ __('frontend.show') }}: 28</option>
+                                         </select>
                                      </div>
-                                 </form>
+                                     <div class="u-s-m-b-8">
+                                         <select class="font-bold text-black form-select-sm text-xs rounded-none" wire:model='order_by'>
+                                             <option value="created_at">{{ __('frontend.sort_by') }}: Newest Items</option>
+                                             <option value="name">{{ __('frontend.sort_by') }}: Name</option>
+                                             <option value="price">{{ __('frontend.sort_by') }}: Price</option>
+                                             <option value="is_best_seller">{{ __('frontend.sort_by') }}: Best Selling</option>
+                                         </select>
+                                     </div>
+                                     <div class="u-s-m-b-8">
+                                         <select class="font-bold text-black form-select-sm text-xs rounded-none" wire:model='sort_by'>
+                                             <option value="asc">{{ __('frontend.asc') }}</option>
+                                             <option value="desc">{{ __('frontend.desc') }}</option>
+                                         </select>
+                                     </div>
+                                 </div>
                              </div>
                          </div>
                      </div>
