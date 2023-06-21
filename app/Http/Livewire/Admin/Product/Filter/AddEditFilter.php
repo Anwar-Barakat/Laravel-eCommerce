@@ -59,7 +59,6 @@ class AddEditFilter extends Component
             $this->productFilter->category_id   = $this->product->category_id;
             $this->productFilter->save();
             toastr()->success(__('msgs.added', ['name' => __('product.filter')]));
-            $this->reset('productFilter');
             $this->productFilter = new ProductFilter();
         } catch (\Throwable $th) {
             return redirect()->route('admin.product.filters.create', ['product' => $this->product])->with(['error' => $th->getMessage()]);

@@ -163,7 +163,7 @@
          </div>
      </div>
 
-     <div class="shop-a" id="side-filter">
+     <div class="shop-a" id="side-filter" wire:ignore.self=''>
          <div class="shop-a__wrap">
              <div class="shop-a__inner gl-scroll">
                  <div class="shop-w-master">
@@ -185,14 +185,14 @@
                                                  @if ($section->categories->count() > 0)
                                                      <span class="js-shop-category-span is-expanded fas fa-plus u-s-m-l-6"></span>
                                                      <ul style="display:block">
-                                                         @foreach ($section->categories as $category)
-                                                             <li class="{{ $category->subCategories->count() > 0 ? 'has-list' : '' }}">
-                                                                 <a href="{{ route('frontend.category.products', ['url' => $category->url]) }}">{{ $category->name }}</a>
-                                                                 <span class="category-list__text u-s-m-l-6">({{ $category->products->count() ?? 0 }})</span>
-                                                                 @if ($category->subCategories->count() > 0)
+                                                         @foreach ($section->categories as $cat)
+                                                             <li class="{{ $cat->subCategories->count() > 0 ? 'has-list' : '' }}">
+                                                                 <a href="{{ route('frontend.category.products', ['url' => $cat->url]) }}">{{ $cat->name }}</a>
+                                                                 <span class="category-list__text u-s-m-l-6">({{ $cat->products->count() ?? 0 }})</span>
+                                                                 @if ($cat->subCategories->count() > 0)
                                                                      <span class="js-shop-category-span fas fa-plus u-s-m-l-6"></span>
                                                                      <ul>
-                                                                         @foreach ($category->subCategories as $sub)
+                                                                         @foreach ($cat->subCategories as $sub)
                                                                              <li>
                                                                                  <a href="{{ route('frontend.category.products', ['url' => $sub->url]) }}">{{ $sub->name }} ({{ $sub->products->count() ?? 0 }})</a>
                                                                              </li>
@@ -212,7 +212,7 @@
                          <div class="u-s-m-b-30">
                              <div class="shop-w">
                                  <div class="shop-w__intro-wrap">
-                                     <h1 class="shop-w__h">RATING</h1>
+                                     <h1 class="shop-w__h">{{ __('frontend.rating') }}</h1>
                                      <span class="fas fa-minus shop-w__toggle" data-target="#s-rating" data-toggle="collapse"></span>
                                  </div>
                                  <div class="shop-w__wrap show" id="s-rating">
@@ -338,80 +338,14 @@
                          <div class="u-s-m-b-30">
                              <div class="shop-w">
                                  <div class="shop-w__intro-wrap">
-                                     <h1 class="shop-w__h">MANUFACTURER</h1>
-
-                                     <span class="fas fa-minus shop-w__toggle" data-target="#s-manufacturer" data-toggle="collapse"></span>
-                                 </div>
-                                 <div class="shop-w__wrap show" id="s-manufacturer">
-                                     <ul class="shop-w__list-2">
-                                         <li>
-                                             <div class="list__content">
-
-                                                 <input type="checkbox" checked>
-
-                                                 <span>Calvin Klein</span>
-                                             </div>
-
-                                             <span class="shop-w__total-text">(23)</span>
-                                         </li>
-                                         <li>
-                                             <div class="list__content">
-
-                                                 <input type="checkbox">
-
-                                                 <span>Diesel</span>
-                                             </div>
-
-                                             <span class="shop-w__total-text">(2)</span>
-                                         </li>
-                                         <li>
-                                             <div class="list__content">
-
-                                                 <input type="checkbox">
-
-                                                 <span>Polo</span>
-                                             </div>
-
-                                             <span class="shop-w__total-text">(2)</span>
-                                         </li>
-                                         <li>
-                                             <div class="list__content">
-
-                                                 <input type="checkbox">
-
-                                                 <span>Tommy Hilfiger</span>
-                                             </div>
-
-                                             <span class="shop-w__total-text">(9)</span>
-                                         </li>
-                                         <li>
-                                             <div class="list__content">
-
-                                                 <input type="checkbox">
-
-                                                 <span>Ndoge</span>
-                                             </div>
-
-                                             <span class="shop-w__total-text">(3)</span>
-                                         </li>
-                                     </ul>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="u-s-m-b-30">
-                             <div class="shop-w">
-                                 <div class="shop-w__intro-wrap">
                                      <h1 class="shop-w__h">COLOR</h1>
-
                                      <span class="fas fa-minus shop-w__toggle" data-target="#s-color" data-toggle="collapse"></span>
                                  </div>
                                  <div class="shop-w__wrap show" id="s-color">
                                      <ul class="shop-w__list gl-scroll">
                                          <li>
                                              <div class="color__check">
-
                                                  <input type="checkbox" id="jet">
-
                                                  <label class="color__check-label" for="jet" style="background-color: #333333"></label>
                                              </div>
 
@@ -465,24 +399,22 @@
                              <div class="shop-w">
                                  @if ($category && $filters)
                                      @foreach ($filters as $filter)
-                                         @if (in_array($category->id, $filter->categories))
-                                             {{ $filter->name }}
+                                         @if (in_array($category->id, $filter->categories) && $filter->filter_values->count() > 0)
                                              <div class="facet-filter-associates img-thumbnail filtering-padding">
                                                  <div class="shop-w__intro-wrap">
-                                                     <h1 class="shop-w__h">{{ ucwords($filter->filter_name) }}</h1>
-                                                     <span class="fas fa-minus collapsed shop-w__toggle" data-target="#s-size" data-toggle="collapse"></span>
+                                                     <h1 class="shop-w__h">{{ ucwords($filter->name) }}</h1>
+                                                     <span class="fas fa-minus shop-w__toggle" data-target="#filter{{ $filter->id }}" data-toggle="collapse" aria-expanded="true"></span>
                                                  </div>
-                                                 <div class="shop-w__wrap" id="s-size">
+                                                 <div class="shop-w__wrap show" id="filter{{ $filter->id }}">
                                                      <ul class="shop-w__list gl-scroll">
                                                          @foreach ($filter->filter_values as $filterValue)
                                                              <li>
                                                                  <div class="check-box">
-                                                                     <input type="checkbox" id="filter{{ $filterValue->id }}" value="{{ $filterValue->id }}" wire:click="filtering('{{ $filter->name }}','{{ $filterValue->value }}')">
+                                                                     <input type="checkbox" id="filter{{ $filterValue->id }}" value="{{ $filterValue->id }}" wire:model='selectedFilters'>
                                                                      <div class="check-box__state check-box__state--primary">
                                                                          <label class="check-box__label" for="filter{{ $filterValue->id }}">{{ $filterValue->value }}</label>
                                                                      </div>
                                                                  </div>
-                                                                 <span class="shop-w__total-text">(2)</span>
                                                              </li>
                                                          @endforeach
                                                      </ul>

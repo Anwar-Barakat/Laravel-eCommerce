@@ -22,6 +22,7 @@ class CategoryProductComponent extends Component
         $per_page   = CUSTOMPAGINATION - 2;
 
     public $filters;
+    public $selectedFilters = [];
 
     public function mount($url)
     {
@@ -35,6 +36,10 @@ class CategoryProductComponent extends Component
         $this->filters      = Filter::with(['filter_values'])->active()->get();
     }
 
+    public function updatedSelectedFilters($value)
+    {
+    }
+
     public function render()
     {
         return view('livewire.frontend.shop.category-product-component', ['products' => $this->getProducts()]);
@@ -43,6 +48,17 @@ class CategoryProductComponent extends Component
     public function getProducts()
     {
         return Product::with(['category:id,name', 'brand:id,name'])
+            ->when(
+                $this->selectedFilters,
+                fn ($q) => $q->whereHas('filters', function ($query) {
+                    $query->whereHas(
+                        'filter_value',
+                        function ($query) {
+                            $query->whereIn('id', $this->selectedFilters);
+                        }
+                    );
+                })
+            )
             ->whereIn('category_id', $this->sub_cats)
             ->orderBy($this->order_by, $this->sort_by)
             ->paginate($this->per_page);
