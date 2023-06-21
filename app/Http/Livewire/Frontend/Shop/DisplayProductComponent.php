@@ -12,6 +12,7 @@ class DisplayProductComponent extends Component
 
     public $order_by   = 'created_at',
         $sort_by    = 'asc',
+        $rating = [],
         $per_page   = CUSTOMPAGINATION - 2;
 
     public function render()
@@ -21,7 +22,12 @@ class DisplayProductComponent extends Component
 
     public function getProducts()
     {
-        return Product::with(['category:id,name,description', 'brand:id,name'])
+        return Product::with(['category:id,name,description,url', 'brand:id,name'])
+            ->when($this->rating, function ($q) {
+                $q->whereHas('ratings', function ($query) {
+                    $query->when($this->rating, fn ($q) => $q->whereIn('rating',  $this->rating));
+                });
+            })
             ->orderBy($this->order_by, $this->sort_by)
             ->paginate($this->per_page);
     }

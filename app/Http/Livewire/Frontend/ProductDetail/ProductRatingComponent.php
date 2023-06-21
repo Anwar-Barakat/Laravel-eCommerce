@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Frontend\ProductDetail;
 
 use App\Models\Product;
 use App\Models\ProductRating;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ProductRatingComponent extends Component
@@ -25,7 +26,10 @@ class ProductRatingComponent extends Component
 
     public function addRating()
     {
-        auth_check();
+        if (!Auth::check()) {
+            toastr()->info(__('frontend.you_must_be_logged_in'));
+            return redirect()->route('login');
+        }
 
         $this->validate();
         try {

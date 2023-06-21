@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Frontend\ProductDetail;
 
 use App\Models\Cart;
 use App\Models\Product;
-use App\Models\ProductRating;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -109,7 +108,7 @@ class ProductDetailComponent extends Component
     public function render()
     {
         $this->total_stock      = $this->product->attributes->sum('stock');
-        $this->reviews          = ProductRating::where('product_id', $this->product->id)->active()->get();
+        $this->reviews          = product_reviews($this->product->id);
         return view('livewire.frontend.product-detail.product-detail-component', ['reviews' => $this->reviews]);
     }
 }

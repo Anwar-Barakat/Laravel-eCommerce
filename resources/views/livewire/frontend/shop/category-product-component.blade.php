@@ -24,7 +24,7 @@
                                  <div class="breadcrumb__wrap">
                                      <ul class="breadcrumb__list">
                                          <li class="has-separator">
-                                             <a href="index.html">{{ __('frontend.home') }}</a>
+                                             <a href="{{ route('frontend.shop') }}">{{ __('frontend.home') }}</a>
                                          </li>
                                          @if ($category->parent_id == 0)
                                              <li class="is-marked">
@@ -104,18 +104,23 @@
                                          </div>
                                          <div class="product-m__content">
                                              <div class="product-m__category">
-                                                 <a href="shop-side-version-2.html">{{ $product->category->name }}</a>
+                                                 <a href="{{ route('frontend.category.products', ['url' => $product->category->url]) }}">{{ $product->category->name }}</a>
                                              </div>
                                              <div class="product-m__name">
-                                                 <a href="product-detail.html">{{ Str::limit($product->name, 25, '...') }}</a>
+                                                 <a href="{{ route('frontend.product.detail', ['product' => $product]) }}">{{ Str::limit($product->name, 25, '...') }}</a>
                                              </div>
                                              <div class="product-m__rating gl-rating-style">
-                                                 <i class="fas fa-star"></i>
-                                                 <i class="fas fa-star"></i>
-                                                 <i class="fas fa-star-half-alt"></i>
-                                                 <i class="far fa-star"></i>
-                                                 <i class="far fa-star"></i>
-                                                 <span class="product-m__review">(23)</span>
+                                                 @php
+                                                     $reviews_count = product_reviews($product->id)->count();
+                                                     $reviews_avg = $reviews_count ? product_reviews($product->id)->sum('rating') / $reviews_count : 0;
+                                                 @endphp
+                                                 @for ($i = 1; $i <= $reviews_avg; $i++)
+                                                     <i class="fas fa-star"></i>
+                                                 @endfor
+                                                 @if ($reviews_avg - floor($reviews_avg) > 0)
+                                                     <i class="fas fa-star-half-alt"></i>
+                                                 @endif
+                                                 <span class="product-m__review">{{ $reviews_count ?? 0 }} {{ __('frontend.reviews') }}</span>
                                              </div>
                                              @php
                                                  $dataPrices = App\Models\Product::applyDiscount($product->id, $product->price);
@@ -171,113 +176,9 @@
                          <span>{{ __('frontend.filters') }}</span>
                      </h1>
                      <div class="shop-w-master__sidebar">
-                         <div class="u-s-m-b-30">
-                             <div class="shop-w">
-                                 <div class="shop-w__intro-wrap">
-                                     <h1 class="shop-w__h">{{ __('frontend.sections') }}</h1>
-                                     <span class="fas fa-minus shop-w__toggle" data-target="#sections" data-toggle="collapse"></span>
-                                 </div>
-                                 <div class="shop-w__wrap show" id="sections">
-                                     <ul class="shop-w__category-list gl-scroll">
-                                         @foreach (App\Models\Section::with('categories')->active()->get() as $section)
-                                             <li class="{{ $section->categories->count() ? 'has-list' : '' }} mb-2">
-                                                 <a href="javascript:;" class="pointer-events-none">{{ $section->name }}</a>
-                                                 @if ($section->categories->count() > 0)
-                                                     <span class="js-shop-category-span is-expanded fas fa-plus u-s-m-l-6"></span>
-                                                     <ul style="display:block">
-                                                         @foreach ($section->categories as $cat)
-                                                             <li class="{{ $cat->subCategories->count() > 0 ? 'has-list' : '' }}">
-                                                                 <a href="{{ route('frontend.category.products', ['url' => $cat->url]) }}">{{ $cat->name }}</a>
-                                                                 <span class="category-list__text u-s-m-l-6">({{ $cat->products->count() ?? 0 }})</span>
-                                                                 @if ($cat->subCategories->count() > 0)
-                                                                     <span class="js-shop-category-span fas fa-plus u-s-m-l-6"></span>
-                                                                     <ul>
-                                                                         @foreach ($cat->subCategories as $sub)
-                                                                             <li>
-                                                                                 <a href="{{ route('frontend.category.products', ['url' => $sub->url]) }}">{{ $sub->name }} ({{ $sub->products->count() ?? 0 }})</a>
-                                                                             </li>
-                                                                         @endforeach
-                                                                     </ul>
-                                                                 @endif
-                                                             </li>
-                                                         @endforeach
-                                                     </ul>
-                                                 @endif
-                                             </li>
-                                         @endforeach
-                                     </ul>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="u-s-m-b-30">
-                             <div class="shop-w">
-                                 <div class="shop-w__intro-wrap">
-                                     <h1 class="shop-w__h">{{ __('frontend.rating') }}</h1>
-                                     <span class="fas fa-minus shop-w__toggle" data-target="#s-rating" data-toggle="collapse"></span>
-                                 </div>
-                                 <div class="shop-w__wrap show" id="s-rating">
-                                     <ul class="shop-w__list gl-scroll">
-                                         <li>
-                                             <div class="rating__check">
+                         <!-- Categories -->
+                         @include('livewire.frontend.shop.inc.category-filter')
 
-                                                 <input type="checkbox">
-                                                 <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                             </div>
-
-                                             <span class="shop-w__total-text">(2)</span>
-                                         </li>
-                                         <li>
-                                             <div class="rating__check">
-
-                                                 <input type="checkbox">
-                                                 <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-
-                                                     <span>& Up</span>
-                                                 </div>
-                                             </div>
-
-                                             <span class="shop-w__total-text">(8)</span>
-                                         </li>
-                                         <li>
-                                             <div class="rating__check">
-
-                                                 <input type="checkbox">
-                                                 <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-
-                                                     <span>& Up</span>
-                                                 </div>
-                                             </div>
-
-                                             <span class="shop-w__total-text">(10)</span>
-                                         </li>
-                                         <li>
-                                             <div class="rating__check">
-
-                                                 <input type="checkbox">
-                                                 <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-
-                                                     <span>& Up</span>
-                                                 </div>
-                                             </div>
-
-                                             <span class="shop-w__total-text">(12)</span>
-                                         </li>
-                                         <li>
-                                             <div class="rating__check">
-
-                                                 <input type="checkbox">
-                                                 <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-
-                                                     <span>& Up</span>
-                                                 </div>
-                                             </div>
-
-                                             <span class="shop-w__total-text">(1)</span>
-                                         </li>
-                                     </ul>
-                                 </div>
-                             </div>
-                         </div>
                          <div class="u-s-m-b-30">
                              <div class="shop-w">
                                  <div class="shop-w__intro-wrap">
@@ -304,6 +205,7 @@
                                  </div>
                              </div>
                          </div>
+
                          <div class="u-s-m-b-30">
                              <div class="shop-w">
                                  <div class="shop-w__intro-wrap">
@@ -335,6 +237,7 @@
                                  </div>
                              </div>
                          </div>
+
                          <div class="u-s-m-b-30">
                              <div class="shop-w">
                                  <div class="shop-w__intro-wrap">
@@ -395,36 +298,9 @@
                                  </div>
                              </div>
                          </div>
-                         <div class="u-s-m-b-30">
-                             <div class="shop-w">
-                                 @if ($category && $filters)
-                                     @foreach ($filters as $filter)
-                                         @if (in_array($category->id, $filter->categories) && $filter->filter_values->count() > 0)
-                                             <div class="facet-filter-associates img-thumbnail filtering-padding">
-                                                 <div class="shop-w__intro-wrap">
-                                                     <h1 class="shop-w__h">{{ ucwords($filter->name) }}</h1>
-                                                     <span class="fas fa-minus shop-w__toggle" data-target="#filter{{ $filter->id }}" data-toggle="collapse" aria-expanded="true"></span>
-                                                 </div>
-                                                 <div class="shop-w__wrap show" id="filter{{ $filter->id }}">
-                                                     <ul class="shop-w__list gl-scroll">
-                                                         @foreach ($filter->filter_values as $filterValue)
-                                                             <li>
-                                                                 <div class="check-box">
-                                                                     <input type="checkbox" id="filter{{ $filterValue->id }}" value="{{ $filterValue->id }}" wire:model='selectedFilters'>
-                                                                     <div class="check-box__state check-box__state--primary">
-                                                                         <label class="check-box__label" for="filter{{ $filterValue->id }}">{{ $filterValue->value }}</label>
-                                                                     </div>
-                                                                 </div>
-                                                             </li>
-                                                         @endforeach
-                                                     </ul>
-                                                 </div>
-                                             </div>
-                                         @endif
-                                     @endforeach
-                                 @endif
-                             </div>
-                         </div>
+
+                         <!-- Automatic Filter Value -->
+                         @include('livewire.frontend.shop.inc.automatic-filter-value')
                      </div>
                  </div>
              </div>

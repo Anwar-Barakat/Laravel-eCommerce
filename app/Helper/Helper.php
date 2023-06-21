@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ProductRating;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,5 +18,12 @@ if (!function_exists('get_setting')) {
     function get_setting()
     {
         return Setting::first();
+    }
+}
+
+if (!function_exists('product_reviews')) {
+    function product_reviews($product_id)
+    {
+        return ProductRating::where('product_id', $product_id)->active()->get();
     }
 }

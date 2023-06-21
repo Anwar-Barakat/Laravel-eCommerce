@@ -32,8 +32,11 @@ class AuthenticatedSessionController extends Controller
 
         if (!empty(Session::get('session_id')) && !empty(Cart::getCartItems()) && Auth::check()) {
             $cart           = Cart::where('session_id', Session::get('session_id'))->first();
-            $cart->user_id  = Auth::user()->id;
-            $cart->save();
+
+            if ($cart) {
+                $cart->user_id  = Auth::user()->id;
+                $cart->save();
+            }
         }
 
         return redirect()->intended(RouteServiceProvider::HOME);

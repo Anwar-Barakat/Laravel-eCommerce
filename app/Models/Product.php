@@ -117,4 +117,9 @@ class Product extends Model implements HasMedia
     {
         return $this->hasMany(ProductFilter::class)->with('filter', 'filter_value');
     }
+
+    public function ratings(): HasMany
+    {
+        return $this->hasMany(ProductRating::class);
+    }
 }

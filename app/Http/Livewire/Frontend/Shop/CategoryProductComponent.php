@@ -47,7 +47,7 @@ class CategoryProductComponent extends Component
 
     public function getProducts()
     {
-        return Product::with(['category:id,name', 'brand:id,name'])
+        return Product::with(['category:id,name,url', 'brand:id,name'])
             ->when(
                 $this->selectedFilters,
                 fn ($q) => $q->whereHas('filters', function ($query) {

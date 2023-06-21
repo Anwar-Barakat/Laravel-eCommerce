@@ -32,7 +32,6 @@
                                  @php
                                      $reviews_count = $reviews->count();
                                      $reviews_avg = $reviews_count ? $reviews->sum('rating') / $reviews_count : 0;
-                                     
                                  @endphp
                                  @for ($i = 1; $i <= $reviews_avg; $i++)
                                      <i class="fas fa-star"></i>
