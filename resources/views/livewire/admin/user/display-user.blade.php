@@ -95,7 +95,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="border-bottom-0">
+                            <td colspan="7" class="border-bottom-0">
                                 <x-blank-section :url="route('admin.users.create')" :content="__('order.user')" />
                             </td>
                         </tr>

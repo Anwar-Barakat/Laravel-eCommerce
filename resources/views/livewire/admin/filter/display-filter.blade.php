@@ -66,7 +66,7 @@
                          </tr>
                      @empty
                          <tr>
-                             <td colspan="4" class="border-bottom-0">
+                             <td colspan="5" class="border-bottom-0">
                                  <x-blank-section :url="route('admin.filters.create')" :content="__('product.filter')" />
                              </td>
                          </tr>

@@ -101,7 +101,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="border-bottom-0">
+                            <td colspan="9" class="border-bottom-0">
                                 <x-blank-section :url="'javascript:;'" :content="__('')" />
                             </td>
                         </tr>

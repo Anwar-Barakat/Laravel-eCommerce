@@ -72,7 +72,7 @@
                          <tr>
                              <td>{{ $loop->iteration }}</td>
                              <td>{{ __('product.' . App\Models\Coupon::COUPONOPTION[$coupon->option]) }}</td>
-                             <td><span class="badge bg-blue-lt">{{ $coupon->code }}</span></td>
+                             <td>{{ $coupon->code }}</td>
                              <td class="text-center">
                                  @foreach ($coupon->categories as $id)
                                      <span class="badge bg-blue mb-2">{{ App\Models\Category::find($id)->name }}</span>

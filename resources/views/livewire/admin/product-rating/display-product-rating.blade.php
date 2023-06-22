@@ -63,7 +63,6 @@
                      <tr>
                          <th>#</th>
                          <th> {{ __('product.product_name') }}</th>
-                         <th> {{ __('product.product_name') }}</th>
                          <th> {{ __('order.customer_name') }}</th>
                          <th> {{ __('auth.email') }}</th>
                          <th> {{ __('product.rating') }}</th>
@@ -115,7 +114,7 @@
                          </tr>
                      @empty
                          <tr>
-                             <td colspan="7" class="border-bottom-0">
+                             <td colspan="8" class="border-bottom-0">
                                  <x-blank-section :url="'javascript:;'" :content="__('frontend.product_rating')" />
                              </td>
                          </tr>

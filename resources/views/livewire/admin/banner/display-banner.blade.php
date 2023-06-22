@@ -71,7 +71,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="border-bottom-0">
+                            <td colspan="8" class="border-bottom-0">
                                 <x-blank-section :url="route('admin.banners.create')" :content="__('product.banner')" />
                             </td>
                         </tr>

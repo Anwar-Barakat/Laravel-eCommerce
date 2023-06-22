@@ -71,7 +71,7 @@
 
         <div class="u-s-m-b-15 ">
             <div class="flex gap-2">
-                <input type="checkbox" id="make-default-address" data-bill="" wire:model='address.is_default' {{ $address->is_default ? 'checked' : '' }} />
+                <input type="checkbox" id="make-default-address" data-bill="" wire:model='address.is_default' {{ $address->is_default == 1 ? 'checked' : '' }} />
                 <label class="gl-label" for="make-default-address">{{ __('frontend.make_it_default_delivery_address') }}</label>
             </div>
             <x-input-error :messages="$errors->get('address.is_default')" class="mt-2" />

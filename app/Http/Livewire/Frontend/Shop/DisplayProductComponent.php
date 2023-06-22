@@ -27,7 +27,7 @@ class DisplayProductComponent extends Component
         return Product::with(['category:id,name,description,url', 'brand:id,name'])
             ->when($this->rating, function ($q) {
                 $q->whereHas('ratings', function ($query) {
-                    $query->when($this->rating, fn ($q) => $q->whereIn('rating',  $this->rating));
+                    $query->whereIn('rating',  $this->rating);
                 });
             })
             ->when($this->max_price, fn ($q) => $q->whereBetween('price', [$this->min_price, $this->max_price]))

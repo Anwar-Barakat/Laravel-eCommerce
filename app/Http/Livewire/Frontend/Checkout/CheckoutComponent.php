@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Frontend\Checkout;
 
 use App\Mail\Admin\CustomerOrderDetailEmail;
 use App\Models\Cart;
+use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\ShippingCharge;
@@ -16,6 +17,8 @@ class CheckoutComponent extends Component
     public $cart_items;
     public $defaultAddress = '';
     public $order;
+
+    public $coupon;
 
     public $country_id;
     public $shipping;
@@ -30,9 +33,9 @@ class CheckoutComponent extends Component
 
     public function UpdatedShippingChargesCountry($country_id)
     {
-        $this->country_id   = $country_id;
-        $this->shipping     = $this->getShippingCharges($country_id);
-        $this->final_price  = $this->cart_items->sum('grand_total') +  $this->shipping['value'];
+        $this->country_id       = $country_id;
+        $this->shipping         = $this->getShippingCharges($country_id);
+        $this->final_price      = $this->cart_items->sum('grand_total') +  $this->shipping['value'];
     }
 
     public function mount(Order $order)
@@ -85,7 +88,7 @@ class CheckoutComponent extends Component
                 ]);
 
                 // reduce products inventory when order placed
-                $attr = $cart_item->product->attributes->where('size', $cart_item->size)->first();
+                $attr   = $cart_item->product->attributes->where('size', $cart_item->size)->first();
                 if ($attr->stock < $cart_item->qty) {
                     toastr()->error(__('validation.qty_not_available_now'));
                     return false;
@@ -106,22 +109,43 @@ class CheckoutComponent extends Component
     }
 
 
-    // public function applyCoupon()
-    // {
-    //     auth_check();
-    //     $coupon = Coupon::where('code', $this->coupon)->first();
+    public function applyCoupon()
+    {
+        auth_check();
+        $coupon = Coupon::where('code', $this->coupon)->first();
 
-    //     if (!$coupon) {
-    //         toastr()->info(__('frontend.coupon_not_found'));
-    //         $this->reset('coupon');
-    //         return false;
-    //     }
+        // foreach ($this->cart_items as $cart) {
+        //     // dd($cart->product);
+        // }
 
-    //     if ($coupon->expiry_date < date('Y-m-d')) {
-    //         toastr()->info(__('frontend.coupon_has_expired'));
-    //         return false;
-    //     }
-    // }
+        $this->cart_items->pluck('product')->pluck('category_id');
+
+        if (!$coupon) {
+            toastr()->info(__('frontend.coupon_not_found'));
+            $this->reset('coupon');
+            return false;
+        }
+
+        if ($coupon->is_active != 1) {
+            toastr()->info(__('frontend.coupon_not_active'));
+            $this->reset('coupon');
+            return false;
+        }
+
+        if ($coupon->expiry_date < date('Y-m-d')) {
+            toastr()->info(__('frontend.coupon_has_expired'));
+            $this->reset('coupon');
+            return false;
+        }
+
+        foreach ($this->cart_items as $cart_item) {
+            if (!in_array($cart_item->product->category_id, $coupon->categories)) {
+                toastr()->info(__('frontend.coupon_not_for_your_product', ['name' => $cart_item->product->name]));
+                $this->reset('coupon');
+                return false;
+            }
+        }
+    }
 
     public function render()
     {

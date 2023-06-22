@@ -177,6 +177,9 @@
                          <!-- Categories -->
                          @include('livewire.frontend.shop.inc.category-filter')
 
+                         <!-- Stars Filters -->
+                         @include('livewire.frontend.shop.inc.rating-filter')
+
                          <!-- Price Filters -->
                          @include('livewire.frontend.shop.inc.price-filter')
 

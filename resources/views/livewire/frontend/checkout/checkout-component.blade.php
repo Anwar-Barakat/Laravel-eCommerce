@@ -138,7 +138,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>{{ __('frontend.discount') }}</td>
-                                                    <td>$0</td>
+                                                    <td>${{ $coupon ?? 0 }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>{{ __('frontend.grand_total') }}</td>

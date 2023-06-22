@@ -15,8 +15,9 @@ class CategoryProductComponent extends Component
     public $category,
         $sub_cats           = [],
         $filters,
-        $selectedFilters    = [],
         $min_price, $max_price,
+        $rating             = [],
+        $selectedFilters    = [],
         $selectedBrands     = [],
         $order_by   = 'created_at',
         $sort_by    = 'asc',
@@ -57,6 +58,11 @@ class CategoryProductComponent extends Component
                     );
                 })
             )
+            ->when($this->rating, function ($q) {
+                $q->whereHas('ratings', function ($query) {
+                    $query->whereIn('rating',  $this->rating);
+                });
+            })
             ->whereIn('category_id', $this->sub_cats)
             ->when($this->max_price, fn ($q) => $q->whereBetween('price', [$this->min_price, $this->max_price]))
             ->when($this->selectedBrands, fn ($q) => $q->whereIn('brand_id',  $this->selectedBrands))

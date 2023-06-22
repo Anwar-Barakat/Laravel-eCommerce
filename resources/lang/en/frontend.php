@@ -38,7 +38,7 @@ return [
     'sort_by'           => 'SORT BY',
     'asc'               => 'ASC',
     'desc'              => 'DESC',
-    'shop'              => 'SHOP',
+    'shop_capital'      => 'SHOP',
     'brands'            => 'BRANDS',
     'best_seller'       => 'Best Seller',
 
@@ -135,6 +135,8 @@ return [
     'quantity'                              => 'Quantity',
     'cart_is_empty'                         => 'Your shopping cart is empty',
     'thanks'                                => 'Thanks',
+    'coupon_not_active'                     => 'The coupon is not active',
+    'coupon_not_for_your_product'           => "The coupon is not for ( :name ) product",
 
 
     // -------------------------------

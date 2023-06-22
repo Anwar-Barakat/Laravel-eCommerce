@@ -86,3 +86,16 @@ select:focus {
     margin-bottom: 2rem;
     border-radius: 0;
 }
+
+.product-o {
+    padding: 0 !important;
+    background-color: #ffffff;
+}
+.product-o .card-content {
+    padding: 20px;
+}
+
+.owl-carousel .owl-stage {
+    display: flex;
+    column-gap: 20px;
+}
