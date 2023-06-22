@@ -2,12 +2,9 @@
     <div class="card-header">
         <div class="card-body">
             <ul class="steps steps-green steps-counter my-4">
-                <li class="step-item {{ $order->status == 'new' ? 'active' : '' }}">{{ __('order.new') }}</li>
-                <li class="step-item {{ $order->status == 'in_process' ? 'active' : '' }}">{{ __('order.in_process') }}</li>
-                <li class="step-item {{ $order->status == 'pending' ? 'active' : '' }}">{{ __('order.pending') }}</li>
-                <li class="step-item {{ $order->status == 'shipped' ? 'active' : '' }}">{{ __('order.shipped') }}</li>
-                <li class="step-item {{ $order->status == 'delivered' ? 'active' : '' }}">{{ __('order.delivered') }}</li>
-                <li class="step-item {{ $order->status == 'cancelled' ? 'active' : '' }}">{{ __('order.cancelled') }}</li>
+                @foreach (App\Models\Order::ORDERCASES as $case)
+                    <li class="step-item {{ $order->status == $case ? 'active' : '' }}">{{ __('order.' . $case) }}</li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -41,22 +38,27 @@
                                         </tr>
 
                                         <tr>
+                                            <td>{{ __('order.subtotal') }}</td>
+                                            <td>
+                                                ${{ $order->order_products->sum('grand_price') }}
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>{{ __('order.shipping_charge') }}</td>
                                             <td>
                                                 ${{ $order->shipping_charges }}
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>{{ __('product.discount') }}</td>
-                                            <td>
-                                                ${{ $order->discount_value ?? 0 }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>{{ __('product.coupon_code') }}</td>
                                             <td>
                                                 {{ $order->coupon_code ?? '-' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ __('product.discount') }}</td>
+                                            <td>
+                                                ${{ $order->coupon_value ?? 0 }}
                                             </td>
                                         </tr>
 
@@ -212,7 +214,11 @@
                                                     <td>{{ $ele->id }}</td>
                                                     <td>
                                                         <div class="d-flex gap-4 align-items-center">
-                                                            <img src="{{ $ele->product->getFirstMediaUrl('products', 'small') }}" alt="{{ $ele->product->name }}" width="200">
+                                                            @if ($ele->product->getFirstMediaUrl('products', 'small'))
+                                                                <img src="{{ $ele->product->getFirstMediaUrl('products', 'small') }}" alt="{{ $ele->product->name }}" width="100">
+                                                            @else
+                                                                <img src="{{ asset('backend/static/square-default-image.jpeg') }}" alt="{{ $ele->product->name }}" width="100">
+                                                            @endif
                                                             <div class="flex-fill">
                                                                 <div class="font-weight-medium">
                                                                     {{ $ele->product->name }}
@@ -246,7 +252,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($orderLogs as $case)
+                                        @forelse ($orderLogs as $case)
                                             <tr>
                                                 <td>
                                                     <div class="progressbg">
@@ -273,7 +279,13 @@
                                                     {{ $case->created_at }}
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr class="text-center">
+                                                <td>
+                                                    <h5>{{ __('msgs.not_found') }}</h5>
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>

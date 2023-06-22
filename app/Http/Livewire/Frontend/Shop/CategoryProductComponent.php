@@ -19,9 +19,9 @@ class CategoryProductComponent extends Component
         $rating             = [],
         $selectedFilters    = [],
         $selectedBrands     = [],
-        $order_by   = 'created_at',
-        $sort_by    = 'asc',
-        $per_page   = CUSTOMPAGINATION - 2;
+        $order_by           = 'created_at',
+        $sort_by            = 'asc',
+        $per_page           = CUSTOMPAGINATION - 2;
 
     public function mount($url)
     {

@@ -138,7 +138,9 @@
                                                 </tr>
                                                 <tr>
                                                     <td>{{ __('frontend.discount') }}</td>
-                                                    <td>${{ $coupon ?? 0 }}</td>
+                                                    <td>
+                                                        {{ $coupon && $coupon->amount_type == 0 ? '%' : '' }}{{ $coupon->amount ?? 0 }}
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>{{ __('frontend.grand_total') }}</td>

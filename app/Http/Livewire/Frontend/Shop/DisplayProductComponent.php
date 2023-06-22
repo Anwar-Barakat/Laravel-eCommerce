@@ -10,12 +10,12 @@ class DisplayProductComponent extends Component
 {
     use WithPagination;
 
-    public $order_by   = 'created_at',
-        $sort_by    = 'asc',
-        $rating = [],
+    public $order_by        = 'created_at',
+        $sort_by            = 'asc',
+        $rating             = [],
+        $selectedBrands     = [],
         $min_price, $max_price,
-        $selectedBrands = [],
-        $per_page   = CUSTOMPAGINATION;
+        $per_page           = CUSTOMPAGINATION;
 
     public function render()
     {

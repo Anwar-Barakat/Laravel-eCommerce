@@ -62,5 +62,5 @@ return [
     'order_number'              => 'رقم الطلب',
     'grand_price'               => 'السعر النهائي',
     'paid'                      => 'مدفوع',
-
+    'subtotal'                  => 'الإجمالي'
 ];

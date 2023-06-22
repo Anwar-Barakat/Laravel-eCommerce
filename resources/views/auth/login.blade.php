@@ -84,16 +84,6 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="u-s-m-b-30">
-                                            <!--====== Check Box ======-->
-                                            <div class="check-box">
-                                                <input type="checkbox" id="remember-me" name="remember" />
-                                                <div class="check-box__state check-box__state--primary">
-                                                    <label class="check-box__label" for="remember-me">Remember Me</label>
-                                                </div>
-                                            </div>
-                                            <!--====== End - Check Box ======-->
-                                        </div>
                                     </form>
                                 </div>
                             </div>

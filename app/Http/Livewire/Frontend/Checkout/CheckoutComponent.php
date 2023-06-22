@@ -18,7 +18,7 @@ class CheckoutComponent extends Component
     public $defaultAddress = '';
     public $order;
 
-    public $coupon;
+    public $coupon, $coupon_amount;
 
     public $country_id;
     public $shipping;
@@ -70,6 +70,8 @@ class CheckoutComponent extends Component
 
             $this->order->user_id               = auth()->id();
             $this->order->shipping_charges      = $this->shipping['value'];
+            $this->order->coupon_code           = $this->coupon->code ?? '';
+            $this->order->coupon_value          = $this->coupon_amount ?? 0;
             $this->order->delivery_address_id   = $this->defaultAddress['id'];
             $this->order->payment_method        = $this->order->payment_gateway == 1 ? 'COD' : 'prepaid';
             $this->order->status                = $this->order->payment_gateway == 1 ? 'new' : 'pending';
@@ -113,13 +115,6 @@ class CheckoutComponent extends Component
     {
         auth_check();
         $coupon = Coupon::where('code', $this->coupon)->first();
-
-        // foreach ($this->cart_items as $cart) {
-        //     // dd($cart->product);
-        // }
-
-        $this->cart_items->pluck('product')->pluck('category_id');
-
         if (!$coupon) {
             toastr()->info(__('frontend.coupon_not_found'));
             $this->reset('coupon');
@@ -145,6 +140,17 @@ class CheckoutComponent extends Component
                 return false;
             }
         }
+
+        $this->coupon = $coupon;
+
+        if ($coupon->amount_type == 0) {
+            $this->coupon_amount = ($this->final_price * $coupon->amount) / 100;
+        } else
+            $this->coupon_amount = $coupon->amount;
+
+        $this->final_price  -= $this->coupon_amount;
+
+        toastr()->success(__('msgs.applied', ['name' => __('product.coupon')]));
     }
 
     public function render()

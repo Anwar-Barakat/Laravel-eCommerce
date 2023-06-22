@@ -39,41 +39,17 @@
                 </div>
                 <div class="manage-o__timeline">
                     <div class="timeline-row">
-                        <div class="col-lg-3 u-s-m-b-30">
-                            <div class="timeline-step">
-                                <div class="timeline-l-i timeline-l-i--finish">
-                                    <span class="timeline-circle"></span>
+                        @foreach (App\Models\Order::ORDERCASES as $case)
+                            <div class="col-lg-2 u-s-m-b-30">
+                                <div class="timeline-step">
+                                    <div class="timeline-l-i {{ $order->status == $case ? 'timeline-l-i--finish' : '' }}">
+                                        <span class="timeline-circle"></span>
+                                    </div>
+                                    <span class="timeline-text">{{ __('order.' . $case) }}</span>
                                 </div>
-                                <span class="timeline-text">Processing</span>
                             </div>
-                        </div>
-                        <div class="col-lg-3 u-s-m-b-30">
-                            <div class="timeline-step">
-                                <div class="timeline-l-i timeline-l-i--finish">
-                                    <span class="timeline-circle"></span>
-                                </div>
+                        @endforeach
 
-                                <span class="timeline-text">Shipped</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 u-s-m-b-30">
-                            <div class="timeline-step">
-                                <div class="timeline-l-i ">
-                                    <span class="timeline-circle"></span>
-                                </div>
-
-                                <span class="timeline-text">Delivered</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 u-s-m-b-30">
-                            <div class="timeline-step">
-                                <div class="timeline-l-i ">
-                                    <span class="timeline-circle"></span>
-                                </div>
-
-                                <span class="timeline-text">Delivered</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 @foreach ($order->order_products as $ele)
@@ -81,9 +57,9 @@
                         <div class="description__container">
                             <div class="description__img-wrap">
                                 @if ($ele->product->getFirstMediaUrl('products', 'thumb'))
-                                    <img class="u-img-fluid" src="{{ $ele->product->getFirstMediaUrl('products', 'thumb') }}" alt="{{ $ele->product->name }}">
+                                    <img class="u-img-fluid" src="{{ $ele->product->getFirstMediaUrl('products', 'small') }}" alt="{{ $ele->product->name }}">
                                 @else
-                                    <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt="{{ $ele->product->name }}">
+                                    <img class="u-img-fluid" src="{{ asset('frontend/dist/images/product/electronic/product3.jpg') }}" alt="{{ $ele->product->name }}">
                                 @endif
                             </div>
                             <div class="description-title">{{ $ele->product->name }}</div>
@@ -126,15 +102,15 @@
                             Subtotal
                         </div>
                         <div class="manage-o__text-2 u-c-secondary">
-                            ${{ $order->grand_price }}
+                            ${{ $order->order_products->sum('grand_price') }}
                         </div>
                     </div>
                     <div class="dash-l-r u-s-m-b-8">
                         <div class="manage-o__text-2 u-c-secondary">
-                            Shipping Charges
+                            {{ __('order.shipping_charge') }}
                         </div>
                         <div class="manage-o__text-2 u-c-secondary">
-                            $0{{ $order->shipping_charges }}
+                            ${{ $order->shipping_charges }}
                         </div>
                     </div>
                     <div class="dash-l-r u-s-m-b-8">
@@ -150,7 +126,7 @@
                             Discount
                         </div>
                         <div class="manage-o__text-2 u-c-secondary">
-                            ${{ $order->discount_value ?? 0 }}
+                            ${{ $order->coupon_value ?? 0 }}
                         </div>
                     </div>
                     <div class="dash-l-r u-s-m-b-8">

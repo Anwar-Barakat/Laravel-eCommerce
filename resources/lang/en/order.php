@@ -64,5 +64,6 @@ return [
     'tracking_number'           => 'Tracking number',
     'courier_name'              => 'Courier name',
     'paid'                      => 'Paid',
+    'subtotal'                  => 'Subtotal',
 
 ];

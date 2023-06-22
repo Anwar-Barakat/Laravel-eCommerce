@@ -20,6 +20,7 @@ return [
     'approved'              => 'تم أعتماد :name بنجاج',
     'placed'                => 'تم ترحيل :name بنجاج',
     'sent'                  => 'تم إرسال :name بنجاج',
+    'applied'               => 'تم تطبيق :name بنجاج',
     'has_sth'               => ':name لديه :sth',
 
 
