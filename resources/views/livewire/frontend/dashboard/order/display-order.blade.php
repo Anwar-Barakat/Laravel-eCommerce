@@ -67,7 +67,7 @@
                                          @if ($ele->product->getFirstMediaUrl('products', 'thumb'))
                                              <img class="u-img-fluid" src="{{ $ele->product->getFirstMediaUrl('products', 'thumb') }}" alt="{{ $ele->product->name }}">
                                          @else
-                                             <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt="{{ $ele->product->name }}">
+                                             <img class="u-img-fluid" src="{{ asset('frontend/dist/images/product/electronic/product3.jpg') }}" alt="{{ $ele->product->name }}">
                                          @endif
                                      </div>
                                      <div class="description-title">{{ $ele->product->name }}</div>

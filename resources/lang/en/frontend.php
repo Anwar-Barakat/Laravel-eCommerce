@@ -137,7 +137,7 @@ return [
     'thanks'                                => 'Thanks',
     'coupon_not_active'                     => 'The coupon is not active',
     'coupon_not_for_your_product'           => "The coupon is not for ( :name ) product",
-
+    'coupon_has_single_time'                => 'The coupon is already availed by you',
 
     // -------------------------------
     // Contact Us

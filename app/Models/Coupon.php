@@ -20,7 +20,7 @@ class Coupon extends Model
         'is_active',
     ];
 
-    protected $casts = ['categories' => 'array'];
+    protected $casts    = ['categories' => 'array'];
 
     const COUPONOPTION  = [0 => 'manual',       1 => 'automatic'];
     const COUPONTYPE    = [0 => 'single_time',  1 => 'multiple_times'];

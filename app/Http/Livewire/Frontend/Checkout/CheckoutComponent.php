@@ -141,14 +141,21 @@ class CheckoutComponent extends Component
             }
         }
 
-        $this->coupon = $coupon;
+        if ($coupon->type == 0) {
+            $orderExists            = Order::where(['coupon_code' => $coupon->code, 'user_id' => auth()->id()])->exists();
+            if ($orderExists) {
+                toastr()->info(__('frontend.coupon_has_single_time'));
+                $this->reset('coupon');
+                return false;
+            }
+        }
 
-        if ($coupon->amount_type == 0) {
-            $this->coupon_amount = ($this->final_price * $coupon->amount) / 100;
-        } else
-            $this->coupon_amount = $coupon->amount;
+        $this->coupon           = $coupon;
+        $this->coupon_amount    = $coupon->amount_type == 0
+            ? ($this->final_price * $coupon->amount) / 100
+            : $coupon->amount;
 
-        $this->final_price  -= $this->coupon_amount;
+        $this->final_price      -= $this->coupon_amount;
 
         toastr()->success(__('msgs.applied', ['name' => __('product.coupon')]));
     }
