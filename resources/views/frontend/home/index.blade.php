@@ -1,5 +1,7 @@
 <x-app-layout>
-    @section('pageTitle', __('frontend.page_of', ['name' => __('frontend.home')]))
+    @section('pageTitle', 'Rmark - The Best Place to Shop Online')
+    @section('metaDescription', 'Rmark is an online marketplace where you can find a wide variety of products at great prices. We offer free shipping on orders over $50 and a 100% satisfaction guarantee.')
+    @section('metaKeywords', 'rmark, online shopping, ecommerce, marketplace, fashion, electronics, home & living, beauty, sports & outdoors')
     @section('breadcrumbTitle', __('frontend.page_of', ['name' => __('frontend.home')]))
     @section('breadcrumbSubtitle', __('frontend.page_of', ['name' => __('frontend.home')]))
 

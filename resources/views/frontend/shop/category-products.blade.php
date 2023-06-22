@@ -4,6 +4,11 @@
             ->select('id', 'name')
             ->first();
     @endphp
+
+    @section('pageTitle', __('frontend.page_of', ['name' => $category->meta_title]))
+    @section('metaDescription', $category->meta_description)
+    @section('metaKeywords', $category->meta_keywords)
+
     @section('pageTitle', __('frontend.products_of', ['name' => $category->name]))
     @section('breadcrumbTitle', __('frontend.products_of', ['name' => $category->name]))
     @section('breadcrumbSubtitle', __('frontend.products_of', ['name' => $category->name]))

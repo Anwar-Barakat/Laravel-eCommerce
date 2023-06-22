@@ -1,6 +1,7 @@
 <x-app-layout>
-    @section('pageTitle', __('msgs.add', ['name' => __('frontend.delivery_addresses')]))
-
+    @section('pageTitle', 'Rmark - Add Delivery Address')
+    @section('metaDescription', 'Add a new delivery address on Rmark. We offer free shipping on orders over $50 and a 100% satisfaction guarantee.')
+    @section('metaKeywords', 'rmark, delivery address, ecommerce, shopping')
 
     <!--====== App Content ======-->
     <div class="app-content">

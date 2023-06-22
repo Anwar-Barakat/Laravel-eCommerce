@@ -1,6 +1,7 @@
 <x-app-layout>
-    @section('pageTitle', __('frontend.my_profile'))
-
+    @section('pageTitle', 'Rmark - My Profile')
+    @section('metaDescription', 'View your account information and manage your orders on Rmark. We offer free shipping on orders over $50 and a 100% satisfaction guarantee.')
+    @section('metaKeywords', 'rmark, profile, account, ecommerce, shopping')
 
     <!--====== App Content ======-->
     <div class="app-content">

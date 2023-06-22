@@ -1,5 +1,7 @@
 <x-app-layout>
-    @section('pageTitle', __('msgs.details', ['name' => "#{$order->id} " . __('order.order')]))
+    @section('pageTitle', 'Rmark - Order Details')
+    @section('metaDescription', 'View your order details on Rmark. We offer free shipping on orders over $50 and a 100% satisfaction guarantee.')
+    @section('metaKeywords', 'rmark, order, details, ecommerce, shopping')
 
 
     <!--====== App Content ======-->

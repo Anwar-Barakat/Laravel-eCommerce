@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="images/favicon.png" rel="shortcut icon">
+    <meta name="description" content="@yield('metaDescription')">
+    <meta name='keywords' content="@yield('metaKeywords')">
     <title>@yield('pageTitle')</title>
+    <link href="images/favicon.png" rel="shortcut icon">
     @vite('resources/css/app.css')
 
     @include('frontend.layouts.inc.head')

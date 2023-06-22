@@ -9,7 +9,7 @@
                 <!--====== Main Logo ======-->
 
                 <a class="main-logo" href="index.html">
-                    <img src="{{ asset('frontend/dist/images/logo/logo-2.png') }}" alt=""></a>
+                    <img src="{{ asset('frontend/dist/images/logo/logo-2.png') }}" alt="Logo"></a>
                 <!--====== End - Main Logo ======-->
 
                 <!--====== Search Form ======-->
@@ -82,6 +82,7 @@
                                 </ul>
                                 <!--====== End - Dropdown ======-->
                             </li>
+
                             <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Settings">
 
                                 <a><i class="fas fa-user-cog"></i></a>
@@ -143,13 +144,24 @@
                                 </ul>
                                 <!--====== End - Dropdown ======-->
                             </li>
-                            <li data-tooltip="tooltip" data-placement="left" title="Contact">
 
+                            <li data-tooltip="tooltip" data-placement="left" title="Contact">
                                 <a href="tel:+0900901904"><i class="fas fa-phone-volume"></i></a>
                             </li>
-                            <li data-tooltip="tooltip" data-placement="left" title="Mail">
 
-                                <a href="mailto:contact@domain.com"><i class="far fa-envelope"></i></a>
+                            <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Colors">
+                                <a>
+                                    <i class="fas fa-palette"></i>
+                                </a>
+                                <span class="js-menu-toggle"></span>
+                                <ul style="width:120px">
+                                    <li>
+                                        <a href="{{ route('register') }}">
+                                            <i class="fas fa-user-plus u-s-m-r-6"></i>
+                                            <span>Signup</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                         <!--====== End - List ======-->

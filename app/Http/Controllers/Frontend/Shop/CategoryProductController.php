@@ -12,6 +12,7 @@ class CategoryProductController extends Controller
      */
     public function __invoke($url)
     {
+
         return view('frontend.shop.category-products', ['url' => $url]);
     }
 }

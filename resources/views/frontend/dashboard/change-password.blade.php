@@ -1,5 +1,7 @@
 <x-app-layout>
-    @section('pageTitle', __('frontend.edit_profile'))
+    @section('pageTitle', 'Rmark - Change Password')
+    @section('metaDescription', 'Change your password on Rmark. We offer free shipping on orders over $50 and a 100% satisfaction guarantee.')
+    @section('metaKeywords', 'rmark, password, security, ecommerce, shopping')
 
 
     <!--====== App Content ======-->

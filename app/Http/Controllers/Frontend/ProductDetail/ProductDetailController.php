@@ -14,6 +14,8 @@ class ProductDetailController extends Controller
     public function __invoke(Product $product)
     {
         $product->load('category:id,name,url,parent_id', 'attributes', 'filters');
-        return view('frontend.product-details.index', ['product' => $product]);
+        $metaDesc       = $product->meta_description;
+        $metaKeywords   = $product->meta_keywords;
+        return view('frontend.product-details.index', ['product' => $product, 'metaDesc' => $metaDesc, 'metaKeywords' => $metaKeywords]);
     }
 }

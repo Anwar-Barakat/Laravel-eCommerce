@@ -1,5 +1,7 @@
 <x-app-layout>
-    @section('pageTitle', __('frontend.page_of', ['name' => __('frontend.thanks')]))
+    @section('pageTitle', 'Rmark - Thank You for Your Order')
+    @section('metaDescription', 'Thank you for your order on Rmark. We will ship your order as soon as possible.')
+    @section('metaKeywords', 'rmark, thank you, order, ecommerce, shopping')
 
 
     <!--====== App Content ======-->

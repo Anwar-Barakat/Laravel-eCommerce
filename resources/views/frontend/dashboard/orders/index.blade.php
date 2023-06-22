@@ -1,6 +1,7 @@
 <x-app-layout>
-    @section('pageTitle', __('frontend.my_orders'))
-
+    @section('pageTitle', 'Rmark - View Your Orders')
+    @section('metaDescription', 'View your orders on Rmark. We offer free shipping on orders over $50 and a 100% satisfaction guarantee.')
+    @section('metaKeywords', 'rmark, orders, ecommerce, shopping')
 
     <!--====== App Content ======-->
     <div class="app-content">

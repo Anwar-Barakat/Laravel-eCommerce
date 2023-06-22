@@ -1,6 +1,7 @@
 <x-app-layout>
-    @section('pageTitle', __('frontend.delivery_addresses'))
-
+    @section('pageTitle', 'Rmark - Manage Your Delivery Addresses')
+    @section('metaDescription', 'Manage your delivery addresses on Rmark. We offer free shipping on orders over $50 and a 100% satisfaction guarantee.')
+    @section('metaKeywords', 'rmark, delivery addresses, ecommerce, shopping')
 
     <!--====== App Content ======-->
     <div class="app-content">
