@@ -13,6 +13,15 @@ class OrderLog extends Model
     protected $fillable = [
         'order_id',
         'status',
+        'reason',
+        'updated_by'
+    ];
+
+    const CANCELREASON = [
+        1 => 'order_created_by_mistake',
+        2 => 'item_not_arrive_on_time',
+        3 => 'shipping_charges_too_high',
+        4 => 'found_cheaper_somewhere_else',
     ];
 
     public function order(): BelongsTo

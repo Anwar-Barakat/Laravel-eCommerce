@@ -33,8 +33,9 @@ class OrderDetail extends Component
             $this->order->save();
 
             OrderLog::create([
-                'order_id'  => $this->order->id,
-                'status'    => $this->order->status
+                'order_id'      => $this->order->id,
+                'status'        => $this->order->status,
+                'updated_by'    => "admin (" . auth()->guard('admin')->user()->name . ")"
             ]);
 
             toastr()->success(__('msgs.updated', ['name' => __('order.order_status')]));

@@ -139,6 +139,11 @@ return [
     'coupon_not_active'                     => 'The coupon is not active',
     'coupon_not_for_your_product'           => "The coupon is not for ( :name ) product",
     'coupon_has_single_time'                => 'The coupon is already availed by you',
+    'order_created_by_mistake'              => 'Order created by mistake',
+    'item_not_arrive_on_time'               => 'Item not arrive on time',
+    'shipping_charges_too_high'             => 'Shipping charges too high',
+    'found_cheaper_somewhere_else'          => 'Found cheaper somewhere else',
+
 
     // -------------------------------
     // Contact Us

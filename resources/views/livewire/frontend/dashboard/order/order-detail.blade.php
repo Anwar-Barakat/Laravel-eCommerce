@@ -2,12 +2,13 @@
     <div class="flex justify-between items-center mb-4">
         <h1 class="dash__h1 ">{{ __('msgs.details', ['name' => __('order.order')]) }}</h1>
         @if ($order->status == 'new')
-            <button class="dash__custom-link btn--e-brand-b-2" wire:click='cancelOrder()'>
+            <a data-modal="modal" data-modal-id="#quick-look" data-toggle="modal" data-tooltip="tooltip" data data-placement="top" title="Order Cancelation" class="dash__custom-link btn--e-transparent-hover-brand-b-2">
                 <i class="fas fa-times"></i> &nbsp;
                 {{ __('btns.cancel') }}
-            </button>
+            </a>
         @endif
     </div>
+
     <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
         <div class="dash__pad-2">
             <div class="dash-l-r">
@@ -143,4 +144,9 @@
             </div>
         </div>
     </div>
+
+    @if ($order->status == 'new')
+        <!-- Order Cancellation -->
+        @include('livewire.frontend.dashboard.order.inc.cancel-modal')
+    @endif
 </div>
