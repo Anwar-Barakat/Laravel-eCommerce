@@ -20,7 +20,7 @@
                                     <a href="{{ route('frontend.home') }}">{{ __('frontend.home') }}</a>
                                 </li>
                                 <li class="is-marked">
-                                    <a href="javascript:;">Order #{{ $order->id }} Detail</a>
+                                    <a href="javascript:;">Order Detail</a>
                                 </li>
                             </ul>
                         </div>

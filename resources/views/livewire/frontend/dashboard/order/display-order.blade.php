@@ -25,7 +25,9 @@
                                  </div>
                                  <div class="flex flex-col items-center gap-2">
                                      <div class="dash__link dash__link--brand">
-                                         <a href="{{ route('frontend.orders.show', ['order' => $order]) }}">MANAGE</a>
+                                         @if ($order->status !== 'cancelled')
+                                             <a href="{{ route('frontend.orders.show', ['order' => $order]) }}">MANAGE</a>
+                                         @endif
                                      </div>
                                      <div>
 

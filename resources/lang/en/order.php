@@ -65,5 +65,7 @@ return [
     'courier_name'              => 'Courier name',
     'paid'                      => 'Paid',
     'subtotal'                  => 'Subtotal',
+    'order_logs'                => 'Order Logs',
+    'delivery_address'          => 'Delivery address',
 
 ];

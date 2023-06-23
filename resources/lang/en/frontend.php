@@ -117,7 +117,7 @@ return [
     'delivery_addresses'            => 'Delivery Addresses',
     'street_address'                => 'Street Address',
     'total'                         => ' Total',
-
+    'order_is_cancelled'            => 'Order is cancelled',
 
     // -------------------------------
     // Checkout Page

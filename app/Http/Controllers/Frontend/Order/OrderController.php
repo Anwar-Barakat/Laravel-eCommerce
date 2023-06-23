@@ -37,6 +37,11 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+        if ($order->status === 'cancelled') {
+            toastr()->error(__('frontend.order_is_cancelled'));
+            return redirect()->back();
+        }
+
         return view('frontend.dashboard.orders.show', ['order' => $order]);
     }
 
