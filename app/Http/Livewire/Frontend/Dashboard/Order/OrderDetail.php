@@ -13,6 +13,19 @@ class OrderDetail extends Component
     {
         $this->order = $order;
     }
+
+    public function cancelOrder()
+    {
+        if ($this->order->status != 'new' || $this->order->user_id != auth()->id()) {
+            toastr()->error(__('msgs.something_went_wrong'));
+            return false;
+        }
+
+        $this->order->status    = 'cancelled';
+        $this->order->save();
+        toastr()->info(__('msgs.cancelled', ['name' => __('order.order')]));
+    }
+
     public function render()
     {
         return view('livewire.frontend.dashboard.order.order-detail');

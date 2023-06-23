@@ -52,8 +52,8 @@ custom-colors, box-mode, custom-header, custom-menu, custom-logo, featured-image
  */
 
 :root {
-    --main-color: #ff4500;
-    --secondary-color: #fa4400;
+    --main-color: hsl(16, 100%, 50%);
+    --secondary-color: hsl(16deg 100% 50% / 11%);
 }
 
 html {
@@ -4248,25 +4248,15 @@ input::-ms-clear {
     margin-bottom: 8px;
 }
 
-.dash__w-icon-style-1 {
-    background-color: rgba(255, 69, 0, 0.14);
-}
-.dash__w-icon-style-1 > i {
-    color: var(--main-color);
-}
-
-.dash__w-icon-style-2 {
-    background-color: rgba(0, 148, 68, 0.14);
-}
-.dash__w-icon-style-2 > i {
-    color: #009444;
-}
-
+.dash__w-icon-style-1,
+.dash__w-icon-style-2,
 .dash__w-icon-style-3 {
-    background-color: rgba(49, 133, 252, 0.14);
+    background-color: var(--secondary-color);
 }
+.dash__w-icon-style-1 > i,
+.dash__w-icon-style-2 > i,
 .dash__w-icon-style-3 > i {
-    color: #3185fc;
+    color: var(--main-color);
 }
 
 .dash__w-text {
@@ -4471,13 +4461,13 @@ input::-ms-clear {
 }
 
 .timeline-l-i.timeline-l-i--finish {
-    border-color: #6b5aed;
+    border-color: var(--main-color);
 }
 .timeline-l-i.timeline-l-i--finish .timeline-circle {
-    border-color: #6b5aed;
+    border-color: var(--main-color);
 }
 .timeline-l-i.timeline-l-i--finish .timeline-circle:before {
-    background-color: #6b5aed;
+    background-color: var(--main-color);
 }
 
 .timeline-text {
@@ -4670,7 +4660,7 @@ input::-ms-clear {
 }
 
 .badge--delivered {
-    background-color: rgba(255, 69, 0, 0.14);
+    background-color: var(--secondary-color);
     color: var(--main-color);
 }
 
@@ -5648,7 +5638,7 @@ input::-ms-clear {
 }
 
 .pd-detail__left {
-    background-color: rgba(255, 69, 0, 0.14);
+    background-color: var(--secondary-color);
     color: var(--main-color);
 }
 

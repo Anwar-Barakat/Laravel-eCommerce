@@ -82,9 +82,9 @@
                                                  @endphp
                                                  @isset($dataPrices)
                                                      @if ($dataPrices['discount'] > 0)
-                                                         <span class="font-weight-bold product-o__price text-green">
+                                                         <span class="text-green-600 font-weight-bold product-o__price">
                                                              ${{ $dataPrices['final_price'] }}
-                                                             <span class="text-secondary font-weight-normal product-o__discount text-red">${{ $dataPrices['original_price'] }}</span>
+                                                             <span class="text-red-600 font-weight-normal product-o__discount ">${{ $dataPrices['original_price'] }}</span>
                                                          </span>
                                                      @else
                                                          <span class="product-m__price">

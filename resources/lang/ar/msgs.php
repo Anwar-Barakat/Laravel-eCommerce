@@ -21,6 +21,7 @@ return [
     'placed'                => 'تم ترحيل :name بنجاج',
     'sent'                  => 'تم إرسال :name بنجاج',
     'applied'               => 'تم تطبيق :name بنجاج',
+    'cancelled'             => 'تم إلغاء :name بنجاج',
     'has_sth'               => ':name لديه :sth',
 
 

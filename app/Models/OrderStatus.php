@@ -15,11 +15,21 @@ class OrderStatus extends Model
     ];
 
     const STATUS = [
-        'new', 'pending', 'cancelled', 'in_process', 'shipped', 'delivered', 'paid'
+        'new',
+        'in_process',
+        'pending',
+        'shipped',
+        'delivered',
+        'cancelled',
     ];
 
     public function scopeActive($query)
     {
         return $query->where(['is_active' => 1]);
+    }
+
+    public function scopeBeforeOrEqual($query, $status)
+    {
+        return $query->where('id', '<=', $status->id);
     }
 }

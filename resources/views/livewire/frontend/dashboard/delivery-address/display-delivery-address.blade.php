@@ -27,7 +27,7 @@
                             <td>{{ $address->mobile }}</td>
                             <td>{{ $address->email }}</td>
                             <td>
-                                <div class="{{ $address->is_default == 1 ? 'text-green-500 text-bold' : 'gl-text' }}">{{ $address->is_default == 1 ? 'Selected' : 'Normal' }}</div>
+                                <div class="{{ $address->is_default == 1 ? 'text-green-600 text-bold' : 'gl-text' }}">{{ $address->is_default == 1 ? 'Selected' : 'Normal' }}</div>
                             </td>
                             <td>
                                 <a class="address-book-edit btn--e-transparent-platinum-b-2" href="{{ route('frontend.delivery-addresses.edit', ['delivery_address' => $address]) }}">Edit</a>

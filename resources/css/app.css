@@ -106,3 +106,13 @@ select:focus {
 .dash__box--shadow {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px 0px !important;
 }
+
+.text-red-600 {
+    --tw-text-opacity: 1;
+    color: rgb(220 38 38 / var(--tw-text-opacity)) !important;
+}
+
+.text-green-600 {
+    --tw-text-opacity: 1;
+    color: rgb(22 163 74 / var(--tw-text-opacity)) !important;
+}

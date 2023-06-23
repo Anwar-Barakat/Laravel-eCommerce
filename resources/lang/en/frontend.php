@@ -116,6 +116,7 @@ return [
     'new_password'                  => 'NEW PASSWORD',
     'delivery_addresses'            => 'Delivery Addresses',
     'street_address'                => 'Street Address',
+    'total'                         => ' Total',
 
 
     // -------------------------------

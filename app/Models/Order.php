@@ -38,6 +38,7 @@ class Order extends Model
         ],
     ];
 
+    // don't change these status 
     const ORDERCASES =  ['new', 'in_process', 'pending', 'shipped', 'delivered', 'cancelled'];
 
     public function user(): BelongsTo

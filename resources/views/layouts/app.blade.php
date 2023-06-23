@@ -8,8 +8,8 @@
     <meta name='keywords' content="@yield('metaKeywords')">
     <title>@yield('pageTitle')</title>
     <link href="images/favicon.png" rel="shortcut icon">
-    @vite('resources/css/app.css')
 
+    @vite('resources/css/app.css')
     @include('frontend.layouts.inc.head')
     @livewireStyles
 </head>

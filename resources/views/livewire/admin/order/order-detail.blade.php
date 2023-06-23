@@ -2,8 +2,8 @@
     <div class="card-header">
         <div class="card-body">
             <ul class="steps steps-green steps-counter my-4">
-                @foreach (App\Models\Order::ORDERCASES as $case)
-                    <li class="step-item {{ $order->status == $case ? 'active' : '' }}">{{ __('order.' . $case) }}</li>
+                @foreach (App\Models\OrderStatus::active()->get() as $case)
+                    <li class="step-item {{ $order->status == $case->name ? 'active' : '' }}">{{ __('order.' . $case->name) }}</li>
                 @endforeach
             </ul>
         </div>
@@ -243,7 +243,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="card">
-                                <table class="table  card-table">
+                                <table class="table card-table">
                                     <thead>
                                         <tr>
                                             <th colspan="2">
@@ -288,6 +288,9 @@
                                         @endforelse
                                     </tbody>
                                 </table>
+                                <div class="card-footer pb-0">
+                                    {{ $orderLogs->links('pagination::bootstrap-5') }}
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -336,6 +339,7 @@
                                     </div>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>

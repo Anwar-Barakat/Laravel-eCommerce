@@ -1,17 +1,25 @@
 <div class="col-lg-9 col-md-12">
-    <h1 class="dash__h1 u-s-m-b-30">Order Details</h1>
+    <div class="flex justify-between items-center mb-4">
+        <h1 class="dash__h1 ">{{ __('msgs.details', ['name' => __('order.order')]) }}</h1>
+        @if ($order->status == 'new')
+            <button class="dash__custom-link btn--e-brand-b-2" wire:click='cancelOrder()'>
+                <i class="fas fa-times"></i> &nbsp;
+                {{ __('btns.cancel') }}
+            </button>
+        @endif
+    </div>
     <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
         <div class="dash__pad-2">
             <div class="dash-l-r">
                 <div>
                     <div class="manage-o__text-2 u-c-secondary">
-                        Order #{{ $order->id }}
+                        {{ __('order.order') }} #{{ $order->id }}
                     </div>
                     <div class="manage-o__text u-c-silver">Placed on : {{ $order->created_at }}</div>
                 </div>
                 <div>
                     <div class="manage-o__text-2 u-c-silver">
-                        Total:
+                        {{ __('frontend.total') }}:
                         <span class="manage-o__text-2 u-c-secondary">${{ $order->grand_price }}</span>
                     </div>
                 </div>
@@ -27,29 +35,22 @@
                         <span class="manage-o__text">Products</span>
                     </div>
                 </div>
-                <div class="dash-l-r">
-                    <div class="manage-o__text u-c-secondary">
-                        Delivered on 26 Oct 2016
-                    </div>
-                    <div class="manage-o__icon">
-                        <i class="fas fa-truck u-s-m-r-5"></i>
-
-                        <span class="manage-o__text">Standard</span>
-                    </div>
-                </div>
                 <div class="manage-o__timeline">
                     <div class="timeline-row">
-                        @foreach (App\Models\Order::ORDERCASES as $case)
+                        @php
+                            // Get the index of the order status in the ORDERCASES array
+                            $status_index = array_search($order->status, App\Models\Order::ORDERCASES);
+                        @endphp
+                        @foreach (App\Models\Order::ORDERCASES as $index => $case)
                             <div class="col-lg-2 u-s-m-b-30">
                                 <div class="timeline-step">
-                                    <div class="timeline-l-i {{ $order->status == $case ? 'timeline-l-i--finish' : '' }}">
+                                    <div class="timeline-l-i {{ $index <= $status_index ? 'timeline-l-i--finish' : '' }}">
                                         <span class="timeline-circle"></span>
                                     </div>
                                     <span class="timeline-text">{{ __('order.' . $case) }}</span>
                                 </div>
                             </div>
                         @endforeach
-
                     </div>
                 </div>
                 @foreach ($order->order_products as $ele)

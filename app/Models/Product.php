@@ -61,21 +61,19 @@ class Product extends Model implements HasMedia
 
     public static function applyDiscount($product_id, $price)
     {
-        $product = Product::with('category')->where('id', $product_id)->first();
-        $category = $product->category;
+        $product    = Product::with('category')->where('id', $product_id)->first();
+        $category   = $product->category;
 
         $data['original_price'] = $price;
         $data['final_price']    = $price;
         $data['discount']       = 0;
-        if (!$product->created_at->diffInMonths() < 1) {
 
-            if ($product->discount > 0) {
-                $data['final_price'] = self::calculateDiscount($price, $product->discount);
-                $data['discount'] = $product->discount;
-            } elseif ($category->discount > 0) {
-                $data['final_price'] = self::calculateDiscount($price, $category->discount);
-                $data['discount'] = $category->discount;
-            }
+        if ($product->discount > 0) {
+            $data['final_price'] = self::calculateDiscount($price, $product->discount);
+            $data['discount'] = $product->discount;
+        } elseif ($category->discount > 0) {
+            $data['final_price'] = self::calculateDiscount($price, $category->discount);
+            $data['discount'] = $category->discount;
         }
         return $data;
     }
