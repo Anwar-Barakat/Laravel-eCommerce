@@ -318,7 +318,7 @@
                     </li>
 
 
-                    <li class="nav-item active dropdown {{ request()->routeIs('admin.shipping-charges.*') || request()->routeIs('admin.currencies.*') || request()->routeIs('admin.users.*') || request()->routeIs('admin.orders.*') || request()->routeIs('admin.cancelled-orders.*') ? 'active' : '' }}">
+                    <li class="nav-item active dropdown {{ request()->routeIs('admin.shipping-charges.*') || request()->routeIs('admin.currencies.*') || request()->routeIs('admin.users.*') || request()->routeIs('admin.orders.*') || request()->routeIs('admin.cancelled-orders.*') || request()->routeIs('admin.returned-orders.*') ? 'active' : '' }}">
                         <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -415,6 +415,21 @@
                                             </svg>
                                         </span>
                                         {{ __('order.cancelled_orders') }}
+                                    </a>
+
+                                    <!-- returned orders -->
+                                    <a class="dropdown-item {{ request()->routeIs('admin.returned-orders.*') ? 'active' : '' }}" href="{{ route('admin.returned-orders.index') }}">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-truck-return" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                                <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                                <path d="M5 17h-2v-11a1 1 0 0 1 1 -1h9v6h-5l2 2m0 -4l-2 2"></path>
+                                                <path d="M9 17l6 0"></path>
+                                                <path d="M13 6h5l3 5v6h-2"></path>
+                                            </svg>
+                                        </span>
+                                        {{ __('order.returned_orders') }}
                                     </a>
                                 </div>
                             </div>

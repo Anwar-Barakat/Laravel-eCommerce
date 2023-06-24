@@ -66,6 +66,12 @@ return [
     'order_logs'                => 'سجلات الطلب',
     'delivery_address'          => 'عنوان التسليم',
     'return_initiated'          => 'إرجاع مبدأي',
+    'returned_orders'           => 'الطلبات المُرجعة',
+    'returned_date'             => 'تاريخ الإرجاع',
+    'return_reason'             => 'سبب الأرجاع',
+    'comment'                   => 'التعليق',
+    'rejected'                  => 'مرفوض',
+    'approved'                  => 'موافقة',
 
     // -------------------------------
     // Cancelled Order

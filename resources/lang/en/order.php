@@ -68,6 +68,13 @@ return [
     'order_logs'                => 'Order Logs',
     'delivery_address'          => 'Delivery address',
     'return_initiated'          => 'Return Initiated',
+    'returned_orders'           => 'Returned Orders',
+    'returned_date'             => 'Returned Date',
+    'return_reason'             => 'Return Reason',
+    'comment'                   => 'Comment',
+    'rejected'                  => 'Rejected',
+    'approved'                  => 'Approved',
+
 
     // -------------------------------
     // Cancelled Order

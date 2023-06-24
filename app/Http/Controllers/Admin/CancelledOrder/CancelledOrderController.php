@@ -13,7 +13,7 @@ class CancelledOrderController extends Controller
      */
     public function index()
     {
-        return view('admin.cancelled-order.index', ['cancelled' => 'cancelled']);
+        return view('admin.cancelled-orders.index', ['cancelled' => 'cancelled']);
     }
 
     /**
@@ -37,7 +37,7 @@ class CancelledOrderController extends Controller
      */
     public function show(Order $cancelled_order)
     {
-        return view('admin.cancelled-order.show', ['order' => $cancelled_order, 'cancelled' => 'cancelled']);
+        return view('admin.cancelled-orders.show', ['order' => $cancelled_order, 'cancelled' => 'cancelled']);
     }
 
     /**

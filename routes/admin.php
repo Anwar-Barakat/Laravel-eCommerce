@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\Product\Attribute\ProductAttributeController;
 use App\Http\Controllers\Admin\Product\Filter\ProductFilterController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\ProductRating\ProductRatingController;
+use App\Http\Controllers\Admin\ReturnedOrder\ReturnedOrderController;
 use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Setting\AdminChangePasswordController;
 use App\Http\Controllers\Admin\Setting\AdminProfileController;
@@ -164,13 +165,18 @@ Route::group(
                 //_______________________
                 // Orders
                 //_______________________
-                Route::resource('orders',                                   OrderController::class)->only('index','show');
+                Route::resource('orders',                                   OrderController::class)->only('index', 'show');
                 Route::get('order-invoice/{order}',                         OrderInvoiceController::class)->name('orders.invoice');
 
                 //_______________________
                 // Cancelled Orders
                 //_______________________
                 Route::resource('cancelled-orders',                         CancelledOrderController::class)->only('index', 'show');
+
+                //_______________________
+                // Returned Orders
+                //_______________________
+                Route::get('returned-orders',                               ReturnedOrderController::class)->name('returned-orders.index');
             });
         });
     }
