@@ -49,7 +49,7 @@ return [
     'order_date'                => 'تاريخ الطلب',
     'customer_name'             => 'اسم الزبون',
     'customer_email'            => 'البريد الألكتروني للزبون',
-    'new'                       => 'جيد',
+    'new'                       => 'جديد',
     'pending'                   => 'مًعلق',
     'approved'                  => 'مقبول',
     'delivered'                 => 'تم التوصيل',
@@ -65,7 +65,7 @@ return [
     'subtotal'                  => 'الإجمالي',
     'order_logs'                => 'سجلات الطلب',
     'delivery_address'          => 'عنوان التسليم',
-
+    'return_initiated'          => 'إرجاع مبدأي',
 
     // -------------------------------
     // Cancelled Order

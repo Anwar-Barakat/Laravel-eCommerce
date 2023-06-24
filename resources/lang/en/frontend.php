@@ -119,6 +119,8 @@ return [
     'street_address'                => 'Street Address',
     'total'                         => 'Total',
     'order_is_cancelled'            => 'Order is cancelled',
+    'return_request'                => 'Return Request',
+    'return_initiated'              => "Return Initiated",
 
     'order_created_by_mistake'              => 'Order created by mistake',
     'item_not_arrive_on_time'               => 'Item not arrive on time',

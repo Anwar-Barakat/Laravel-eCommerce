@@ -1,19 +1,12 @@
 <div class="col-lg-9 col-md-12">
     <div class="flex justify-between items-center mb-4">
         <h1 class="dash__h1 ">{{ __('msgs.details', ['name' => __('order.order')]) }}</h1>
-        @if ($order->status == 'new')
-            <a data-modal="modal" data-modal-id="#quick-look" data-toggle="modal" data-tooltip="tooltip" data data-placement="top" title="Order Cancelation" class="dash__custom-link btn--e-transparent-hover-brand-b-2">
-                <i class="fas fa-times"></i> &nbsp;
-                {{ __('btns.cancel') }}
-            </a>
-        @endif
 
-        @if ($order->status == 'delivered')
-            <a data-modal="modal" data-modal-id="#quick-look" data-toggle="modal" data-tooltip="tooltip" data data-placement="top" title="Order Return Items" class="dash__custom-link btn--e-transparent-hover-brand-b-2">
-                <i class="fas fa-undo-alt"></i> &nbsp;
-                {{ __('btns.return') }}
-            </a>
-        @endif
+        <!-- Order Cancellation -->
+        @livewire('frontend.dashboard.order.cancel-order-form', ['order' => $order])
+
+        <!-- Return Order -->
+        @livewire('frontend.dashboard.order.return-order-form', ['order' => $order])
     </div>
 
     <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
@@ -71,7 +64,12 @@
                                     <img class="u-img-fluid" src="{{ asset('frontend/dist/images/product/electronic/product3.jpg') }}" alt="{{ $ele->product->name }}">
                                 @endif
                             </div>
-                            <div class="description-title">{{ $ele->product->name }}</div>
+                            <div class="description-title">
+                                <span>{{ $ele->product->name }}</span>
+                                @if ($ele->status)
+                                    <p>{{ __('setting.status') }} : <span class="text-green-600"> {{ __('frontend.' . $ele->status) }}</span></p>
+                                @endif
+                            </div>
                         </div>
                         <div class="description__info-wrap">
                             <div>
@@ -151,14 +149,4 @@
             </div>
         </div>
     </div>
-
-    @if ($order->status == 'new')
-        <!-- Order Cancellation -->
-        @include('livewire.frontend.dashboard.order.inc.cancel-modal')
-    @endif
-
-    @if ($order->status == 'delivered')
-        <!-- Return Order -->
-        @include('livewire.frontend.dashboard.order.inc.return-modal')
-    @endif
 </div>

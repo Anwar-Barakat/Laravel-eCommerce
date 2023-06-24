@@ -67,6 +67,7 @@ return [
     'subtotal'                  => 'Subtotal',
     'order_logs'                => 'Order Logs',
     'delivery_address'          => 'Delivery address',
+    'return_initiated'          => 'Return Initiated',
 
     // -------------------------------
     // Cancelled Order

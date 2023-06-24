@@ -38,7 +38,7 @@ class Order extends Model
         ],
     ];
 
-    // don't change these status 
+    // don't change these status
     const ORDERCASES =  ['new', 'in_process', 'pending', 'shipped', 'delivered', 'cancelled'];
 
     public function user(): BelongsTo
@@ -59,5 +59,10 @@ class Order extends Model
     public function order_cases()
     {
         return $this->hasMany(OrderLog::class);
+    }
+
+    public function order_return_items()
+    {
+        return $this->hasMany(OrderReturnItem::class);
     }
 }

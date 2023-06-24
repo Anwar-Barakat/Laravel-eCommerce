@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('product_size');
             $table->float('product_price', 10, 2);
             $table->float('grand_price', 10, 2);
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
