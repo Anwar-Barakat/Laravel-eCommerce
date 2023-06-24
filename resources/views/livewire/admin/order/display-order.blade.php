@@ -108,9 +108,16 @@
                              </td>
                              <td>
                                  <span class="dropdown">
+                                     @php
+                                         if (!$cancelled) {
+                                             $edit = route('admin.orders.show', ['order' => $order]);
+                                         } else {
+                                             $edit = route('admin.cancelled-orders.show', ['cancelled_order' => $order]);
+                                         }
+                                     @endphp
                                      <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('btns.actions') }}</button>
                                      <div class="dropdown-menu">
-                                         <a href="{{ route('admin.orders.show', ['order' => $order]) }}" class="dropdown-item d-flex align-items-center gap-1">
+                                         <a href="{{ $edit }}" class="dropdown-item d-flex align-items-center gap-1">
                                              <svg xmlns="http://www.w3.org/2000/svg" class="icon text-success" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                  <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
@@ -137,7 +144,7 @@
                      @empty
                          <tr>
                              <td colspan="8" class="border-bottom-0">
-                                 <x-blank-section :url="route('admin.orders.create')" :content="__('order.order')" />
+                                 <x-blank-section :url="'javascript:;'" :content="__('order.order')" />
                              </td>
                          </tr>
                      @endforelse

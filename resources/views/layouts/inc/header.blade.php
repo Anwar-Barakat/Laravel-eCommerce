@@ -318,7 +318,7 @@
                     </li>
 
 
-                    <li class="nav-item active dropdown {{ request()->routeIs('admin.shipping-charges.*') || request()->routeIs('admin.currencies.*') || request()->routeIs('admin.users.*') || request()->routeIs('admin.orders.*') ? 'active' : '' }}">
+                    <li class="nav-item active dropdown {{ request()->routeIs('admin.shipping-charges.*') || request()->routeIs('admin.currencies.*') || request()->routeIs('admin.users.*') || request()->routeIs('admin.orders.*') || request()->routeIs('admin.cancelled-orders.*') ? 'active' : '' }}">
                         <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -400,6 +400,21 @@
                                             </svg>
                                         </span>
                                         {{ __('order.orders') }}
+                                    </a>
+
+                                    <!-- cancelled orders -->
+                                    <a class="dropdown-item {{ request()->routeIs('admin.cancelled-orders.*') ? 'active' : '' }}" href="{{ route('admin.cancelled-orders.index') }}">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-off" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                                <path d="M17 17a2 2 0 1 0 2 2"></path>
+                                                <path d="M17 17h-11v-11"></path>
+                                                <path d="M9.239 5.231l10.761 .769l-1 7h-2m-4 0h-7"></path>
+                                                <path d="M3 3l18 18"></path>
+                                            </svg>
+                                        </span>
+                                        {{ __('order.cancelled_orders') }}
                                     </a>
                                 </div>
                             </div>

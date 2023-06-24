@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordRestLinkController;
 use App\Http\Controllers\Admin\Banner\BannerController;
 use App\Http\Controllers\Admin\Brand\BrandController;
+use App\Http\Controllers\Admin\CancelledOrder\CancelledOrderController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Admin\Currency\CurrencyController;
@@ -163,8 +164,13 @@ Route::group(
                 //_______________________
                 // Orders
                 //_______________________
-                Route::resource('orders',                                   OrderController::class);
+                Route::resource('orders',                                   OrderController::class)->only('index','show');
                 Route::get('order-invoice/{order}',                         OrderInvoiceController::class)->name('orders.invoice');
+
+                //_______________________
+                // Cancelled Orders
+                //_______________________
+                Route::resource('cancelled-orders',                         CancelledOrderController::class)->only('index', 'show');
             });
         });
     }

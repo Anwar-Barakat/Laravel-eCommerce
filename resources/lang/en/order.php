@@ -68,4 +68,9 @@ return [
     'order_logs'                => 'Order Logs',
     'delivery_address'          => 'Delivery address',
 
+    // -------------------------------
+    // Cancelled Order
+    // -------------------------------
+    'cancelled_orders'          => 'Cancelled Orders',
+    'cancelled_order'           => 'cancelled order',
 ];

@@ -10,11 +10,18 @@ class DisplayOrder extends Component
 {
     use WithPagination;
 
+    public $cancelled;
+
     public $name,
         $status,
         $order_by   = 'id',
         $sort_by    = 'desc',
         $per_page   = CUSTOMPAGINATION;
+
+    public function mount($cancelled = null)
+    {
+        $this->cancelled  = $cancelled;
+    }
 
     public function render()
     {
@@ -28,6 +35,7 @@ class DisplayOrder extends Component
                 return $query->search(trim($this->name));
             });
         })->with('user:id,first_name,last_name,email')
+            ->when($this->cancelled, fn ($q) => $q->where('status', 'cancelled'))
             ->when($this->status, fn ($q) => $q->where('status', $this->status))
             ->orderBy($this->order_by, $this->sort_by)
             ->paginate($this->per_page);

@@ -297,54 +297,56 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 mb-4">
-                            <form wire:submit.prevent='updateOrderStatus()'>
-                                <div class="card">
-                                    <div class="card-header">
-                                        {{ __('msgs.update', ['name' => __('order.order_status')]) }}
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="mb-3">
-                                                    <x-input-label class="form-label" for="status" :value="__('order.order_status')" />
-                                                    <select class="form-control" wire:model='order.status'>
-                                                        <option>{{ __('msgs.update', ['name' => __('order.order_status')]) }}</option>
-                                                        @foreach ($orderCases as $case)
-                                                            <option value="{{ $case->name }}">{{ __('order.' . $case->name) }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <x-input-error :messages="$errors->get('order.status')" class="mt-2" />
-                                                </div>
-                                            </div>
+                        @if (!$cancelled)
+                            <div class="col-lg-6 mb-4">
+                                <form wire:submit.prevent='updateOrderStatus()'>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            {{ __('msgs.update', ['name' => __('order.order_status')]) }}
                                         </div>
-                                        @if ($order->status == 'shipped')
+                                        <div class="card-body">
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="mb-3">
-                                                        <x-input-label class="form-label" for="courier_name" :value="__('order.courier_name')" />
-                                                        <x-text-input id="courier_name" class="form-control" type="text" wire:model='order.courier_name' />
-                                                        <x-input-error :messages="$errors->get('order.courier_name')" class="mt-2" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="mb-3">
-                                                        <x-input-label class="form-label" for="tracking_number" :value="__('order.tracking_number')" />
-                                                        <x-text-input id="tracking_number" class="form-control" type="text" wire:model='order.tracking_number' />
-                                                        <x-input-error :messages="$errors->get('order.tracking_number')" class="mt-2" />
+                                                        <x-input-label class="form-label" for="status" :value="__('order.order_status')" />
+                                                        <select class="form-control" wire:model='order.status'>
+                                                            <option>{{ __('msgs.update', ['name' => __('order.order_status')]) }}</option>
+                                                            @foreach ($orderCases as $case)
+                                                                <option value="{{ $case->name }}">{{ __('order.' . $case->name) }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <x-input-error :messages="$errors->get('order.status')" class="mt-2" />
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endif
+                                            @if ($order->status == 'shipped')
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="mb-3">
+                                                            <x-input-label class="form-label" for="courier_name" :value="__('order.courier_name')" />
+                                                            <x-text-input id="courier_name" class="form-control" type="text" wire:model='order.courier_name' />
+                                                            <x-input-error :messages="$errors->get('order.courier_name')" class="mt-2" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="mb-3">
+                                                            <x-input-label class="form-label" for="tracking_number" :value="__('order.tracking_number')" />
+                                                            <x-text-input id="tracking_number" class="form-control" type="text" wire:model='order.tracking_number' />
+                                                            <x-input-error :messages="$errors->get('order.tracking_number')" class="mt-2" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
 
+                                        </div>
+                                        <div class="card-footer text-end">
+                                            <button class="btn btn-primary">{{ __('btns.update') }}</button>
+                                        </div>
                                     </div>
-                                    <div class="card-footer text-end">
-                                        <button class="btn btn-primary">{{ __('btns.update') }}</button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
 
-                        </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

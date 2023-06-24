@@ -18,11 +18,14 @@ class OrderDetail extends Component
     public Order $order;
     public $orderCases;
 
-    public function mount(Order $order)
+    public $cancelled;
+
+    public function mount(Order $order, $cancelled = null)
     {
         $this->order        = $order;
         $this->order->load('delivery_address');
         $this->orderCases   = OrderStatus::active()->get();
+        $this->cancelled    = $cancelled;
     }
 
     public function updateOrderStatus()

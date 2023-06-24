@@ -100,7 +100,7 @@ class CheckoutComponent extends Component
 
             DB::commit();
 
-            Mail::to(auth()->user()->email)->send(new CustomerOrderDetailEmail($this->order));
+            // Mail::to(auth()->user()->email)->send(new CustomerOrderDetailEmail($this->order));
 
             toastr()->success(__('msgs.placed', ['name' => __('order.order')]));
             return redirect()->route('frontend.thanks', ['order' => $this->order]);
