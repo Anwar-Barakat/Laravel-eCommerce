@@ -1,10 +1,17 @@
 <div class="col-lg-9 col-md-12">
     <div class="flex justify-between items-center mb-4">
         <h1 class="dash__h1 ">{{ __('msgs.details', ['name' => __('order.order')]) }}</h1>
-        @if ($order->status == 'new' || $cancelled != 'cancelled')
+        @if ($order->status == 'new')
             <a data-modal="modal" data-modal-id="#quick-look" data-toggle="modal" data-tooltip="tooltip" data data-placement="top" title="Order Cancelation" class="dash__custom-link btn--e-transparent-hover-brand-b-2">
                 <i class="fas fa-times"></i> &nbsp;
                 {{ __('btns.cancel') }}
+            </a>
+        @endif
+
+        @if ($order->status == 'delivered')
+            <a data-modal="modal" data-modal-id="#quick-look" data-toggle="modal" data-tooltip="tooltip" data data-placement="top" title="Order Return Items" class="dash__custom-link btn--e-transparent-hover-brand-b-2">
+                <i class="fas fa-undo-alt"></i> &nbsp;
+                {{ __('btns.return') }}
             </a>
         @endif
     </div>
@@ -148,5 +155,10 @@
     @if ($order->status == 'new')
         <!-- Order Cancellation -->
         @include('livewire.frontend.dashboard.order.inc.cancel-modal')
+    @endif
+
+    @if ($order->status == 'delivered')
+        <!-- Return Order -->
+        @include('livewire.frontend.dashboard.order.inc.return-modal')
     @endif
 </div>

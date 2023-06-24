@@ -24,6 +24,14 @@ class OrderLog extends Model
         4 => 'found_cheaper_somewhere_else',
     ];
 
+    const RETURNREASON = [
+        1 => 'preformace_or_quality_not_adequate',
+        2 => 'product_damaged_but_shipping_box_ok',
+        3 => 'item_arrived_too_late',
+        4 => 'wrong_item_was_send',
+        5 => 'item_defective_or_donest_work',
+    ];
+
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class, 'order_id');

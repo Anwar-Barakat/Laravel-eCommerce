@@ -27,6 +27,7 @@ class DisplayOrder extends Component
     {
         return Order::where('user_id', auth()->id())
             ->when($this->cancelled, fn ($q) => $q->where('status', 'cancelled'))
+            ->orderBy('id', 'desc')
             ->paginate($this->per_page);
     }
 }

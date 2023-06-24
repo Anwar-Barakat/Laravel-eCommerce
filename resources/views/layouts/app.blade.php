@@ -295,7 +295,7 @@
 
                                         <a class="s-option__link btn--e-white-brand-shadow" href="cart.html">VIEW CART</a>
 
-                                        <a class="s-option__link btn--e-brand-shadow" href="checkout.html">PROCEED TO CHECKOUT</a>
+                                        <a class="s-option__link dash__custom-link btn--e-transparent-hover-brand-b-2" href="checkout.html">PROCEED TO CHECKOUT</a>
                                     </div>
                                 </div>
                             </div>

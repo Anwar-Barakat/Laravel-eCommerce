@@ -5,6 +5,7 @@ return [
     'edit'          => 'تعديل',
     'update'        => 'تحديث',
     'cancel'        => 'إلغاء',
+    'return'        => 'إرجاع',
     'submit'        => 'حفظ البيانات',
     'select'        => 'أختر',
     'actions'       => 'العمليات',

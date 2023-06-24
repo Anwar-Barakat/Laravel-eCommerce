@@ -5,6 +5,7 @@ return [
     'edit'          => 'Edit',
     'update'        => 'Update',
     'cancel'        => 'Cancel',
+    'return'        => 'Return',
     'submit'        => 'Submit',
     'select'        => 'Select',
     'actions'       => 'Actions',

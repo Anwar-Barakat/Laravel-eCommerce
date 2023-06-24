@@ -1,7 +1,7 @@
 <x-app-layout>
     @php
         $category = App\Models\Category::where('url', $url)
-            ->select('id', 'name')
+            ->select('id', 'name', 'meta_title', 'meta_description', 'meta_keywords')
             ->first();
     @endphp
 

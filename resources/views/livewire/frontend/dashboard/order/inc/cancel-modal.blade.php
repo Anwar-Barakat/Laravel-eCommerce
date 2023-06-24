@@ -14,7 +14,7 @@
                                    <div class="card-body">
                                        <!--====== Select Box ======-->
                                        <label class="gl-label" for="reason">Cancellation Reason</label>
-                                       <select class="select-box select-box--primary-style w-100" id="reason" wire:model='reason'>
+                                       <select class="select-box select-box--primary-style w-full" id="reason" wire:model='reason'>
                                            <option selected value="">{{ __('btns.select') }}</option>
                                            @foreach (App\Models\OrderLog::CANCELREASON as $key => $reason)
                                                <option value="{{ $key }}">{{ __('frontend.' . $reason) }}</option>
@@ -28,7 +28,7 @@
                                    <hr class="mt-4 mb-2">
                                    <div class="card-footer mt-4">
                                        <div class="u-s-m-b-30">
-                                           <button type="submit" data-dismiss="modal" wire:click.prevent='cancelOrder' class="dash__custom-link btn--e-transparent-hover-brand-b-2">
+                                           <button type="submit" data-dismiss="modal" class="dash__custom-link btn--e-transparent-hover-brand-b-2">
                                                <i class="fas fa-times"></i> &nbsp;
                                                {{ __('btns.cancel') }}
                                            </button>

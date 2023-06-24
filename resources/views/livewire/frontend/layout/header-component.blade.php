@@ -443,7 +443,7 @@
                                         @endif
                                         <div class="mini-action">
                                             @if ($cart_items->count() > 0)
-                                                <a class="mini-link btn--e-brand-b-2" href="checkout.html">{{ __('frontend.proceed_to_checkout') }}</a>
+                                                <a class="mini-link btn--e-brand-b-2" href="{{ route('frontend.checkout') }}">{{ __('frontend.proceed_to_checkout') }}</a>
                                             @endif
                                             <a class="mini-link btn--e-transparent-secondary-b-2" href="{{ route('frontend.cart.index') }}">{{ __('frontend.view_cart') }}</a>
                                         </div>

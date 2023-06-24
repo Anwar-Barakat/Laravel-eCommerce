@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Frontend\Dashboard\Order;
 
 use App\Models\Order;
 use App\Models\OrderLog;
+use App\Models\OrderReturnItem;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -14,6 +16,7 @@ class OrderDetail extends Component
         $cancelModal = true;
 
     public $cancelled;
+    public $return, $attrSizes;
 
     public function mount(Order $order, $cancelled = null)
     {
@@ -21,9 +24,14 @@ class OrderDetail extends Component
         $this->cancelled    = $cancelled;
     }
 
+    public function updated($fields)
+    {
+        return $this->validateOnly($fields);
+    }
+
     public function cancelOrder()
     {
-        $this->validate();
+        $this->validate(['reason' => ['required', 'integer', 'in:1,2,3,4']]);
         try {
             if ($this->order->status != 'new' || $this->order->user_id != auth()->id()) {
                 toastr()->error(__('msgs.something_went_wrong'));
@@ -44,11 +52,26 @@ class OrderDetail extends Component
 
             DB::commit();
             toastr()->info(__('msgs.cancelled', ['name' => __('order.order')]));
-            return redirect()->route('frontend.orders.index');
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->route('frontend.orders.show', ['order' => $this->order])->with(['error' => $th->getMessage()]);
         }
+    }
+
+    public function returnOrder()
+    {
+        $this->validate();
+        try {
+        } catch (\Throwable $th) {
+            return redirect()->route('frontend.orders.show', ['order' => $this->order])->with(['error' => $th->getMessage()]);
+        }
+    }
+
+    public function updatedReturnProductId($value)
+    {
+        $product                = Product::findOrFail($value);
+        $selectedSize           = $this->order->order_products->where('product_id', $product->id)->first()->product_size;
+        $this->attrSizes        = $product->attributes->where('size', '!=', $selectedSize);
     }
 
     public function render()
@@ -59,7 +82,10 @@ class OrderDetail extends Component
     public function rules()
     {
         return [
-            'reason' => ['required', 'integer', 'in:1,2,3,4']
+            'return.reason'         => ['required', 'integer', 'in:1,2,3,4,5'],
+            'return.product_id'     => ['required', 'integer'],
+            'return.product_size'   => ['required', 'string'],
+            'return.comment'        => ['required', 'min:10', 'string'],
         ];
     }
 }

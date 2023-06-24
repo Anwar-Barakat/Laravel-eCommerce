@@ -117,8 +117,18 @@ return [
     'new_password'                  => 'NEW PASSWORD',
     'delivery_addresses'            => 'Delivery Addresses',
     'street_address'                => 'Street Address',
-    'total'                         => ' Total',
+    'total'                         => 'Total',
     'order_is_cancelled'            => 'Order is cancelled',
+
+    'order_created_by_mistake'              => 'Order created by mistake',
+    'item_not_arrive_on_time'               => 'Item not arrive on time',
+    'shipping_charges_too_high'             => 'Shipping charges too high',
+    'found_cheaper_somewhere_else'          => 'Found cheaper somewhere else',
+    'preformace_or_quality_not_adequate'    => 'Preformace or quality not adequate',
+    'product_damaged_but_shipping_box_ok'   => 'Product damaged but shipping box ok',
+    'item_arrived_too_late'                 => 'Item arrived too late',
+    'wrong_item_was_send'                   => 'Wrong item was send',
+    'item_defective_or_donest_work'         => 'Item defective or donest work',
 
     // -------------------------------
     // Checkout Page
@@ -140,10 +150,7 @@ return [
     'coupon_not_active'                     => 'The coupon is not active',
     'coupon_not_for_your_product'           => "The coupon is not for ( :name ) product",
     'coupon_has_single_time'                => 'The coupon is already availed by you',
-    'order_created_by_mistake'              => 'Order created by mistake',
-    'item_not_arrive_on_time'               => 'Item not arrive on time',
-    'shipping_charges_too_high'             => 'Shipping charges too high',
-    'found_cheaper_somewhere_else'          => 'Found cheaper somewhere else',
+
 
 
     // -------------------------------

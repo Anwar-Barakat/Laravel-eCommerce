@@ -23,7 +23,7 @@
                 </div>
                 <span class="gl-text">{{ __('frontend.tell_us_what_you_think_about_this_item') }}</span>
             </div>
-            
+
         </div>
         <div class="u-s-m-b-30">
             <form class="pd-tab__rev-f1">
@@ -160,7 +160,7 @@
                     </div>
                 </div>
                 <div>
-                    <button class="btn btn--e-brand-shadow" type="submit">{{ __('btns.submit') }}</button>
+                    <button class="btn dash__custom-link btn--e-transparent-hover-brand-b-2" type="submit">{{ __('btns.submit') }}</button>
                 </div>
             </form>
         </div>

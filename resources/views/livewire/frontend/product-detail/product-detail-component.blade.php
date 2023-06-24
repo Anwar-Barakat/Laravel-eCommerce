@@ -148,7 +148,7 @@
                                              <!--====== End - Input Counter ======-->
                                          </div>
                                          <div class="u-s-m-b-15">
-                                             <button class="btn btn--e-brand-b-2" type="submit" wire:click.prevent="addToCard()">{{ __('frontend.add_to_card') }}</button>
+                                             <button class="btn dash__custom-link btn--e-transparent-hover-brand-b-2" type="submit" wire:click.prevent="addToCard()">{{ __('frontend.add_to_card') }}</button>
                                          </div>
                                      </div>
                                  @endif
