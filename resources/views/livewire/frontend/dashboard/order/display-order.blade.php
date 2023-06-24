@@ -25,9 +25,14 @@
                                  </div>
                                  <div class="flex flex-col items-center gap-2">
                                      <div class="dash__link dash__link--brand">
-                                         @if ($order->status !== 'cancelled')
-                                             <a href="{{ route('frontend.orders.show', ['order' => $order]) }}">MANAGE</a>
-                                         @endif
+                                         @php
+                                             if (!$cancelled) {
+                                                 $edit = route('frontend.orders.show', ['order' => $order]);
+                                             } else {
+                                                 $edit = route('frontend.cancelled-orders.show', ['cancelled_order' => $order]);
+                                             }
+                                         @endphp
+                                         <a href="{{ $edit }}">MANAGE</a>
                                      </div>
                                      <div>
 

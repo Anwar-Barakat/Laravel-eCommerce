@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Order;
+namespace App\Http\Controllers\Frontend\CancelledOrder;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class CancelledOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('frontend.dashboard.orders.index');
+        return view('frontend.dashboard.cancelled-orders.index', ['cancelled' => 'cancelled']);
     }
 
     /**
@@ -35,9 +35,9 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    public function show(Order $cancelled_order)
     {
-        return view('frontend.dashboard.orders.show', ['order' => $order]);
+        return view('frontend.dashboard.cancelled-orders.show', ['order' => $cancelled_order, 'cancelled' => 'cancelled']);
     }
 
     /**

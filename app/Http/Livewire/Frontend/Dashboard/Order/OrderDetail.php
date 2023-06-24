@@ -13,9 +13,12 @@ class OrderDetail extends Component
         $reason,
         $cancelModal = true;
 
-    public function mount(Order $order)
+    public $cancelled;
+
+    public function mount(Order $order, $cancelled = null)
     {
-        $this->order = $order;
+        $this->order        = $order;
+        $this->cancelled    = $cancelled;
     }
 
     public function cancelOrder()

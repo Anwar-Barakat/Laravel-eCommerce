@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\CancelledOrder\CancelledOrderController;
 use App\Http\Controllers\Frontend\Checkout\CheckoutController;
 use App\Http\Controllers\Frontend\Checkout\ThanksMsgController;
 use App\Http\Controllers\Frontend\Dashboard\DeliveryAddressController;
@@ -9,7 +10,6 @@ use App\Http\Controllers\Frontend\Page\ContactUsController;
 use App\Http\Controllers\Frontend\ProductDetail\ProductDetailController;
 use App\Http\Controllers\Frontend\Shop\CategoryProductController;
 use App\Http\Controllers\Frontend\Shop\ShopController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -59,11 +59,18 @@ Route::group(
                 // Orders
                 //_______________________
                 Route::resource('/orders',                  OrderController::class);
+                Route::get('/thanks/{order}',               ThanksMsgController::class)->name('thanks');
+
+
+                //_______________________
+                // Cancelled Orders
+                //_______________________
+                Route::resource('cancelled-orders',         CancelledOrderController::class)->only('index', 'show');
+
             });
 
             Route::get('/checkout',                     CheckoutController::class)->name('checkout');
 
-            Route::get('/thanks/{order}',               ThanksMsgController::class)->name('thanks');
 
             //_______________________
             // Pages

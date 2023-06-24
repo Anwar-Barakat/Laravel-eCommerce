@@ -11,6 +11,12 @@ class DisplayOrder extends Component
     use WithPagination;
 
     public $per_page   = CUSTOMPAGINATION;
+    public $cancelled;
+
+    public function mount($cancelled = null)
+    {
+        $this->cancelled    = $cancelled;
+    }
 
     public function render()
     {
@@ -19,6 +25,8 @@ class DisplayOrder extends Component
 
     public function getUserOrders()
     {
-        return Order::where('user_id', auth()->id())->paginate($this->per_page);
+        return Order::where('user_id', auth()->id())
+            ->when($this->cancelled, fn ($q) => $q->where('status', 'cancelled'))
+            ->paginate($this->per_page);
     }
 }

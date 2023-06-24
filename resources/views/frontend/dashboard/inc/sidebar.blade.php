@@ -18,8 +18,7 @@
                         {{ __('frontend.my_orders') }}</a>
                 </li>
                 <li>
-
-                    <a href="dash-cancellation.html">{{ __('frontend.my_returns_and_cancellations') }}</a>
+                    <a href="{{ route('frontend.cancelled-orders.index') }}" class=" {{ request()->routeIs('frontend.cancelled-orders.*') ? 'dash-active' : '' }}">{{ __('frontend.my_cancellations_orders') }}</a>
                 </li>
             </ul>
         </div>
@@ -42,7 +41,7 @@
 
                         <span class="dash__w-icon dash__w-icon-style-2"><i class="fas fa-times"></i></span>
 
-                        <span class="dash__w-text">0</span>
+                        <span class="dash__w-text">{{ auth()->user()->orders->where('status', 'cancelled')->count() ?? 0 }}</span>
 
                         <span class="dash__w-name">{{ __('frontend.cancel_orders') }}</span>
                     </div>

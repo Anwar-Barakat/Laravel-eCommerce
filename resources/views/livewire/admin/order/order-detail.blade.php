@@ -272,6 +272,7 @@
                                                             @endif
                                                             @if ($case->status == 'cancelled')
                                                                 <p>The reason : {{ __('frontend.' . App\Models\OrderLog::CANCELREASON[$case->reason]) }}</p>
+                                                                <p>Update by : {{ $case->updated_by }}</p>
                                                             @endif
                                                             @unless ($loop->last)
                                                                 <br>
