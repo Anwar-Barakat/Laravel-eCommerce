@@ -67,18 +67,22 @@
                             <div class="description-title">
                                 <span>{{ $ele->product->name }}</span>
                                 @if ($ele->status)
-                                    <p>{{ __('setting.status') }} : <span class="text-green-600"> {{ __('frontend.' . $ele->status) }}</span></p>
+                                    <p>{{ __('setting.status') }} :
+                                        <span class="text-bold {{ $ele->status == 'approved' ? 'text-green-600' : 'text-red-600' }}">
+                                            {{ __('frontend.' . $ele->status) }}
+                                        </span>
+                                    </p>
                                 @endif
                             </div>
                         </div>
                         <div class="description__info-wrap">
                             <div>
-                                <span class="manage-o__text-2 u-c-silver">Quantity:
+                                <span class="manage-o__text-2 u-c-silver">{{ __('frontend.quantity') }}:
                                     <span class="manage-o__text-2 u-c-secondary">{{ $ele->qty }}</span>
                                 </span>
                             </div>
                             <div>
-                                <span class="manage-o__text-2 u-c-silver">Total:
+                                <span class="manage-o__text-2 u-c-silver">{{ __('frontend.total') }}:
                                     <span class="manage-o__text-2 u-c-secondary">${{ $ele->grand_price }}</span></span>
                             </div>
                         </div>
@@ -91,7 +95,7 @@
         <div class="col-lg-6">
             <div class="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
                 <div class="dash__pad-3">
-                    <h2 class="dash__h2 u-s-m-b-8">Shipping Address</h2>
+                    <h2 class="dash__h2 u-s-m-b-20">{{ __('frontend.delivery_address') }}</h2>
                     <h2 class="dash__h2 u-s-m-b-8">{{ $order->user->full_name }}</h2>
 
                     <span class="dash__text-2">{{ $order->delivery_address->street_address }} - {{ $order->delivery_address->city }} - {{ $order->delivery_address->country->name }}</span>
@@ -103,7 +107,7 @@
         <div class="col-lg-6">
             <div class="dash__box dash__box--bg-white dash__box--shadow u-h-100">
                 <div class="dash__pad-3">
-                    <h2 class="dash__h2 u-s-m-b-8">Total Summary</h2>
+                    <h2 class="dash__h2 u-s-m-b-20">Total Summary</h2>
                     <div class="dash-l-r u-s-m-b-8">
                         <div class="manage-o__text-2 u-c-secondary">
                             Subtotal

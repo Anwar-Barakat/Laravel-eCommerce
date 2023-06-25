@@ -18,6 +18,7 @@ class OrderExchangeItem extends Model
         'status',
         'comment',
         'product_size',
+        'required_size'
     ];
 
     public function order(): BelongsTo

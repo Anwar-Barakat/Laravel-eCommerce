@@ -72,6 +72,11 @@ return [
     'comment'                   => 'التعليق',
     'rejected'                  => 'مرفوض',
     'approved'                  => 'موافقة',
+    'orders_exchange'           => 'تبادل الطلبات',
+    'required_size'             => 'المقاس المطلوب',
+    'old_size'                  => 'المقاس القديم',
+    'exchange_initiated'        => "تبادل مبدأي",
+
 
     // -------------------------------
     // Cancelled Order

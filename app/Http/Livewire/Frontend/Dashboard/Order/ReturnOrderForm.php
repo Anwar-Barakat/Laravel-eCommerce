@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Frontend\Dashboard\Order;
 
 use App\Models\Order;
+use App\Models\OrderExchangeItem;
 use App\Models\OrderLog;
 use App\Models\OrderReturnItem;
 use App\Models\Product;
@@ -12,16 +13,27 @@ use Livewire\Component;
 class ReturnOrderForm extends Component
 {
     public $order;
-    public OrderReturnItem $return;
     public $order_product, $attrSizes;
 
-    public function mount(Order $order, OrderReturnItem $return)
+    public $type,
+        $reason,
+        $product_id,
+        $required_size,
+        $comment;
+
+    public $perpuse = 'Return / Exchange';
+
+    public function mount(Order $order)
     {
         $this->order    = $order;
-        $this->return   = $return;
     }
 
-    public function updatedReturnProductId($value)
+    public function updatedType($value)
+    {
+        $this->perpuse = $value  ? 'Exchange' : 'Return';
+    }
+
+    public function updatedProductId($value)
     {
         $product                = Product::findOrFail($value);
         if ($product) {
@@ -36,20 +48,30 @@ class ReturnOrderForm extends Component
         try {
             DB::beginTransaction();
 
-            // 1- update statis of order's product
-            $this->order_product->status = 'return_initiated';
-            $this->order_product->save();
+            $data['order_id']      = $this->order->id;
+            $data['user_id']       = auth()->id();
+            $data['product_id']    = $this->product_id;
+            $data['status']        = 'pending';
+            $data['reason']        = $this->reason;
+            $data['comment']       = $this->comment;
+            $data['product_size']  = $this->order_product->product_size;
 
-            // 2- Store the return request
-            $this->return->status       = 'pending';
-            $this->return->order_id     = $this->order->id;
-            $this->return->user_id      = auth()->id();
-            $this->return->save();
+            if ($this->type == 0) {
+                $this->order_product->status = 'return_initiated';
+                $this->order_product->save();
+
+                OrderReturnItem::create($data);
+            } else {
+                $this->order_product->status = 'exchange_initiated';
+                $this->order_product->save();
+
+                $data['required_size']  = $this->required_size;
+                OrderExchangeItem::create($data);
+            }
+            DB::commit();
 
             $this->emit('updatedOrderReturnItemStatus', $this->order);
-            $this->return = new OrderReturnItem();
-
-            DB::commit();
+            $this->resetExcept(['order']);
             toastr()->info(__('msgs.placed', ['name' => __('frontend.return_request')]));
         } catch (\Throwable $th) {
             return redirect()->route('frontend.orders.show', ['order' => $this->order])->with(['error' => $th->getMessage()]);
@@ -64,10 +86,11 @@ class ReturnOrderForm extends Component
     public function rules()
     {
         return [
-            'return.reason'         => ['required', 'integer', 'in:1,2,3,4,5'],
-            'return.product_id'     => ['required', 'integer'],
-            'return.product_size'   => ['required', 'string'],
-            'return.comment'        => ['required', 'min:10', 'string'],
+            'type'           => ['required', 'boolean'],
+            'reason'         => ['required', 'integer', 'in:1,2,3,4,5'],
+            'product_id'     => ['required', 'integer'],
+            'required_size'  => ['required_if:type,1'],
+            'comment'        => ['required', 'min:10', 'string'],
         ];
     }
 }

@@ -113,22 +113,24 @@
                                  <div class="modal-dialog modal-dialog-centered" role="document">
                                      <div class="modal-content">
                                          <form wire:submit.prevent='changeStatus({{ $request }})'>
-                                             <div class="modal-header">
-                                                 <h5 class="modal-title">{{ __('order.returned_orders') }}</h5>
-                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                             </div>
-                                             <div class="modal-body">
-                                                 <select class=" form-select" wire:model='returnStatus'>
-                                                     <option value="">{{ __('btns.select') }}</option>
-                                                     <option value="pending">{{ __('order.pending') }}</option>
-                                                     <option value="approved">{{ __('order.approved') }}</option>
-                                                     <option value="rejected">{{ __('order.rejected') }}</option>
-                                                 </select>
-                                                 <x-input-error :messages="$errors->get('returnStatus')" class="mt-2" />
-                                             </div>
-                                             <div class="modal-footer">
-                                                 <button type="button" class="btn me-auto" data-bs-dismiss="modal">{{ __('btns.close') }}</button>
-                                                 <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">{{ __('btns.update') }}</button>
+                                             <div class="card">
+                                                 <div class=" card-header">
+                                                     <h5 class="modal-title">{{ __('order.returned_orders') }}</h5>
+                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                 </div>
+                                                 <div class=" card-body">
+                                                     <select class=" form-select" wire:model='returnStatus'>
+                                                         <option value="">{{ __('btns.select') }}</option>
+                                                         <option value="pending">{{ __('order.pending') }}</option>
+                                                         <option value="approved">{{ __('order.approved') }}</option>
+                                                         <option value="rejected">{{ __('order.rejected') }}</option>
+                                                     </select>
+                                                     <x-input-error :messages="$errors->get('returnStatus')" class="mt-2" />
+                                                 </div>
+                                                 <div class=" card-footer flex justify-between items-center">
+                                                     <button type="button" class="btn me-auto" data-bs-dismiss="modal">{{ __('btns.close') }}</button>
+                                                     <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">{{ __('btns.update') }}</button>
+                                                 </div>
                                              </div>
                                          </form>
                                      </div>

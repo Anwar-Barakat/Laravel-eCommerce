@@ -74,6 +74,10 @@ return [
     'comment'                   => 'Comment',
     'rejected'                  => 'Rejected',
     'approved'                  => 'Approved',
+    'orders_exchange'           => 'Orders Exchange',
+    'required_size'             => 'Required size',
+    'old_size'                  => 'Old size',
+    'exchange_initiated'        => "Exchange Initiated",
 
 
     // -------------------------------
