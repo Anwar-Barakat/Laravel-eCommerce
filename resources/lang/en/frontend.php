@@ -121,6 +121,8 @@ return [
     'order_is_cancelled'            => 'Order is cancelled',
     'return_request'                => 'Return Request',
     'return_initiated'              => "Return Initiated",
+    'my_returns_orders'             => 'My Returned Orders',
+
 
     'order_created_by_mistake'              => 'Order created by mistake',
     'item_not_arrive_on_time'               => 'Item not arrive on time',

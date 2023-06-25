@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\Home\HomeController;
 use App\Http\Controllers\Frontend\Order\OrderController;
 use App\Http\Controllers\Frontend\Page\ContactUsController;
 use App\Http\Controllers\Frontend\ProductDetail\ProductDetailController;
+use App\Http\Controllers\Frontend\ReturnedOrder\ReturnedOrderController;
 use App\Http\Controllers\Frontend\Shop\CategoryProductController;
 use App\Http\Controllers\Frontend\Shop\ShopController;
 use Illuminate\Support\Facades\Route;
@@ -67,6 +68,10 @@ Route::group(
                 //_______________________
                 Route::resource('cancelled-orders',         CancelledOrderController::class)->only('index', 'show');
 
+                //_______________________
+                // Returned Orders
+                //_______________________
+                Route::get('returned-orders',               ReturnedOrderController::class)->name('returned-orders.index');
             });
 
             Route::get('/checkout',                     CheckoutController::class)->name('checkout');

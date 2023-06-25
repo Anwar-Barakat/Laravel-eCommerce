@@ -68,7 +68,7 @@
                          <th>{{ __('order.comment') }}</th>
                          <th>{{ __('order.return_reason') }}</th>
                          <th>{{ __('setting.status') }}</th>
-                         <th></th>
+                         <th class="w-5"></th>
                      </tr>
                  </thead>
                  <tbody class="table-tbody">
@@ -99,14 +99,41 @@
                                  </div>
                              </td>
                              <td>
-                                 <div>
-                                     <select class=" form-select" wire:model='returnStatus'>
-                                         <option value="pending" {{ $request->status == 'pending' ? 'selected' : '' }}>{{ __('order.pending') }}</option>
-                                         <option value="approved" {{ $request->status == 'approved' ? 'selected' : '' }}>{{ __('order.approved') }}</option>
-                                         <option value="rejected" {{ $request->status == 'rejected' ? 'selected' : '' }}>{{ __('order.rejected') }}</option>
-                                     </select>
-                                 </div>
+                                 <a href="" class="btn" data-bs-toggle="modal" data-bs-target="#return-request-{{ $request->id }}">
+                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon text-success" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                         <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                         <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                         <path d="M16 5l3 3" />
+                                     </svg>
+                                 </a>
+
                              </td>
+                             <div class="modal modal-blur fade" id="return-request-{{ $request->id }}" tabindex="-1" role="dialog" aria-hidden="true" wire:ignore.self=''>
+                                 <div class="modal-dialog modal-dialog-centered" role="document">
+                                     <div class="modal-content">
+                                         <form wire:submit.prevent='changeStatus({{ $request }})'>
+                                             <div class="modal-header">
+                                                 <h5 class="modal-title">{{ __('order.returned_orders') }}</h5>
+                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                             </div>
+                                             <div class="modal-body">
+                                                 <select class=" form-select" wire:model='returnStatus'>
+                                                     <option value="">{{ __('btns.select') }}</option>
+                                                     <option value="pending">{{ __('order.pending') }}</option>
+                                                     <option value="approved">{{ __('order.approved') }}</option>
+                                                     <option value="rejected">{{ __('order.rejected') }}</option>
+                                                 </select>
+                                                 <x-input-error :messages="$errors->get('returnStatus')" class="mt-2" />
+                                             </div>
+                                             <div class="modal-footer">
+                                                 <button type="button" class="btn me-auto" data-bs-dismiss="modal">{{ __('btns.close') }}</button>
+                                                 <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">{{ __('btns.update') }}</button>
+                                             </div>
+                                         </form>
+                                     </div>
+                                 </div>
+                             </div>
                          </tr>
                      @empty
                          <tr>

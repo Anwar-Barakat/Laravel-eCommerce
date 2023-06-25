@@ -1,7 +1,7 @@
 <x-app-layout>
-    @section('pageTitle', 'Rmark - Order Details')
-    @section('metaDescription', 'View your order details on Rmark. We offer free shipping on orders over $50 and a 100% satisfaction guarantee.')
-    @section('metaKeywords', 'rmark, order, details, ecommerce, shopping')
+    @section('pageTitle', 'Rmark - Cancelled Order Details')
+    @section('metaDescription', 'View your cancelled order details on Rmark. We offer free shipping on orders over $50 and a 100% satisfaction guarantee.')
+    @section('metaKeywords', 'rmark, orders,cancelld order, details, ecommerce, shopping')
 
 
     <!--====== App Content ======-->

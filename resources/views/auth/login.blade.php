@@ -66,6 +66,7 @@
                                             <label class="gl-label" for="login-email">E-MAIL *</label>
                                             <input class="input-text input-text--primary-style" type="email" id="login-email" placeholder="Enter E-mail" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" />
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
                                         </div>
                                         <div class="u-s-m-b-30">
                                             <label class="gl-label" for="login-password">PASSWORD *</label>

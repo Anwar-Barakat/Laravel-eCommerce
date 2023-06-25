@@ -1,7 +1,7 @@
 <x-app-layout>
-    @section('pageTitle', 'Rmark - View Your Orders')
+    @section('pageTitle', 'Rmark - View Your Cancelled Orders')
     @section('metaDescription', 'View your orders on Rmark. We offer free shipping on orders over $50 and a 100% satisfaction guarantee.')
-    @section('metaKeywords', 'rmark, orders, ecommerce, shopping')
+    @section('metaKeywords', 'rmark, orders, cancelled orders, ecommerce, shopping')
 
     <!--====== App Content ======-->
     <div class="app-content">
@@ -19,7 +19,7 @@
                                     <a href="{{ route('frontend.home') }}">{{ __('frontend.home') }}</a>
                                 </li>
                                 <li class="is-marked">
-                                    <a href="javascript:;">{{ __('frontend.my_orders') }}</a>
+                                    <a href="javascript:;">{{ __('frontend.my_cancellations_orders') }}</a>
                                 </li>
                             </ul>
                         </div>

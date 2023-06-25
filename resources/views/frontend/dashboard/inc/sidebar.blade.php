@@ -20,6 +20,9 @@
                 <li>
                     <a href="{{ route('frontend.cancelled-orders.index') }}" class=" {{ request()->routeIs('frontend.cancelled-orders.*') ? 'dash-active' : '' }}">{{ __('frontend.my_cancellations_orders') }}</a>
                 </li>
+                <li>
+                    <a href="{{ route('frontend.returned-orders.index') }}" class=" {{ request()->routeIs('frontend.returned-orders.*') ? 'dash-active' : '' }}">{{ __('frontend.my_returns_orders') }}</a>
+                </li>
             </ul>
         </div>
     </div>

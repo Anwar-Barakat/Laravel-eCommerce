@@ -22,7 +22,7 @@ class OrderReturnItem extends Model
 
     public function order(): BelongsTo
     {
-        return $this->belongsTo(Order::class, 'order_id');
+        return $this->belongsTo(Order::class, 'order_id')->with('order_products');
     }
 
     public function product(): BelongsTo

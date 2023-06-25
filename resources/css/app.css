@@ -120,3 +120,21 @@ select:focus {
     --tw-text-opacity: 1;
     color: rgb(22 163 74 / var(--tw-text-opacity)) !important;
 }
+
+ul {
+    padding-left: 0;
+    padding-right: 0;
+    list-style: none !important;
+}
+
+ul.errors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    list-style: none;
+}
+
+ul.errors-list li {
+    font-size: 13px;
+    color: #f44336 !important;
+}
