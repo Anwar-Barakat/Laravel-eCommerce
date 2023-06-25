@@ -37,7 +37,7 @@
                                                         <label class="gl-label" for="reason">{{ $perpuse }} Reason</label>
                                                         <select class="select-box select-box--primary-style w-full" id="reason" wire:model='reason'>
                                                             <option selected value="">{{ __('btns.select') }}</option>
-                                                            @foreach (App\Models\OrderLog::RETURNREASON as $key => $reason)
+                                                            @foreach (App\Models\OrderLog::RETURNEXCHANGEREASON as $key => $reason)
                                                                 <option value="{{ $key }}">{{ __('frontend.' . $reason) }}</option>
                                                             @endforeach
                                                         </select>
@@ -50,7 +50,7 @@
                                                         <select class="select-box select-box--primary-style w-full" id="productId" wire:model='product_id'>
                                                             <option selected value="">{{ __('btns.select') }}</option>
                                                             @foreach ($order->order_products as $ele)
-                                                                @if ($ele->status != 'return_initiated')
+                                                                @if (!$ele->status)
                                                                     <option value="{{ $ele->product->id }}">{{ $ele->product->name }}</option>
                                                                 @endif
                                                             @endforeach

@@ -1,6 +1,6 @@
  <div class="card">
      <div class="card-header d-flex align-items-center justify-content-between">
-         <h3 class="card-title">{{ __('msgs.all', ['name' => __('order.returned_orders')]) }}</h3>
+         <h3 class="card-title">{{ __('msgs.all', ['name' => __('order.exchanged_orders')]) }}</h3>
      </div>
      <div class="card-body">
          <div id="table-default" class="table-responsive">
@@ -64,7 +64,8 @@
                          <th>{{ __('order.order_number') }}</th>
                          <th>{{ __('order.customer_name') }}</th>
                          <th>{{ __('product.product_name') }}</th>
-                         <th>{{ __('product.size') }}</th>
+                         <th>{{ __('order.old_size') }}</th>
+                         <th>{{ __('order.required_size') }}</th>
                          <th>{{ __('order.comment') }}</th>
                          <th>{{ __('order.return_reason') }}</th>
                          <th>{{ __('setting.status') }}</th>
@@ -72,7 +73,7 @@
                      </tr>
                  </thead>
                  <tbody class="table-tbody">
-                     @forelse ($returnedOrders as $request)
+                     @forelse ($exchangedOrders as $request)
                          <tr>
                              <td>{{ $request->id }}</td>
                              <td>{{ $request->created_at }}</td>
@@ -82,8 +83,9 @@
                                  </span>
                              </td>
                              <td>{{ $request->user->full_name }}</td>
-                             <td><span class="badge bg-green-lt">{{ $request->product->name }}</span></td>
-                             <td>{{ $request->product_size }}</td>
+                             <td>{{ $request->product->name }}</td>
+                             <td><span class="badge bg-red-lt">{{ $request->product_size }}</span></td>
+                             <td><span class="badge bg-green-lt">{{ $request->required_size }}</span></td>
                              <td>
                                  <button type="button" class="btn btn-sm" data-bs-placement="top" data-bs-toggle="popover" title="{{ __('order.comment') }}" data-bs-content="{{ $request->comment }}">{{ __('btns.click_here') }}</button>
                              </td>
@@ -99,7 +101,7 @@
                                  </div>
                              </td>
                              <td>
-                                 <a href="" class="btn" data-bs-toggle="modal" data-bs-target="#return-request-{{ $request->id }}">
+                                 <a href="" class="btn" data-bs-toggle="modal" data-bs-target="#exchange-request-{{ $request->id }}">
                                      <svg xmlns="http://www.w3.org/2000/svg" class="icon text-success" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                          <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
@@ -110,7 +112,7 @@
                              </td>
 
                              <!-- Update Request Status -->
-                             <div class="modal modal-blur fade" id="return-request-{{ $request->id }}" tabindex="-1" role="dialog" aria-hidden="true" wire:ignore.self=''>
+                             <div class="modal modal-blur fade" id="exchange-request-{{ $request->id }}" tabindex="-1" role="dialog" aria-hidden="true" wire:ignore.self=''>
                                  <div class="modal-dialog modal-dialog-centered" role="document">
                                      <div class="modal-content">
                                          <form wire:submit.prevent='changeStatus({{ $request }})'>
@@ -120,13 +122,13 @@
                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                  </div>
                                                  <div class=" card-body">
-                                                     <select class=" form-select" wire:model='returnStatus'>
+                                                     <select class=" form-select" wire:model='exchangeStatus'>
                                                          <option value="">{{ __('btns.select') }}</option>
                                                          <option value="pending">{{ __('order.pending') }}</option>
                                                          <option value="approved">{{ __('order.approved') }}</option>
                                                          <option value="rejected">{{ __('order.rejected') }}</option>
                                                      </select>
-                                                     <x-input-error :messages="$errors->get('returnStatus')" class="mt-2" />
+                                                     <x-input-error :messages="$errors->get('exchangeStatus')" class="mt-2" />
                                                  </div>
                                                  <div class=" card-footer d-flex justify-between items-center">
                                                      <button type="button" class="btn me-auto" data-bs-dismiss="modal">{{ __('btns.close') }}</button>
@@ -148,7 +150,7 @@
                  </tbody>
              </table>
              <div class="mt-3">
-                 {{ $returnedOrders->links('pagination::bootstrap-5') }}
+                 {{ $exchangedOrders->links('pagination::bootstrap-5') }}
              </div>
          </div>
      </div>

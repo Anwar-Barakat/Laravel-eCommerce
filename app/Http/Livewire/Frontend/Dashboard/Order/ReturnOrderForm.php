@@ -87,7 +87,7 @@ class ReturnOrderForm extends Component
     {
         return [
             'type'           => ['required', 'boolean'],
-            'reason'         => ['required', 'integer', 'in:1,2,3,4,5'],
+            'reason'         => ['required', 'integer', 'in:1,2,3,4,5,6,7'],
             'product_id'     => ['required', 'integer'],
             'required_size'  => ['required_if:type,1'],
             'comment'        => ['required', 'min:10', 'string'],

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Admin\Currency\CurrencyController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ExchangedOrder\ExchangedOrderController;
 use App\Http\Controllers\Admin\Filter\FilterController;
 use App\Http\Controllers\Admin\FilterValue\FilterValueController;
 use App\Http\Controllers\Admin\Order\OrderController;
@@ -173,10 +174,11 @@ Route::group(
                 //_______________________
                 Route::resource('cancelled-orders',                         CancelledOrderController::class)->only('index', 'show');
 
-                //_______________________
-                // Returned Orders
-                //_______________________
+                //_____________________________
+                // Returned / Exchanged Orders
+                //_____________________________
                 Route::get('returned-orders',                               ReturnedOrderController::class)->name('returned-orders.index');
+                Route::get('exchanged-orders',                              ExchangedOrderController::class)->name('exchanged-orders.index');
             });
         });
     }

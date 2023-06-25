@@ -123,7 +123,8 @@ return [
     'return_initiated'              => "Return Initiated",
     'exchange_initiated'            => "Exchange Initiated",
     'my_returns_orders'             => 'My Returned Orders',
-
+    'approved'                      => 'Approved',
+    'rejected'                      => 'Rejected',
 
     'order_created_by_mistake'              => 'Order created by mistake',
     'item_not_arrive_on_time'               => 'Item not arrive on time',
@@ -134,6 +135,8 @@ return [
     'item_arrived_too_late'                 => 'Item arrived too late',
     'wrong_item_was_send'                   => 'Wrong item was send',
     'item_defective_or_donest_work'         => 'Item defective or donest work',
+    'require_smaller_size'                  => 'Require smaller size',
+    'require_larger_size'                   => 'Require larger size',
 
     // -------------------------------
     // Checkout Page

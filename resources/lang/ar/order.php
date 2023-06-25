@@ -76,6 +76,7 @@ return [
     'required_size'             => 'المقاس المطلوب',
     'old_size'                  => 'المقاس القديم',
     'exchange_initiated'        => "تبادل مبدأي",
+    'exchanged_orders'          => 'طلبات التبديل',
 
 
     // -------------------------------
