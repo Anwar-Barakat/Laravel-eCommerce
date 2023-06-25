@@ -44,7 +44,7 @@
                                 <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
                                     <div class="dash__pad-2">
                                         <div class="dash__address-header">
-                                            <h1 class="dash__h1">{{ __('msgs.list', ['name' => __('frontend.delivery_addresses')]) }}</h1>
+                                            <h1 class="dash__h1">{{ __('msgs.list', ['name' => __('frontend.my_returns_orders')]) }}</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                                     <tr>
                                                         <td>{{ $request->id }}</td>
                                                         <td>{{ $request->created_at }}</td>
-                                                        <td><span class="badge badge--processing"><a href="{{ route('frontend.orders.show', ['order' => $request->order]) }}">{{ $request->order_id }}</a></span></td>
+                                                        <td><span class="badge--processing"><a href="{{ route('frontend.orders.show', ['order' => $request->order]) }}" class='p-2 rounded border-1'>{{ $request->order_id }}</a></span></td>
                                                         <td>{{ $request->product->name }}</td>
                                                         <td>{{ $request->product_size }}</td>
                                                         <td>
