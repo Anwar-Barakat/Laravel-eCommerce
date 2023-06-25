@@ -97,7 +97,7 @@
                                                          <span>{{ $product->description }}</span>
                                                      </div>
                                                      <div class="product-m__wishlist">
-                                                         <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a>
+                                                         <a class="far fa-heart {{ auth()->user()->wishlists->where('product_id', $product->id)->count() > 0? 'text-red-600': '' }}" title="Add to Wishlist" wire:click.prevent='addToWishlist({{ $product->id }})'></a>
                                                      </div>
                                                  </div>
                                              </div>

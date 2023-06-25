@@ -292,7 +292,7 @@
                                         <a href="{{ route('frontend.cart.index') }}">{{ __('frontend.cart') }}</a>
                                     </li>
                                     <li>
-                                        <a href="wishlist.html">Wishlist</a>
+                                        <a href="{{ route('frontend.wishlist.index') }}">Wishlist</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('frontend.checkout') }}">{{ __('frontend.checkout') }}</a>
@@ -374,7 +374,7 @@
                                 <a href="{{ route('frontend.home') }}"><i class="fas fa-home u-c-brand"></i></a>
                             </li>
                             <li>
-                                <a href="wishlist.html"><i class="far fa-heart"></i></a>
+                                <a href="{{ route('frontend.wishlist.index') }}"><i class="far fa-heart"></i></a>
                             </li>
                             <li class="has-dropdown">
                                 <a class="mini-cart-shop-link"><i class="fas fa-shopping-bag"></i>

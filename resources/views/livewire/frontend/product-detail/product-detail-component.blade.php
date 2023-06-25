@@ -59,9 +59,10 @@
                          </div>
                          <div class="u-s-m-b-15">
                              <div class="pd-detail__inline">
-                                 <span class="pd-detail__click-wrap"><i class="far fa-heart u-s-m-r-6"></i>
+                                 <span class="pd-detail__click-wrap" wire:click.prevent='addToWishlist({{ $product->id }})'>
+                                     <i class="far fa-heart u-s-m-r-6 {{ auth()->check()? (auth()->user()->wishlists->where('product_id', $product->id)->count() > 0? 'text-red-600': ''): '' }}"></i>
                                      <a href="signin.html">Add to Wishlist</a>
-                                     <span class="pd-detail__click-count">(222)</span>
+                                     <span class="pd-detail__click-count">({{ auth()->user()->wishlists->where('product_id', $product->id)->count() ?? 0 }})</span>
                                  </span>
                              </div>
                          </div>

@@ -105,6 +105,11 @@ class ProductDetailComponent extends Component
         }
     }
 
+    public function addToWishlist($product_id)
+    {
+        add_to_wishlist($product_id);
+    }
+
     public function render()
     {
         $this->total_stock      = $this->product->attributes->sum('stock');

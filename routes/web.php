@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\ProductDetail\ProductDetailController;
 use App\Http\Controllers\Frontend\ReturnedOrder\ReturnedOrderController;
 use App\Http\Controllers\Frontend\Shop\CategoryProductController;
 use App\Http\Controllers\Frontend\Shop\ShopController;
+use App\Http\Controllers\Frontend\Wishlist\WishlistController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -72,6 +73,12 @@ Route::group(
                 // Returned Orders
                 //_______________________
                 Route::get('returned-orders',               ReturnedOrderController::class)->name('returned-orders.index');
+
+
+                //_______________________
+                // Wishlist
+                //_______________________
+                Route::get('/wishlist',                     WishlistController::class)->name('wishlist.index');
             });
 
             Route::get('/checkout',                     CheckoutController::class)->name('checkout');
