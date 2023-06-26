@@ -79,6 +79,7 @@ return [
     'old_size'                  => 'Old size',
     'exchange_initiated'        => "Exchange Initiated",
     'exchanged_orders'          => 'Exchanged Orders',
+    'exchanged_date'            => 'Exchanged date',
 
     // -------------------------------
     // Cancelled Order

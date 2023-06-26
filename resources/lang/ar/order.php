@@ -77,6 +77,7 @@ return [
     'old_size'                  => 'المقاس القديم',
     'exchange_initiated'        => "تبادل مبدأي",
     'exchanged_orders'          => 'طلبات التبديل',
+    'exchanged_date'            => 'تاريخ التبادل',
 
 
     // -------------------------------

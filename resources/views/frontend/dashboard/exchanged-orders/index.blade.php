@@ -19,7 +19,7 @@
                                     <a href="{{ route('frontend.home') }}">{{ __('frontend.home') }}</a>
                                 </li>
                                 <li class="is-marked">
-                                    <a href="javascript:;">{{ __('frontend.my_returns_orders') }}</a>
+                                    <a href="javascript:;">{{ __('frontend.my_exchanged_orders') }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -44,7 +44,7 @@
                                 <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
                                     <div class="dash__pad-2">
                                         <div class="dash__address-header">
-                                            <h1 class="dash__h1">{{ __('msgs.list', ['name' => __('frontend.my_returns_orders')]) }}</h1>
+                                            <h1 class="dash__h1">{{ __('msgs.list', ['name' => __('frontend.my_exchanged_orders')]) }}</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -54,21 +54,23 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>{{ __('order.returned_date') }}</th>
+                                                    <th>{{ __('order.exchanged_date') }}</th>
                                                     <th>{{ __('order.order_number') }}</th>
                                                     <th>{{ __('product.product_name') }}</th>
-                                                    <th>{{ __('frontend.size') }}</th>
+                                                    <th>{{ __('order.old_size') }}</th>
+                                                    <th>{{ __('order.required_size') }}</th>
                                                     <th>{{ __('setting.status') }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @forelse ($returnedOrders as $request)
+                                                @forelse ($exchangedOrders as $request)
                                                     <tr>
                                                         <td>{{ $request->id }}</td>
                                                         <td>{{ $request->created_at }}</td>
                                                         <td><span class="manage-o__badge badge--processing"><a href="{{ route('frontend.orders.show', ['order' => $request->order]) }}" class='p-2 rounded border-1'>{{ $request->order_id }}</a></span></td>
                                                         <td>{{ $request->product->name }}</td>
-                                                        <td>{{ $request->product_size }}</td>
+                                                        <td><span class="manage-o__badge badge--cancelled">{{ $request->product_size }}</span></td>
+                                                        <td><span class="manage-o__badge badge--processing">{{ $request->required_size }}</span></td>
                                                         <td>
                                                             <div class="{{ $request->status == 'approved' ? 'text-green-600' : 'text-red-600' }} text-bold">{{ __('order.' . $request->status) }}</div>
                                                         </td>
@@ -85,7 +87,7 @@
                                         </table>
                                     </div>
                                     <div class="mt-4 p-4">
-                                        {{ $returnedOrders->links() }}
+                                        {{ $exchangedOrders->links() }}
                                     </div>
                                 </div>
                             </div>

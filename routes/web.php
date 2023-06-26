@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\CancelledOrder\CancelledOrderController;
 use App\Http\Controllers\Frontend\Checkout\CheckoutController;
 use App\Http\Controllers\Frontend\Checkout\ThanksMsgController;
 use App\Http\Controllers\Frontend\Dashboard\DeliveryAddressController;
+use App\Http\Controllers\Frontend\ExchangedOrder\ExchangedOrderController;
 use App\Http\Controllers\Frontend\Home\HomeController;
 use App\Http\Controllers\Frontend\Order\OrderController;
 use App\Http\Controllers\Frontend\Page\ContactUsController;
@@ -68,6 +69,11 @@ Route::group(
                 // Cancelled Orders
                 //_______________________
                 Route::resource('cancelled-orders',         CancelledOrderController::class)->only('index', 'show');
+
+                //_______________________
+                // Exchanged Orders
+                //_______________________
+                Route::get('exchanged-orders',              ExchangedOrderController::class)->name('exchanged-orders.index');
 
                 //_______________________
                 // Returned Orders

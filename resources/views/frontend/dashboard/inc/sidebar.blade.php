@@ -19,6 +19,9 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('frontend.exchanged-orders.index') }}" class=" {{ request()->routeIs('frontend.exchanged-orders.*') ? 'dash-active' : '' }}">{{ __('frontend.my_exchanged_orders') }}</a>
+                </li>
+                <li>
                     <a href="{{ route('frontend.returned-orders.index') }}" class=" {{ request()->routeIs('frontend.returned-orders.*') ? 'dash-active' : '' }}">{{ __('frontend.my_returns_orders') }}</a>
                 </li>
                 <li>

@@ -125,6 +125,7 @@ return [
     'return_initiated'              => "Return Initiated",
     'exchange_initiated'            => "Exchange Initiated",
     'my_returns_orders'             => 'My Returned Orders',
+    'my_exchanged_orders'           => 'My Exchanged orders',
     'approved'                      => 'Approved',
     'rejected'                      => 'Rejected',
 
