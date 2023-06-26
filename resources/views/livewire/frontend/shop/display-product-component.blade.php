@@ -97,7 +97,7 @@
                                                          <span>{{ $product->description }}</span>
                                                      </div>
                                                      <div class="product-m__wishlist">
-                                                         <a class="far fa-heart {{ auth()->user()->wishlists->where('product_id', $product->id)->count() > 0? 'text-red-600': '' }}" title="Add to Wishlist" wire:click.prevent='addToWishlist({{ $product->id }})'></a>
+                                                         <a class="far fa-heart {{ auth()->user()->wishlists->where('product_id', $product->id)->count() > 0? 'text-main-color': '' }}" title="Add to Wishlist" wire:click.prevent='addToWishlist({{ $product->id }})'></a>
                                                      </div>
                                                  </div>
                                              </div>
@@ -115,7 +115,7 @@
                          </div>
                          <div class="u-s-p-y-60">
                              <!--====== Pagination ======-->
-                             {{ $products->links() }}
+                             {{ $products->links('vendor.custom-pagination') }}
                              <!--====== End - Pagination ======-->
                          </div>
                      </div>

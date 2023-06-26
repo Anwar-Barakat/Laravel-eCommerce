@@ -74,37 +74,36 @@
                                          </div>
                                      </div>
                                  </div>
-                         </div>
-                         <div class="col-lg-12">
-                             <div class="route-box">
-                                 <div class="route-box__g">
-                                     <a class="route-box__link" href="{{ route('frontend.shop') }}"><i class="fas fa-long-arrow-alt-left"></i>
-                                         <span>{{ __('frontend.continue_shopping') }}</span>
-                                     </a>
-                                 </div>
-                                 @if ($wishlist->count() > 0)
-                                     <div class="route-box__g">
-                                         <a class="route-box__link" href="" wire:click.prevent='removeAllWishlist'>
-                                             <i class="fas fa-trash"></i>
-                                             <span>CLEAR WISHLIST</span>
-                                         </a>
+                                 <div class="col-lg-12">
+                                     <div class="route-box">
+                                         <div class="route-box__g">
+                                             <a class="route-box__link" href="{{ route('frontend.shop') }}"><i class="fas fa-long-arrow-alt-left"></i>
+                                                 <span>{{ __('frontend.continue_shopping') }}</span>
+                                             </a>
+                                         </div>
+                                         @if ($wishlist->count() > 0)
+                                             <div class="route-box__g">
+                                                 <a class="route-box__link" href="" wire:click.prevent='removeAllWishlist'>
+                                                     <i class="fas fa-trash"></i>
+                                                     <span>CLEAR WISHLIST</span>
+                                                 </a>
+                                             </div>
+                                         @endif
                                      </div>
-                                 @endif
-                             </div>
+                                 </div>
+                             @empty
+                                 <div class="empty">
+                                     <div class="empty__wrap">
+                                         <span class="empty__big-text">EMPTY</span>
+                                         <span class="empty__text-1">No items found on your wishlist.</span>
+                                         <a class="empty__redirect-link btn--e-brand" href="{{ route('frontend.shop') }}">{{ __('frontend.continue_shopping') }}</a>
+                                     </div>
+                                 </div>
+                             @endforelse
                          </div>
-                     @empty
-                         <div class="empty">
-                             <div class="empty__wrap">
-                                 <span class="empty__big-text">EMPTY</span>
-                                 <span class="empty__text-1">No items found on your wishlist.</span>
-                                 <a class="empty__redirect-link btn--e-brand" href="{{ route('frontend.shop') }}">{{ __('frontend.continue_shopping') }}</a>
-                             </div>
-                         </div>
-                         @endforelse
                      </div>
                  </div>
+                 <!--====== End - Section Content ======-->
              </div>
-             <!--====== End - Section Content ======-->
+             <!--====== End - Section 2 ======-->
          </div>
-         <!--====== End - Section 2 ======-->
-     </div>

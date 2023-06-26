@@ -13,7 +13,7 @@ class ExchangedOrderController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $exchangedOrders = OrderExchangeItem::where('user_id', auth()->id())->paginate(10);
+        $exchangedOrders = OrderExchangeItem::where('user_id', auth()->id())->latest()->paginate(10);
         return view('frontend.dashboard.exchanged-orders.index', ['exchangedOrders' => $exchangedOrders]);
     }
 }

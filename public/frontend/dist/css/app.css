@@ -162,6 +162,9 @@ iframe {
 iframe[src*="soundcloud"] {
     width: 100%;
 }
+.text-main-color {
+    color: var(--main-color) !important;
+}
 
 /*--------------------------------------------------------------
 Box Module

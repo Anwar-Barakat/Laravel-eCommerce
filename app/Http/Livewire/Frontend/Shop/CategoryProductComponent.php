@@ -39,6 +39,11 @@ class CategoryProductComponent extends Component
     {
     }
 
+    public function addToWishlist($product_id)
+    {
+        add_to_wishlist($product_id);
+    }
+
     public function render()
     {
         return view('livewire.frontend.shop.category-product-component', ['products' => $this->getProducts()]);

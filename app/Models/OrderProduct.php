@@ -18,6 +18,7 @@ class OrderProduct extends Model
         'product_size',
         'product_price',
         'grand_price',
+        'status'
     ];
 
     public function user(): BelongsTo

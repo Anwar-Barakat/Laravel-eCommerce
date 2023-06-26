@@ -78,6 +78,13 @@ return [
     'exchange_initiated'        => "تبادل مبدأي",
     'exchanged_orders'          => 'طلبات التبديل',
     'exchanged_date'            => 'تاريخ التبادل',
+    'total_prices'              => 'إجمالي الأسعار',
+    'new_orders'                => 'الطلبات الجديدة',
+    'pending_orders'            => 'الطلبات المُعلقة',
+    'in_process_orders'         => 'الطلبات قيد المعالجة',
+    'shipped_orders'            => 'الطلبات المشحونة',
+    'delivered_orders'          => 'الطلبات المستلمة',
+    'cancelled_orders'          => 'الطلبات المُلغات',
 
 
     // -------------------------------

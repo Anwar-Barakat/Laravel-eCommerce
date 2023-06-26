@@ -80,6 +80,14 @@ return [
     'exchange_initiated'        => "Exchange Initiated",
     'exchanged_orders'          => 'Exchanged Orders',
     'exchanged_date'            => 'Exchanged date',
+    'total_prices'              => 'Total Prices',
+    'new_orders'                => 'New orders',
+    'pending_orders'            => 'Pending orders',
+    'in_process_orders'         => 'In Process orders',
+    'shipped_orders'            => 'Shipped orders',
+    'delivered_orders'          => 'Delivered orders',
+    'cancelled_orders'          => 'Cancelled orders',
+
 
     // -------------------------------
     // Cancelled Order

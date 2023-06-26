@@ -84,10 +84,8 @@
 
                                         </table>
                                     </div>
-                                    <div class="mt-4 p-4">
-                                        {{ $returnedOrders->links() }}
-                                    </div>
                                 </div>
+                                {{ $returnedOrders->links('vendor.custom-pagination') }}
                             </div>
 
                         </div>

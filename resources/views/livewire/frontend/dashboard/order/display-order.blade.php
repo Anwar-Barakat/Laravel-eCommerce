@@ -97,8 +97,8 @@
                      </div>
                  @endforeach
 
-                 <div class="flex justify-between">
-                     {{ $orders->links('pagination::tailwind') }}
+                 <div class="d-flex justify-between">
+                     {{ $orders->links('vendor.custom-pagination') }}
                  </div>
              </div>
          </div>

@@ -138,3 +138,7 @@ ul.errors-list li {
     font-size: 13px;
     color: #f44336 !important;
 }
+
+.text-main-color {
+    color: var(--main-color);
+}
