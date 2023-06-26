@@ -66,6 +66,8 @@ return [
     'best_rating'                               => 'Best Rating',
     'worst_rating'                              => 'Worst Rating',
     'product_rating'                            => 'Product Rating',
+    'add_to_wishlist'                           => 'Add to wishlist',
+    'remove_from_wishlist'                      => 'Remove from wishlist',
 
 
 

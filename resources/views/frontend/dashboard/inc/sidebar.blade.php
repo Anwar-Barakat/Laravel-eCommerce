@@ -15,13 +15,14 @@
                 </li>
                 <li>
                     <a href="{{ route('frontend.orders.index') }}" class=" {{ request()->routeIs('frontend.orders.*') ? 'dash-active' : '' }}">
-                        {{ __('frontend.my_orders') }}</a>
-                </li>
-                <li>
-                    <a href="{{ route('frontend.cancelled-orders.index') }}" class=" {{ request()->routeIs('frontend.cancelled-orders.*') ? 'dash-active' : '' }}">{{ __('frontend.my_cancellations_orders') }}</a>
+                        {{ __('frontend.my_orders') }}
+                    </a>
                 </li>
                 <li>
                     <a href="{{ route('frontend.returned-orders.index') }}" class=" {{ request()->routeIs('frontend.returned-orders.*') ? 'dash-active' : '' }}">{{ __('frontend.my_returns_orders') }}</a>
+                </li>
+                <li>
+                    <a href="{{ route('frontend.cancelled-orders.index') }}" class=" {{ request()->routeIs('frontend.cancelled-orders.*') ? 'dash-active' : '' }}">{{ __('frontend.my_cancellations_orders') }}</a>
                 </li>
             </ul>
         </div>
@@ -51,11 +52,8 @@
                 </li>
                 <li>
                     <div class="dash__w-wrap">
-
                         <span class="dash__w-icon dash__w-icon-style-3"><i class="far fa-heart"></i></span>
-
-                        <span class="dash__w-text">0</span>
-
+                        <span class="dash__w-text">{{ auth()->user()->wishlists->count() ?? 0 }}</span>
                         <span class="dash__w-name">{{ __('frontend.wishlist') }}</span>
                     </div>
                 </li>

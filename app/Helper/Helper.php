@@ -38,7 +38,6 @@ if (!function_exists('add_to_wishlist')) {
         }
 
         $productExists  = Wishlist::where(['product_id' => $product_id, 'user_id' => auth()->id()])->first();
-
         if (!$productExists) {
             Wishlist::create([
                 'user_id'       => auth()->id(),
