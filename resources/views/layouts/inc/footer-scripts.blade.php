@@ -6,19 +6,7 @@
 <!-- Tabler Core -->
 <script src="{{ asset('backend/dist/js/tabler.min.js') }}" defer></script>
 @stack('scripts')
-{{--
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        // Select2 Multiple
-        $('.select2-multiple').select2({
-            placeholder: "Select",
-            allowClear: true
-        });
-
-    });
-</script> --}}
+@yield('javascripts')
 
 <livewire:scripts />
 <script src="{{ asset('backend/dist/js/demo.min.js') }}" defer></script>

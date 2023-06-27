@@ -11,6 +11,7 @@ return [
     'details'               => 'تفاصيل :name',
     'type'                  => 'أدخل :name',
     'exists'                => ':name بالفعل موجودة',
+    'count'                 => 'عدد :name',
 
     'updated'               => 'تم تحديث :name بنجاج',
     'created'               => 'تم إنشاء :name بنجاج',

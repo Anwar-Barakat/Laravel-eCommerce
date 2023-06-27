@@ -56,7 +56,7 @@
                 <li>
                     <div class="dash__w-wrap">
                         <span class="dash__w-icon dash__w-icon-style-3"><i class="far fa-heart"></i></span>
-                        <span class="dash__w-text">{{ auth()->user()->wishlists->count() ?? 0 }}</span>
+                        <span class="dash__w-text">{{ auth()->user()?->wishlists->count() ?? 0 }}</span>
                         <span class="dash__w-name">{{ __('frontend.wishlist') }}</span>
                     </div>
                 </li>

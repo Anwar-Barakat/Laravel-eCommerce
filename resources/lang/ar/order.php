@@ -85,6 +85,8 @@ return [
     'shipped_orders'            => 'الطلبات المشحونة',
     'delivered_orders'          => 'الطلبات المستلمة',
     'cancelled_orders'          => 'الطلبات المُلغات',
+    'orders_by_month'           => 'الطلبات خلال الشهر',
+    'users_by_month'            => 'الزبائن خلال الشهر',
 
 
     // -------------------------------

@@ -15,6 +15,7 @@ return [
     'type'                  => 'Type the :name',
     'exists'                => ':name already exists',
     'already_approved'      => 'Order Has already Been Approved previous',
+    'count'                 => ':name count',
 
     // -------------------------------
     // Results :

@@ -12,16 +12,16 @@ class DashboardStatisticComponent extends Component
     public function render()
     {
         return view('livewire.admin.dashboard.dashboard-statistic-component', [
-            'new_orders'            => $this->getNewOrders('new', 'new_filter'),
-            'pending_orders'        => $this->getNewOrders('pending', 'pending_filter'),
-            'in_process_orders'     => $this->getNewOrders('in_process', 'in_process_filter'),
-            'shipped_orders'        => $this->getNewOrders('shipped', 'shipped_filter'),
-            'delivered_orders'      => $this->getNewOrders('delivered', 'delivered_filter'),
-            'cancelled_orders'      => $this->getNewOrders('cancelled', 'cancelled_filter'),
+            'new_orders'            => $this->getOrders('new', 'new_filter'),
+            'pending_orders'        => $this->getOrders('pending', 'pending_filter'),
+            'in_process_orders'     => $this->getOrders('in_process', 'in_process_filter'),
+            'shipped_orders'        => $this->getOrders('shipped', 'shipped_filter'),
+            'delivered_orders'      => $this->getOrders('delivered', 'delivered_filter'),
+            'cancelled_orders'      => $this->getOrders('cancelled', 'cancelled_filter'),
         ]);
     }
 
-    public function getNewOrders($case, $filter)
+    public function getOrders($case, $filter)
     {
         $order_filter   = $this->getFilter($this->{$filter});
         $all_orders     = Order::where('created_at', '>=', $order_filter)->sum('grand_price');

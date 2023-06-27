@@ -87,7 +87,8 @@ return [
     'shipped_orders'            => 'Shipped orders',
     'delivered_orders'          => 'Delivered orders',
     'cancelled_orders'          => 'Cancelled orders',
-
+    'orders_by_month'           => 'Orders by month',
+    'users_by_month'            => 'Users by month',
 
     // -------------------------------
     // Cancelled Order
