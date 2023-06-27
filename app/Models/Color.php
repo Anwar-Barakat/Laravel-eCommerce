@@ -14,6 +14,11 @@ class Color extends Model
         'is_active'
     ];
 
+    public function scopeActive($query)
+    {
+        return $query->where(['is_active' => 1]);
+    }
+
     public function scopeSearch($query, $term)
     {
         $term = "%$term%";

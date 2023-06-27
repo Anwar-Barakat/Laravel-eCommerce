@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Product\Color;
 
+use App\Models\Color;
 use App\Models\Product;
 use App\Models\ProductColor;
 use Illuminate\Validation\Rule;
@@ -11,12 +12,14 @@ class AddEditColor extends Component
 {
     public Product $product;
 
-    public $color;
+    public $color,
+        $colors = [];
 
     public function mount(Product $product, ProductColor $color)
     {
         $this->product      = $product;
         $this->color        = $color;
+        $this->colors       = Color::active()->get();
     }
 
     public function updateStatus(ProductColor $color)
@@ -56,10 +59,10 @@ class AddEditColor extends Component
     public function rules()
     {
         return [
-            'color.is_active'   => ['required', 'boolean'],
-            'color.color'        => [
+            'color.is_active'       => ['required', 'boolean'],
+            'color.color_id'        => [
                 'required', 'integer',
-                Rule::unique('product_colors', 'color')->where(function ($query) {
+                Rule::unique('product_colors', 'color_id')->where(function ($query) {
                     return $query->where(['product_id' => $this->product->id]);
                 })->ignore($this->color->id)
             ],

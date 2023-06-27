@@ -21,7 +21,7 @@
                 <form wire:submit.prevent='submit' id="add-attributes">
                     <div class="card-body">
                         <h3 class="mb-4 text-blue">{{ __('msgs.main_info') }}</h3>
-                        <div class="row">
+                        <div class="row row-cards">
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
                                     <label for="" class="form-label">
@@ -44,16 +44,21 @@
                                     <x-input-error :messages="$errors->get('color.is_active')" class="mt-2" />
                                 </div>
                             </div>
+                        </div>
+                        <div class="row row-cards">
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
-                                    <x-input-label class="form-label" :value="__('product.color')" />
-                                    <select class="form-select" wire:model.defer='color.color'>
+                                    <label for="" class="form-label">
+                                        {{ __('product.color') }}
+                                        ( <a href="{{ route('admin.colors.index') }}" class="text-blue" title="{{ __('msgs.add', ['name' => __('product.color')]) }}">{{ __('msgs.add_new') }}</a> )
+                                    </label>
+                                    <select class="form-select" wire:model.defer='color.color_id'>
                                         <option value="">{{ __('btns.select') }}</option>
-                                        @foreach (App\Models\ProductColor::COLORS as $key => $color)
-                                            <option value="{{ $key }}">{{ $color }}</option>
+                                        @foreach ($colors as $color)
+                                            <option value="{{ $color->id }}">{{ $color->name }}</option>
                                         @endforeach
                                     </select>
-                                    <x-input-error :messages="$errors->get('color.color')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('color.color_id')" class="mt-2" />
                                 </div>
                             </div>
                         </div>
