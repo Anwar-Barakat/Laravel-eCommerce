@@ -230,7 +230,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item dropdown {{ request()->routeIs('admin.products.*') || request()->routeIs('admin.filters.*') || request()->routeIs('admin.filter-values.*') || request()->routeIs('admin.products_rating') ? 'active' : '' }}">
+                    <li class="nav-item dropdown {{ request()->routeIs('admin.products.*') || request()->routeIs('admin.filters.*') || request()->routeIs('admin.filter-values.*') || request()->routeIs('admin.products_rating') || request()->routeIs('admin.colors.index') ? 'active' : '' }}">
                         <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -311,6 +311,20 @@
                                             </svg>
                                         </span>
                                         {{ __('product.filters_values') }}
+                                    </a>
+
+                                    <!-- colors -->
+                                    <a class="dropdown-item {{ request()->routeIs('admin.colors.*') ? 'active' : '' }}" href="{{ route('admin.colors.index') }}">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-palette" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25"></path>
+                                                <path d="M8.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                                <path d="M12.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                                <path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                            </svg>
+                                        </span>
+                                        {{ __('product.colors') }}
                                     </a>
                                 </div>
                             </div>

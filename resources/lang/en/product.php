@@ -41,6 +41,7 @@ return [
     'colors'                    => 'Colors',
     'color'                     => 'Color',
     'product_color'             => 'product color',
+    'color_name'                => 'Color name',
     'red'                       => 'red',
     'green'                     => 'green',
     'blue'                      => 'blue',

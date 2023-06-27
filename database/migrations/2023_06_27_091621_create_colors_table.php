@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_colors', function (Blueprint $table) {
+        Schema::create('colors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained()->cascadeOnUpdate();
-            $table->foreignId('color_id')->constrained()->cascadeOnUpdate();
+            $table->string('name');
             $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_colors');
+        Schema::dropIfExists('colors');
     }
 };

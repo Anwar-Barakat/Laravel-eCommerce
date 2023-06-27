@@ -41,6 +41,7 @@ return [
     'colors'                    => 'الألوان',
     'color'                     => 'اللون',
     'product_color'             => 'لون المنتج',
+    'color_name'                => 'اسم اللون',
     'red'                       => 'أحمر',
     'green'                     => 'أخضر',
     'blue'                      => 'أزرق',

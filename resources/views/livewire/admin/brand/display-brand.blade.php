@@ -43,7 +43,6 @@
                         <option value="asc">{{ __('msgs.asc') }}</option>
                         <option value="desc">{{ __('msgs.desc') }}</option>
                     </select>
-                    <x-input-error :messages="$errors->get('is_active')" class="mt-2" />
                 </div>
             </div>
         </div>

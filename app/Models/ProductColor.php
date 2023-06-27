@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProductColor extends Model
 {
@@ -11,18 +12,16 @@ class ProductColor extends Model
 
     protected $fillable = [
         'product_id',
-        'colors',
+        'color_id',
     ];
 
-    const COLORS = [
-        1       => 'red',
-        2       => 'green',
-        3       => 'blue',
-        4       => 'pink',
-        5       => 'yellow',
-        6       => 'gray',
-        7       => 'black',
-        8       => 'white',
-        9       => 'orange',
-    ];
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+
+    public function color(): BelongsTo
+    {
+        return $this->belongsTo(Color::class, 'color_id');
+    }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Banner\BannerController;
 use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Admin\CancelledOrder\CancelledOrderController;
 use App\Http\Controllers\Admin\Category\CategoryController;
+use App\Http\Controllers\Admin\Color\ColorController;
 use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Admin\Currency\CurrencyController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -143,6 +144,10 @@ Route::group(
                 //_______________________
                 Route::get('products-ratings',                              ProductRatingController::class)->name('products_rating');
 
+                //_______________________
+                // colors
+                //_______________________
+                Route::get('colors',                                        ColorController::class)->name('colors.index');
 
                 //_______________________
                 // Filters
