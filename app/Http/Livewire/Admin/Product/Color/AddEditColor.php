@@ -7,9 +7,12 @@ use App\Models\Product;
 use App\Models\ProductColor;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class AddEditColor extends Component
 {
+    use WithPagination;
+
     public Product $product;
 
     public $color,
@@ -24,7 +27,8 @@ class AddEditColor extends Component
 
     public function updateStatus(ProductColor $color)
     {
-        $color->update(['is_active' => !$color->is_active]);
+        $color->is_active = !$color->is_active;
+        $color->save();
     }
 
     public function submit()
@@ -40,7 +44,7 @@ class AddEditColor extends Component
         }
     }
 
-    public function edit(ProductColor $color)
+    public function update(ProductColor $color)
     {
         $this->color = $color;
     }
@@ -53,7 +57,9 @@ class AddEditColor extends Component
 
     public function render()
     {
-        return view('livewire.admin.product.color.add-edit-color', ['productColors' => $this->getProductColors()]);
+        return view('livewire.admin.product.color.add-edit-color', [
+            'productColors'     => $this->getProductColors()
+        ]);
     }
 
     public function rules()
