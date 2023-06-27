@@ -6,9 +6,12 @@ use App\Models\Product;
 use App\Models\ProductAttribute;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class AddEditAttribute extends Component
 {
+    use WithPagination;
+
     public Product $product;
 
     public $attribute;

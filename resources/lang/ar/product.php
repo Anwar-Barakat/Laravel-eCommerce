@@ -38,8 +38,18 @@ return [
     'product_attribute'         => 'خصائص المنتج',
     'attribute'                 => 'الخصائص',
     'must_be_less_than_value'   => ':name يجب أن يكون أقل من :value',
-
-
+    'colors'                    => 'الألوان',
+    'color'                     => 'اللون',
+    'product_color'             => 'لون المنتج',
+    'red'                       => 'أحمر',
+    'green'                     => 'أخضر',
+    'blue'                      => 'أزرق',
+    'pink'                      => 'زهري',
+    'yellow'                    => 'أصفر',
+    'gray'                      => 'رمادي',
+    'black'                     => 'أسود',
+    'white'                     => 'أبيض',
+    'orange'                    => 'برتقالي',
 
     //_______________________
     // Product Attributes

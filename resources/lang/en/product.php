@@ -38,6 +38,18 @@ return [
     'product_attribute'         => 'Product attributes',
     'attribute'                 => 'Attributes',
     'must_be_less_than_value'   => ':name must be less than :value',
+    'colors'                    => 'Colors',
+    'color'                     => 'Color',
+    'product_color'             => 'product color',
+    'red'                       => 'red',
+    'green'                     => 'green',
+    'blue'                      => 'blue',
+    'pink'                      => 'pink',
+    'yellow'                    => 'yellow',
+    'gray'                      => 'gray',
+    'black'                     => 'black',
+    'white'                     => 'white',
+    'orange'                    => 'orange',
 
 
     //_______________________
