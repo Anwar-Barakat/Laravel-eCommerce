@@ -7,7 +7,7 @@
                          <div class="shop-p__toolbar u-s-m-b-30">
                              <div class="shop-p__meta-wrap u-s-m-b-60">
                                  @if ($category->getFirstMediaUrl('categories', 'thumb'))
-                                     <img src="{{ $category->getFirstMediaUrl('categories', 'thumb') }}" alt="{{ $category->name }}">
+                                     <img src="{{ $category->getFirstMediaUrl('categories', 'thumb') }}" alt="{{ $category->name }}" style="max-height: 470px" width="100%">
                                  @endif
                                  <span class="shop-p__meta-text-1 mt-4">{{ __('frontend.found') }} {{ $products->count() ?? 0 }} {{ __('frontend.results') }}</span>
                                  <div class="shop-p__meta-text-2">
@@ -147,11 +147,11 @@
                                      </div>
                                  </div>
                              @empty
-                                 <div class="empty ">
+                                 <div class="empty" style="margin-top: 6rem">
                                      <div class="empty-img">
                                          <img src="{{ asset('backend/static/illustrations/undraw_printing_invoices_5r4r.svg') }}" height="128" width="400" alt="{{ __('msgs.not_found') }}" class="m-auto d-block">
                                      </div>
-                                     <h5 class="empty-title mt-4">{{ __('msgs.not_found') }}</h5>
+                                     <h3 class="empty-title mt-4">{{ __('msgs.not_found') }}</h3>
                                  </div>
                              @endforelse
                          </div>

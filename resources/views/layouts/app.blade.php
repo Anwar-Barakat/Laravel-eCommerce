@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="@yield('metaDescription')">
     <meta name='keywords' content="@yield('metaKeywords')">
+    <link rel="shortcut icon" href="{{ asset('backend/static/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('backend/static/favicon.ico') }}" type="image/x-icon">
     <title>@yield('pageTitle')</title>
     <link href="images/favicon.png" rel="shortcut icon">
 

@@ -207,6 +207,7 @@
                                                     <th>{{ __('product.product') }}</th>
                                                     <th>{{ __('product.qty') }}</th>
                                                     <th>{{ __('product.unit_price') }}</th>
+                                                    <th>{{ __('product.color') }}</th>
                                                     <th>{{ __('product.size') }}</th>
                                                     <th>{{ __('product.amount') }}</th>
                                                     <th>{{ __('setting.status') }}</th>
@@ -236,6 +237,7 @@
                                                         <td>
                                                             <div>${{ $ele->product_price }}</div>
                                                         </td>
+                                                        <td class="text-muted">{{ $ele->product_color }}</td>
                                                         <td class="text-muted">{{ $ele->product_size }}</td>
                                                         <td class="text-muted">${{ $ele->grand_price }}</td>
                                                         <td class="text-muted">{{ __('order.' . $ele->status) ?? '-' }}</td>

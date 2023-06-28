@@ -34,8 +34,8 @@ class ProductSeeder extends Seeder
                 'brand_id'          => Brand::select('id')->where('name', 'Samsung')->first()->id,
                 'admin_id'          => $admin->id,
                 'name'              => [
-                    'ar'    => 'سماعة لاسلكية صفراء',
-                    'en'    => 'Yellow Wireless Headphone',
+                    'ar'    => 'سماعة لاسلكية',
+                    'en'    => 'Wireless Headphone',
                 ],
                 'price'             => rand(10, 100),
                 'discount_type'     => 0,

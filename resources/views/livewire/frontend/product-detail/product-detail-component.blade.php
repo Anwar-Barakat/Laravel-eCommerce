@@ -101,31 +101,19 @@
                         </div>
                         <div class="u-s-m-b-15">
                             <form class="pd-detail__form" wire:submit.prevent='addToCard'>
-                                <div class="u-s-m-b-15">
-                                    <span class="pd-detail__label u-s-m-b-8">Color:</span>
-                                    <div class="pd-detail__color">
-                                        <div class="color__radio">
-                                            <input type="radio" id="jet" name="color" checked>
-                                            <label class="color__radio-label" for="jet" style="background-color: #333333"></label>
-                                        </div>
-                                        <div class="color__radio">
-                                            <input type="radio" id="folly" name="color">
-                                            <label class="color__radio-label" for="folly" style="background-color: #FF0055"></label>
-                                        </div>
-                                        <div class="color__radio">
-                                            <input type="radio" id="yellow" name="color">
-                                            <label class="color__radio-label" for="yellow" style="background-color: #FFFF00"></label>
-                                        </div>
-                                        <div class="color__radio">
-                                            <input type="radio" id="granite-gray" name="color">
-                                            <label class="color__radio-label" for="granite-gray" style="background-color: #605F5E"></label>
-                                        </div>
-                                        <div class="color__radio">
-                                            <input type="radio" id="space-cadet" name="color">
-                                            <label class="color__radio-label" for="space-cadet" style="background-color: #1D3461"></label>
+                                @if ($product->colors)
+                                    <div class="u-s-m-b-15">
+                                        <span class="pd-detail__label u-s-m-b-8">{{ __('product.color') }}:</span>
+                                        <div class="pd-detail__color">
+                                            @foreach ($product->colors as $color)
+                                                <div class="color__radio">
+                                                    <input type="radio" id="{{ $color->color->name }}" name="color" wire:model='color' value="{{ $color->color->name }}">
+                                                    <label class="color__radio-label" for="{{ $color->color->name }}" style="background-color: {{ $color->color->name }}"></label>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
-                                </div>
+                                @endif
                                 @include('layouts.inc.errors-message')
                                 @if ($product->attributes->count() > 0)
                                     <div class="u-s-m-b-15">

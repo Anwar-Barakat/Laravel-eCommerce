@@ -223,7 +223,7 @@ class CategorySeeder extends Seeder
                     'ar'    => 'سماعات',
                     'en'    => 'Earphones',
                 ],
-                'discount'          => 0,
+                'discount'          => 5,
                 'description'       => $faker->sentence(130),
                 'url'               => Str::slug('Earphones', '-'),
                 'meta_title'        => $faker->words(3, true),

@@ -120,4 +120,9 @@ class Product extends Model implements HasMedia
     {
         return $this->hasMany(ProductRating::class);
     }
+
+    public function colors(): HasMany
+    {
+        return $this->hasMany(ProductColor::class)->with('color');
+    }
 }

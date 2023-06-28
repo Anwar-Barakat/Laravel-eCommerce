@@ -80,13 +80,14 @@ class CheckoutComponent extends Component
 
             foreach ($this->cart_items as $cart_item) {
                 OrderProduct::create([
-                    'user_id'       => auth()->id(),
-                    'order_id'      => $this->order->id,
-                    'product_id'    => $cart_item->product->id,
-                    'qty'           => $cart_item->qty,
-                    'product_size'  => $cart_item->size,
-                    'product_price' => $cart_item->unit_price,
-                    'grand_price'   => $cart_item->grand_total,
+                    'user_id'           => auth()->id(),
+                    'order_id'          => $this->order->id,
+                    'product_id'        => $cart_item->product->id,
+                    'qty'               => $cart_item->qty,
+                    'product_size'      => $cart_item->size,
+                    'product_color'     => $cart_item->color,
+                    'product_price'     => $cart_item->unit_price,
+                    'grand_price'       => $cart_item->grand_total,
                 ]);
 
                 // reduce products inventory when order placed

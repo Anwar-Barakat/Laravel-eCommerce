@@ -16,7 +16,7 @@ class DisplayProductComponent extends Component
         $rating             = [],
         $selectedBrands     = [],
         $min_price, $max_price,
-        $per_page           = CUSTOMPAGINATION;
+        $per_page           = CUSTOMPAGINATION + 2;
 
     public function render()
     {

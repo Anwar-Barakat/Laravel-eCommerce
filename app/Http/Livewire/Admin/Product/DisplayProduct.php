@@ -21,7 +21,7 @@ class DisplayProduct extends Component
         $brand_id = [],
         $order_by   = 'name',
         $sort_by    = 'asc',
-        $per_page   = CUSTOMPAGINATION;
+        $per_page   = CUSTOMPAGINATION + 2;
 
     public function mount()
     {

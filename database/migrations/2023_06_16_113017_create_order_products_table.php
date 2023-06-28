@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('order_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('product_id')->constrained()->cascadeOnUpdate();
             $table->integer('qty');
+            $table->string('product_color');
             $table->string('product_size');
             $table->float('product_price', 10, 2);
             $table->float('grand_price', 10, 2);

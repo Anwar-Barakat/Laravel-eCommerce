@@ -27,7 +27,7 @@ class Setting extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('setting')
-            ->fit(Manipulations::FIT_CROP, 300)
+            ->fit(Manipulations::FIT_CROP, 110, 32)
             ->nonQueued();
     }
 }

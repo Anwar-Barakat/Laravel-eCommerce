@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('session_id');
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnUpdate();
             $table->foreignId('product_id')->constrained()->cascadeOnUpdate();
+            $table->string('color');
             $table->string('size');
             $table->integer('qty');
             $table->decimal('unit_price');

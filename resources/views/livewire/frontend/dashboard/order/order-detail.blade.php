@@ -66,6 +66,7 @@
                             </div>
                             <div class="description-title">
                                 <span>{{ $ele->product->name }}</span>
+                                <p>{{ __('product.color') }} : {{ $ele->product_color }}</p>
                                 @if ($ele->status)
                                     <p>{{ __('setting.status') }} :
                                         <span class="text-bold {{ $ele->status == 'approved' ? 'text-green-600' : 'text-red-600' }}">

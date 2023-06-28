@@ -5,7 +5,14 @@
         </button>
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
             <a href="{{ route('admin.dashboard') }}">
-                <img src="./static/logo-white.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                @php
+                    $setting = App\Models\Setting::first();
+                @endphp
+                @if ($setting->getFirstMediaUrl('setting'))
+                    <img src="{{ $setting->getFirstMediaUrl('setting') }}" alt="{{ $setting->name }}" width="110" height="32">
+                @else
+                    <img src="{{ asset('backend/static/logo-white.svg') }}" width="110" height="32" alt="{{ $setting->name }}">
+                @endif
             </a>
         </h1>
         <div class="navbar-nav flex-row order-md-last">
@@ -52,7 +59,7 @@
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
                     <span class="avatar avatar-sm">
                         @if (auth()->guard('admin')->user()->getFirstMediaUrl('avatar'))
-                            <img src="{{ auth()->guard('admin')->user()->getFirstMediaUrl('avatar') }}" alt="{{ auth()->guard('admin')->user()->company_code }}" width="32" height="32">
+                            <img src="{{ auth()->guard('admin')->user()->getFirstMediaUrl('avatar') }}" alt="{{ auth()->guard('admin')->user()->full_name }}" width="32" height="32">
                         @else
                             <img src="{{ asset('backend/static/logo-white.svg') }}" width="32" height="32" alt="{{ auth()->guard('admin')->user()->name }}">
                         @endif

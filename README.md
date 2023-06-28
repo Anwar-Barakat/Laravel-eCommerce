@@ -1,66 +1,41 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel e-commerce site
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Features
 
-## About Laravel
+* Dynamic filters on the store page to help customers find the products they want
+* The currency converter on the product detail page updates the product price in different currencies based on the selected volume
+* Product evaluation and rating system that allows customers to share their feedback and opinions
+* Product Taxes / Goods and Services Tax system that calculates the applicable taxes on each product
+* Cart operations that enable customers to add, remove, and update their items
+* My Wish List feature that allows customers to save their favorite products for later
+* Coupon system that offers discounts and promotions to customers
+* Multiple delivery addresses option which updates shipping fee amount accordingly
+* The checkout page that processes payment and order confirmation
+* Cash on Delivery (Payment Method) that allows customers to pay upon receipt of their orders
+* Order cancellation feature (new order) that allows customers to cancel their orders before they are shipped
+* Product re-order feature that allows customers to return an order if the previous order was delivered late or had other issues
+* The feature of replacing order products that allows customers to exchange their products for different products if the previous order was delivered with wrong or unsatisfactory products
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Administrator Control Panel
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The Administrator Dashboard allows me to perform several tasks related to managing my e-commerce website.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* CRUD (Create, Read, Update, Delete) sections, categories, products, filters, brands, banners, coupons, shipping charges, and currencies.
+* Manage product attributes such as size, inventory, price, SKU, and condition.
+* Manage product images that show different angles and views of the product.
+* Define coupon conditions such as applicable categories, users, expiration date, and usage limit.
+* View and respond to user reviews of products.
+* View customer orders, update their status, and send email notifications.
+* View cancellation orders and process them accordingly.
+* View returns and approve or reject them based on the return policy.
+* View exchange orders and approve or reject them based on the exchange policy.
 
-## Learning Laravel
+## Benefits of using Livewire
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* Improved performance: Livewire is a server-side framework, which means that it renders rendering on the server instead of on the client. This can improve performance, especially for complex pages with a lot of dynamic content.
+* Better user experience: Livewire can be used to create more interactive and engaging user experiences. For example, you can use Livewire to create a product detail page that updates the price of a product in real time as the user changes size or color.
+* Easier Development: Livewire makes it easy to develop e-commerce websites. You can use Livewire to create reusable components that can be easily used across your website. This can save you a lot of time and effort.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Conclusion
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+I have successfully converted my prev e-commerce website to Livewire. This improved the performance, user experience, and ease of development of my website. I am confident this will make my website more user friendly and attractive to customers.

@@ -13,7 +13,9 @@ class ProductDetailComponent extends Component
 {
     public Product $product;
 
-    public $size, $qty = 1,
+    public $size,
+        $color,
+        $qty = 1,
         $total_stock;
 
     public $attr;
@@ -55,6 +57,11 @@ class ProductDetailComponent extends Component
     public function addToCard()
     {
         try {
+            if (!$this->color) {
+                toastr()->info(__('validation.required', ['attribute' => __('product.color')]));
+                return false;
+            }
+
             if (!$this->size) {
                 toastr()->info(__('validation.required', ['attribute' => __('product.size')]));
                 return false;
@@ -82,13 +89,13 @@ class ProductDetailComponent extends Component
                 $qty = (int)$cart->qty + (int)$this->qty;
                 $cart->update(['qty' => $qty, 'grand_total' => $qty * $cart->unit_price]);
             } else {
-
                 $cart                 = new Cart();
                 $cart->session_id     = $session_id;
                 $cart->user_id        = Auth::check() ? Auth::id() : null;
                 $cart->qty            = $this->qty;
                 $cart->product_id     = $this->product->id;
                 $cart->size           = $this->attr->size;
+                $cart->color          = $this->color;
                 $cart->unit_price     = $this->attr->price;
                 $cart->grand_total    = $this->attr->price * $this->qty;
                 $cart->save();

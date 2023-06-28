@@ -28,12 +28,11 @@ class TopTrendingComponent extends Component
         // 2- get the category that have a discount
         $this->have_discount_category   = Category::with('products')->whereHas('products')->where('discount', '>', 0)->inRandomOrder()->first();
 
-        // 3- get the category the has the newest products
         $this->new_product_category = Category::has('products', '>=', 1)
             ->whereHas('products', function ($query) {
                 $query->whereDate('created_at', '>', Carbon::now()->subMonth(1));
             })->inRandomOrder()
-            ->whereNotIn('id', [$this->best_seller_category->id, $this->have_discount_category->id])
+            ?->whereNotIn('id', [$this->best_seller_category?->id, $this->have_discount_category?->id])
             ->first();
     }
 

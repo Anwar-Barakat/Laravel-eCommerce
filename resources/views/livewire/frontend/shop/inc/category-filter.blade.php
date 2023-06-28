@@ -15,7 +15,19 @@
                                 @foreach ($section->categories as $cat)
                                     <li class="{{ $cat->subCategories->count() > 0 ? 'has-list' : '' }}">
                                         <a href="{{ route('frontend.category.products', ['url' => $cat->url]) }}">{{ $cat->name }}</a>
-                                        <span class="category-list__text u-s-m-l-6">({{ $cat->products->count() ?? 0 }})</span>
+                                        <span class="category-list__text u-s-m-l-6">
+                                            @if ($cat->subCategories->count() > 0)
+                                                @php
+                                                    $products_count = $cat->products->count();
+                                                    foreach ($cat->subCategories as $category) {
+                                                        $products_count += $category?->products->count() ?? 0;
+                                                    }
+                                                @endphp
+                                                ({{ $products_count }})
+                                            @else
+                                                ({{ $cat->products->count() ?? 0 }})
+                                            @endif
+                                        </span>
                                         @if ($cat->subCategories->count() > 0)
                                             <span class="js-shop-category-span fas fa-plus u-s-m-l-6"></span>
                                             <ul>

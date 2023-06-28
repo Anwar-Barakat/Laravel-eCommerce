@@ -86,7 +86,7 @@
 
 
         <!--====== Section 3 ======-->
-        <div class="u-s-p-b-60">
+        {{-- <div class="u-s-p-b-60">
 
             <!--====== Section Intro ======-->
             <div class="section__intro u-s-m-b-46">
@@ -212,7 +212,7 @@
                 </div>
             </div>
             <!--====== End - Section Content ======-->
-        </div>
+        </div> --}}
         <!--====== End - Section 3 ======-->
 
 
@@ -222,7 +222,7 @@
 
 
         <!--====== Section 5 ======-->
-        <div class="banner-bg">
+        {{-- <div class="banner-bg">
 
             <!--====== Section Content ======-->
             <div class="section__content">
@@ -255,7 +255,7 @@
                 </div>
             </div>
             <!--====== End - Section Content ======-->
-        </div>
+        </div> --}}
         <!--====== End - Section 5 ======-->
 
 
@@ -265,7 +265,7 @@
 
 
         <!--====== Section 7 ======-->
-        <div class="u-s-p-b-60">
+        {{-- <div class="u-s-p-b-60">
 
             <!--====== Section Content ======-->
             <div class="section__content">
@@ -342,12 +342,12 @@
                 </div>
             </div>
             <!--====== End - Section Content ======-->
-        </div>
+        </div> --}}
         <!--====== End - Section 7 ======-->
 
 
         <!--====== Section 8 ======-->
-        <div class="u-s-p-b-60">
+        {{-- <div class="u-s-p-b-60">
 
             <!--====== Section Content ======-->
             <div class="section__content">
@@ -588,12 +588,12 @@
                 </div>
             </div>
             <!--====== End - Section Content ======-->
-        </div>
+        </div> --}}
         <!--====== End - Section 8 ======-->
 
 
         <!--====== Section 9 ======-->
-        <div class="u-s-p-b-60">
+        {{-- <div class="u-s-p-b-60">
 
             <!--====== Section Content ======-->
             <div class="section__content">
@@ -636,12 +636,12 @@
                 </div>
             </div>
             <!--====== End - Section Content ======-->
-        </div>
+        </div> --}}
         <!--====== End - Section 9 ======-->
 
 
         <!--====== Section 10 ======-->
-        <div class="u-s-p-b-60">
+        {{-- <div class="u-s-p-b-60">
 
             <!--====== Section Intro ======-->
             <div class="section__intro u-s-m-b-46">
@@ -854,12 +854,12 @@
                 </div>
             </div>
             <!--====== End - Section Content ======-->
-        </div>
+        </div> --}}
         <!--====== End - Section 10 ======-->
 
 
         <!--====== Section 11 ======-->
-        <div class="u-s-p-b-90 u-s-m-b-30">
+        {{-- <div class="u-s-p-b-90 u-s-m-b-30">
 
             <!--====== Section Intro ======-->
             <div class="section__intro u-s-m-b-46">
@@ -951,12 +951,12 @@
                 </div>
             </div>
             <!--====== End - Section Content ======-->
-        </div>
+        </div> --}}
         <!--====== End - Section 11 ======-->
 
 
         <!--====== Section 12 ======-->
-        <div class="u-s-p-b-60">
+        {{-- <div class="u-s-p-b-60">
 
             <!--====== Section Content ======-->
             <div class="section__content">
@@ -1007,7 +1007,7 @@
                 </div>
             </div>
             <!--====== End - Section Content ======-->
-        </div>
+        </div> --}}
         <!--====== End - Section 12 ======-->
     </div>
 </x-app-layout>

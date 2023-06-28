@@ -104,20 +104,22 @@
                                          </div>
                                      </div>
                                  @empty
-                                     <div class="empty ">
+                                     <div class="empty" style="margin-top: 6rem">
                                          <div class="empty-img">
                                              <img src="{{ asset('backend/static/illustrations/undraw_printing_invoices_5r4r.svg') }}" height="128" width="400" alt="{{ __('msgs.not_found') }}" class="m-auto d-block">
                                          </div>
-                                         <h5 class="empty-title mt-4">{{ __('msgs.not_found') }}</h5>
+                                         <h3 class="empty-title mt-4">{{ __('msgs.not_found') }}</h3>
                                      </div>
                                  @endforelse
                              </div>
                          </div>
-                         <div class="u-s-p-y-60">
-                             <!--====== Pagination ======-->
-                             {{ $products->links('vendor.custom-pagination') }}
-                             <!--====== End - Pagination ======-->
-                         </div>
+                         @if ($products->count() > 10)
+                             <div class="u-s-p-y-60">
+                                 <!--====== Pagination ======-->
+                                 {{ $products?->links('vendor.custom-pagination') }}
+                                 <!--====== End - Pagination ======-->
+                             </div>
+                         @endif
                      </div>
                  </div>
              </div>

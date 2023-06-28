@@ -32,18 +32,22 @@
                                 <p>({{ __('frontend.best_seller') }})</p>
                             </button>
                         </div>
-                        <div class="filter__category-wrapper">
-                            <button class="btn filter__btn filter__btn--style-1 flex gap-1" type="button" data-filter=".{{ $have_discount_category->url }}">
-                                <span>{{ strtoupper($have_discount_category->name) }}</span>
-                                <p>({{ __('product.discount') }})</p>
-                            </button>
-                        </div>
-                        <div class="filter__category-wrapper">
-                            <button class="btn filter__btn filter__btn--style-1 flex gap-1" type="button" data-filter=".{{ $new_product_category->url }}">
-                                <span>{{ strtoupper($new_product_category->name) }}</span>
-                                <p>({{ __('frontend.newest') }})</p>
-                            </button>
-                        </div>
+                        @if ($have_discount_category)
+                            <div class="filter__category-wrapper">
+                                <button class="btn filter__btn filter__btn--style-1 flex gap-1" type="button" data-filter=".{{ $have_discount_category->url }}">
+                                    <span>{{ strtoupper($have_discount_category->name) }}</span>
+                                    <p>({{ __('product.discount') }})</p>
+                                </button>
+                            </div>
+                        @endif
+                        @if ($new_product_category)
+                            <div class="filter__category-wrapper">
+                                <button class="btn filter__btn filter__btn--style-1 flex gap-1" type="button" data-filter=".{{ $new_product_category->url }}">
+                                    <span>{{ strtoupper($new_product_category->name) }}</span>
+                                    <p>({{ __('frontend.newest') }})</p>
+                                </button>
+                            </div>
+                        @endif
                     </div>
                     <div class="filter__grid-wrapper u-s-m-t-30">
                         <div class="row">
@@ -55,18 +59,23 @@
                             @endforeach
 
                             <!-- Products Best Seller -->
-                            @foreach ($have_discount_category->products->shuffle()->take(4) as $product2)
-                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item {{ $have_discount_category->url }}">
-                                    <x-front-product-block :product="$product2" />
-                                </div>
-                            @endforeach
+                            @if ($have_discount_category)
+                                @foreach ($have_discount_category->products->shuffle()->take(4) as $product2)
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item {{ $have_discount_category->url }}">
+                                        <x-front-product-block :product="$product2" />
+                                    </div>
+                                @endforeach
+                            @endif
 
                             <!-- Products Best Seller -->
-                            @foreach ($new_product_category->products->shuffle()->take(4) as $product3)
-                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item {{ $new_product_category->url }}">
-                                    <x-front-product-block :product="$product3" />
-                                </div>
-                            @endforeach
+                            @if ($new_product_category)
+
+                                @foreach ($new_product_category->products->shuffle()->take(4) as $product3)
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item {{ $new_product_category->url }}">
+                                        <x-front-product-block :product="$product3" />
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
