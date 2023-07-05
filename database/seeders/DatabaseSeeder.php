@@ -32,6 +32,8 @@ class DatabaseSeeder extends Seeder
 
             OrderStatusSeeder::class,
             ColorSeeder::class,
+
+            RoleSeeder::class,
         ]);
     }
 }
