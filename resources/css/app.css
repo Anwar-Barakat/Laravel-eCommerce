@@ -26,6 +26,7 @@ img {
 
 textarea {
     resize: none;
+    font-size: 19px !important;
 }
 
 [type="text"]:focus,
@@ -119,6 +120,11 @@ select:focus {
 .text-green-600 {
     --tw-text-opacity: 1;
     color: rgb(22 163 74 / var(--tw-text-opacity)) !important;
+}
+
+.owl-carousel .owl-stage {
+    display: inline-block;
+    min-height: 680px;
 }
 
 ul {

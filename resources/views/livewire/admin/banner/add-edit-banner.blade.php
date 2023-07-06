@@ -11,7 +11,7 @@
                               @elseif ($banner->getFirstMediaUrl('banners', 'thumb'))
                                   <img src="{{ $banner->getFirstMediaUrl('banners') }}" class="img img-thumbnail" alt="{{ $banner->name }}">
                               @else
-                                  <img src="{{ asset('backend/static/banner-default.jpg') }}" class="img img-thumbnail" alt="{{ $banner->name }}">
+                                  <img src="{{ asset('frontend/dist/images/product/banner-default.jpg') }}" class="img img-thumbnail" alt="{{ $banner->name }}">
                               @endif
                           </div>
                       </div>

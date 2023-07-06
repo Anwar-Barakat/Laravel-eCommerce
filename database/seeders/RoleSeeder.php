@@ -14,7 +14,7 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $roles  = ['media-manager', 'product-manager', 'brand-manager', 'banner-manager', 'order-manager', 'category-manager'];
+        $roles  = ['general_manager', 'product_manager', 'order_manager'];
         $admin1 = Admin::where('email', 'brkatanwar0@gmail.com')->first();
         $admin2 = Admin::where('email', 'admin@admin.com')->first();
 
@@ -28,6 +28,6 @@ class RoleSeeder extends Seeder
         }
 
         $admin1->assignRole($roles);
-        $admin2->assignRole('product-manager');
+        $admin2->assignRole('product_manager');
     }
 }

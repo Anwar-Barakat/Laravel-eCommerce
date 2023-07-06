@@ -4,7 +4,7 @@
             @if ($product->getFirstMediaUrl('products', 'small'))
                 <img class="aspect__img" src="{{ $product->getFirstMediaUrl('products', 'small') }}" alt="{{ $product->name }}">
             @else
-                <img class="aspect__img" src="{{ asset('frontend/dist/images/product/electronic/product13.jpg') }}" alt="{{ $product->name }}">
+                <img class="aspect__img" src="{{ asset('frontend/dist/images/product/square-default-image.jpeg') }}" alt="{{ $product->name }}">
             @endif
         </a>
         <div class="product-o__action-wrap">

@@ -12,7 +12,7 @@
                               @elseif ($product->getFirstMediaUrl('products', 'thumb'))
                                   <img src="{{ $product->getFirstMediaUrl('products') }}" class="img img-thumbnail" alt="{{ $product->name }}" width="300">
                               @else
-                                  <img src="{{ asset('backend/static/square-default-image.jpeg') }}" class="img img-thumbnail" alt="{{ $product->name }}" width="300">
+                                  <img src="{{ asset('frontend/dist/images/product/square-default-image.jpeg') }}" class="img img-thumbnail" alt="{{ $product->name }}" width="300">
                               @endif
                           </div>
                       </div>
@@ -108,7 +108,7 @@
                                   <x-input-label class="form-label" :value="__('product.price')" />
                                   <div class="input-group">
                                       <span class="input-group-text">$</span>
-                                      <x-text-input type="number" class="form-control" placeholder="2.5" wire:model.defer='product.price' required />
+                                      <x-text-input type="text" class="form-control" placeholder="2.5" wire:model.defer='product.price' required />
                                   </div>
                                   <x-input-error :messages="$errors->get('product.price')" class="mt-2" />
                               </div>

@@ -16,7 +16,7 @@
              @if ($product->getFirstMediaUrl('products', 'thumb'))
                  <img src="{{ $product->getFirstMediaUrl('products') }}" class="img img-thumbnail" alt="{{ $product->name }}">
              @else
-                 <img src="{{ asset('backend/static/square-default-image.jpeg') }}" class="img img-thumbnail" alt="{{ $product->name }}">
+                 <img src="{{ asset('frontend/dist/images/product/square-default-image.jpeg') }}" class="img img-thumbnail" alt="{{ $product->name }}">
              @endif
          </span>
          <h3 class="m-0 mb-1">

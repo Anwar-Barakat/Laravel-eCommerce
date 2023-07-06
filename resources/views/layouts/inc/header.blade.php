@@ -135,343 +135,347 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item dropdown {{ request()->routeIs('admin.sections.*') || request()->routeIs('admin.categories.*') || request()->routeIs('admin.brands.*') || request()->routeIs('admin.banners.*') || request()->routeIs('admin.pages.contact') ? 'active' : '' }}">
-                        <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
-                                    <path d="M12 12l8 -4.5" />
-                                    <path d="M12 12l0 9" />
-                                    <path d="M12 12l-8 -4.5" />
-                                    <path d="M16 5.25l-8 4.5" />
-                                </svg>
-                            </span>
-                            <span class="nav-link-title">
-                                {{ __('partials.main_elements') }}
-                            </span>
-                        </a>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-menu-columns">
-                                <div class="dropdown-menu-column">
-                                    <!-- sections -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.sections.*') ? 'active' : '' }}" href="{{ route('admin.sections.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
-                                                <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10"></path>
-                                                <path d="M10 12l4 0"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('section.sections') }}
-                                    </a>
+                    @if (Auth::guard('admin')->user()->hasRole('general_manager'))
+                        <li class="nav-item dropdown {{ request()->routeIs('admin.sections.*') || request()->routeIs('admin.categories.*') || request()->routeIs('admin.brands.*') || request()->routeIs('admin.banners.*') || request()->routeIs('admin.pages.contact') ? 'active' : '' }}">
+                            <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
+                                        <path d="M12 12l8 -4.5" />
+                                        <path d="M12 12l0 9" />
+                                        <path d="M12 12l-8 -4.5" />
+                                        <path d="M16 5.25l-8 4.5" />
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">
+                                    {{ __('partials.main_elements') }}
+                                </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-menu-columns">
+                                    <div class="dropdown-menu-column">
+                                        <!-- sections -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.sections.*') ? 'active' : '' }}" href="{{ route('admin.sections.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+                                                    <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10"></path>
+                                                    <path d="M10 12l4 0"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('section.sections') }}
+                                        </a>
 
-                                    <!-- categories -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-apps" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
-                                                <path d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
-                                                <path d="M14 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
-                                                <path d="M14 7l6 0"></path>
-                                                <path d="M17 4l0 6"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('category.categories') }}
-                                    </a>
+                                        <!-- categories -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-apps" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
+                                                    <path d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
+                                                    <path d="M14 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
+                                                    <path d="M14 7l6 0"></path>
+                                                    <path d="M17 4l0 6"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('category.categories') }}
+                                        </a>
 
-                                    <!-- brands -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.brands.*') ? 'active' : '' }}" href="{{ route('admin.brands.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-discount-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path
-                                                    d="M5 7.2a2.2 2.2 0 0 1 2.2 -2.2h1a2.2 2.2 0 0 0 1.55 -.64l.7 -.7a2.2 2.2 0 0 1 3.12 0l.7 .7c.412 .41 .97 .64 1.55 .64h1a2.2 2.2 0 0 1 2.2 2.2v1c0 .58 .23 1.138 .64 1.55l.7 .7a2.2 2.2 0 0 1 0 3.12l-.7 .7a2.2 2.2 0 0 0 -.64 1.55v1a2.2 2.2 0 0 1 -2.2 2.2h-1a2.2 2.2 0 0 0 -1.55 .64l-.7 .7a2.2 2.2 0 0 1 -3.12 0l-.7 -.7a2.2 2.2 0 0 0 -1.55 -.64h-1a2.2 2.2 0 0 1 -2.2 -2.2v-1a2.2 2.2 0 0 0 -.64 -1.55l-.7 -.7a2.2 2.2 0 0 1 0 -3.12l.7 -.7a2.2 2.2 0 0 0 .64 -1.55v-1">
-                                                </path>
-                                                <path d="M9 12l2 2l4 -4"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('product.brands') }}
-                                    </a>
+                                        <!-- brands -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.brands.*') ? 'active' : '' }}" href="{{ route('admin.brands.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-discount-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path
+                                                        d="M5 7.2a2.2 2.2 0 0 1 2.2 -2.2h1a2.2 2.2 0 0 0 1.55 -.64l.7 -.7a2.2 2.2 0 0 1 3.12 0l.7 .7c.412 .41 .97 .64 1.55 .64h1a2.2 2.2 0 0 1 2.2 2.2v1c0 .58 .23 1.138 .64 1.55l.7 .7a2.2 2.2 0 0 1 0 3.12l-.7 .7a2.2 2.2 0 0 0 -.64 1.55v1a2.2 2.2 0 0 1 -2.2 2.2h-1a2.2 2.2 0 0 0 -1.55 .64l-.7 .7a2.2 2.2 0 0 1 -3.12 0l-.7 -.7a2.2 2.2 0 0 0 -1.55 -.64h-1a2.2 2.2 0 0 1 -2.2 -2.2v-1a2.2 2.2 0 0 0 -.64 -1.55l-.7 -.7a2.2 2.2 0 0 1 0 -3.12l.7 -.7a2.2 2.2 0 0 0 .64 -1.55v-1">
+                                                    </path>
+                                                    <path d="M9 12l2 2l4 -4"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('product.brands') }}
+                                        </a>
 
-                                    <!-- banners -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.banners.*') ? 'active' : '' }}" href="{{ route('admin.banners.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path d="M5 14h14l-4.5 -4.5l4.5 -4.5h-14v16" />
-                                            </svg>
-                                        </span>
-                                        {{ __('product.banners') }}
-                                    </a>
+                                        <!-- banners -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.banners.*') ? 'active' : '' }}" href="{{ route('admin.banners.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M5 14h14l-4.5 -4.5l4.5 -4.5h-14v16" />
+                                                </svg>
+                                            </span>
+                                            {{ __('product.banners') }}
+                                        </a>
 
-                                    <!-- coupons -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.coupons.*') ? 'active' : '' }}" href="{{ route('admin.coupons.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-discount" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M9 15l6 -6"></path>
-                                                <circle cx="9.5" cy="9.5" r=".5" fill="currentColor"></circle>
-                                                <circle cx="14.5" cy="14.5" r=".5" fill="currentColor"></circle>
-                                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('product.coupons') }}
-                                    </a>
-                                </div>
-                                <div class="dropdown-menu-column">
-                                    <!-- contact us -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.pages.contact') ? 'active' : '' }}" href="{{ route('admin.pages.contact') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10"></path>
-                                                <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('setting.contact_us') }}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown {{ request()->routeIs('admin.products.*') || request()->routeIs('admin.filters.*') || request()->routeIs('admin.filter-values.*') || request()->routeIs('admin.products_rating') || request()->routeIs('admin.colors.index') ? 'active' : '' }}">
-                        <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M3 21l18 0" />
-                                    <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4" />
-                                    <path d="M5 21l0 -10.15" />
-                                    <path d="M19 21l0 -10.15" />
-                                    <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
-                                </svg>
-                            </span>
-                            <span class="nav-link-title">
-                                {{ __('partials.warehouse') }}
-                            </span>
-                        </a>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-menu-columns">
-                                <div class="dropdown-menu-column">
-                                    <!-- products -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.products.*') ? 'active' : '' }}" href="{{ route('admin.products.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tags" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M7.859 6h-2.834a2.025 2.025 0 0 0 -2.025 2.025v2.834c0 .537 .213 1.052 .593 1.432l6.116 6.116a2.025 2.025 0 0 0 2.864 0l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-6.117 -6.116a2.025 2.025 0 0 0 -1.431 -.593z"></path>
-                                                <path d="M17.573 18.407l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-7.117 -7.116"></path>
-                                                <path d="M6 9h-.01"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('product.products') }}
-                                    </a>
-
-                                    <!-- products  rating -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.products_rating') ? 'active' : '' }}" href="{{ route('admin.products_rating') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-badge" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M17 17v-13l-5 3l-5 -3v13l5 3z"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('product.products_rating') }}
-                                    </a>
-                                </div>
-                                <div class="dropdown-menu-column">
-                                    <!-- filters -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.filters.*') ? 'active' : '' }}" href="{{ route('admin.filters.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-adjustments-cog" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M4 10a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-                                                <path d="M6 4v4"></path>
-                                                <path d="M6 12v8"></path>
-                                                <path d="M13.199 14.399a2 2 0 1 0 -1.199 3.601"></path>
-                                                <path d="M12 4v10"></path>
-                                                <path d="M12 18v2"></path>
-                                                <path d="M16 7a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-                                                <path d="M18 4v1"></path>
-                                                <path d="M18 9v2.5"></path>
-                                                <path d="M19.001 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                                                <path d="M19.001 15.5v1.5"></path>
-                                                <path d="M19.001 21v1.5"></path>
-                                                <path d="M22.032 17.25l-1.299 .75"></path>
-                                                <path d="M17.27 20l-1.3 .75"></path>
-                                                <path d="M15.97 17.25l1.3 .75"></path>
-                                                <path d="M20.733 20l1.3 .75"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('product.filters') }}
-                                    </a>
-
-                                    <!-- filters values -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.filter-values.*') ? 'active' : '' }}" href="{{ route('admin.filter-values.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-filter-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M12 20l-3 1v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v3"></path>
-                                                <path d="M16 19h6"></path>
-                                                <path d="M19 16v6"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('product.filters_values') }}
-                                    </a>
-
-                                    <!-- colors -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.colors.*') ? 'active' : '' }}" href="{{ route('admin.colors.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-palette" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25"></path>
-                                                <path d="M8.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                                                <path d="M12.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                                                <path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('product.colors') }}
-                                    </a>
+                                        <!-- coupons -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.coupons.*') ? 'active' : '' }}" href="{{ route('admin.coupons.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-discount" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M9 15l6 -6"></path>
+                                                    <circle cx="9.5" cy="9.5" r=".5" fill="currentColor"></circle>
+                                                    <circle cx="14.5" cy="14.5" r=".5" fill="currentColor"></circle>
+                                                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('product.coupons') }}
+                                        </a>
+                                    </div>
+                                    <div class="dropdown-menu-column">
+                                        <!-- contact us -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.pages.contact') ? 'active' : '' }}" href="{{ route('admin.pages.contact') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10"></path>
+                                                    <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('setting.contact_us') }}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    @endif
+                    @if (Auth::guard('admin')->user()->hasRole('product_manager'))
+                        <li class="nav-item dropdown {{ request()->routeIs('admin.products.*') || request()->routeIs('admin.filters.*') || request()->routeIs('admin.filter-values.*') || request()->routeIs('admin.products_rating') || request()->routeIs('admin.colors.index') ? 'active' : '' }}">
+                            <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M3 21l18 0" />
+                                        <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4" />
+                                        <path d="M5 21l0 -10.15" />
+                                        <path d="M19 21l0 -10.15" />
+                                        <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">
+                                    {{ __('partials.warehouse') }}
+                                </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-menu-columns">
+                                    <div class="dropdown-menu-column">
+                                        <!-- products -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.products.*') ? 'active' : '' }}" href="{{ route('admin.products.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tags" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M7.859 6h-2.834a2.025 2.025 0 0 0 -2.025 2.025v2.834c0 .537 .213 1.052 .593 1.432l6.116 6.116a2.025 2.025 0 0 0 2.864 0l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-6.117 -6.116a2.025 2.025 0 0 0 -1.431 -.593z"></path>
+                                                    <path d="M17.573 18.407l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-7.117 -7.116"></path>
+                                                    <path d="M6 9h-.01"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('product.products') }}
+                                        </a>
 
+                                        <!-- products  rating -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.products_rating') ? 'active' : '' }}" href="{{ route('admin.products_rating') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-badge" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M17 17v-13l-5 3l-5 -3v13l5 3z"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('product.products_rating') }}
+                                        </a>
+                                    </div>
+                                    <div class="dropdown-menu-column">
+                                        <!-- filters -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.filters.*') ? 'active' : '' }}" href="{{ route('admin.filters.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-adjustments-cog" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M4 10a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                    <path d="M6 4v4"></path>
+                                                    <path d="M6 12v8"></path>
+                                                    <path d="M13.199 14.399a2 2 0 1 0 -1.199 3.601"></path>
+                                                    <path d="M12 4v10"></path>
+                                                    <path d="M12 18v2"></path>
+                                                    <path d="M16 7a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                    <path d="M18 4v1"></path>
+                                                    <path d="M18 9v2.5"></path>
+                                                    <path d="M19.001 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                                    <path d="M19.001 15.5v1.5"></path>
+                                                    <path d="M19.001 21v1.5"></path>
+                                                    <path d="M22.032 17.25l-1.299 .75"></path>
+                                                    <path d="M17.27 20l-1.3 .75"></path>
+                                                    <path d="M15.97 17.25l1.3 .75"></path>
+                                                    <path d="M20.733 20l1.3 .75"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('product.filters') }}
+                                        </a>
 
-                    <li class="nav-item active dropdown {{ request()->routeIs('admin.shipping-charges.*') || request()->routeIs('admin.currencies.*') || request()->routeIs('admin.users.*') || request()->routeIs('admin.orders.*') || request()->routeIs('admin.cancelled-orders.*') || request()->routeIs('admin.returned-orders.*') || request()->routeIs('admin.exchanged-orders.*') ? 'active' : '' }}">
-                        <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697"></path>
-                                    <path d="M18 14v4h4"></path>
-                                    <path d="M18 11v-4a2 2 0 0 0 -2 -2h-2"></path>
-                                    <path d="M8 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
-                                    <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-                                    <path d="M8 11h4"></path>
-                                    <path d="M8 15h3"></path>
-                                </svg>
-                            </span>
-                            <span class="nav-link-title">
-                                {{ __('partials.orders') }}
-                            </span>
-                        </a>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-menu-columns">
-                                <div class="dropdown-menu-column">
-                                    <!-- shopping charges -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.shipping-charges.*') ? 'active' : '' }}" href="{{ route('admin.shipping-charges.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-discount" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M9 15l6 -6"></path>
-                                                <circle cx="9.5" cy="9.5" r=".5" fill="currentColor"></circle>
-                                                <circle cx="14.5" cy="14.5" r=".5" fill="currentColor"></circle>
-                                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('order.shipping_charge') }}
-                                    </a>
+                                        <!-- filters values -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.filter-values.*') ? 'active' : '' }}" href="{{ route('admin.filter-values.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-filter-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M12 20l-3 1v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v3"></path>
+                                                    <path d="M16 19h6"></path>
+                                                    <path d="M19 16v6"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('product.filters_values') }}
+                                        </a>
 
-                                    <!-- currencies -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.currencies.*') ? 'active' : '' }}" href="{{ route('admin.currencies.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-bank" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M3 21l18 0"></path>
-                                                <path d="M3 10l18 0"></path>
-                                                <path d="M5 6l7 -3l7 3"></path>
-                                                <path d="M4 10l0 11"></path>
-                                                <path d="M20 10l0 11"></path>
-                                                <path d="M8 14l0 3"></path>
-                                                <path d="M12 14l0 3"></path>
-                                                <path d="M16 14l0 3"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('order.currencies') }}
-                                    </a>
-
-                                    <!-- users -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users-group" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-                                                <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"></path>
-                                                <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-                                                <path d="M17 10h2a2 2 0 0 1 2 2v1"></path>
-                                                <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-                                                <path d="M3 13v-1a2 2 0 0 1 2 -2h2"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('order.users') }}
-                                    </a>
-                                </div>
-                                <div class="dropdown-menu-column">
-                                    <!-- orders -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}" href="{{ route('admin.orders.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                                                <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                                                <path d="M17 17h-11v-14h-2"></path>
-                                                <path d="M6 5l14 1l-1 7h-13"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('order.orders') }}
-                                    </a>
-
-
-                                    <!-- exchange orders -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.exchanged-orders.*') ? 'active' : '' }}" href="{{ route('admin.exchanged-orders.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-3d-rotate" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M12 3a7 7 0 0 1 7 7v4l-3 -3"></path>
-                                                <path d="M22 11l-3 3"></path>
-                                                <path d="M8 15.5l-5 -3l5 -3l5 3v5.5l-5 3z"></path>
-                                                <path d="M3 12.5v5.5l5 3"></path>
-                                                <path d="M8 15.545l5 -3.03"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('order.orders_exchange') }}
-                                    </a>
-
-                                    <!-- returned orders -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.returned-orders.*') ? 'active' : '' }}" href="{{ route('admin.returned-orders.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-truck-return" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                                                <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                                                <path d="M5 17h-2v-11a1 1 0 0 1 1 -1h9v6h-5l2 2m0 -4l-2 2"></path>
-                                                <path d="M9 17l6 0"></path>
-                                                <path d="M13 6h5l3 5v6h-2"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('order.returned_orders') }}
-                                    </a>
-
-                                    <!-- cancelled orders -->
-                                    <a class="dropdown-item {{ request()->routeIs('admin.cancelled-orders.*') ? 'active' : '' }}" href="{{ route('admin.cancelled-orders.index') }}">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-off" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                                                <path d="M17 17a2 2 0 1 0 2 2"></path>
-                                                <path d="M17 17h-11v-11"></path>
-                                                <path d="M9.239 5.231l10.761 .769l-1 7h-2m-4 0h-7"></path>
-                                                <path d="M3 3l18 18"></path>
-                                            </svg>
-                                        </span>
-                                        {{ __('order.cancelled_orders') }}
-                                    </a>
+                                        <!-- colors -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.colors.*') ? 'active' : '' }}" href="{{ route('admin.colors.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-palette" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25"></path>
+                                                    <path d="M8.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                                    <path d="M12.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                                    <path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('product.colors') }}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    @endif
+                    @if (Auth::guard('admin')->user()->hasRole('order_manager'))
+                        <li class="nav-item active dropdown {{ request()->routeIs('admin.shipping-charges.*') || request()->routeIs('admin.currencies.*') || request()->routeIs('admin.users.*') || request()->routeIs('admin.orders.*') || request()->routeIs('admin.cancelled-orders.*') || request()->routeIs('admin.returned-orders.*') || request()->routeIs('admin.exchanged-orders.*') ? 'active' : '' }}">
+                            <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697"></path>
+                                        <path d="M18 14v4h4"></path>
+                                        <path d="M18 11v-4a2 2 0 0 0 -2 -2h-2"></path>
+                                        <path d="M8 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
+                                        <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                                        <path d="M8 11h4"></path>
+                                        <path d="M8 15h3"></path>
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">
+                                    {{ __('partials.orders') }}
+                                </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-menu-columns">
+                                    <div class="dropdown-menu-column">
+                                        <!-- shopping charges -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.shipping-charges.*') ? 'active' : '' }}" href="{{ route('admin.shipping-charges.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-discount" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M9 15l6 -6"></path>
+                                                    <circle cx="9.5" cy="9.5" r=".5" fill="currentColor"></circle>
+                                                    <circle cx="14.5" cy="14.5" r=".5" fill="currentColor"></circle>
+                                                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('order.shipping_charge') }}
+                                        </a>
+
+                                        <!-- currencies -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.currencies.*') ? 'active' : '' }}" href="{{ route('admin.currencies.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-bank" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M3 21l18 0"></path>
+                                                    <path d="M3 10l18 0"></path>
+                                                    <path d="M5 6l7 -3l7 3"></path>
+                                                    <path d="M4 10l0 11"></path>
+                                                    <path d="M20 10l0 11"></path>
+                                                    <path d="M8 14l0 3"></path>
+                                                    <path d="M12 14l0 3"></path>
+                                                    <path d="M16 14l0 3"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('order.currencies') }}
+                                        </a>
+
+                                        <!-- users -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users-group" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                    <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"></path>
+                                                    <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                    <path d="M17 10h2a2 2 0 0 1 2 2v1"></path>
+                                                    <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                    <path d="M3 13v-1a2 2 0 0 1 2 -2h2"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('order.users') }}
+                                        </a>
+                                    </div>
+                                    <div class="dropdown-menu-column">
+                                        <!-- orders -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}" href="{{ route('admin.orders.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                                    <path d="M17 17h-11v-14h-2"></path>
+                                                    <path d="M6 5l14 1l-1 7h-13"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('order.orders') }}
+                                        </a>
+
+
+                                        <!-- exchange orders -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.exchanged-orders.*') ? 'active' : '' }}" href="{{ route('admin.exchanged-orders.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-3d-rotate" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M12 3a7 7 0 0 1 7 7v4l-3 -3"></path>
+                                                    <path d="M22 11l-3 3"></path>
+                                                    <path d="M8 15.5l-5 -3l5 -3l5 3v5.5l-5 3z"></path>
+                                                    <path d="M3 12.5v5.5l5 3"></path>
+                                                    <path d="M8 15.545l5 -3.03"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('order.orders_exchange') }}
+                                        </a>
+
+                                        <!-- returned orders -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.returned-orders.*') ? 'active' : '' }}" href="{{ route('admin.returned-orders.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-truck-return" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                                    <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                                    <path d="M5 17h-2v-11a1 1 0 0 1 1 -1h9v6h-5l2 2m0 -4l-2 2"></path>
+                                                    <path d="M9 17l6 0"></path>
+                                                    <path d="M13 6h5l3 5v6h-2"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('order.returned_orders') }}
+                                        </a>
+
+                                        <!-- cancelled orders -->
+                                        <a class="dropdown-item {{ request()->routeIs('admin.cancelled-orders.*') ? 'active' : '' }}" href="{{ route('admin.cancelled-orders.index') }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-off" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                                    <path d="M17 17a2 2 0 1 0 2 2"></path>
+                                                    <path d="M17 17h-11v-11"></path>
+                                                    <path d="M9.239 5.231l10.761 .769l-1 7h-2m-4 0h-7"></path>
+                                                    <path d="M3 3l18 18"></path>
+                                                </svg>
+                                            </span>
+                                            {{ __('order.cancelled_orders') }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>

@@ -3,12 +3,14 @@
 namespace App\Http\Livewire\Admin\Dashboard;
 
 use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Spatie\Permission\Models\Role;
 
 class DashboardStatisticComponent extends Component
 {
-
     public $new_filter, $pending_filter, $in_process_filter, $shipped_filter, $delivered_filter, $cancelled_filter;
+
     public function render()
     {
         return view('livewire.admin.dashboard.dashboard-statistic-component', [

@@ -35,8 +35,8 @@
                          <img class="u-img-fluid" src="{{ $product->getFirstMediaUrl('products', 'large') }}" data-zoom-image="{{ $product->getFirstMediaUrl('products', 'large') }}" alt="">
                      </div>
                  @else
-                     <div class="pd-o-img-wrap" data-src="{{ asset('frontend/dist/images/product/electronic/product1.jpg') }}">
-                         <img class="u-img-fluid" src="{{ asset('frontend/dist/images/product/electronic/product1.jpg') }}" data-zoom-image="{{ asset('frontend/dist/images/product/electronic/product1.jpg') }}" alt="">
+                     <div class="pd-o-img-wrap" data-src="{{ asset('frontend/dist/images/product/square-default-image.jpeg') }}">
+                         <img class="u-img-fluid" src="{{ asset('frontend/dist/images/product/square-default-image.jpeg') }}" data-zoom-image="{{ asset('frontend/dist/images/product/square-default-image.jpeg') }}" alt="">
                      </div>
                  @endif
 

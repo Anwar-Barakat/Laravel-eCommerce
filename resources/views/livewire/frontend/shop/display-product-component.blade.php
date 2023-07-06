@@ -47,7 +47,7 @@
                                                      @if ($product->getFirstMediaUrl('products', 'medium'))
                                                          <img class="aspect__img" src="{{ $product->getFirstMediaUrl('products', 'medium') }}" alt="{{ $product->name }}">
                                                      @else
-                                                         <img class="aspect__img" src="{{ asset('frontend/dist/images/product/electronic/product6.jpg') }}" alt="{{ $product->name }}">
+                                                         <img class="aspect__img" src="{{ asset('frontend/dist/images/product/square-default-image.jpeg') }}" alt="{{ $product->name }}">
                                                      @endif
                                                  </a>
                                                  <div class="product-m__quick-look">
