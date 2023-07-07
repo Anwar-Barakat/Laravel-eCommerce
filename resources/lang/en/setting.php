@@ -50,4 +50,12 @@ return [
     'messsages'             => 'Messages',
     'messsage'              => 'Message',
     'subject'               => 'Subject',
+
+    //_______________________
+    // Role & Permissions
+    //_______________________
+    'roles'                 => 'Roles',
+    'role'                  => 'Role',
+    'permissions'           => 'Permissions',
+    'permission'            => 'Permission',
 ];

@@ -14,7 +14,7 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $roles  = ['general_manager', 'product_manager', 'order_manager'];
+        $roles  = ['administrator', 'general_manager', 'product_manager', 'order_manager', 'blog_manager'];
         $admin1 = Admin::where('email', 'brkatanwar0@gmail.com')->first();
         $admin2 = Admin::where('email', 'admin@admin.com')->first();
 

@@ -2,19 +2,20 @@
 
 return [
     //? Navbar :
-    'home'          => 'لوحة التحكم',
-    'main_elements' => 'العناصر الرئيسية',
-    'languages'     => 'اللغات',
-    'status'        => 'الحالة',
-    'profile'       => 'الملف الشخصي',
-    'settings'      => 'الأعدادات',
-    'logout'        => 'تسجيل الخروج',
-    'by'            => 'من قبل',
-    'transactions'  => 'المعاملات',
-    'accounts'      => 'الحسابات',
-    'Profile'       => 'الملف الشخصي',
-    'warehouse'     => 'المستودع',
-    'orders'        => 'الطلبات',
+    'home'              => 'لوحة التحكم',
+    'main_elements'     => 'العناصر الرئيسية',
+    'languages'         => 'اللغات',
+    'status'            => 'الحالة',
+    'profile'           => 'الملف الشخصي',
+    'settings'          => 'الأعدادات',
+    'logout'            => 'تسجيل الخروج',
+    'by'                => 'من قبل',
+    'transactions'      => 'المعاملات',
+    'accounts'          => 'الحسابات',
+    'Profile'           => 'الملف الشخصي',
+    'warehouse'         => 'المستودع',
+    'orders'            => 'الطلبات',
+    'general_setting'   => 'الضبط العام',
 
     //? Footer :
     'copyright'                 => 'حقوق النشر',

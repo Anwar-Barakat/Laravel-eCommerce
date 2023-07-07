@@ -67,7 +67,7 @@
                                 @if ($brand->getFirstMediaUrl('brands', 'thumb'))
                                     <img src="{{ $brand->getFirstMediaUrl('brands') }}" class="img img-thumbnail" alt="{{ $brand->name }}" width="80">
                                 @else
-                                    <img src="{{ asset('backend/static/square-default-image.jpeg') }}" class="img img-thumbnail" alt="{{ $brand->name }}" width="80">
+                                    <img src="{{ asset('frontend/dist/images/product/square-default-image.jpeg') }}" class="img img-thumbnail" alt="{{ $brand->name }}" width="80">
                                 @endif
                             </td>
                             <td> {{ $brand->name }}</td>

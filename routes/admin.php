@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\Product\Filter\ProductFilterController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\ProductRating\ProductRatingController;
 use App\Http\Controllers\Admin\ReturnedOrder\ReturnedOrderController;
+use App\Http\Controllers\Admin\Role\RoleController;
 use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Setting\AdminChangePasswordController;
 use App\Http\Controllers\Admin\Setting\AdminProfileController;
@@ -78,7 +79,14 @@ Route::group(
                 Route::get('/logout',                                       LogoutController::class)->name('logout');
                 Route::get('/dashboard',                                    DashboardController::class)->name('dashboard');
 
-                Route::group(['middleware' => ['role:general_manager', 'auth:admin']], function () {
+                Route::group(['middleware' => ['role:administrator', 'role:general_manager', 'auth:admin']], function () {
+                    //_______________________
+                    // Roles
+                    //_______________________
+                    Route::get('roles',                                         RoleController::class)->name('roles.index');
+                });
+
+                Route::group(['middleware' => ['role:administrator', 'role:general_manager', 'auth:admin']], function () {
                     //_______________________
                     // sections
                     //_______________________
@@ -110,7 +118,7 @@ Route::group(
                     Route::get('/contact',                                      ContactUsController::class)->name('pages.contact');
                 });
 
-                Route::group(['middleware' => ['role:product_manager', 'auth:admin']], function () {
+                Route::group(['middleware' => ['role:administrator', 'role:product_manager', 'auth:admin']], function () {
                     //_______________________
                     // products
                     //_______________________
@@ -155,7 +163,7 @@ Route::group(
                     Route::resource('filter-values',                            FilterValueController::class)->only(['index', 'create', 'edit']);
                 });
 
-                Route::group(['middleware' => ['role:order_manager', 'auth:admin']], function () {
+                Route::group(['middleware' => ['role:administrator', 'role:order_manager', 'auth:admin']], function () {
                     //_______________________
                     // shipping charges
                     //_______________________

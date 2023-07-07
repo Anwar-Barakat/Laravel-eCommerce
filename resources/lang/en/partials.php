@@ -2,19 +2,20 @@
 
 return [
     //? Navbar :
-    'home'          => 'Dashboard',
-    'main_elements' => 'Main Elements',
-    'languages'     => 'Languages',
-    'status'        => 'Status',
-    'profile'       => 'Profile',
-    'settings'      => 'Settings',
-    'logout'        => 'Logout',
-    'transactions'  => 'Trnsactions',
-    'accounts'      => 'Accounts',
-    'by'            => 'By',
-    'Profile'       => 'Profile',
-    'warehouse'     => 'Warehouse',
-    'orders'        => 'Orders',
+    'home'              => 'Dashboard',
+    'main_elements'     => 'Main Elements',
+    'languages'         => 'Languages',
+    'status'            => 'Status',
+    'profile'           => 'Profile',
+    'settings'          => 'Settings',
+    'logout'            => 'Logout',
+    'transactions'      => 'Trnsactions',
+    'accounts'          => 'Accounts',
+    'by'                => 'By',
+    'Profile'           => 'Profile',
+    'warehouse'         => 'Warehouse',
+    'orders'            => 'Orders',
+    'general_setting'   => 'General Setting',
 
     //? Footer :
     'copyright'                 => 'Copyright',

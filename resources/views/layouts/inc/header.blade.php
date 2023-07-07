@@ -11,7 +11,7 @@
                 @if ($setting->getFirstMediaUrl('setting'))
                     <img src="{{ $setting->getFirstMediaUrl('setting') }}" alt="{{ $setting->name }}" width="110" height="32">
                 @else
-                    <img src="{{ asset('backend/static/logo-white.svg') }}" width="110" height="32" alt="{{ $setting->name }}">
+                    <img src="{{ asset('frontend/dist/images/product/square-default-image.jpeg') }}" width="110" height="32" alt="{{ $setting->name }}">
                 @endif
             </a>
         </h1>
@@ -61,7 +61,7 @@
                         @if (auth()->guard('admin')->user()->getFirstMediaUrl('avatar'))
                             <img src="{{ auth()->guard('admin')->user()->getFirstMediaUrl('avatar') }}" alt="{{ auth()->guard('admin')->user()->full_name }}" width="32" height="32">
                         @else
-                            <img src="{{ asset('backend/static/logo-white.svg') }}" width="32" height="32" alt="{{ auth()->guard('admin')->user()->name }}">
+                            <img src="{{ asset('frontend/dist/images/product/square-default-image.jpeg') }}" width="32" height="32" alt="{{ auth()->guard('admin')->user()->name }}">
                         @endif
                     </span>
                     <div class="d-none d-xl-block ps-2">
@@ -84,20 +84,6 @@
                         </span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="{{ route('admin.setting.index') }}" class="dropdown-item">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path
-                                    d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z">
-                                </path>
-                                <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
-                            </svg>
-                        </span>
-                        <span class="nav-link-title">
-                            {{ __('setting.settings') }}
-                        </span>
-                    </a>
                     <a href="{{ route('admin.logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('admin-logout').submit();">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -135,6 +121,59 @@
                             </span>
                         </a>
                     </li>
+                    @if (Auth::guard('admin')->user()->hasRole('administrator'))
+                        <li class="nav-item dropdown {{ request()->routeIs('admin.roles.index') ? 'active' : '' }}">
+                            <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home-cog" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M9 21v-6a2 2 0 0 1 2 -2h1.6"></path>
+                                        <path d="M20 11l-8 -8l-9 9h2v7a2 2 0 0 0 2 2h4.159"></path>
+                                        <path d="M18 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                        <path d="M18 14.5v1.5"></path>
+                                        <path d="M18 20v1.5"></path>
+                                        <path d="M21.032 16.25l-1.299 .75"></path>
+                                        <path d="M16.27 19l-1.3 .75"></path>
+                                        <path d="M14.97 16.25l1.3 .75"></path>
+                                        <path d="M19.733 19l1.3 .75"></path>
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">
+                                    {{ __('partials.general_setting') }}
+                                </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-menu-column">
+                                    <!-- general setting -->
+                                    <a href="{{ route('admin.setting.index') }}" class="dropdown-item">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path
+                                                    d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z">
+                                                </path>
+                                                <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                                            </svg>
+                                        </span>
+                                        <span class="nav-link-title">
+                                            {{ __('setting.settings') }}
+                                        </span>
+                                    </a>
+
+                                    <!-- roles -->
+                                    <a class="dropdown-item {{ request()->routeIs('admin.roles.*') ? 'active' : '' }}" href="{{ route('admin.roles.index') }}">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tool" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"></path>
+                                            </svg>
+                                        </span>
+                                        {{ __('setting.roles') }}
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    @endif
                     @if (Auth::guard('admin')->user()->hasRole('general_manager'))
                         <li class="nav-item dropdown {{ request()->routeIs('admin.sections.*') || request()->routeIs('admin.categories.*') || request()->routeIs('admin.brands.*') || request()->routeIs('admin.banners.*') || request()->routeIs('admin.pages.contact') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
