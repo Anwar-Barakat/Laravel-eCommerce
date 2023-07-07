@@ -6,6 +6,7 @@ use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
 
 class DisplayRoleComponent extends Component
 {
@@ -32,6 +33,7 @@ class DisplayRoleComponent extends Component
     {
         $this->validate();
         try {
+            $this->role->name = Str::slug(Str::lower($this->role->name), '_');
             $this->role->save();
             toastr()->success(__('msgs.submitted', ['name' => __('setting.role')]));
             $this->role = new Role();
@@ -59,8 +61,7 @@ class DisplayRoleComponent extends Component
     public function rules()
     {
         return [
-            'color.name'        => ['required', 'string', 'min:3', Rule::unique('roles', 'name')->ignore($this->role->id)],
-            'color.is_active'   => ['required', 'boolean'],
+            'role.name'        => ['required', 'string', 'min:3', Rule::unique('roles', 'name')->ignore($this->role->id)],
         ];
     }
 

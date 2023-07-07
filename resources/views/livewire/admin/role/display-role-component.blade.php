@@ -11,20 +11,9 @@
                         <div class="row row-cards">
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="mb-3">
-                                    <x-input-label class="form-label" :value="__('auth.name')" />
-                                    <x-text-input type="text" class="form-control" placeholder="Red" wire:model='color.name' required />
-                                    <x-input-error :messages="$errors->get('color.name')" class="mt-2" />
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="mb-3">
-                                    <x-input-label class="form-label" :value="__('partials.status')" />
-                                    <select class="form-select" wire:model.defer='color.is_active'>
-                                        <option value="">{{ __('btns.select') }}</option>
-                                        <option value="1" {{ old('is_active') == '1' ? 'selected' : '' }}>{{ __('msgs.yes') }}</option>
-                                        <option value="0" {{ old('is_active') == '0' ? 'selected' : '' }}>{{ __('msgs.no') }}</option>
-                                    </select>
-                                    <x-input-error :messages="$errors->get('color.is_active')" class="mt-2" />
+                                    <x-input-label class="form-label" :value="__('setting.role_name')" />
+                                    <x-text-input type="text" class="form-control" placeholder="Product Manager" wire:model='role.name' required />
+                                    <x-input-error :messages="$errors->get('role.name')" class="mt-2" />
                                 </div>
                             </div>
                         </div>
@@ -97,8 +86,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th class="w-25">{{ __('product.color') }}</th>
-                            <th class="w-25">{{ __('partials.status') }}</th>
+                            <th class="w-25">{{ __('setting.role') }}</th>
                             <th class="w-25">{{ __('msgs.created_at') }}</th>
                             <th class="w-32"></th>
                         </tr>
@@ -108,14 +96,6 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td> {{ $role->name }}</td>
-                                <td>
-                                    <div>
-                                        <button wire:click='updateStatus({{ $role->id }})' class="btn position-relative">
-                                            {{ $role->is_active ? __('msgs.active') : __('msgs.not_active') }}
-                                            <span class="badge {{ $role->is_active ? 'bg-green' : 'bg-red' }} badge-notification badge-blink"></span>
-                                        </button>
-                                    </div>
-                                </td>
                                 <td> {{ $role->created_at }} </td>
                                 <td>
                                     <span class="dropdown">

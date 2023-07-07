@@ -121,7 +121,7 @@
                             </span>
                         </a>
                     </li>
-                    @if (Auth::guard('admin')->user()->hasRole('administrator'))
+                    @if (Auth::guard('admin')->user()->hasRole('supervisor'))
                         <li class="nav-item dropdown {{ request()->routeIs('admin.roles.index') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">

@@ -56,6 +56,7 @@ return [
     //_______________________
     'roles'                 => 'Roles',
     'role'                  => 'Role',
+    'role_name'             => 'Role name',
     'permissions'           => 'Permissions',
     'permission'            => 'Permission',
 ];

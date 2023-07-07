@@ -79,14 +79,14 @@ Route::group(
                 Route::get('/logout',                                       LogoutController::class)->name('logout');
                 Route::get('/dashboard',                                    DashboardController::class)->name('dashboard');
 
-                Route::group(['middleware' => ['role:administrator', 'role:general_manager', 'auth:admin']], function () {
+                Route::group(['middleware' => ['role:supervisor', 'role:general_manager', 'auth:admin']], function () {
                     //_______________________
                     // Roles
                     //_______________________
                     Route::get('roles',                                         RoleController::class)->name('roles.index');
                 });
 
-                Route::group(['middleware' => ['role:administrator', 'role:general_manager', 'auth:admin']], function () {
+                Route::group(['middleware' => ['role:supervisor', 'role:general_manager', 'auth:admin']], function () {
                     //_______________________
                     // sections
                     //_______________________
@@ -118,7 +118,7 @@ Route::group(
                     Route::get('/contact',                                      ContactUsController::class)->name('pages.contact');
                 });
 
-                Route::group(['middleware' => ['role:administrator', 'role:product_manager', 'auth:admin']], function () {
+                Route::group(['middleware' => ['role:supervisor', 'role:product_manager', 'auth:admin']], function () {
                     //_______________________
                     // products
                     //_______________________
@@ -163,7 +163,7 @@ Route::group(
                     Route::resource('filter-values',                            FilterValueController::class)->only(['index', 'create', 'edit']);
                 });
 
-                Route::group(['middleware' => ['role:administrator', 'role:order_manager', 'auth:admin']], function () {
+                Route::group(['middleware' => ['role:supervisor', 'role:order_manager', 'auth:admin']], function () {
                     //_______________________
                     // shipping charges
                     //_______________________

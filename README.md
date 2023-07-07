@@ -16,9 +16,9 @@
 * Product re-order feature that allows customers to return an order if the previous order was delivered late or had other issues
 * The feature of replacing order products that allows customers to exchange their products for different products if the previous order was delivered with wrong or unsatisfactory products
 
-## Administrator Control Panel
+## supervisor Control Panel
 
-The Administrator Dashboard allows me to perform several tasks related to managing my e-commerce website.
+The supervisor Dashboard allows me to perform several tasks related to managing my e-commerce website.
 
 * CRUD (Create, Read, Update, Delete) sections, categories, products, filters, brands, banners, coupons, shipping charges, and currencies.
 * Manage product attributes such as size, inventory, price, SKU, and condition.
