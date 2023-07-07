@@ -3,7 +3,7 @@
         <div class="row g-0">
             <div class="col d-flex flex-column">
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h3 class="card-title">{{ __('msgs.create', ['name' => __('setting.role')]) }}</h3>
+                    <h3 class="card-title">{{ __('msgs.create', ['name' => __('setting.permission')]) }}</h3>
                 </div>
                 <form wire:submit.prevent='submit'>
                     <div class="card-body">
@@ -11,9 +11,9 @@
                         <div class="row row-cards">
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="mb-3">
-                                    <x-input-label class="form-label" :value="__('setting.role_name')" />
-                                    <x-text-input type="text" class="form-control" placeholder="Product Manager" wire:model='role.name' required />
-                                    <x-input-error :messages="$errors->get('role.name')" class="mt-2" />
+                                    <x-input-label class="form-label" :value="__('setting.permission_name')" />
+                                    <x-text-input type="text" class="form-control" placeholder="Product Manager" wire:model='permission.name' required />
+                                    <x-input-error :messages="$errors->get('permission.name')" class="mt-2" />
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
 
     <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between">
-            <h3 class="card-title">{{ __('msgs.all', ['name' => __('setting.roles')]) }}</h3>
+            <h3 class="card-title">{{ __('msgs.all', ['name' => __('setting.permissions')]) }}</h3>
         </div>
 
         <div class="card-body">
@@ -53,7 +53,7 @@
                         <x-input-label class="form-label" :value="__('msgs.order_by')" />
                         <select class="form-select" wire:model='order_by'>
                             <option value="">{{ __('btns.select') }}</option>
-                            <option value="name">{{ __('setting.role_name') }}</option>
+                            <option value="name">{{ __('setting.permission_name') }}</option>
                             <option value="created_at">{{ __('msgs.created_at') }}</option>
                         </select>
                     </div>
@@ -86,22 +86,22 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th class="w-25">{{ __('setting.role') }}</th>
+                            <th class="w-25">{{ __('setting.permission') }}</th>
                             <th class="w-25">{{ __('msgs.created_at') }}</th>
                             <th class="w-32"></th>
                         </tr>
                     </thead>
                     <tbody class="table-tbody">
-                        @forelse ($roles as $role)
+                        @forelse ($permissions as $permission)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td> {{ $role->name }}</td>
-                                <td> {{ $role->created_at }} </td>
+                                <td> {{ $permission->name }}</td>
+                                <td> {{ $permission->created_at }} </td>
                                 <td>
                                     <span class="dropdown">
                                         <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('btns.actions') }}</button>
                                         <div class="dropdown-menu">
-                                            <a wire:click.prevent='update({{ $role }})' class="dropdown-item d-flex align-items-center gap-1">
+                                            <a wire:click.prevent='update({{ $permission }})' class="dropdown-item d-flex align-items-center gap-1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon text-success" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                     <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
@@ -110,7 +110,7 @@
                                                 </svg>
                                                 <span>{{ __('btns.edit') }}</span>
                                             </a>
-                                            <a wire:click.prevent='delete({{ $role }})' class="dropdown-item d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#modal-danger-{{ $role->id }}">
+                                            <a wire:click.prevent='delete({{ $permission }})' class="dropdown-item d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#modal-danger-{{ $permission->id }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon m-0 text-danger" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                     <path d="M4 7l16 0" />
@@ -128,14 +128,14 @@
                         @empty
                             <tr>
                                 <td colspan="4" class="border-bottom-0">
-                                    <x-blank-section :url="route('admin.roles.index')" :content="__('setting.role')" />
+                                    <x-blank-section :url="route('admin.permissions.index')" :content="__('setting.permission')" />
                                 </td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
                 <div class="p-3 mt-2">
-                    {{ $roles->links('pagination::bootstrap-5') }}
+                    {{ $permissions->links('pagination::bootstrap-5') }}
                 </div>
             </div>
         </div>

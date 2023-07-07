@@ -122,7 +122,7 @@
                         </a>
                     </li>
                     @if (Auth::guard('admin')->user()->hasRole('supervisor'))
-                        <li class="nav-item dropdown {{ request()->routeIs('admin.roles.index') ? 'active' : '' }}">
+                        <li class="nav-item dropdown {{ request()->routeIs('admin.setting.*') || request()->routeIs('admin.roles.index') || request()->routeIs('admin.permissions.index') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home-cog" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -169,6 +169,22 @@
                                             </svg>
                                         </span>
                                         {{ __('setting.roles') }}
+                                    </a>
+
+                                    <!-- permissions -->
+                                    <a class="dropdown-item {{ request()->routeIs('admin.permissions.*') ? 'active' : '' }}" href="{{ route('admin.permissions.index') }}">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tools" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4"></path>
+                                                <path d="M14.5 5.5l4 4"></path>
+                                                <path d="M12 8l-5 -5l-4 4l5 5"></path>
+                                                <path d="M7 8l-1.5 1.5"></path>
+                                                <path d="M16 12l5 5l-4 4l-5 -5"></path>
+                                                <path d="M16 17l-1.5 1.5"></path>
+                                            </svg>
+                                        </span>
+                                        {{ __('setting.permissions') }}
                                     </a>
                                 </div>
                             </div>

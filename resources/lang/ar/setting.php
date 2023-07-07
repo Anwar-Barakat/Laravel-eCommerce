@@ -61,4 +61,6 @@ return [
     'role_name'             => 'اسم الدور',
     'permissions'           => 'الصلاحيات',
     'permission'            => 'صلاحية',
+    'permission_name'       => 'اسم الصلاحية',
+
 ];

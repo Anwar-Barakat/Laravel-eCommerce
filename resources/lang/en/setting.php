@@ -59,4 +59,5 @@ return [
     'role_name'             => 'Role name',
     'permissions'           => 'Permissions',
     'permission'            => 'Permission',
+    'permission_name'       => 'Permission name',
 ];
