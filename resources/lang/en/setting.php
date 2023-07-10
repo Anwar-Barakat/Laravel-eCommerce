@@ -65,4 +65,5 @@ return [
     // Admins
     //_______________________
     'admin_name'            => 'Admin name',
+    'roles_permissions'     => 'Role & Permissions',
 ];
