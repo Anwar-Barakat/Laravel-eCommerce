@@ -111,12 +111,16 @@
                                                 <span>{{ __('btns.edit') }}</span>
                                             </a>
                                             <a href="{{ route('admin.roles.show', ['role' => $role]) }}" class="dropdown-item d-flex align-items-center gap-1">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye text-warning" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tools text-warning" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-                                                    <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"></path>
+                                                    <path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4"></path>
+                                                    <path d="M14.5 5.5l4 4"></path>
+                                                    <path d="M12 8l-5 -5l-4 4l5 5"></path>
+                                                    <path d="M7 8l-1.5 1.5"></path>
+                                                    <path d="M16 12l5 5l-4 4l-5 -5"></path>
+                                                    <path d="M16 17l-1.5 1.5"></path>
                                                 </svg>
-                                                <span>{{ __('btns.details') }}</span>
+                                                <span>{{ __('setting.permissions') }}</span>
                                             </a>
                                             <a wire:click.prevent='delete({{ $role }})' class="dropdown-item d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#modal-danger-{{ $role->id }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon m-0 text-danger" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

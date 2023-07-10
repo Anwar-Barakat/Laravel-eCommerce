@@ -42,4 +42,12 @@ class Admin extends Authenticatable implements HasMedia
             ->fit(Manipulations::FIT_CROP, 300)
             ->nonQueued();
     }
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('name', 'LIKE', $term);
+        });
+    }
 }

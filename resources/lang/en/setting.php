@@ -60,4 +60,9 @@ return [
     'permissions'           => 'Permissions',
     'permission'            => 'Permission',
     'permission_name'       => 'Permission name',
+
+    //_______________________
+    // Admins
+    //_______________________
+    'admin_name'            => 'Admin name',
 ];

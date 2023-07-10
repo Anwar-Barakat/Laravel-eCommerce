@@ -6,7 +6,10 @@
                       <h3 class="mb-4 text-blue">{{ __('msgs.main_info') }}</h3>
                       <div class="row row-cards">
                           <div class="mb-3">
-                              <label class="form-label">{{ __('setting.permissions') }}</label>
+                              <label class="form-label">
+                                  {{ __('setting.permissions') }}
+                                  <a href="{{ route('admin.permissions.index') }}">({{ __('msgs.add', ['name' => __('order.new')]) }})</a>
+                              </label>
                               <div class="form-selectgroup">
                                   @foreach ($permissions as $permission)
                                       <label class="form-selectgroup-item" wire:key='permission-{{ $permission->id }}'>

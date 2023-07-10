@@ -122,7 +122,7 @@
                         </a>
                     </li>
                     @if (Auth::guard('admin')->user()->hasRole('supervisor'))
-                        <li class="nav-item dropdown {{ request()->routeIs('admin.setting.*') || request()->routeIs('admin.roles.index') || request()->routeIs('admin.permissions.index') ? 'active' : '' }}">
+                        <li class="nav-item dropdown {{ request()->routeIs('admin.setting.*') || request()->routeIs('admin.roles.*') || request()->routeIs('admin.permissions.*') || request()->routeIs('admin.admins.*') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home-cog" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -185,6 +185,19 @@
                                             </svg>
                                         </span>
                                         {{ __('setting.permissions') }}
+                                    </a>
+
+                                    <!-- admins -->
+                                    <a class="dropdown-item {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}" href="{{ route('admin.admins.index') }}">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-shield" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M6 21v-2a4 4 0 0 1 4 -4h2"></path>
+                                                <path d="M22 16c0 4 -2.5 6 -3.5 6s-3.5 -2 -3.5 -6c1 0 2.5 -.5 3.5 -1.5c1 1 2.5 1.5 3.5 1.5z"></path>
+                                                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                                            </svg>
+                                        </span>
+                                        {{ __('setting.admins') }}
                                     </a>
                                 </div>
                             </div>
