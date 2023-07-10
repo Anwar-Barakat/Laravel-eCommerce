@@ -79,8 +79,8 @@ Route::group(
 
                 Route::group(['middleware' => ['role:supervisor', 'role:general_manager', 'auth:admin']], function () {
 
-                    Route::get('roles',                                         RoleController::class)->name('roles.index');
-                    Route::get('permissions',                                   PermissionController::class)->name('permissions.index');
+                    Route::resource('roles',                                RoleController::class)->only(['index', 'show']);
+                    Route::get('permissions',                               PermissionController::class)->name('permissions.index');
                 });
 
                 Route::group(['middleware' => ['role:supervisor', 'role:general_manager', 'auth:admin']], function () {

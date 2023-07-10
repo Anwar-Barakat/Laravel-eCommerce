@@ -67,7 +67,9 @@ class DisplayRoleComponent extends Component
 
     public function getRoles()
     {
-        return Role::orderBy($this->order_by, $this->sort_by)
+        $main_roles  = ['supervisor', 'general_manager', 'product_manager', 'order_manager', 'blog_manager'];
+        return Role::whereNotIn('name', $main_roles)
+            ->orderBy($this->order_by, $this->sort_by)
             ->paginate($this->per_page);
     }
 }

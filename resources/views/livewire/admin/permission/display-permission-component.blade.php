@@ -95,7 +95,7 @@
                         @forelse ($permissions as $permission)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td> {{ $permission->name }}</td>
+                                <td> {{ ucwords(str_replace('_', ' ', $permission->name)) }}</td>
                                 <td> {{ $permission->created_at }} </td>
                                 <td>
                                     <span class="dropdown">

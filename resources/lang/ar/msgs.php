@@ -23,6 +23,7 @@ return [
     'sent'                  => 'تم إرسال :name بنجاج',
     'applied'               => 'تم تطبيق :name بنجاج',
     'cancelled'             => 'تم إلغاء :name بنجاج',
+    'assigned'              => 'تم إسناد :name بنجاج',
     'has_sth'               => ':name لديه :sth',
 
 

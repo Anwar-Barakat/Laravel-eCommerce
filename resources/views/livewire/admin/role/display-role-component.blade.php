@@ -95,7 +95,7 @@
                         @forelse ($roles as $role)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td> {{ $role->name }}</td>
+                                <td> {{ ucwords(str_replace('_', ' ', $role->name)) }}</td>
                                 <td> {{ $role->created_at }} </td>
                                 <td>
                                     <span class="dropdown">
@@ -109,6 +109,14 @@
                                                     <path d="M16 5l3 3" />
                                                 </svg>
                                                 <span>{{ __('btns.edit') }}</span>
+                                            </a>
+                                            <a href="{{ route('admin.roles.show', ['role' => $role]) }}" class="dropdown-item d-flex align-items-center gap-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye text-warning" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                    <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"></path>
+                                                </svg>
+                                                <span>{{ __('btns.details') }}</span>
                                             </a>
                                             <a wire:click.prevent='delete({{ $role }})' class="dropdown-item d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#modal-danger-{{ $role->id }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon m-0 text-danger" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

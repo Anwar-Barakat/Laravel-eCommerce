@@ -30,6 +30,7 @@ return [
     'sent'                  => ':name Has Been Sent Successfuly',
     'applied'               => ':name Has Been Applied Successfuly',
     'cancelled'             => ':name Has Been Cancelled Successfuly',
+    'assigned'              => ':name Has Been Assigned Successfuly',
     'has_sth'               => 'The :name has :sth',
 
     'email_pass_not_valid'  => 'Oops, Email or Password not Valid',
