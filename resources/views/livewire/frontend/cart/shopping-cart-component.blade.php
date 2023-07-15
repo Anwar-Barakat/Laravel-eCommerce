@@ -201,7 +201,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td>{{ __('frontend.grand_total') }}</td>
-                                                            <td>${{ number_format($sub_total, 2) + ($charges ? number_format($charges['value'], 2) : 0) }} </td>
+                                                            <td>${{ (float) $sub_total + (float) ($charges ? number_format($charges['value'], 2) : 0) }} </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

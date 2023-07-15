@@ -1,7 +1,6 @@
 @if ($featured_products->count() > 0)
 
-    <div class="u-s-p-y-60">
-
+    <div class="">
         <!--====== Section Intro ======-->
         <div class="section__intro u-s-m-b-46">
             <div class="container">

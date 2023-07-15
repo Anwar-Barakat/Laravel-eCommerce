@@ -46,7 +46,7 @@
                                              </li>
                                              <li>
 
-                                                 <a href="{{ __('frontend.shop') }}">Shop</a>
+                                                 <a href="{{ route('frontend.shop') }}">{{ __('frontend.shop') }}</a>
                                              </li>
                                          </ul>
                                      </div>
